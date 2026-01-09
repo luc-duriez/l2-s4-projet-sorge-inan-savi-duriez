@@ -8,10 +8,10 @@ N'oubliez pas d'ajouter les autres membres de votre équipe aux membres du proje
 
 # Equipe
 
-- prénom1 NOM1
-- prénom2 NOM2
-- prénom3 NOM3
-- prénom4 NOM4
+- sami INAN
+- luc DURIEZ
+- clément SORGE
+- kamal SAVI
 
 # Sujet
 
@@ -71,7 +71,15 @@ Pour chaque semaine on y trouvera :
 
 ### Ce qui a été réalisé
 
+UML :
+    environ 50-60% de l'UML a été réalisé. Il reste à ajouter tous les attributs et toutes les méthodes. 
+
+Calcul du chemin :
+    l'algorithme du calcul du chemin a été réalisé en pseudo-code pour le premier type de plateau. Le calcul du chemin n'est pas complêtement terminé. Environ 80% de cette étape a été fait.
+
 ### Difficultés rencontrées
+
+Pas de difficultés rencontrées pour l'instant au niveau de l'UML. Au niveau du calcul du chemin, quelques difficultés ont été rencontrées sur la validité du chemin.
 
 ### Objectifs pour la semaine et répartition du travail par membre
 
