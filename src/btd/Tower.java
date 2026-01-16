@@ -1,5 +1,7 @@
 package btd;
 
+import java.util.List;
+
 public abstract class Tower{
     /* The position of this Tower */
     protected Cell pos;
@@ -30,6 +32,18 @@ public abstract class Tower{
         this.attackSpeed = attackSpeed;
         this.projectile = projectile;
         this.basePrice = basePrice;
+    }
+
+    /**
+     * Returns the total value of this Tower
+     * @return The total value of this Tower
+     */
+    public int getTotalValue(){
+        int totalCost = basePrice;
+        for (Upgrade u : appliedUpgrades){
+            totalCost += u.getCost();
+        }
+        return totalCost;
     }
 
 
