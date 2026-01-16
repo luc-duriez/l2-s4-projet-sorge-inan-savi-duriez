@@ -1,4 +1,4 @@
-package btd.tower;
+package btd;
 
 public class Cell {
     public static final int SIZE =Board.CELLSIZE;
