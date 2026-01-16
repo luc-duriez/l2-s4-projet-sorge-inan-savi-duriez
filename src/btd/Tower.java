@@ -1,16 +1,36 @@
 package btd;
 
-public class Tower{
-    /* The position of the Tower */
+public abstract class Tower{
+    /* The position of this Tower */
     protected Cell pos;
-    /* The range of the Tower */
+    /* The range of this Tower */
     protected double range;
-    
+    /* The attack speed of this Tower */
     protected int attackSpeed;
+    /* The projectile for this Tower */
     protected Projectile projectile;
+    /* The remaining upgrades for this Tower */
     protected List<Upgrade> remainingUpgrades;
+    /* The applied upgrades on this Tower */
     protected List<Upgrade> appliedUpgrades;
+    /* The base price of this upgrade */
     protected int basePrice;
+
+    /**
+     * Build a new Tower
+     * @param pos The position of this Tower
+     * @param range The range of this Tower
+     * @param attackSpeed The attack speed of this Tower
+     * @param projectile The projectile of this Tower
+     * @param basePrice THe base price of this Tower
+     */
+    public Tower(Cell pos, double range, int attackSpeed, Projectile projectile, int basePrice){
+        this.pos = pos;
+        this.range = range;
+        this.attackSpeed = attackSpeed;
+        this.projectile = projectile;
+        this.basePrice = basePrice;
+    }
 
 
 }
