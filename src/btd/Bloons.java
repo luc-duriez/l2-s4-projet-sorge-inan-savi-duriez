@@ -31,5 +31,14 @@ public class Bloons {
     public int get_heath(){
         return this.heath;
     }
+    /**
+     * returns the speed of the bloon
+     * @return float 
+     */
+
+    public int get_speed(){
+        return this.speed;
+    }
+    
     
 }
