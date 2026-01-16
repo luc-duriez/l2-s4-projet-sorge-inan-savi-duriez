@@ -22,8 +22,14 @@ public class Bloons {
         this.path = path;
         this.distance_travelled = 0;
         this.current_cell = this.path;
+    }
+    /**
+     * returns the heath of the vloon
+     * @return int 
+     */
 
-
+    public int get_heath(){
+        return this.heath;
     }
     
 }
