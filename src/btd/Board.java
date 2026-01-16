@@ -1,6 +1,6 @@
 package btd;
 
-public class Board {
+public abstract class Board {
 
     /*This Board list of lists of Cells */
     protected Cell[][] board;
@@ -35,5 +35,21 @@ public class Board {
     public Cell getCell(int x, int y){
         return this.board[y][x];
     }
+
+    /**
+     * Return true if the cell at position (y,x) can be used to place a tower.
+     * X and Y must be valid.
+     * 
+     * @param x this Cell's column
+     * @param y this Cell's line
+     * @return true if the cell at position (y,x) can be used to place a tower.
+     */
+    public boolean isPlaceable(int x, int y){
+        return this.board[y][x].isOccupied();
+    }
+
+    /**
+     * 
+     */
 
 }
