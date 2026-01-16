@@ -2234,13 +2234,30 @@
 											"height": 13,
 											"text": "#board: List List Cell",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAGbxep7C6+4/c0=",
+											"_parent": {
+												"$ref": "AAAAAAGbocDWCAKwFTc="
+											},
+											"model": {
+												"$ref": "AAAAAAGbxep6/K+1v3Q="
+											},
+											"font": "Arial;13;0",
+											"left": 1189,
+											"top": 498,
+											"width": 269.140625,
+											"height": 13,
+											"text": "+CELLSIZE: int",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 1184,
 									"top": 478,
 									"width": 279.140625,
-									"height": 23
+									"height": 38
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -2263,7 +2280,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1189,
-											"top": 506,
+											"top": 521,
 											"width": 269.140625,
 											"height": 13,
 											"text": "+getCell(x, y): Cell",
@@ -2280,7 +2297,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1189,
-											"top": 521,
+											"top": 536,
 											"width": 269.140625,
 											"height": 13,
 											"text": "+isPlaceable(x, y): boolean",
@@ -2297,7 +2314,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1189,
-											"top": 536,
+											"top": 551,
 											"width": 269.140625,
 											"height": 13,
 											"text": "+getPath(first: Cell, last: Cell): List<Cell>",
@@ -2306,7 +2323,7 @@
 									],
 									"font": "Arial;13;0",
 									"left": 1184,
-									"top": 501,
+									"top": 516,
 									"width": 279.140625,
 									"height": 53
 								},
@@ -2348,7 +2365,7 @@
 							"left": 1184,
 							"top": 440,
 							"width": 279.140625,
-							"height": 114,
+							"height": 129,
 							"nameCompartment": {
 								"$ref": "AAAAAAGbocDWCAKrvBM="
 							},
@@ -3261,8 +3278,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1263,
-									"top": 572,
+									"left": 1260,
+									"top": 578,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -3282,8 +3299,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 1250,
-									"top": 565,
+									"left": 1247,
+									"top": 571,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -3303,8 +3320,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1290,
-									"top": 585,
+									"left": 1287,
+									"top": 593,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -3322,7 +3339,7 @@
 								"$ref": "AAAAAAGboc2l/gXPNYQ="
 							},
 							"lineStyle": 1,
-							"points": "1261:616;1293:554",
+							"points": "1262:616;1287:569",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGboexgXt7/+Io="
@@ -3355,8 +3372,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1371,
-									"top": 586,
+									"left": 1375,
+									"top": 594,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -3376,8 +3393,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 1359,
-									"top": 595,
+									"left": 1363,
+									"top": 603,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -3397,8 +3414,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1396,
-									"top": 569,
+									"left": 1400,
+									"top": 577,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -3416,7 +3433,7 @@
 								"$ref": "AAAAAAGboeKFjZ7e2nw="
 							},
 							"lineStyle": 1,
-							"points": "1406:615;1363:554",
+							"points": "1405:615;1371:569",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGboexzTt/TGSw="
@@ -8159,6 +8176,15 @@
 							"name": "board",
 							"visibility": "protected",
 							"type": "List List Cell"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAGbxep6/K+1v3Q=",
+							"_parent": {
+								"$ref": "AAAAAAGbocDWBwKoZbA="
+							},
+							"name": "CELLSIZE",
+							"type": "int"
 						}
 					],
 					"operations": [
