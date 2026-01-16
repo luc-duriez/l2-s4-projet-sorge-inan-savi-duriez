@@ -87,7 +87,11 @@ Pas de difficultés rencontrées pour l'instant au niveau de l'UML. Au niveau du
 
 ### Ce qui a été réalisé
 
+L'UML a été à peu pris fini avec quelques modifications (environ 95% de l'UML est réalisé). Les classes java sont en cours de création.
+
 ### Difficultés rencontrées
+
+On a eu quelques difficultées au niveau de certains concepts comme la gestion du parcours des ballons avec une taille de cases donnée...
 
 ### Objectifs pour la semaine et répartition du travail par membre
 
