@@ -1,6 +1,6 @@
 package btd;
 
-public class Bloons {
+public class Bloon {
 
     // The health of the bloon
     protected int heath;
@@ -14,9 +14,11 @@ public class Bloons {
     protected List<Cell> path;
     //the currentt celle of the bloon
     protected Cell current_cell;
+    // the amount of pixels
+    protected int pixel;
 
     // Construct a new Bloons object 
-    public Bloons(int health, float speed , List<Cell> path ){
+    public Bloon(int health, float speed , List<Cell> path ){
         this.heath= health;
         this.speed = speed;
         this.path = path;
@@ -40,5 +42,11 @@ public class Bloons {
         return this.speed;
     }
     
+    /**
+     * returns the current cell of the bloon
+     */
+    public Cell current_cell(){
+        return this.current_cell;
+    }
     
 }
