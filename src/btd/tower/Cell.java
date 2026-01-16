@@ -5,6 +5,11 @@ public class Cell {
     private int x;
     private int y;
     private boolean isOccupied;
+    /**
+     * Constructor of Cell class
+     * @param x
+     * @param y
+     */
     public Cell(int x,int y){
         this.x=x;
         this.y=y;
@@ -17,12 +22,24 @@ public class Cell {
     public boolean isOccupied(){
         return this.isOccupied;
     }
+    /**
+     * This function switch the isOccupied value
+     * return void
+     */
     public void SwitchIsOccupied(){
         this.isOccupied=!this.isOccupied;
     }
+    /**
+     * Getters x position.
+     * @return int x 
+     */
     public int getX(){
         return this.x;
     }
+    /**
+     * Getters y position.
+     * @return int y
+     */
     public int getY(){
         return this.y;
     }
