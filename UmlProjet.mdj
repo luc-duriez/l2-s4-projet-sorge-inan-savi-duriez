@@ -2532,7 +2532,7 @@
 											"top": 184,
 											"width": 193,
 											"height": 13,
-											"text": "-ispath: bool",
+											"text": "-isOccupied: bool",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2549,7 +2549,7 @@
 											"top": 199,
 											"width": 193,
 											"height": 13,
-											"text": "-size: int",
+											"text": "-SIZE: int",
 											"horizontalAlignment": 0
 										}
 									],
@@ -2583,7 +2583,24 @@
 											"top": 222,
 											"width": 193,
 											"height": 13,
-											"text": "+isPath(): bool",
+											"text": "+isOccupied(): bool",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGbxeUG4L4xZkQ=",
+											"_parent": {
+												"$ref": "AAAAAAGbocEobwPXK50="
+											},
+											"model": {
+												"$ref": "AAAAAAGbxeUG0b4ubgQ="
+											},
+											"font": "Arial;13;0",
+											"left": 1345,
+											"top": 237,
+											"width": 193,
+											"height": 13,
+											"text": "+SwitchIsOccupied(): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2615,7 +2632,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1345,
-											"top": 237,
+											"top": 252,
 											"width": 193,
 											"height": 13,
 											"text": "+getX(): int",
@@ -2632,7 +2649,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1345,
-											"top": 252,
+											"top": 267,
 											"width": 193,
 											"height": 13,
 											"text": "+getY(): int",
@@ -2643,7 +2660,7 @@
 									"left": 1340,
 									"top": 217,
 									"width": 203,
-									"height": 53
+									"height": 68
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -2683,7 +2700,7 @@
 							"left": 1340,
 							"top": 124,
 							"width": 203,
-							"height": 146,
+							"height": 161,
 							"nameCompartment": {
 								"$ref": "AAAAAAGbocEobwPRgfg="
 							},
@@ -8307,7 +8324,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGbocEobwPOtq8="
 							},
-							"name": "ispath",
+							"name": "isOccupied",
 							"visibility": "private",
 							"type": "bool"
 						},
@@ -8317,7 +8334,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGbocEobwPOtq8="
 							},
-							"name": "size",
+							"name": "SIZE",
 							"visibility": "private",
 							"type": "int"
 						}
@@ -8329,7 +8346,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGbocEobwPOtq8="
 							},
-							"name": "isPath",
+							"name": "isOccupied",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -8338,6 +8355,25 @@
 										"$ref": "AAAAAAGboeYNzq7k6Yc="
 									},
 									"type": "bool",
+									"direction": "return"
+								}
+							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAGbxeUG0b4ubgQ=",
+							"_parent": {
+								"$ref": "AAAAAAGbocEobwPOtq8="
+							},
+							"name": "SwitchIsOccupied",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAGbxeVOh75xEdw=",
+									"_parent": {
+										"$ref": "AAAAAAGbxeUG0b4ubgQ="
+									},
+									"type": "void",
 									"direction": "return"
 								}
 							]
@@ -9195,7 +9231,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGbxaKu3VkLk7M="
 							},
-							"name": "Cell"
+							"name": "Cell",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -9203,7 +9240,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGbxaKu3VkLk7M="
 							},
-							"name": "next_cell"
+							"name": "next_cell",
+							"type": ""
 						}
 					]
 				},
