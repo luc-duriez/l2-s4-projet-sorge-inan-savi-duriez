@@ -34,4 +34,26 @@ public class Player {
     public int getLives(){
         return this.lives;
     }
+    /**
+     * Add amount of credits and return this value
+     * @param amount : int
+     * @return new amount : int
+     */
+    public int addCredits(int amount){
+        return this.credits+=amount;
+    }
+
+    /**
+     * Remove amount of credits and return this value
+     * if the player has enough credit, returns true, false otherwise
+     * @param amount : int
+     * @return boolean 
+     */
+    public boolean removeCredits(int amount){
+        if (0 < amount && this.credits >= amount) {
+            this.credits -= amount;
+            return true;
+        }
+        return false;
+    }
 }
