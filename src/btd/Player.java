@@ -20,4 +20,18 @@ public class Player {
         this.credits=credits;
         this.lives=lives;
     }
+    /**
+     * Getter of credits
+     * @return credits : int
+     */
+    public int getCredits(){
+        return this.credits;
+    }
+    /**
+     * Getter of lives
+     * @return lives : int
+     */
+    public int getLives(){
+        return this.lives;
+    }
 }
