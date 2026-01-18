@@ -15,6 +15,19 @@ public class Projectile {
         this.projectileName = projectileName;
         this.damage = damage;
     }
-    
+    /**
+     * Getter of damage
+     * @return damage : int
+     */
+    public int getDamage(){
+        return this.damage;
+    }
+    /**
+     * Getter of projectile name
+     * @return Projectile Name : String
+     */
+    public String getName(){
+        return this.projectileName;
+    }
     
 }
