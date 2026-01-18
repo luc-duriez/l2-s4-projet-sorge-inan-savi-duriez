@@ -44,7 +44,7 @@ public class Player {
     }
 
     /**
-     * Remove amount of credits and return this value
+     * Remove amount of credits
      * if the player has enough credit, returns true, false otherwise
      * @param amount : int
      * @return boolean 
@@ -52,6 +52,19 @@ public class Player {
     public boolean removeCredits(int amount){
         if (0 < amount && this.credits >= amount) {
             this.credits -= amount;
+            return true;
+        }
+        return false;
+    }
+    /**
+     * Remove amount of lives.
+     * if the player has enough lives, returns true, false otherwise
+     * @param amount : int
+     * @return boolean 
+     */
+    public boolean removeLife(int amount){
+        if (0 < amount && this.lives >= amount) {
+            this.lives -= amount;
             return true;
         }
         return false;
