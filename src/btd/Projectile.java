@@ -1,6 +1,6 @@
 package btd;
 
-public class Projectile {
+public abstract class Projectile {
     /* The damage of Projectile */
     protected int damage;
     /* Name of Projectile */
