@@ -24,7 +24,7 @@ public class Board {
                 this.board[x][y] = c;
             }
         }
-        this.path = createPath(board[2][0], board[1][11], new ArrayList<>());
+        this.path = createPath(board[0][0], board[3][11], new ArrayList<>());
     }
 
     /**
@@ -111,17 +111,17 @@ public class Board {
      */
     public List<Cell> createPath(Cell curr, Cell finale, List<Cell> list){
         list.add(curr);
-        if (curr == finale){
-            return list;
-        }
+        if (curr.equals(finale)) return list;
         List<Cell> neighbor = this.getNeighbors(curr);
         Collections.shuffle(neighbor);
         for(Cell next: neighbor){
-            if (!list.contains(next)){
-                return createPath(next, finale, list);
-            }        
+            if (countPathNeighbors(next, list)== 1){
+                List<Cell> result = createPath(next, finale, list);
+                if (result != null) return result;  
+            }
         }
-        return list;
+        list.remove(curr);
+        return null;
     }
     
     private int countPathNeighbors(Cell c, List<Cell> listCurr) {
