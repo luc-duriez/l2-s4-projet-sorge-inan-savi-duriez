@@ -25,7 +25,7 @@ public class Cell {
     /**
      * This function switch the isOccupied value
      */
-    public void SwitchIsOccupied(){
+    public void switchIsOccupied(){
         this.isOccupied=!this.isOccupied;
     }
     /**
