@@ -43,4 +43,16 @@ public class Cell {
     public int getY(){
         return this.y;
     }
+
+    /**
+     * Return true if the object is a Cell
+     * @return boolean
+     */
+    public boolean equals(Object o){
+        if(!(o instanceof Cell)){
+            return false;
+        }
+        Cell c = (Cell) o;
+        return this.x == c.getX() && this.y == c.getY();
+    }
 }
