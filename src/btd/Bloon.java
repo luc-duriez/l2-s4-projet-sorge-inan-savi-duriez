@@ -40,7 +40,7 @@ public class Bloon {
      * @return float 
      */
 
-    public int get_speed(){
+    public float get_speed(){
         return this.speed;
     }
     
