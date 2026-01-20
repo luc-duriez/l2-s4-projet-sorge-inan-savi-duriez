@@ -54,4 +54,11 @@ public class Cell {
         Cell c = (Cell) o;
         return this.x == c.getX() && this.y == c.getY();
     }
+
+    /**
+     * Return a String representation of this Cell
+     */
+    public String toString(){
+        return "(" + this.x + ", " + this.y + ")";
+    }
 }
