@@ -24,20 +24,19 @@ public class Cell {
     }
     /**
      * This function switch the isOccupied value
-     * return void
      */
     public void SwitchIsOccupied(){
         this.isOccupied=!this.isOccupied;
     }
     /**
-     * Getters x position.
+     * Return the position x
      * @return int x 
      */
     public int getX(){
         return this.x;
     }
     /**
-     * Getters y position.
+     * Return the position y
      * @return int y
      */
     public int getY(){
