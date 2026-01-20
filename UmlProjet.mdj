@@ -2334,7 +2334,7 @@
 											"top": 545,
 											"width": 269.140625,
 											"height": 13,
-											"text": "+getPath(first: Cell, last: Cell): List<Cell>",
+											"text": "+createPath(first: Cell, last: Cell): List<Cell>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8330,7 +8330,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGbocDWBwKoZbA="
 							},
-							"name": "getPath",
+							"name": "createPath",
 							"parameters": [
 								{
 									"_type": "UMLParameter",

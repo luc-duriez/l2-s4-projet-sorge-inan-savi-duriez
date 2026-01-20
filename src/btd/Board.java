@@ -1,7 +1,6 @@
 package btd;
 
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Board {
 
@@ -14,16 +13,16 @@ public class Board {
     /**
      * Build a board of a given size x, y
      * 
-     * @param y this board's number of lines
-     * @param x this board's number of columns
+     * @param y this board's number of columns
+     * @param x this board's number of lines
      */
     public Board(int sizex, int sizey){
         this.board = new Cell[sizey][sizex];
         this.path = new ArrayList<>();
-        for(int y = 0; y < sizey; y++){
-            for(int x = 0; x < sizex; x++){
+        for(int x = 0; x < sizex; x++){
+            for(int y = 0; y < sizey; y++){
                 Cell c = new Cell(x, y);
-                this.board[y][x] = c;
+                this.board[x][y] = c;
             }
         }
     }
@@ -32,30 +31,33 @@ public class Board {
      * Return the Cell at the given position of this Board's grid
      * X and Y must be valid.
      * 
-     * @param x this Cell's column
-     * @param y this Cell's line
+     * @param x this Cell's line
+     * @param y this Cell's column
      * @return the Cell at the given position of this Board's grid
      */
     public Cell getCell(int x, int y){
-        return this.board[y][x];
+        return this.board[x][y];
     }
 
     /**
-     * Return true if the cell at position (y,x) can be used to place a tower.
+     * Return true if the cell at position (x,y) can be used to place a tower.
      * X and Y must be valid.
      * 
      * @param x this Cell's column
      * @param y this Cell's line
-     * @return true if the cell at position (y,x) can be used to place a tower.
+     * @return true if the cell at position (x,y) can be used to place a tower.
      */
     public boolean isPlaceable(int x, int y){
-        return this.board[y][x].isOccupied();
+        return this.board[x][y].isOccupied();
     }
 
     /**
-     * Create a path for bloons for this board wit a given starting Cell and the final Cell.
-     * Doesn't 
+     * Create a path for bloons for this board with a given starting Cell and the final Cell.
+     * 
+     * @param curr the current Cell
+     * @param finale the path's final Cell 
      */
+
 
 
 
@@ -97,5 +99,20 @@ public class Board {
             System.out.println();
         }
 
+    public List<Cell> createPath(Cell curr, Cell finale, List<Cell> list){
+        if (curr == finale){
+            return list;
+        }
+        List<Cell> neighbor = this.getNeighbors(curr);
+        if (neighbor.size() != 0){
+            Collections.shuffle(neighbor);
+            for(int i=0; i < neighbor.size(); i++){
+                curr = neighbor.get(i);
+                if (!(list.contains(curr))){
+                    list.add(curr);
+                    return createPath(curr, finale, list);
+                }
+            }        
+        }
     }
 }
