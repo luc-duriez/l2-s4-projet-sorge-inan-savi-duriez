@@ -58,6 +58,7 @@ public class Board {
      */
 
 
+
     /**
      *  Returns the neighbors of a gives cell
      * @param c The cell to get its neighbors
@@ -80,5 +81,21 @@ public class Board {
             neighbors.add(new Cell(x, y+1));
         }
         return neighbors;
+    }
+    public void show() {
+        for (int y = 0; y < board.length; y++) {
+            for (int x = 0; x < board[y].length; x++) {
+                Cell c = board[y][x];
+                if (path.contains(c)) {
+                    System.out.print(" P ");
+                } else if (c.isOccupied()) {
+                    System.out.print(" T "); 
+                } else {
+                    System.out.print(" . "); 
+                }
+            }
+            System.out.println();
+        }
+
     }
 }
