@@ -50,5 +50,15 @@ public class Bloon {
     public Cell current_cell(){
         return this.current_cell;
     }
+
+    /**
+     * Soustrac the amount of damages to the bloon
+     * @param damage
+     * @return the remaining heath
+     */
+
+    public int decreaseLife(int damage){
+        return this.heath - damage;
+    }
     
 }
