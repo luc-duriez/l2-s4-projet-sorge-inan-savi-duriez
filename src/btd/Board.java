@@ -98,21 +98,38 @@ public class Board {
             }
             System.out.println();
         }
+    }
 
+    /**
+     * Return a list of Cell that represent the path for the bloons for this board.
+     * curr must be the first cell of the path.
+     * 
+     * @param curr the current Cell.
+     * @param finale the last Cell of the path.
+     * @param list the path
+     * @return the list of Cell that represen the path.
+     */
     public List<Cell> createPath(Cell curr, Cell finale, List<Cell> list){
+        list.add(curr);
         if (curr == finale){
             return list;
         }
         List<Cell> neighbor = this.getNeighbors(curr);
-        if (neighbor.size() != 0){
-            Collections.shuffle(neighbor);
-            for(int i=0; i < neighbor.size(); i++){
-                curr = neighbor.get(i);
-                if (!(list.contains(curr))){
-                    list.add(curr);
-                    return createPath(curr, finale, list);
-                }
+        Collections.shuffle(neighbor);
+        for(Cell next: neighbor){
+            if (!list.contains(next)){
+                return createPath(next, finale, list);
             }        
         }
+        return list;
+    }
+
+    /**
+     * Return this Board's path
+     * 
+     * @return this Board's path
+     */
+    public List<Cell> getpath(){
+        return this.path;
     }
 }
