@@ -1,12 +1,15 @@
 package btd;
 
-public abstract class Board {
+import java.util.List;
+import java.util.ArrayList;
+
+public class Board {
 
     /*This Board list of lists of Cells */
     protected Cell[][] board;
 
-    /*This Board cells' size */
-    public static final int CELLSIZE = 100;
+    /*This Board path for ballons */
+    private List<Cell> path;
 
     /**
      * Build a board of a given size x, y
@@ -16,9 +19,10 @@ public abstract class Board {
      */
     public Board(int sizex, int sizey){
         this.board = new Cell[sizey][sizex];
+        this.path = new ArrayList<>();
         for(int y = 0; y < sizey; y++){
             for(int x = 0; x < sizex; x++){
-                Cell c = new Cell(x, y, cellSize);
+                Cell c = new Cell(x, y);
                 this.board[y][x] = c;
             }
         }
@@ -49,7 +53,7 @@ public abstract class Board {
     }
 
     /**
-     * 
+     * R
      */
 
 }
