@@ -2300,7 +2300,7 @@
 											"top": 515,
 											"width": 269.140625,
 											"height": 13,
-											"text": "+getCell(x, y): Cell",
+											"text": "+getCell(int, int): Cell",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2336,13 +2336,30 @@
 											"height": 13,
 											"text": "+getPath(first: Cell, last: Cell): List<Cell>",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGb2zktn2h3oRI=",
+											"_parent": {
+												"$ref": "AAAAAAGbocDWCAKxyzg="
+											},
+											"model": {
+												"$ref": "AAAAAAGb2zktl2h0SbU="
+											},
+											"font": "Arial;13;0",
+											"left": 1181,
+											"top": 560,
+											"width": 269.140625,
+											"height": 13,
+											"text": "+getPath(): List<Cell>",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 1176,
 									"top": 495,
 									"width": 279.140625,
-									"height": 68
+									"height": 83
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -8247,8 +8264,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGbwoMOpsd8QPI="
 									},
-									"name": "x",
-									"type": ""
+									"name": "int"
 								},
 								{
 									"_type": "UMLParameter",
@@ -8256,8 +8272,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGbwoMOpsd8QPI="
 									},
-									"name": "y",
-									"type": ""
+									"name": "int"
 								},
 								{
 									"_type": "UMLParameter",
@@ -8344,6 +8359,25 @@
 									"_id": "AAAAAAGbwqO++sfBGeU=",
 									"_parent": {
 										"$ref": "AAAAAAGbwqMd2ce4Tpo="
+									},
+									"type": "List<Cell>",
+									"direction": "return"
+								}
+							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAGb2zktl2h0SbU=",
+							"_parent": {
+								"$ref": "AAAAAAGbocDWBwKoZbA="
+							},
+							"name": "getPath",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAGb2zljm2jDk8g=",
+									"_parent": {
+										"$ref": "AAAAAAGb2zktl2h0SbU="
 									},
 									"type": "List<Cell>",
 									"direction": "return"
