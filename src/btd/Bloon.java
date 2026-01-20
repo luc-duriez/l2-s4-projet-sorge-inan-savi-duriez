@@ -73,5 +73,15 @@ public class Bloon {
     }
 
 
+    /**
+     * Verify if the heath of the bloon is lower than zero
+     * @return a boolean
+     */
+
+    public boolean isDead(){
+        return this.heath > 0;
+    }
+
+
     
 }
