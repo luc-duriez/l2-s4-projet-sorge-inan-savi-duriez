@@ -60,5 +60,18 @@ public class Bloon {
     public int decreaseLife(int damage){
         return this.heath - damage;
     }
+
+
+    /**
+     * Soustrac a amount of speed to the bloon to the bloon
+     * @param malus
+     * @return the remaining speed
+     */
+
+    public float decreaseSpeed(int malus){
+        return this.speed - speed;
+    }
+
+
     
 }
