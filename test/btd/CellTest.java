@@ -11,4 +11,11 @@ public class CellTest {
 
         assertEquals(c1, c2);
     }
+
+    @Test
+    public void testIfOccupiedSwitched(){
+        Cell c1 = new Cell(0, 0);
+        c1.SwitchIsOccupied();
+        assertTrue(c1.isOccupied());
+    }
 }
