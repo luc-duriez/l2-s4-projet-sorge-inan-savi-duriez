@@ -123,6 +123,16 @@ public class Board {
         }
         return list;
     }
+    
+    private int countPathNeighbors(Cell c, List<Cell> listCurr) {
+    int count = 0;
+    for (Cell neighbor : getNeighbors(c)) {
+        if (curr.contains(neighbor)) {
+            count++;
+        }
+    }
+    return count;
+    }
 
     /**
      * Return this Board's path
