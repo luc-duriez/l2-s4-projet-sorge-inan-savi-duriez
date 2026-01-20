@@ -15,7 +15,7 @@ public class CellTest {
     @Test
     public void testIfOccupiedSwitched(){
         Cell c1 = new Cell(0, 0);
-        c1.SwitchIsOccupied();
+        c1.switchIsOccupied();
         assertTrue(c1.isOccupied());
     }
 }
