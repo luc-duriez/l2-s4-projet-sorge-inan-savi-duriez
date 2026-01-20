@@ -17,14 +17,14 @@ public class Board {
      * @param x this board's number of lines
      */
     public Board(int sizex, int sizey){
-        this.board = new Cell[sizey][sizex];
-        this.path = new ArrayList<>();
+        this.board = new Cell[sizex][sizey];
         for(int x = 0; x < sizex; x++){
             for(int y = 0; y < sizey; y++){
                 Cell c = new Cell(x, y);
                 this.board[x][y] = c;
             }
         }
+        this.path = createPath(board[2][0], board[1][11], new ArrayList<>());
     }
 
     /**
@@ -129,7 +129,13 @@ public class Board {
      * 
      * @return this Board's path
      */
-    public List<Cell> getpath(){
+    public List<Cell> getPath(){
         return this.path;
+    }
+
+    public void pathToString(){
+        for(Cell cell: this.path){
+            System.out.println(cell);
+        }
     }
 }
