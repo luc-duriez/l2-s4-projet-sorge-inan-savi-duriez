@@ -7,9 +7,9 @@ public class Bloon {
     // The health of the bloon
     protected int heath;
     // The speed of the bloon
-    protected float speed;
+    protected int speed;
     // Distance travelled by the bloon
-    protected float distance_travelled;
+    protected int distance_travelled;
     // The next Cell of the bloon
     protected Cell next_cell;
     // the path that the bloon have to respect
@@ -20,12 +20,11 @@ public class Bloon {
     protected int pixel;
 
     // Construct a new Bloons object 
-    public Bloon(int health, float speed , List<Cell> path ){
+    public Bloon(int health, int speed , List<Cell> path ){
         this.heath= health;
         this.speed = speed;
         this.path = path;
         this.distance_travelled = 0;
-        this.current_cell = this.path.get(0);
     }
     /**
      * returns the heath of the vloon
@@ -40,36 +39,36 @@ public class Bloon {
      * @return float 
      */
 
-    public float get_speed(){
+    public int get_speed(){
         return this.speed;
     }
     
-    /**
-     * returns the current cell of the bloon
-     */
-    public Cell current_cell(){
-        return this.current_cell;
-    }
+    // /**
+    //  * returns the current cell of the bloon
+    //  */
+    // public Cell current_cell(){
+    //     int index = this.distance_travelled / 100;
+    //     return this.path.get(index);
+    // }
 
     /**
      * Soustrac the amount of damages to the bloon
      * @param damage
-     * @return the remaining heath
      */
 
-    public int decreaseLife(int damage){
-        return this.heath - damage;
+    public void decreaseLife(int damage){
+        this.heath -= damage;
     }
 
 
     /**
      * Soustrac a amount of speed to the bloon to the bloon
      * @param malus
-     * @return the remaining speed
+     * 
      */
 
-    public float decreaseSpeed(int malus){
-        return this.speed - speed;
+    public void decreaseSpeed(int malus){
+        this.speed -= malus;
     }
 
 
@@ -83,5 +82,22 @@ public class Bloon {
     }
 
 
-    
+    /**
+     * Increase the speed of the bloon
+     * @param speed
+     */
+
+    public void IncreaseSpeed(int bonus){
+        this.speed += bonus;
+    }
+
+
+    /**
+     * move the bloon
+     * @param 
+     */
+
+    public void move(int nb_pixels){
+        this.distance_travelled += nb_pixels;
+    }
 }
