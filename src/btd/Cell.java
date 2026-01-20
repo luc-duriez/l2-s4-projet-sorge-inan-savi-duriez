@@ -1,7 +1,7 @@
 package btd;
 
 public class Cell {
-    public static final int SIZE =Board.CELLSIZE;
+    public static final int SIZE = 100;
     private int x;
     private int y;
     private boolean isOccupied;
