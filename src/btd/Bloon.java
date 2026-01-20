@@ -1,11 +1,13 @@
 package btd;
 
+import java.util.List;
+
 public class Bloon {
 
     // The health of the bloon
     protected int heath;
     // The speed of the bloon
-    protected int speed;
+    protected float speed;
     // Distance travelled by the bloon
     protected float distance_travelled;
     // The next Cell of the bloon
@@ -23,7 +25,7 @@ public class Bloon {
         this.speed = speed;
         this.path = path;
         this.distance_travelled = 0;
-        this.current_cell = this.path;
+        this.current_cell = this.path.get(0);
     }
     /**
      * returns the heath of the vloon
