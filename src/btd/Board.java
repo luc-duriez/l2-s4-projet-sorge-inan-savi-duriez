@@ -8,7 +8,7 @@ public class Board {
     protected Cell[][] board;
 
     /*This Board path for ballons */
-    private List<Cell> path;
+    protected List<Cell> path;
 
     /**
      * Build a board of a given size x, y
@@ -24,7 +24,6 @@ public class Board {
                 this.board[x][y] = c;
             }
         }
-        this.path = createPath(board[1][0], board[2][11], new ArrayList<>());
     }
 
     /**
@@ -84,6 +83,9 @@ public class Board {
         }
         return neighbors;
     }
+    /**
+     * Show the board
+     */
     public void show() {
         for (int y = 0; y < board.length; y++) {
             for (int x = 0; x < board[y].length; x++) {
@@ -110,7 +112,6 @@ public class Board {
      * @return the list of Cell that represen the path.
      */
     public List<Cell> createPath(Cell curr, Cell finale, List<Cell> list){
-        System.out.println(curr);
         list.add(curr);
         if (curr.equals(finale)) return list;
         List<Cell> neighbor = this.getNeighbors(curr);
@@ -122,7 +123,6 @@ public class Board {
             }
         }
         list.remove(curr);
-        System.out.println("Backtrack " +curr);
         return null;
     }
     
@@ -145,9 +145,4 @@ public class Board {
         return this.path;
     }
 
-    public void pathToString(){
-        for(Cell cell: this.path){
-            System.out.println(cell);
-        }
-    }
 }
