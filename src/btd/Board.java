@@ -59,26 +59,26 @@ public class Board {
 
 
     /**
-     *  Returns the neighbours of a gives cell
-     * @param c The cell to get its neighbours
-     * @return The neighbours of the cell
+     *  Returns the neighbors of a gives cell
+     * @param c The cell to get its neighbors
+     * @return The neighbors of the cell
      */
     public List<Cell> getNeighbors(Cell c){
-        List<Cell> neighbours = new ArrayList<>();
+        List<Cell> neighbors = new ArrayList<>();
         int x = c.getX();
         int y = c.getY();
         if(x >= 1){
-            neighbours.add(new Cell(x-1, y));
+            neighbors.add(new Cell(x-1, y));
         }
         if(x <= this.board.length-2){
-            neighbours.add(new Cell(x+1, y));
+            neighbors.add(new Cell(x+1, y));
         }
         if(y >= 1){
-            neighbours.add(new Cell(x, y-1));
+            neighbors.add(new Cell(x, y-1));
         }
         if(y <= this.board[0].length-2){
-            neighbours.add(new Cell(x, y+1));
+            neighbors.add(new Cell(x, y+1));
         }
-        return neighbours;
+        return neighbors;
     }
 }
