@@ -24,7 +24,7 @@ public class Board {
                 this.board[x][y] = c;
             }
         }
-        this.path = createPath(board[0][0], board[3][11], new ArrayList<>());
+        this.path = createPath(board[1][0], board[2][11], new ArrayList<>());
     }
 
     /**
@@ -110,24 +110,26 @@ public class Board {
      * @return the list of Cell that represen the path.
      */
     public List<Cell> createPath(Cell curr, Cell finale, List<Cell> list){
+        System.out.println(curr);
         list.add(curr);
         if (curr.equals(finale)) return list;
         List<Cell> neighbor = this.getNeighbors(curr);
         Collections.shuffle(neighbor);
         for(Cell next: neighbor){
-            if (countPathNeighbors(next, list)== 1){
+            if (!(list.contains(next)) && (countPathNeighbors(next, list)== 1)){
                 List<Cell> result = createPath(next, finale, list);
                 if (result != null) return result;  
             }
         }
         list.remove(curr);
+        System.out.println("Backtrack " +curr);
         return null;
     }
     
     private int countPathNeighbors(Cell c, List<Cell> listCurr) {
     int count = 0;
     for (Cell neighbor : getNeighbors(c)) {
-        if (curr.contains(neighbor)) {
+        if (listCurr.contains(neighbor)) {
             count++;
         }
     }
