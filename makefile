@@ -17,10 +17,13 @@ compile: $(CLASSES_DIR)
 $(CLASSES_DIR):
 	mkdir -p $(CLASSES_DIR)
 
-test: compileTest
+test: compileTest execTest
 
 compileTest: $(CLASSES_DIR)
 	$(JC) -classpath junit-console.jar:classes $(TEST_SOURCES) -d $(CLASSES_DIR)
+
+execTest: 
+	java -jar junit-console.jar -classpath test:classes -scan-classpath
 
 clean:
 	rm -rf $(CLASSES_DIR)
