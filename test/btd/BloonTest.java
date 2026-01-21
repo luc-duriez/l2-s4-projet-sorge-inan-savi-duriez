@@ -62,6 +62,12 @@ public class BloonTest {
         b.decreaseHealth(3);
         assertTrue(b.isDead());
     } 
+
+    @Test
+    public void moveTest(){
+        b.move(50);
+        assertEquals(50, b.get_distance_travelled());
+    } 
     
     
 }
