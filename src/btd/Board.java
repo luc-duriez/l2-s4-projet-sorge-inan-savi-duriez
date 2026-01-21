@@ -8,7 +8,7 @@ public class Board {
     protected Cell[][] board;
 
     /*This Board path for ballons */
-    protected List<Cell> path;
+    protected List<List<Cell>> path;
 
     /**
      * Build a board of a given size x, y
@@ -17,6 +17,7 @@ public class Board {
      * @param x this board's number of lines
      */
     public Board(int sizex, int sizey){
+        this.path= new ArrayList<List<Cell>>();
         this.board = new Cell[sizex][sizey];
         for(int x = 0; x < sizex; x++){
             for(int y = 0; y < sizey; y++){
@@ -141,7 +142,7 @@ public class Board {
      * 
      * @return this Board's path
      */
-    public List<Cell> getPath(){
+    public List<List<Cell>> getPath(){
         return this.path;
     }
 
