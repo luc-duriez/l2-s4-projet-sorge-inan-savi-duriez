@@ -54,6 +54,14 @@ public class BloonTest {
         b.IncreaseSpeed(1);
         assertEquals(2, b.get_speed());
     } 
+
+    @Test
+    public void isDead(){
+        b.decreaseHealth(1);
+        assertFalse(b.isDead());
+        b.decreaseHealth(3);
+        assertTrue(b.isDead());
+    } 
     
     
 }
