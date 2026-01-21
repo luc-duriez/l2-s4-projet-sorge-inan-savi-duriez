@@ -66,7 +66,7 @@ public class Board {
      * @param c The cell to get its neighbors
      * @return The neighbors of the cell
      */
-    public List<Cell> getNeighbors(Cell c){
+    private List<Cell> getNeighbors(Cell c){
         List<Cell> neighbors = new ArrayList<>();
         int x = c.getX();
         int y = c.getY();

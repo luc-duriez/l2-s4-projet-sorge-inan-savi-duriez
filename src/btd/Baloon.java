@@ -2,25 +2,23 @@ package btd;
 
 import java.util.List;
 
-public class Bloon {
+public class Baloon {
 
-    // The health of the bloon
-    protected int heath;
-    // The speed of the bloon
-    protected int speed;
-    // Distance travelled by the bloon
-    protected int distance_travelled;
-    // The next Cell of the bloon
-    protected Cell next_cell;
-    // the path that the :!!;!!bloon have to respect
-    protected List<Cell> path;
-    //the currentt celle of the bloon
-    protected Cell current_cell;
-    // the amount of pixels
-    protected int pixel;
-
-    // Construct a new Bloons object 
-    public Bloon(int health, int speed , List<Cell> path ){
+    // The health of the baloon
+    private int heath;
+    // The speed of the baloon
+    private int speed;
+    // Distance travelled by the baloon
+    private int distance_travelled;
+    // The next Cell of the baloon
+    private Cell next_cell;
+    // the path that the baloon have to respect
+    private List<Cell> path;
+    //the currentt celle of the baloon
+    private Cell current_cell;
+    
+    // Construct a new Baloons object 
+    public Baloon(int health, int speed , List<Cell> path ){
         this.heath= health;
         this.speed = speed;
         this.path = path;
@@ -35,7 +33,7 @@ public class Bloon {
         return this.heath;
     }
     /**
-     * returns the speed of the bloon
+     * returns the speed of the baloon
      * @return float 
      */
 
@@ -44,7 +42,7 @@ public class Bloon {
     }
     
     // /**
-    //  * returns the current cell of the bloon
+    //  * returns the current cell of the baloon
     //  */
     // public Cell current_cell(){
     //     int index = this.distance_travelled / 100;
@@ -52,17 +50,17 @@ public class Bloon {
     // }
 
     /**
-     * Soustrac the amount of damages to the bloon
+     * Soustrac the amount of damages to the baloon
      * @param damage
      */
 
-    public void decreaseLife(int damage){
+    public void decreaseHealth(int damage){
         this.heath -= damage;
     }
 
 
     /**
-     * Soustrac a amount of speed to the bloon to the bloon
+     * Soustrac a amount of speed to the baloon to the baloon
      * @param malus
      * 
      */
@@ -73,7 +71,7 @@ public class Bloon {
 
 
     /**
-     * Verify if the heath of the bloon is lower than zero
+     * Verify if the heath of the baloon is lower than zero
      * @return a boolean
      */
 
@@ -83,7 +81,7 @@ public class Bloon {
 
 
     /**
-     * Increase the speed of the bloon
+     * Increase the speed of the baloon
      * @param speed
      */
 
@@ -93,7 +91,7 @@ public class Bloon {
 
 
     /**
-     * move the bloon
+     * move the baloon
      * @param 
      */
 

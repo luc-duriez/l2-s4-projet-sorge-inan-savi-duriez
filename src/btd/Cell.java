@@ -2,9 +2,9 @@ package btd;
 
 public class Cell {
     public static final int SIZE = 100;
-    private int x;
-    private int y;
-    private boolean isOccupied;
+    protected int x;
+    protected int y;
+    protected boolean isOccupied;
     /**
      * Constructor of Cell class
      * @param x
