@@ -12,7 +12,7 @@ public class Bloon {
     protected int distance_travelled;
     // The next Cell of the bloon
     protected Cell next_cell;
-    // the path that the bloon have to respect
+    // the path that the :!!;!!bloon have to respect
     protected List<Cell> path;
     //the currentt celle of the bloon
     protected Cell current_cell;

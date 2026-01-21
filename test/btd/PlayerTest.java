@@ -1,4 +1,4 @@
-package test.btd;
+package btd;
 
 
 public class PlayerTest {

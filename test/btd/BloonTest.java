@@ -1,25 +1,30 @@
 package btd;
-import btd.*;
+
 
 import static org.junit.jupiter.api.Assertions.*; 
+import org.junit.jupiter.api.*;
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test; 
 
 public class BloonTest {
 
     private List<Cell> l; 
-
+    private Bloon b;
     @BeforeEach
-    public void setUp() {
+    public void Before() {
         l = new ArrayList<>();
         Cell c1 = new Cell(2, 5);
         Cell c2 = new Cell(1, 2);
         l.add(c1);
         l.add(c2);
+        b = new Bloon(3, 2, l); 
         
     }
+
+    @Test
+    public void gettors_Test(){
+        assertEquals(3, b.get_heath());
+    } 
     
     
 }
