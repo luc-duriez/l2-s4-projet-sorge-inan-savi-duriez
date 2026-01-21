@@ -9,7 +9,8 @@ import java.util.List;
 public class BloonTest {
 
     private List<Cell> l; 
-    private Bloon b;
+    private Baloon b;
+    
     @BeforeEach
     public void Before() {
         l = new ArrayList<>();
@@ -17,13 +18,13 @@ public class BloonTest {
         Cell c2 = new Cell(1, 2);
         l.add(c1);
         l.add(c2);
-        b = new Bloon(3, 2, l); 
+        b = new Baloon(3, 2, l); 
         
     }
 
     @Test
-    public void gettors_Test(){
-        assertEquals(3, b.get_heath());
+    public void get_healthTest(){
+        assertEquals(3, b.get_health());
     } 
     
     
