@@ -36,6 +36,12 @@ public class BloonTest {
     public void get_distance_travelledTest(){
         assertEquals(2, b.get_distance_travelled());
     } 
+
+    @Test
+    public void decreaseHealthTest(){
+        b.decreaseHealth(1);
+        assertEquals(2, b.get_health());
+    } 
     
     
 }
