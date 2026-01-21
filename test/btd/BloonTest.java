@@ -48,6 +48,12 @@ public class BloonTest {
         b.decreaseSpeed(1);
         assertEquals(2, b.get_speed());
     } 
+
+    @Test
+    public void IncreaseSpeedTest(){
+        b.IncreaseSpeed(1);
+        assertEquals(2, b.get_speed());
+    } 
     
     
 }
