@@ -42,6 +42,12 @@ public class BloonTest {
         b.decreaseHealth(1);
         assertEquals(2, b.get_health());
     } 
+
+    @Test
+    public void decreaseSpeedTest(){
+        b.decreaseSpeed(1);
+        assertEquals(2, b.get_speed());
+    } 
     
     
 }
