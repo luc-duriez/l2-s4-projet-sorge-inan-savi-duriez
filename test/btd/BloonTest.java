@@ -28,8 +28,13 @@ public class BloonTest {
     } 
 
     @Test
-    public void get_Spped(){
+    public void get_SpeedTest(){
         assertEquals(2, b.get_speed());
+    } 
+
+    @Test
+    public void get_distance_travelledTest(){
+        assertEquals(2, b.get_distance_travelled());
     } 
     
     
