@@ -5,7 +5,7 @@ import java.util.List;
 public class Baloon {
 
     // The health of the baloon
-    private int heath;
+    private int health;
     // The speed of the baloon
     private int speed;
     // Distance travelled by the baloon
@@ -19,18 +19,18 @@ public class Baloon {
     
     // Construct a new Baloons object 
     public Baloon(int health, int speed , List<Cell> path ){
-        this.heath= health;
+        this.health= health;
         this.speed = speed;
         this.path = path;
         this.distance_travelled = 0;
     }
     /**
-     * returns the heath of the vloon
+     * returns the health of the baloon
      * @return int 
      */
 
-    public int get_heath(){
-        return this.heath;
+    public int get_health(){
+        return this.health;
     }
     /**
      * returns the speed of the baloon
@@ -39,6 +39,15 @@ public class Baloon {
 
     public int get_speed(){
         return this.speed;
+    }
+
+    /**
+     * returns the distance travelled by the baloon
+     * @return int 
+     */
+
+    public int get_distance_travelled(){
+        return this.distance_travelled;
     }
     
     // /**
@@ -55,7 +64,7 @@ public class Baloon {
      */
 
     public void decreaseHealth(int damage){
-        this.heath -= damage;
+        this.health -= damage;
     }
 
 
@@ -71,12 +80,12 @@ public class Baloon {
 
 
     /**
-     * Verify if the heath of the baloon is lower than zero
+     * Verify if the health of the baloon is lower than zero
      * @return a boolean
      */
 
     public boolean isDead(){
-        return this.heath > 0;
+        return this.health > 0;
     }
 
 
