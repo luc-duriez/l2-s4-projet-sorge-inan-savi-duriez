@@ -22,6 +22,7 @@ public class LinearBoard extends Board {
             int diffY = finale.getY() - curr.getY();
             int distance = Math.abs(diffY); 
             int step = (diffY > 0) ? 1 : -1; 
+            
             for (int i = 1; i < distance; i++) {
                 list.add(getCell(curr.getX(), curr.getY() + (i * step)));
                 this.getCell(curr.getX() + (i * step), curr.getY()).switchIsOccupied();

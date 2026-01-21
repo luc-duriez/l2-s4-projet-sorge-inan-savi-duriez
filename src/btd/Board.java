@@ -118,7 +118,7 @@ public class Board {
         List<Cell> neighbor = this.getNeighbors(curr);
         Collections.shuffle(neighbor);
         for(Cell next: neighbor){
-            if (!(list.contains(next)) && (countPathNeighbors(next, list)== 1)){
+            if (!(list.contains(next)) && (countPathNeighbors(next, list) == 1)){
                 List<Cell> result = createPath(next, finale, list);
                 if (result != null) return result;  
             }
