@@ -48,7 +48,7 @@ On a donc a incrémenter un i en commencant à 1 et de le multiplier au résulta
 Les difficultés à résondre vont être pour la classe Baloon et la gestion de plusieurs entités sur une même case. 
 
 ### UML Livrable 1
-![UML Livrable 1](image.png)
+![UML Livrable 1](https://gitlab-etu.fil.univ-lille.fr/luc.duriez.etu/l-2-s-4-projet-sorge-inan-savi-duriez/-/blob/main/imageUML/Livrable1.png?ref_type=heads)
 
 ## Livrable 2
 
