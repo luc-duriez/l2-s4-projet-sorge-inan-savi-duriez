@@ -4,20 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LinearBoard extends Board {
-    private List<List<Cell>> listPath;
+    
 
     public LinearBoard(int sizex, int sizey){
-    super(sizex, sizey);
-    this.listPath = new ArrayList<>(); 
-    List<Cell> p = this.createPath(getCell(0, 0), getCell(19, 0), new ArrayList<>());
-    this.path = p; 
-    this.listPath.add(p);
-}
+        super(sizex, sizey);
+        List<Cell> p = this.createPath(getCell(11, 0), getCell(0, 0), new ArrayList<>());
+        this.path.add(p); 
+    }
 
 
     @Override
     public List<Cell> createPath(Cell curr, Cell finale, List<Cell> list){
         list.add(curr);
+        curr.switchIsOccupied();
 
         if (curr.getX() == finale.getX()) {
             int diffY = finale.getY() - curr.getY();
@@ -25,6 +24,7 @@ public class LinearBoard extends Board {
             int step = (diffY > 0) ? 1 : -1; 
             for (int i = 1; i < distance; i++) {
                 list.add(getCell(curr.getX(), curr.getY() + (i * step)));
+                this.getCell(curr.getX() + (i * step), curr.getY()).switchIsOccupied();
             }
         } 
         else {
@@ -34,11 +34,13 @@ public class LinearBoard extends Board {
 
             for (int i = 1; i < distance; i++) {
                 list.add(getCell(curr.getX() + (i * step), curr.getY()));
+                this.getCell(curr.getX() + (i * step), curr.getY()).switchIsOccupied();
             }
         }
 
         if (!curr.equals(finale)) {
             list.add(finale);
+            finale.switchIsOccupied();
         }
         
         return list;
