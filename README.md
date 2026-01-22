@@ -32,12 +32,12 @@ Nous avons réussi à créer les deux types de plateaux :Board et LinearBoard. N
 La méthode getPath() dans Board prend 3 paramètres : La position de départ du chemin, la position finale du chemin et une liste qui va être renvoyée à la fin qui va servir de liste entre appels récursifs. 
 Dans Board, le chemin va être choisi aléatoirement mais suivant une règle :
 Une cellule ne peut être ajoutée au chemin que si elle n'est connectée qu'à exactement une seule cellule déjà présente dans la liste.
-Cette règle évite que le chemin construit ne soit pas collé au chemin déjà existant.
+Cette règle impose que le chemin construit ne soit pas collé au chemin déjà existant.
 
 La méthode getPath() dans LinearBoard prend les 3 mêmes paramètre que Board.
 Dans cette méthode le chemin renvoyé est une ligne droite entre les deux points.
 La principale difficulté était dans le calcul des nouveaux points.
-Si on prend deux points alignés verticalement ou horizontalement, nous devons savoir le sens (pour savoir si devais ajouter i ou soustraire i de X ou Y)
+Si on prend deux points alignés verticalement ou horizontalement, nous devons savoir le sens (pour savoir si on doit ajouter i ou soustraire i de X ou Y)
 Par exemple, si on prend deux points alignés verticalement et que le début du chemin est en haut (donc l'arriver est en bas).
 On souhaite savoir le sens. Pour le calculer nous regardons le résultat de la soustraction des Y des deux points: 
 si le Y de la position finale - le Y de la position d'arrivée est supérieur à 0 le sens est du haut vers le bas. Sinon l'inverse.
@@ -48,7 +48,7 @@ On a donc a incrémenter un i en commencant à 1 et de le multiplier au résulta
 Les difficultés à résondre vont être pour la classe Baloon et la gestion de plusieurs entités sur une même case. 
 
 ### UML Livrable 1
-![UML Livrable 1](https://gitlab-etu.fil.univ-lille.fr/luc.duriez.etu/l-2-s-4-projet-sorge-inan-savi-duriez/-/blob/main/imageUML/Livrable1.png?ref_type=heads)
+[UML Livrable 1](https://gitlab-etu.fil.univ-lille.fr/luc.duriez.etu/l-2-s-4-projet-sorge-inan-savi-duriez/-/blob/main/imageUML/Livrable1.png?ref_type=heads)
 
 ## Livrable 2
 
