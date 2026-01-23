@@ -120,7 +120,13 @@ On a eu quelques difficultées au niveau de certains concepts comme la gestion d
 
 ### Ce qui a été réalisé
 
+Pour cette troisième semaine, on a réfléchi à la manière dont on va gérer les déplacements des ballons sur la grille et également la boucle principale du jeu. On a aussi travaillé sur la gestion du temps pour chaque manche du jeu.
+
+
 ### Difficultés rencontrées
+
+On a rencontré quelques difficultés sur la gestion des déplacements des ballons pour le calcul de la recherche du chemin par les ballons.
+
 
 ### Objectifs pour la semaine et répartition du travail par membre
 
