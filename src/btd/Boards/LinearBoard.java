@@ -1,4 +1,4 @@
-package btd.Boards;
+package btd.boards;
 
 import btd.*;
 import java.util.ArrayList;

@@ -1,5 +1,6 @@
-package btd;
+package btd.towers;
 
+import btd.*;
 import java.util.List;
 
 public abstract class Tower{
