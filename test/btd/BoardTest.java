@@ -2,8 +2,6 @@ package btd;
     
 import org.junit.jupiter.api.*;
 
-import btd.Boards.Board;
-
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.*;
 
