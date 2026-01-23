@@ -1,6 +1,8 @@
-package btd;
+package btd.boards;
 
 import java.util.*;
+
+import btd.Cell;
 
 public class Board {
 
