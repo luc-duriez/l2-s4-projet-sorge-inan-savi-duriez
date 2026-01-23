@@ -1,6 +1,6 @@
 package btd;
 
-import btd.Boards.Board;
+import btd.Boards.*;
 
 public abstract class testMain {
 
