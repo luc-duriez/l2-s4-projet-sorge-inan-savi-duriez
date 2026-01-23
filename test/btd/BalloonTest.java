@@ -23,36 +23,36 @@ public class BalloonTest {
     }
 
     @Test
-    public void get_healthTest(){
-        assertEquals(3, b.get_health());
+    public void getHealthTest(){
+        assertEquals(3, b.getHealth());
     } 
 
     @Test
     public void get_SpeedTest(){
-        assertEquals(2, b.get_speed());
+        assertEquals(2, b.getSpeed());
     } 
 
     @Test
-    public void get_distance_travelledTest(){
-        assertEquals(2, b.get_distance_travelled());
+    public void getDistanceTravelledTest(){
+        assertEquals(2, b.getDistanceTravelled());
     } 
 
     @Test
     public void decreaseHealthTest(){
         b.decreaseHealth(1);
-        assertEquals(2, b.get_health());
+        assertEquals(2, b.getHealth());
     } 
 
     @Test
     public void decreaseSpeedTest(){
         b.decreaseSpeed(1);
-        assertEquals(2, b.get_speed());
+        assertEquals(2, b.getSpeed());
     } 
 
     @Test
     public void IncreaseSpeedTest(){
-        b.IncreaseSpeed(1);
-        assertEquals(2, b.get_speed());
+        b.increaseSpeed(1);
+        assertEquals(2, b.getSpeed());
     } 
 
     @Test
@@ -66,7 +66,7 @@ public class BalloonTest {
     @Test
     public void moveTest(){
         b.move(50);
-        assertEquals(50, b.get_distance_travelled());
+        assertEquals(50, b.getDistanceTravelled());
     } 
     
     

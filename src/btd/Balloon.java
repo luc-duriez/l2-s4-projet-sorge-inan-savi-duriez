@@ -9,27 +9,27 @@ public class Balloon {
     // The speed of the baloon
     private int speed;
     // Distance travelled by the baloon
-    private int distance_travelled;
+    private int distanceTravelled;
     // The next Cell of the baloon
-    private Cell next_cell;
+    private Cell nextCell;
     // the path that the baloon have to respect
     private List<Cell> path;
     //the currentt celle of the baloon
-    private Cell current_cell;
+    private Cell currentCell;
     
     // Construct a new Baloons object 
     public Balloon(int health, int speed , List<Cell> path ){
         this.health= health;
         this.speed = speed;
         this.path = path;
-        this.distance_travelled = 0;
+        this.distanceTravelled = 0;
     }
     /**
      * returns the health of the baloon
      * @return int 
      */
 
-    public int get_health(){
+    public int getHealth(){
         return this.health;
     }
     /**
@@ -37,7 +37,7 @@ public class Balloon {
      * @return float 
      */
 
-    public int get_speed(){
+    public int getSpeed(){
         return this.speed;
     }
 
@@ -46,8 +46,8 @@ public class Balloon {
      * @return int 
      */
 
-    public int get_distance_travelled(){
-        return this.distance_travelled;
+    public int getDistanceTravelled(){
+        return this.distanceTravelled;
     }
     
     // /**
@@ -94,7 +94,7 @@ public class Balloon {
      * @param speed
      */
 
-    public void IncreaseSpeed(int bonus){
+    public void increaseSpeed(int bonus){
         this.speed += bonus;
     }
 
@@ -105,6 +105,6 @@ public class Balloon {
      */
 
     public void move(int nb_pixels){
-        this.distance_travelled += nb_pixels;
+        this.distanceTravelled += nb_pixels;
     }
 }
