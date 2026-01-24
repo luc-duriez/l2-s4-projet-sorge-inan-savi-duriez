@@ -2,6 +2,7 @@ package btd.boards;
 
 import java.util.*;
 
+import btd.Balloon;
 import btd.Cell;
 
 public class Board {
@@ -83,7 +84,7 @@ public class Board {
         for (int y = 0; y < board.length; y++) {
             for (int x = 0; x < board[y].length; x++) {
                 Cell c = board[y][x];
-                if (path.contains(c)) {
+                if (this.path.get(0).contains(c)) {
                     System.out.print(" P ");
                 } else if (c.isOccupied()) {
                     System.out.print(" T "); 
@@ -102,7 +103,7 @@ public class Board {
      * @param curr the current Cell.
      * @param finale the last Cell of the path.
      * @param list the path
-     * @return the list of Cell that represen the path.
+     * @return the list of Cell that represent the path.
      */
     public List<Cell> createPath(Cell curr, Cell finale, List<Cell> list){
         list.add(curr);
@@ -118,24 +119,46 @@ public class Board {
         list.remove(curr);
         return null;
     }
-    
+    /**
+     * Count the number of neighbors of a cell that are in a given list
+     * @param c
+     * @param listCurr
+     * @return int
+     */
     private int countPathNeighbors(Cell c, List<Cell> listCurr) {
-    int count = 0;
-    for (Cell neighbor : getNeighbors(c)) {
-        if (listCurr.contains(neighbor)) {
-            count++;
+        int count = 0;
+        for (Cell neighbor : getNeighbors(c)) {
+            if (listCurr.contains(neighbor)) {
+                count++;
+            }
         }
-    }
-    return count;
+        return count;
     }
 
     /**
-     * Return this Board's path
+     * Return the Board's path
      * 
      * @return this Board's path
      */
-    public List<List<Cell>> getPath(){
-        return this.path;
+    public List<Cell> getPath(){
+        return this.path.get(0);
     }
+    /**
+     * Spawn the balloons for a given round
+     * @param round
+     * @return List<Balloon> the list of balloons spawned this round
+     */
+    public List<Balloon> spawnRoundBalloons(int round) {
+        List<Balloon> activeBalloons = new ArrayList<>();
 
+        int count = 3 + (round * 3); 
+        double speed = 1.0 + (round * 0.1); 
+        int health = 1 + (round / 5);
+
+        for (int i = 0; i < count; i++) {
+            activeBalloons.add(new Balloon(health, speed, this.path.get(0)));
+        }
+
+        return activeBalloons;
+    }
 }
