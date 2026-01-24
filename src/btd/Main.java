@@ -29,9 +29,9 @@ public class Main {
             System.out.println("===== Étape 3 : Tour des Ballons");
             int time = 0;
             while (!board.activeBalloonsIsEmpty() && player.getLives() > 0){
-                
-                // TODO: finir la boucle mais est ce que les ballons spawn 1 à 1 ou tous en même temps comme dans la trace ? 
-                
+                System.out.println("----- time: "+time);
+                System.out.println("Position des Ballons");
+
                 time += 100;
             }
 

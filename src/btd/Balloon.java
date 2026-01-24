@@ -7,7 +7,7 @@ public class Balloon {
     // The health of the baloon
     private int health;
     // The speed of the baloon
-    private int speed;
+    private double speed;
     // Distance travelled by the baloon
     private int distanceTravelled;
     // The next Cell of the baloon
