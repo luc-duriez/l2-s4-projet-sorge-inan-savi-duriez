@@ -4,107 +4,105 @@ import java.util.List;
 
 public class Balloon {
 
-    // The health of the baloon
+    // The health of the balloon
     private int health;
-    // The speed of the baloon
+    // The speed of the balloon
     private double speed;
-    // Distance travelled by the baloon
+    // Distance travelled by the balloon
     private int distanceTravelled;
-    // The next Cell of the baloon
+    // The next cell of the balloon
     private Cell nextCell;
-    // the path that the baloon have to respect
+    // the path of the balloon
     private List<Cell> path;
-    //the currentt celle of the baloon
+    // the current cell of the balloon
     private Cell currentCell;
-    
-    // Construct a new Baloons object 
-    public Balloon(int health, int speed , List<Cell> path ){
-        this.health= health;
+
+    // Constructer of Balloon object
+    public Balloon(int health, double speed, List<Cell> path) {
+        this.health = health;
         this.speed = speed;
         this.path = path;
         this.distanceTravelled = 0;
     }
-    /**
-     * returns the health of the baloon
-     * @return int 
-     */
 
-    public int getHealth(){
+    /**
+     * Return the health of the balloon
+     * 
+     * @return int
+     */
+    public int getHealth() {
         return this.health;
     }
-    /**
-     * returns the speed of the baloon
-     * @return float 
-     */
 
-    public int getSpeed(){
+    /**
+     * Return the speed of the balloon
+     * 
+     * @return float
+     */
+    public double getSpeed() {
         return this.speed;
     }
 
     /**
-     * returns the distance travelled by the baloon
-     * @return int 
+     * Return the distance travelled of the balloon
+     * 
+     * @return int
      */
-
-    public int getDistanceTravelled(){
+    public int getDistanceTravelled() {
         return this.distanceTravelled;
     }
-    
+
     // /**
-    //  * returns the current cell of the baloon
-    //  */
+    // * Returns the current cell of the balloon
+    // */
     // public Cell current_cell(){
-    //     int index = this.distance_travelled / 100;
-    //     return this.path.get(index);
+    // int index = this.distance_travelled / 100;
+    // return this.path.get(index);
     // }
 
     /**
-     * Soustrac the amount of damages to the baloon
+     * Soustract the amount of damages of the balloon
+     * 
      * @param damage
      */
-
-    public void decreaseHealth(int damage){
+    public void decreaseHealth(int damage) {
         this.health -= damage;
     }
 
-
     /**
-     * Soustrac a amount of speed to the baloon to the baloon
+     * Soustract a amount of speed to the balloon 
+     * 
      * @param malus
      * 
      */
-
-    public void decreaseSpeed(int malus){
+    public void decreaseSpeed(int malus) {
         this.speed -= malus;
     }
 
-
     /**
-     * Verify if the health of the baloon is lower than zero
+     * Verify if the health of the balloon is lower than zero
+     * 
      * @return a boolean
      */
-
-    public boolean isDead(){
-        return this.health > 0;
+    public boolean isDead() {
+        return this.health <= 0;
     }
 
-
     /**
-     * Increase the speed of the baloon
+     * Increase the speed of the balloon
+     * 
      * @param speed
      */
-
-    public void increaseSpeed(int bonus){
+    public void increaseSpeed(int bonus) {
         this.speed += bonus;
     }
 
-
     /**
-     * move the baloon
-     * @param 
+     * Move the balloon
+     * 
+     * @param nb_pixels
      */
-
-    public void move(int nb_pixels){
+    public void move(int nb_pixels) {
         this.distanceTravelled += nb_pixels;
     }
 }
