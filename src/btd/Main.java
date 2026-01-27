@@ -31,7 +31,7 @@ public class Main {
             while (!board.activeBalloonsIsEmpty() && player.getLives() > 0){
                 System.out.println("----- time: "+time);
                 System.out.println("Position des Ballons");
-
+                
                 time += 100;
             }
 
