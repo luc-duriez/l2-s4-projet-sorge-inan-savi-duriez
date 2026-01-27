@@ -1,13 +1,13 @@
 package btd;
 
-import btd.boards.Board;
+import btd.boards.*;
 import btd.towers.*;
 import btd.Balloon;
 public class Main {
 
     public static void main(String[] args) {
         Player player= new Player();
-        Board board = new Board(4, 12);
+        Board board = new ClassicBoard(4, 12);
         int round = 1;
         while (0 < player.getLives()){
             System.out.println("=== Début du tour " + round + " ===");

@@ -101,7 +101,7 @@ public abstract class Board {
      * @param curr the current Cell.
      * @param finale the last Cell of the path.
      * @param list the path
-     * @return the list of Cell that represent the path.
+     * @return the list of Cell that represent the path. Cell[]
      */
     public abstract List<Cell> createPath(Cell curr, Cell finale, List<Cell> list);
 
@@ -138,7 +138,7 @@ public abstract class Board {
     /**
      * Spawn the balloons for a given round
      * @param round
-     * @return List<Balloon> the list of balloons spawned this round
+     * @return List<Balloon> the list of ballblic abstract Cell[] randomCell();oons spawned this round
      */
     public List<Balloon> spawnRoundBalloons(int round) {
         List<Balloon> activeBalloons = new ArrayList<>();
