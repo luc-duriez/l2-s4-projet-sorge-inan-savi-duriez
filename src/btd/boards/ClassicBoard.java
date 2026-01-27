@@ -38,5 +38,6 @@ public class ClassicBoard extends Board {
         Cell[] cells = new Cell[2];
         cells[0] = new Cell(x1, 0);
         cells[1] = new Cell(x2, this.board.length-1); 
+        return cells;
     }
 }
