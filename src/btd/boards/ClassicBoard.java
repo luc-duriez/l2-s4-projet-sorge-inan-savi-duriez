@@ -1,4 +1,4 @@
-package btd.Boards;
+package btd.boards;
 
 import btd.*;
 
@@ -14,16 +14,7 @@ public class ClassicBoard extends Board {
     }
 
 
-
-    /**
-     * Return a list of Cell that represent the path for the bloons for this board.
-     * curr must be the first cell of the path.
-     * 
-     * @param curr the current Cell.
-     * @param finale the last Cell of the path.
-     * @param list the path
-     * @return the list of Cell that represent the path.
-     */
+    @Override
     public List<Cell> createPath(Cell curr, Cell finale, List<Cell> list){
         list.add(curr);
         if (curr.equals(finale)) return list;
