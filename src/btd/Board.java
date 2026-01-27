@@ -103,20 +103,13 @@ public abstract class Board {
      * @param list the path
      * @return the list of Cell that represent the path.
      */
-    public List<Cell> createPath(Cell curr, Cell finale, List<Cell> list){
-        list.add(curr);
-        if (curr.equals(finale)) return list;
-        List<Cell> neighbor = this.getNeighbors(curr);
-        Collections.shuffle(neighbor);
-        for(Cell next: neighbor){
-            if (!(list.contains(next)) && (countPathNeighbors(next, list) == 1)){
-                List<Cell> result = createPath(next, finale, list);
-                if (result != null) return result;  
-            }
-        }
-        list.remove(curr);
-        return null;
-    }
+    public abstract List<Cell> createPath(Cell curr, Cell finale, List<Cell> list);
+
+    /**
+     * This function return 2 random Cell in array
+     * @return Cell[] 
+     */
+    public abstract Cell[] RandomCell();
     
     /**
      * Count the number of neighbors of a cell that are in a given list
@@ -124,7 +117,7 @@ public abstract class Board {
      * @param listCurr
      * @return int
      */
-    private int countPathNeighbors(Cell c, List<Cell> listCurr) {
+    protected int countPathNeighbors(Cell c, List<Cell> listCurr) {
         int count = 0;
         for (Cell neighbor : getNeighbors(c)) {
             if (listCurr.contains(neighbor)) {
