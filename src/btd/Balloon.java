@@ -10,8 +10,6 @@ public class Balloon {
     private double speed;
     // Distance travelled by the balloon
     private int distanceTravelled;
-    // The next cell of the balloon
-    private Cell nextCell;
     // the path of the balloon
     private List<Cell> path;
     // the current cell of the balloon
@@ -104,5 +102,13 @@ public class Balloon {
      */
     public void move(int nb_pixels) {
         this.distanceTravelled += nb_pixels;
+    }
+
+    /**
+     * Returns the index of this Balloon in the path
+     * @return the index of this Balloon in the path
+     */
+    public int getIndexPosition(){
+        return this.distanceTravelled / Cell.SIZE;
     }
 }
