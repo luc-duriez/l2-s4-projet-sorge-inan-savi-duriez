@@ -2,6 +2,8 @@ package btd;
     
 import org.junit.jupiter.api.*;
 
+import btd.Boards.ClassicBoard;
+
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.*;
 
@@ -11,7 +13,7 @@ public class BoardTest {
 
     @BeforeEach
     public void before(){
-        this.b1 = new Board(10, 10);
+        this.b1 = new ClassicBoard(10, 10);
     }
 
     @Test
