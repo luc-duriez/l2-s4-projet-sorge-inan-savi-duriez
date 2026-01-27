@@ -82,7 +82,7 @@ public abstract class Board {
         for (int y = 0; y < board.length; y++) {
             for (int x = 0; x < board[y].length; x++) {
                 Cell c = board[y][x];
-                if (this.path.get(0).contains(c)) {
+                if (this.getPath().contains(c)) {
                     System.out.print(" P ");
                 } else if (c.isOccupied()) {
                     System.out.print(" T "); 
@@ -138,7 +138,7 @@ public abstract class Board {
     /**
      * Spawn the balloons for a given round
      * @param round
-     * @return List<Balloon> the list of ballblic abstract Cell[] randomCell();oons spawned this round
+     * @return List<Balloon> the list of ballons
      */
     public List<Balloon> spawnRoundBalloons(int round) {
         List<Balloon> activeBalloons = new ArrayList<>();
