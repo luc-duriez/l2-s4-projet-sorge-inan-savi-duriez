@@ -109,7 +109,7 @@ public abstract class Board {
      * This function return 2 random Cell in array
      * @return Cell[] 
      */
-    public abstract Cell[] randomCell();
+    public abstract Cell[] randomCell(List<Cell> cellAlreadyUsed);
     
     /**
      * Count the number of neighbors of a cell that are in a given list
