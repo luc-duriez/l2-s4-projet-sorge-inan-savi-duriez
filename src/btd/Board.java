@@ -10,7 +10,8 @@ public abstract class Board {
 
     /*This Board path for ballons */
     protected List<List<Cell>> path;
-
+    /* List of balloons on the board */
+    protected List<Balloon> balloons;
     /**
      * Build a board of a given size x, y
      * 
@@ -49,7 +50,7 @@ public abstract class Board {
      * @return true if the cell at position (x,y) can be used to place a tower.
      */
     public boolean isPlaceable(int x, int y){
-        return this.board[x][y].isOccupied();
+        return this.getCell(x, y).isOccupied();
     }
     
     /**
@@ -57,7 +58,7 @@ public abstract class Board {
      * @param c The cell to get its neighbors
      * @return The neighbors of the cell
      */
-    public List<Cell> getNeighbors(Cell c){
+    protected List<Cell> getNeighbors(Cell c){
         List<Cell> neighbors = new ArrayList<>();
         int x = c.getX();
         int y = c.getY();
@@ -137,10 +138,10 @@ public abstract class Board {
     }
     /**
      * Spawn the balloons for a given round
-     * @param round
+     * @param round : int
      * @return List<Balloon> the list of ballons
      */
-    public List<Balloon> spawnRoundBalloons(int round) {
+    public List<Balloon> spawnBalloons(int round) {
         List<Balloon> activeBalloons = new ArrayList<>();
 
         int count = 3 + (round * 3); 
@@ -152,5 +153,12 @@ public abstract class Board {
         }
 
         return activeBalloons;
+    }
+    /**
+     * Get the balloons on the board
+     * @return List<Balloon> the list of ballons
+     */
+    public List<Balloon> getBalloons() {
+        return this.balloons;
     }
 }
