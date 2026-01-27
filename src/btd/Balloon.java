@@ -10,8 +10,6 @@ public class Balloon {
     private double speed;
     // Distance travelled by the balloon
     private int distanceTravelled;
-    // The next cell of the balloon
-    private Cell nextCell;
     // the path of the balloon
     private List<Cell> path;
     // the current cell of the balloon
@@ -50,6 +48,22 @@ public class Balloon {
      */
     public int getDistanceTravelled() {
         return this.distanceTravelled;
+    }
+
+    /**
+     * Return the path of this Balloon
+     * @return the path of this Balloon
+     */
+    public List<Cell> getPath(){
+        return this.path;
+    }
+
+    /**
+     * Return the current cell of this Balloon
+     * @return the current cell of this Balloon
+     */
+    public Cell getCurrentCell(){
+        return this.currentCell;
     }
 
     // /**
@@ -104,5 +118,26 @@ public class Balloon {
      */
     public void move(int nb_pixels) {
         this.distanceTravelled += nb_pixels;
+    }
+
+    /**
+     * Returns the index of this Balloon in the path
+     * @return the index of this Balloon in the path
+     */
+    public int getIndexPosition(){
+        return this.distanceTravelled / Cell.SIZE;
+    }
+
+    /**
+     * Returns true if the object is equal to this Balloon
+     * @param o The object to compare this Balloon with
+     * @return true if the object is equal to this Balloon
+     */
+    public boolean equals(Object o){
+        if(!(o instanceof Balloon)){
+            return false;
+        }
+        Balloon b = (Balloon) o;
+        return this.health == b.getHealth() && this.speed == b.getSpeed() && this.distanceTravelled == b.getDistanceTravelled() && this.path.equals(b.getPath()) && this.currentCell.equals(b.getCurrentCell());
     }
 }
