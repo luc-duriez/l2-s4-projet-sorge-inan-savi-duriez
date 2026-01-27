@@ -28,7 +28,7 @@ public class BalloonTest {
     } 
 
     @Test
-    public void get_SpeedTest(){
+    public void getSpeedTest(){
         assertEquals(2, b.getSpeed());
     } 
 
@@ -50,7 +50,7 @@ public class BalloonTest {
     } 
 
     @Test
-    public void IncreaseSpeedTest(){
+    public void increaseSpeedTest(){
         b.increaseSpeed(1);
         assertEquals(2, b.getSpeed());
     } 
