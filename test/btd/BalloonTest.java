@@ -34,7 +34,7 @@ public class BalloonTest {
 
     @Test
     public void getDistanceTravelledTest(){
-        assertEquals(2, b.getDistanceTravelled());
+        assertEquals(0, b.getDistanceTravelled());
     } 
 
     @Test
@@ -46,13 +46,13 @@ public class BalloonTest {
     @Test
     public void decreaseSpeedTest(){
         b.decreaseSpeed(1);
-        assertEquals(2, b.getSpeed());
+        assertEquals(1, b.getSpeed());
     } 
 
     @Test
     public void increaseSpeedTest(){
         b.increaseSpeed(1);
-        assertEquals(2, b.getSpeed());
+        assertEquals(3, b.getSpeed());
     } 
 
     @Test
