@@ -11,8 +11,13 @@ public class ClassicBoard extends Board {
     
     public ClassicBoard(int sizex, int sizey) {
         super(sizex, sizey);
-        Cell[] cells = this.randomCell();
-        this.createPath(cells[0],cells[1],new ArrayList<>());
+        Cell[] cells = this.randomCell(new ArrayList<>());
+        this.path.add(this.createPath(cells[0],cells[1],new ArrayList<>()));
+        for (List<Cell> tempPath : this.path){ 
+            for (Cell cell : tempPath){
+                cell.switchIsOccupied();
+            }
+        }
     }
     
     @Override
@@ -31,7 +36,7 @@ public class ClassicBoard extends Board {
         return null;
     }
     @Override
-    public Cell[] randomCell(){
+    public Cell[] randomCell(List<Cell> cellAlreadyUsed){
         Random r= new Random();
         int x1 = r.nextInt(this.board.length);
         int x2 = r.nextInt(this.board.length);
