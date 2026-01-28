@@ -1,3 +1,4 @@
+/*
 package btd;
 
 import btd.boards.*;
@@ -38,3 +39,4 @@ public class Main {
         }
     }
 }
+*/
