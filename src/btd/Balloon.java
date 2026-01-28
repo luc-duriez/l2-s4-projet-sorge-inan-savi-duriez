@@ -23,6 +23,13 @@ public class Balloon {
         this.distanceTravelled = 0;
     }
 
+    public Balloon(int health, double speed) {
+        this.health = health;
+        this.speed = speed;
+        this.path = null;
+        this.distanceTravelled = 0;
+    }
+
     /**
      * Return the health of the balloon
      * 
@@ -85,7 +92,6 @@ public class Balloon {
 
     /**
      * Soustract a amount of speed to the balloon 
-     * 
      * @param malus
      * 
      */
@@ -113,11 +119,9 @@ public class Balloon {
 
     /**
      * Move the balloon
-     * 
-     * @param nb_pixels
      */
-    public void move(int nb_pixels) {
-        this.distanceTravelled += nb_pixels;
+    public void move() {
+        this.distanceTravelled += this.speed;
     }
 
     /**
@@ -139,5 +143,15 @@ public class Balloon {
         }
         Balloon b = (Balloon) o;
         return this.health == b.getHealth() && this.speed == b.getSpeed() && this.distanceTravelled == b.getDistanceTravelled() && this.path.equals(b.getPath()) && this.currentCell.equals(b.getCurrentCell());
+    }
+    /**
+     * Add the path in ballon
+     * @param path
+     */
+    public void addPath(List<Cell> path) throws IllegalStateException{
+        if (this.path.size()==1){
+            throw new IllegalStateException("Un ballon ne peut avoir qu'un seul chemin");
+        }
+        this.path = path;
     }
 }
