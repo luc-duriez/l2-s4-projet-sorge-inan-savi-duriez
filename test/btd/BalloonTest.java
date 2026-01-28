@@ -65,8 +65,8 @@ public class BalloonTest {
 
     @Test
     public void moveTest(){
-        b.move(50);
-        assertEquals(50, b.getDistanceTravelled());
+        b.move();
+        assertEquals(2, b.getDistanceTravelled());
     } 
     
     
