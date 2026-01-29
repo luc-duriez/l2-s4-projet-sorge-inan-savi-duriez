@@ -13,8 +13,8 @@ public class ClassicBoard extends Board {
         super(sizex, sizey);
         Cell[] cells = this.randomCell(new ArrayList<>());
         this.path.add(this.createPath(cells[0],cells[1],new ArrayList<>()));
+        cells[0].setState(StateCell.PATH);
         for (List<Cell> tempPath : this.getPath()){
-            System.out.println(tempPath.get(0).getState()); 
             for (Cell cell : tempPath){
                 cell.switchIsOccupied();
                 cell.setState(StateCell.PATH);
@@ -43,8 +43,8 @@ public class ClassicBoard extends Board {
         int x1 = r.nextInt(this.board.length);
         int x2 = r.nextInt(this.board.length);
         Cell[] cells = new Cell[2];
-        cells[0] = new Cell(x1, 0);
-        cells[1] = new Cell(x2, this.board[0].length-1); 
+        cells[0] = this.getCell(x1, 0);
+        cells[1] = this.getCell(x2, this.board[0].length-1); 
         return cells;
     }
 }
