@@ -1,13 +1,26 @@
 package btd.boards;
 
 import btd.Board;
+import btd.Cell;
+
+import static org.junit.Assert.assertEquals;
+
+import java.net.SocketPermission;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 
 public class ClassicBoardTest {
-    private Board b1;
 
-    @BeforeEach
-    public void before(){
-        this.b1 = new ClassicBoard(10, 10);
+    @Test
+    public void TestPathStartAndEnd(){
+        Cell c1 = new Cell(5, 0);
+        Cell c2 = new Cell(5, 9);
+        Board b1 = new ClassicBoard(10, 10);
+        List<Cell> l = b1.createPath(c1, c2, new ArrayList<Cell>());
+        assertEquals(l.get(0), c1);
+        assertEquals(l.get(l.size()-1), c2);
     }
 }
