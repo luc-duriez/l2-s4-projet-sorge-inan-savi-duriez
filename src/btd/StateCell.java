@@ -1,8 +1,8 @@
 package btd;    
 
 public enum StateCell {
-    EMPTY("."),
-    PATH("X"),
+    EMPTY(" "),
+    PATH("x"),
     TOWER("T");
 
     private String symbol;
