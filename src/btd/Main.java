@@ -1,4 +1,4 @@
-/*
+
 package btd;
 
 import btd.boards.*;
@@ -8,8 +8,13 @@ public class Main {
 
     public static void main(String[] args) {
         Player player= new Player();
-        Board board = new ClassicBoard(4, 12);
-        int round = 1;
+        Board board = new LinearBoard(4, 12,3);
+        board.show();
+        Board board2 = new ClassicBoard(4, 12);
+        board2.show();
+
+        
+        /*int round = 1;
         while (0 < player.getLives()){
             System.out.println("=== Début du tour " + round + " ===");
             board.show();
@@ -29,7 +34,7 @@ public class Main {
             // System.out.println("Nombre total de ballons cette manche: "+activeBalloons.size());
             System.out.println("===== Étape 3 : Tour des Ballons");
             int time = 0;
-            while (!board.activeBalloonsIsEmpty() && player.getLives() > 0){
+            while (!board.getBallons().isEmpty() && player.getLives() > 0){
                 System.out.println("----- time: "+time);
                 System.out.println("Position des Ballons");
                 
@@ -37,6 +42,6 @@ public class Main {
             }
 
         }
+        */
     }
 }
-*/

@@ -133,8 +133,8 @@ public abstract class Board {
      * 
      * @return this Board's path
      */
-    public List<Cell> getPath(){
-        return this.path.get(0);
+    public List<List<Cell>> getPath(){
+        return this.path;
     }
     /**
      * Spawn the balloons for a given round
