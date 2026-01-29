@@ -80,13 +80,43 @@ public abstract class Board {
      * Show the board
      */
     public void show() {
-        for (int y = 0; y < board.length; y++) {
-            for (int x = 0; x < board[y].length; x++) {
-                Cell c = board[y][x];
-                System.out.print(c.getState());
+
+        String strLineSeparator="   +";
+        for (int c = 0; c < this.board[0].length; c++) {
+            strLineSeparator+="-----+";
+        }
+
+
+
+        System.out.print("    "); // Numero en haut
+        for (int i = 0; i < this.board[0].length; i++) {
+            if (i < 10) {
+                System.out.print("  " + i + "   ");
+            } else {
+                System.out.print("  " + i + "  ");
+            }
+        }
+        System.out.println();
+        
+        System.out.println(strLineSeparator);
+
+        for (int j = 0; j < this.board.length; j++) { // Toutes les lignes 
+            if (j < 10) {
+                System.out.print(j + "  |"); 
+            } else {
+                System.out.print(j + " |");
+            }
+            for (int k = 0; k < this.board[0].length; k++) {
+                StateCell state = this.board[j][k].getState();
+                System.out.print("  " + state + "  |");
             }
             System.out.println();
+
+            System.out.println(strLineSeparator);
         }
+
+        
+        
     }
 
     /**
