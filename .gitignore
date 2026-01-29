@@ -1,6 +1,6 @@
 classes/
 docs/
-
+.vscode
 # Created by https://www.toptal.com/developers/gitignore/api/java,linux,windows,macos,eclipse,visualstudiocode,intellij
 # Edit at https://www.toptal.com/developers/gitignore?templates=java,linux,windows,macos,eclipse,visualstudiocode,intellij
 

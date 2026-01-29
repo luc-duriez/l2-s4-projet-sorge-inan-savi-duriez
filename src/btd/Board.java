@@ -63,16 +63,16 @@ public abstract class Board {
         int x = c.getX();
         int y = c.getY();
         if(x >= 1){
-            neighbors.add(new Cell(x-1, y));
+            neighbors.add(this.getCell(x-1, y));
         }
         if(x <= this.board.length-2){
-            neighbors.add(new Cell(x+1, y));
+            neighbors.add(this.getCell(x+1, y));
         }
         if(y >= 1){
-            neighbors.add(new Cell(x, y-1));
+            neighbors.add(this.getCell(x, y-1));
         }
         if(y <= this.board[0].length-2){
-            neighbors.add(new Cell(x, y+1));
+            neighbors.add(this.getCell(x, y+1));
         }
         return neighbors;
     }
