@@ -83,13 +83,7 @@ public abstract class Board {
         for (int y = 0; y < board.length; y++) {
             for (int x = 0; x < board[y].length; x++) {
                 Cell c = board[y][x];
-                if (this.getPath().contains(c)) {
-                    System.out.print(" P ");
-                } else if (c.isOccupied()) {
-                    System.out.print(" T "); 
-                } else {
-                    System.out.print(" . "); 
-                }
+                System.out.print(c.getState());
             }
             System.out.println();
         }

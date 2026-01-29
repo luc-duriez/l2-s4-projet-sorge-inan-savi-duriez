@@ -10,6 +10,7 @@ public class Main {
         Player player= new Player();
         Board board = new LinearBoard(4, 12,3);
         board.show();
+        System.out.println();
         Board board2 = new ClassicBoard(4, 12);
         board2.show();
 

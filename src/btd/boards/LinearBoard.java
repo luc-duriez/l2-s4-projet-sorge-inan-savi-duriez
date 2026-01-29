@@ -17,6 +17,11 @@ public class LinearBoard extends Board {
             cellAlreadyUsed.add(cells[1]);
             this.path.add(this.createPath(cells[0],cells[1],new ArrayList<>()));
         }
+        for (List<Cell> tempPath : this.path){ 
+            for (Cell cell : tempPath){
+                cell.setState(StateCell.PATH);
+            }
+        }
     }
 
 
