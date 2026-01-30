@@ -1,7 +1,5 @@
 package btd.boards;
 
-import btd.Board;
-import btd.Cell;
 
 import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;

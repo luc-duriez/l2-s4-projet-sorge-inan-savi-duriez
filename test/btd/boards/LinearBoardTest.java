@@ -1,5 +1,5 @@
 package btd.boards;
 
-public class LinearBoardTet {
+public class LinearBoardTest {
     
 }
