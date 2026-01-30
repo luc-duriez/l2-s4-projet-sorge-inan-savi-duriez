@@ -1,5 +1,6 @@
-package btd;
-import btd.towers.*;
+package btd.towers.upgrades;
+
+import btd.towers.Tower;
 
 public interface Upgrade {
     /**

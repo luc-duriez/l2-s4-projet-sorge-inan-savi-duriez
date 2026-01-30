@@ -1,4 +1,4 @@
-package btd;    
+package btd.boards;    
 
 public enum StateCell {
     EMPTY(" "),

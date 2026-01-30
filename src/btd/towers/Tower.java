@@ -1,6 +1,7 @@
 package btd.towers;
 
-import btd.*;
+import btd.boards.Cell;
+import btd.towers.upgrades.*;
 import java.util.List;
 
 public abstract class Tower{

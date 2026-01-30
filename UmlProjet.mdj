@@ -1971,10 +1971,16 @@
 												"$ref": "AAAAAAGb222jl0cdgS0="
 											},
 											"font": "Arial;13;0",
+<<<<<<< HEAD
 											"parentStyle": true,
 											"left": 1309,
 											"top": 223,
 											"width": 271,
+=======
+											"left": 1309,
+											"top": 223,
+											"width": 270,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+Balloon(int , int , List Cell)",
 											"horizontalAlignment": 0
@@ -1992,7 +1998,11 @@
 											"parentStyle": true,
 											"left": 1309,
 											"top": 238,
+<<<<<<< HEAD
 											"width": 271,
+=======
+											"width": 270,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+Ballon(int, int)",
 											"horizontalAlignment": 0
@@ -2010,7 +2020,11 @@
 											"parentStyle": true,
 											"left": 1309,
 											"top": 253,
+<<<<<<< HEAD
 											"width": 271,
+=======
+											"width": 270,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+move()",
 											"horizontalAlignment": 0
@@ -2028,7 +2042,11 @@
 											"parentStyle": true,
 											"left": 1309,
 											"top": 268,
+<<<<<<< HEAD
 											"width": 271,
+=======
+											"width": 270,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+getHealth(): int",
 											"horizontalAlignment": 0
@@ -2046,7 +2064,11 @@
 											"parentStyle": true,
 											"left": 1309,
 											"top": 283,
+<<<<<<< HEAD
 											"width": 271,
+=======
+											"width": 270,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+getSpeed(): int",
 											"horizontalAlignment": 0
@@ -2064,7 +2086,11 @@
 											"parentStyle": true,
 											"left": 1309,
 											"top": 298,
+<<<<<<< HEAD
 											"width": 271,
+=======
+											"width": 270,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+getDistanceTravelled(): int",
 											"horizontalAlignment": 0
@@ -2082,7 +2108,11 @@
 											"parentStyle": true,
 											"left": 1309,
 											"top": 313,
+<<<<<<< HEAD
 											"width": 271,
+=======
+											"width": 270,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+getPath(): List<Cell>",
 											"horizontalAlignment": 0
@@ -2100,7 +2130,11 @@
 											"parentStyle": true,
 											"left": 1309,
 											"top": 328,
+<<<<<<< HEAD
 											"width": 271,
+=======
+											"width": 270,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+getCurrentCell(): Cell",
 											"horizontalAlignment": 0
@@ -2118,7 +2152,11 @@
 											"parentStyle": true,
 											"left": 1309,
 											"top": 343,
+<<<<<<< HEAD
 											"width": 271,
+=======
+											"width": 270,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+isDead(): boolean",
 											"horizontalAlignment": 0
@@ -2136,7 +2174,11 @@
 											"parentStyle": true,
 											"left": 1309,
 											"top": 358,
+<<<<<<< HEAD
 											"width": 271,
+=======
+											"width": 270,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+increaseSpeed(int)",
 											"horizontalAlignment": 0
@@ -2154,7 +2196,11 @@
 											"parentStyle": true,
 											"left": 1309,
 											"top": 373,
+<<<<<<< HEAD
 											"width": 271,
+=======
+											"width": 270,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+decreaseSpeed(int)",
 											"horizontalAlignment": 0
@@ -2172,7 +2218,11 @@
 											"parentStyle": true,
 											"left": 1309,
 											"top": 388,
+<<<<<<< HEAD
 											"width": 271,
+=======
+											"width": 270,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+decreaseHealth(int): boolean",
 											"horizontalAlignment": 0
@@ -2190,7 +2240,11 @@
 											"parentStyle": true,
 											"left": 1309,
 											"top": 403,
+<<<<<<< HEAD
 											"width": 271,
+=======
+											"width": 270,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+equals(): boolean",
 											"horizontalAlignment": 0
@@ -2208,7 +2262,11 @@
 											"parentStyle": true,
 											"left": 1309,
 											"top": 418,
+<<<<<<< HEAD
 											"width": 271,
+=======
+											"width": 270,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+addPath(List Cell)",
 											"horizontalAlignment": 0
@@ -2218,7 +2276,11 @@
 									"parentStyle": true,
 									"left": 1304,
 									"top": 218,
+<<<<<<< HEAD
 									"width": 281,
+=======
+									"width": 280,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 									"height": 218
 								},
 								{
@@ -2702,7 +2764,7 @@
 											"top": 498,
 											"width": 270.140625,
 											"height": 13,
-											"text": "#board: List<List<Cell>>",
+											"text": "#board: List List Cell",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2769,10 +2831,16 @@
 												"$ref": "AAAAAAGb/2zuRPi39s4="
 											},
 											"font": "Arial;13;0",
+<<<<<<< HEAD
 											"parentStyle": true,
 											"left": 1141,
 											"top": 551,
 											"width": 270.140625,
+=======
+											"left": 1141,
+											"top": 551,
+											"width": 269.140625,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+Board(int, int)",
 											"horizontalAlignment": 0
@@ -2790,7 +2858,11 @@
 											"parentStyle": true,
 											"left": 1141,
 											"top": 566,
+<<<<<<< HEAD
 											"width": 270.140625,
+=======
+											"width": 269.140625,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+getCell(int, int): Cell",
 											"horizontalAlignment": 0
@@ -2808,7 +2880,11 @@
 											"parentStyle": true,
 											"left": 1141,
 											"top": 581,
+<<<<<<< HEAD
 											"width": 270.140625,
+=======
+											"width": 269.140625,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+getPath(): List<Cell>",
 											"horizontalAlignment": 0
@@ -2826,7 +2902,11 @@
 											"parentStyle": true,
 											"left": 1141,
 											"top": 596,
+<<<<<<< HEAD
 											"width": 270.140625,
+=======
+											"width": 269.140625,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "#getNeighbors(Cell): List<Cell>",
 											"horizontalAlignment": 0
@@ -2844,7 +2924,11 @@
 											"parentStyle": true,
 											"left": 1141,
 											"top": 611,
+<<<<<<< HEAD
 											"width": 270.140625,
+=======
+											"width": 269.140625,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+isPlaceable(int, int): boolean",
 											"horizontalAlignment": 0
@@ -2862,7 +2946,11 @@
 											"parentStyle": true,
 											"left": 1141,
 											"top": 626,
+<<<<<<< HEAD
 											"width": 270.140625,
+=======
+											"width": 269.140625,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+createPath(Cell, Cell): List<Cell>",
 											"horizontalAlignment": 0
@@ -2880,7 +2968,11 @@
 											"parentStyle": true,
 											"left": 1141,
 											"top": 641,
+<<<<<<< HEAD
 											"width": 270.140625,
+=======
+											"width": 269.140625,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+show()",
 											"horizontalAlignment": 0
@@ -2898,7 +2990,11 @@
 											"parentStyle": true,
 											"left": 1141,
 											"top": 656,
+<<<<<<< HEAD
 											"width": 270.140625,
+=======
+											"width": 269.140625,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "#countPathNeighbours(Cell, List Cell): int",
 											"horizontalAlignment": 0
@@ -2916,7 +3012,11 @@
 											"parentStyle": true,
 											"left": 1141,
 											"top": 671,
+<<<<<<< HEAD
 											"width": 270.140625,
+=======
+											"width": 269.140625,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+getBalloons(): List<Balloon>",
 											"horizontalAlignment": 0
@@ -2934,7 +3034,11 @@
 											"parentStyle": true,
 											"left": 1141,
 											"top": 686,
+<<<<<<< HEAD
 											"width": 270.140625,
+=======
+											"width": 269.140625,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+SpawnBalloons(int): List<Ballon>",
 											"horizontalAlignment": 0
@@ -2944,7 +3048,11 @@
 									"parentStyle": true,
 									"left": 1136,
 									"top": 546,
+<<<<<<< HEAD
 									"width": 280.140625,
+=======
+									"width": 279.140625,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 									"height": 158
 								},
 								{
@@ -3230,10 +3338,16 @@
 												"$ref": "AAAAAAGb4ajiV0/ak38="
 											},
 											"font": "Arial;13;0",
+<<<<<<< HEAD
 											"parentStyle": true,
 											"left": 1097,
 											"top": 210,
 											"width": 194,
+=======
+											"left": 1097,
+											"top": 210,
+											"width": 193,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+Cell(int, int)",
 											"horizontalAlignment": 0
@@ -3251,7 +3365,11 @@
 											"parentStyle": true,
 											"left": 1097,
 											"top": 225,
+<<<<<<< HEAD
 											"width": 194,
+=======
+											"width": 193,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+isOccupied(): bool",
 											"horizontalAlignment": 0
@@ -3269,7 +3387,11 @@
 											"parentStyle": true,
 											"left": 1097,
 											"top": 240,
+<<<<<<< HEAD
 											"width": 194,
+=======
+											"width": 193,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+SwitchIsOccupied()",
 											"horizontalAlignment": 0
@@ -3306,7 +3428,11 @@
 											"parentStyle": true,
 											"left": 1097,
 											"top": 255,
+<<<<<<< HEAD
 											"width": 194,
+=======
+											"width": 193,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+getX(): int",
 											"horizontalAlignment": 0
@@ -3324,7 +3450,11 @@
 											"parentStyle": true,
 											"left": 1097,
 											"top": 270,
+<<<<<<< HEAD
 											"width": 194,
+=======
+											"width": 193,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+getY(): int",
 											"horizontalAlignment": 0
@@ -3342,7 +3472,11 @@
 											"parentStyle": true,
 											"left": 1097,
 											"top": 285,
+<<<<<<< HEAD
 											"width": 194,
+=======
+											"width": 193,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+equals(Object): boolean",
 											"horizontalAlignment": 0
@@ -3360,7 +3494,11 @@
 											"parentStyle": true,
 											"left": 1097,
 											"top": 300,
+<<<<<<< HEAD
 											"width": 194,
+=======
+											"width": 193,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+toString(): String",
 											"horizontalAlignment": 0
@@ -3370,7 +3508,11 @@
 									"parentStyle": true,
 									"left": 1092,
 									"top": 205,
+<<<<<<< HEAD
 									"width": 204,
+=======
+									"width": 203,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 									"height": 113
 								},
 								{
@@ -3585,10 +3727,16 @@
 												"$ref": "AAAAAAGb/3VMMQ8FEfs="
 											},
 											"font": "Arial;13;0",
+<<<<<<< HEAD
 											"parentStyle": true,
 											"left": 995,
 											"top": 770,
 											"width": 255.17919921875,
+=======
+											"left": 995,
+											"top": 770,
+											"width": 254.17919921875,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+LinearBoard(int, int, int)",
 											"horizontalAlignment": 0
@@ -3606,7 +3754,11 @@
 											"parentStyle": true,
 											"left": 995,
 											"top": 785,
+<<<<<<< HEAD
 											"width": 255.17919921875,
+=======
+											"width": 254.17919921875,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+createPath(Cell, Cell): List<Cell>",
 											"horizontalAlignment": 0
@@ -3616,7 +3768,11 @@
 									"parentStyle": true,
 									"left": 990,
 									"top": 765,
+<<<<<<< HEAD
 									"width": 265.17919921875,
+=======
+									"width": 264.17919921875,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 									"height": 38
 								},
 								{
@@ -5347,10 +5503,16 @@
 												"$ref": "AAAAAAGcAJt1EvPTa50="
 											},
 											"font": "Arial;13;0",
+<<<<<<< HEAD
 											"parentStyle": true,
 											"left": 859,
 											"top": 180,
 											"width": 219.58154296875,
+=======
+											"left": 859,
+											"top": 180,
+											"width": 218.58154296875,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+Player()",
 											"horizontalAlignment": 0
@@ -5365,10 +5527,16 @@
 												"$ref": "AAAAAAGcAJuYY/PaOLk="
 											},
 											"font": "Arial;13;0",
+<<<<<<< HEAD
 											"parentStyle": true,
 											"left": 859,
 											"top": 195,
 											"width": 219.58154296875,
+=======
+											"left": 859,
+											"top": 195,
+											"width": 218.58154296875,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+Player(int, int)",
 											"horizontalAlignment": 0
@@ -5386,7 +5554,11 @@
 											"parentStyle": true,
 											"left": 859,
 											"top": 210,
+<<<<<<< HEAD
 											"width": 219.58154296875,
+=======
+											"width": 218.58154296875,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+getCredits(): int",
 											"horizontalAlignment": 0
@@ -5423,7 +5595,11 @@
 											"parentStyle": true,
 											"left": 859,
 											"top": 225,
+<<<<<<< HEAD
 											"width": 219.58154296875,
+=======
+											"width": 218.58154296875,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+addCredits(int): int",
 											"horizontalAlignment": 0
@@ -5441,7 +5617,11 @@
 											"parentStyle": true,
 											"left": 859,
 											"top": 240,
+<<<<<<< HEAD
 											"width": 219.58154296875,
+=======
+											"width": 218.58154296875,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+removeCredits(int): boolean",
 											"horizontalAlignment": 0
@@ -5459,7 +5639,11 @@
 											"parentStyle": true,
 											"left": 859,
 											"top": 255,
+<<<<<<< HEAD
 											"width": 219.58154296875,
+=======
+											"width": 218.58154296875,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+loseLife(int)",
 											"horizontalAlignment": 0
@@ -5477,7 +5661,11 @@
 											"parentStyle": true,
 											"left": 859,
 											"top": 270,
+<<<<<<< HEAD
 											"width": 219.58154296875,
+=======
+											"width": 218.58154296875,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+getLives(): int",
 											"horizontalAlignment": 0
@@ -5506,7 +5694,11 @@
 									"parentStyle": true,
 									"left": 854,
 									"top": 175,
+<<<<<<< HEAD
 									"width": 229.58154296875,
+=======
+									"width": 228.58154296875,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 									"height": 113
 								},
 								{
@@ -6926,10 +7118,16 @@
 												"$ref": "AAAAAAGb/2tKVPgVQ2k="
 											},
 											"font": "Arial;13;0",
+<<<<<<< HEAD
 											"parentStyle": true,
 											"left": 1360,
 											"top": 778,
 											"width": 197.16796875,
+=======
+											"left": 1360,
+											"top": 778,
+											"width": 196.16796875,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+ClassicBoard(int, int)",
 											"horizontalAlignment": 0
@@ -6947,7 +7145,11 @@
 											"parentStyle": true,
 											"left": 1360,
 											"top": 793,
+<<<<<<< HEAD
 											"width": 197.16796875,
+=======
+											"width": 196.16796875,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 											"height": 13,
 											"text": "+createPath(Cell, Cell): List<Cell>",
 											"horizontalAlignment": 0
@@ -6957,7 +7159,11 @@
 									"parentStyle": true,
 									"left": 1355,
 									"top": 773,
+<<<<<<< HEAD
 									"width": 207.16796875,
+=======
+									"width": 206.16796875,
+>>>>>>> 9b925a0 (création class Game + modifications packages)
 									"height": 38
 								},
 								{
@@ -9173,7 +9379,7 @@
 							},
 							"name": "board",
 							"visibility": "protected",
-							"type": "List<List<Cell>>"
+							"type": "List List Cell"
 						},
 						{
 							"_type": "UMLAttribute",

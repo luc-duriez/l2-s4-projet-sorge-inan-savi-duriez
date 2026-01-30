@@ -1,4 +1,4 @@
-package btd.upgrade;
+package btd.towers.upgrades;
 
 public class DamageUpgrade {
     

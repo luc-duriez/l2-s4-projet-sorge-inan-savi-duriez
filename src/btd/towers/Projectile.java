@@ -1,4 +1,4 @@
-package btd;
+package btd.towers;
 
 public abstract class Projectile {
     /* The damage of Projectile */

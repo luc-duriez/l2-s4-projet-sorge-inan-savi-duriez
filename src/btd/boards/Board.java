@@ -1,6 +1,8 @@
-package btd;
+package btd.boards;
 
+import btd.utils.Balloon;
 import java.util.*;
+
 
 
 public abstract class Board {

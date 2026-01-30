@@ -1,5 +1,6 @@
-package btd;
+package btd.utils;
 
+import btd.boards.Cell;
 import java.util.List;
 
 public class Balloon {

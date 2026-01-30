@@ -1,4 +1,4 @@
-package btd;
+package btd.boards;
 
 public class Cell {
     public static final int SIZE = 100;

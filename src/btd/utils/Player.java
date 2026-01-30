@@ -1,4 +1,4 @@
-package btd;
+package btd.utils;
 
 public class Player {
     /* Remains credits of player */
