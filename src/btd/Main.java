@@ -11,7 +11,7 @@ public class Main {
         Board board = new LinearBoard(4, 12,3);
         board.show();
         System.out.println();
-        Board board2 = new ClassicBoard(10, 20);
+        Board board2 = new ClassicBoard(4, 12);
         board2.show();
 
         
