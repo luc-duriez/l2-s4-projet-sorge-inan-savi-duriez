@@ -165,20 +165,23 @@ public abstract class Board {
     /**
      * Spawn the balloons for a given round
      * @param round : int
-     * @return List<Balloon> the list of ballons
      */
-    public List<Balloon> spawnBalloons(int round) {
+    public void spawnBalloons(int round) {
         List<Balloon> activeBalloons = new ArrayList<>();
 
         int count = 3 + (round * 3); 
         double speed = 1.0 + (round * 0.1); 
         int health = 1 + (round / 5);
 
+        Random r = new Random();
+        
         for (int i = 0; i < count; i++) {
-            activeBalloons.add(new Balloon(health, speed, this.path.get(0)));
+            int nbPath = r.nextInt(this.path.size());
+            Balloon b = new Balloon(health, speed, this.path.get(nbPath));
+            activeBalloons.add(b);
         }
 
-        return activeBalloons;
+        this.balloons = activeBalloons;
     }
     /**
      * Get the balloons on the board
@@ -187,4 +190,5 @@ public abstract class Board {
     public List<Balloon> getBalloons() {
         return this.balloons;
     }
+
 }

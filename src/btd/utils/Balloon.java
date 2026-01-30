@@ -155,4 +155,13 @@ public class Balloon {
         }
         this.path = path;
     }
+
+    
+    /**
+     * Return a String representation of this Balloon
+     */
+    public String toString(){
+        return "Balloon at " + this.currentCell;
+    }
+
 }
