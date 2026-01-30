@@ -134,9 +134,18 @@ On a rencontré quelques difficultés sur la gestion des déplacements des ballo
 
 ### Ce qui a été réalisé
 
+On a réalisé plusieurs choses :
+-   On a changé les packages des différentes classes.
+-   On a créé une classe Game dans laquelle on a déplacé des méthodes de la classes Board
+-   On a modifié l'UML pour y ajouter StateCell et les liens entre les classes
+
 ### Difficultés rencontrées
 
+La gestion des mouvements des ballons a pris plus de temps que les autres tâches.
+
 ### Objectifs pour la semaine et répartition du travail par membre
+
+Objectif général : Gestion d'un round dans sa totalité.
 
 ## Semaine 5
 
