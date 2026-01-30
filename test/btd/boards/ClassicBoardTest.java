@@ -4,8 +4,6 @@ import btd.Board;
 import btd.Cell;
 
 import static org.junit.Assert.assertEquals;
-
-import java.net.SocketPermission;
 import java.util.ArrayList;
 import java.util.List;
 
