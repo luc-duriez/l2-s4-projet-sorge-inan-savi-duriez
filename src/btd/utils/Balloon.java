@@ -10,7 +10,7 @@ public class Balloon {
     // The speed of the balloon
     private double speed;
     // Distance travelled by the balloon
-    private int distanceTravelled;
+    private double distanceTravelled;
     // the path of the balloon
     private List<Cell> path;
     // the current cell of the balloon
@@ -22,6 +22,7 @@ public class Balloon {
         this.speed = speed;
         this.path = path;
         this.distanceTravelled = 0;
+        this.currentCell = path.get(0);
     }
 
     public Balloon(int health, double speed) {
@@ -29,6 +30,7 @@ public class Balloon {
         this.speed = speed;
         this.path = null;
         this.distanceTravelled = 0;
+        this.currentCell = null;
     }
 
     /**
@@ -54,7 +56,7 @@ public class Balloon {
      * 
      * @return int
      */
-    public int getDistanceTravelled() {
+    public double getDistanceTravelled() {
         return this.distanceTravelled;
     }
 
@@ -122,15 +124,21 @@ public class Balloon {
      * Move the balloon
      */
     public void move() {
-        this.distanceTravelled += this.speed;
+    this.distanceTravelled += this.speed;
+    
+    if (this.getIndexPosition() < this.path.size()) {
+        this.currentCell = this.path.get(this.getIndexPosition());
+    } else {
+        this.currentCell = this.path.get(this.path.size() - 1); // Si on est sur l'avant derniere case et que l'on avance de plus d'une case
     }
+}
 
     /**
      * Returns the index of this Balloon in the path
      * @return the index of this Balloon in the path
      */
     public int getIndexPosition(){
-        return this.distanceTravelled / Cell.SIZE;
+        return (int) (this.distanceTravelled / Cell.SIZE);
     }
 
     /**
@@ -169,7 +177,7 @@ public class Balloon {
      * @return boolean
      */
     public boolean hasFinished(){
-        return this.currentCell == this.path.get(this.path.size() - 1);
+        return this.distanceTravelled >= (this.path.size() * Cell.SIZE);
     }
 
 }
