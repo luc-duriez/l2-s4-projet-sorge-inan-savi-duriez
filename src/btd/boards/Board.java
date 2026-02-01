@@ -1,8 +1,6 @@
 package btd.boards;
-
-import btd.utils.Balloon;
-import java.util.*;
-
+import java.util.List;
+import java.util.ArrayList;
 
 
 public abstract class Board {
@@ -12,8 +10,6 @@ public abstract class Board {
 
     /*This Board path for ballons */
     protected List<List<Cell>> path;
-    /* List of balloons on the board */
-    protected List<Balloon> balloons;
     /**
      * Build a board of a given size x, y
      * 
@@ -161,34 +157,6 @@ public abstract class Board {
      */
     public List<List<Cell>> getPath(){
         return this.path;
-    }
-    /**
-     * Spawn the balloons for a given round
-     * @param round : int
-     */
-    public void spawnBalloons(int round) {
-        List<Balloon> activeBalloons = new ArrayList<>();
-
-        int count = 3 + (round * 3); 
-        double speed = 1.0 + (round * 0.1); 
-        int health = 1 + (round / 5);
-
-        Random r = new Random();
-        
-        for (int i = 0; i < count; i++) {
-            int nbPath = r.nextInt(this.path.size());
-            Balloon b = new Balloon(health, speed, this.path.get(nbPath));
-            activeBalloons.add(b);
-        }
-
-        this.balloons = activeBalloons;
-    }
-    /**
-     * Get the balloons on the board
-     * @return List<Balloon> the list of ballons
-     */
-    public List<Balloon> getBalloons() {
-        return this.balloons;
     }
 
 }
