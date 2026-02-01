@@ -145,6 +145,7 @@ public class Balloon {
         Balloon b = (Balloon) o;
         return this.health == b.getHealth() && this.speed == b.getSpeed() && this.distanceTravelled == b.getDistanceTravelled() && this.path.equals(b.getPath()) && this.currentCell.equals(b.getCurrentCell());
     }
+    
     /**
      * Add the path in ballon
      * @param path
@@ -156,12 +157,19 @@ public class Balloon {
         this.path = path;
     }
 
-    
     /**
      * Return a String representation of this Balloon
      */
     public String toString(){
         return "Balloon at " + this.currentCell;
+    }
+
+    /**
+     * Returns true if the balloon has finished the path
+     * @return boolean
+     */
+    public boolean hasFinished(){
+        return this.currentCell == this.path.get(this.path.size() - 1);
     }
 
 }
