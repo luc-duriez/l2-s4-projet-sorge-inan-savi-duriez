@@ -1,17 +1,27 @@
 package btd.utils;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import btd.boards.Board;
 
 public class Game {
     
-    /*This Game's Player */
+    /* This Game's Player */
     private Player player;
 
-    /*This Game's board */
+    /* This Game's board */
     private Board board;
 
-    /*This Game's numbers of rounds */
+    /* This Game's numbers of rounds */
     private int round;
+
+    /* List of balloons waiting in a specific round */
+    private List<Balloon> waitingBalloons;
+
+    /* List of active balloons in a specific round */
+    private List<Balloon> activeBalloons;
 
     /**
      * Build a Game with a given board
@@ -22,6 +32,8 @@ public class Game {
         this.player = new Player();
         this.board = board;
         this.round = 1;
+        this.waitingBalloons = new ArrayList<Balloon>();
+        this.activeBalloons = new ArrayList<Balloon>();
     }
 
     /**
@@ -34,35 +46,49 @@ public class Game {
         this.player = player;
         this.board = board;
         this.round = 1;
+        this.waitingBalloons = new ArrayList<Balloon>();
+        this.activeBalloons = new ArrayList<Balloon>();
     }
 
     /**
-     * Spawn balloons in this game's board using this game's number of rounds
+     * This function updates the waiting balloons. 
+     * @param round : int
      */
-    public void spawnBalloons(){
-        this.board.spawnBalloons(this.round);
+    private void actualizeBalloons() {
+        this.waitingBalloons = new ArrayList<Balloon>();
+        int count = 3 + (round * 3); 
+        double speed = 100 + (this.round * 0.1); 
+        int health = 1 + (this.round / 5);
+
+        Random r = new Random();
+        
+        for (int i = 0; i < count; i++) {
+            int nbPath = r.nextInt(this.board.getPath().size());
+            Balloon b = new Balloon(health, speed, this.board.getPath().get(nbPath));
+            this.waitingBalloons.add(b);
+        }
     }
     
     /**
      * Play a round
      */
     public void playRound(){
-        spawnBalloons();
-        while(!(this.board.getBalloons().isEmpty())){
-            for(Balloon b: this.board.getBalloons()){
-                b.move();
-                if (b.hasFinished()){
-                    this.board.getBalloons().remove(b);
-                }
+        this.actualizeBalloons();
+        int i=0;
+
+        while (i < this.waitingBalloons.size() || !this.activeBalloons.isEmpty()) {
+            
+            if (i < this.waitingBalloons.size()) {
+                this.activeBalloons.add(this.waitingBalloons.get(i));
+                i++;
             }
+            System.out.println(this.activeBalloons);
+            for (Balloon balloon : this.activeBalloons ) {
+                balloon.move();
+            }
+            this.activeBalloons.removeIf(ballon -> ballon.hasFinished());
+            
         }
-        this.round++;
+            this.round++;
     }
 }
-
-/*
--> Spawn des balloons en continue ? ou en un seul bloc.
-
-TO DO:
-    balloon -> hasFinished
-*/
