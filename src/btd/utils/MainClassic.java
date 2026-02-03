@@ -2,7 +2,7 @@
 package btd.utils;
 
 import btd.boards.*;
-public class Main {
+public class MainClassic {
 
     public static void main(String[] args) {
         System.out.println();

@@ -73,6 +73,7 @@ public class Game {
      * Play a round
      */
     public void playRound(){
+        System.out.println("=== Round " + this.round + " ===");
         this.actualizeBalloons();
         int i=0;
         int time = 0;

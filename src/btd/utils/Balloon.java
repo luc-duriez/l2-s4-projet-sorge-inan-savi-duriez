@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Balloon {
 
-    // The index of the balloon used for numbering
+    // The index of the balloon used in specifical round
     private int index;
     // The health of the balloon
     private int health;
