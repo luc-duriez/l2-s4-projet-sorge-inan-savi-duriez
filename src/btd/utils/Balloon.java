@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Balloon {
 
+    // The index of the balloon used for numbering
+    private int index;
     // The health of the balloon
     private int health;
     // The speed of the balloon
@@ -17,20 +19,22 @@ public class Balloon {
     private Cell currentCell;
 
     // Constructer of Balloon object
-    public Balloon(int health, double speed, List<Cell> path) {
+    public Balloon(int health, double speed, List<Cell> path, int index) {
         this.health = health;
         this.speed = speed;
         this.path = path;
         this.distanceTravelled = 0;
         this.currentCell = path.get(0);
+        this.index = index;
     }
 
-    public Balloon(int health, double speed) {
+    public Balloon(int health, double speed, int index) {
         this.health = health;
         this.speed = speed;
         this.path = null;
         this.distanceTravelled = 0;
         this.currentCell = null;
+        this.index = index;
     }
 
     /**
@@ -49,6 +53,15 @@ public class Balloon {
      */
     public double getSpeed() {
         return this.speed;
+    }
+
+     /**
+     * Return the index of the balloon
+     * 
+     * @return int
+     */
+    public int getIndex() {
+        return this.index;
     }
 
     /**
@@ -151,7 +164,7 @@ public class Balloon {
             return false;
         }
         Balloon b = (Balloon) o;
-        return this.health == b.getHealth() && this.speed == b.getSpeed() && this.distanceTravelled == b.getDistanceTravelled() && this.path.equals(b.getPath()) && this.currentCell.equals(b.getCurrentCell());
+        return (this.health == b.getHealth()) && (this.speed == b.getSpeed()) && (this.distanceTravelled == b.getDistanceTravelled()) && (this.path.equals(b.getPath())) && (this.currentCell.equals(b.getCurrentCell())) && (this.getIndex() == b.getIndex());
     }
     
     /**
@@ -166,10 +179,10 @@ public class Balloon {
     }
 
     /**
-     * Return a String representation of this Balloon
+     * Return a String representation of this Balloon with numbering
      */
     public String toString(){
-        return "Balloon at " + this.currentCell;
+        return "Balloon " + this.index + " at " + this.currentCell;
     }
 
     /**
@@ -179,5 +192,4 @@ public class Balloon {
     public boolean hasFinished(){
         return this.distanceTravelled >= (this.path.size() * Cell.SIZE);
     }
-
 }

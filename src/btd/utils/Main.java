@@ -10,6 +10,5 @@ public class Main {
         board2.show();
         Game game = new Game(board2);
         game.playRound();
-        game.playRound();
     }
 }

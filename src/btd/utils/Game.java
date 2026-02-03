@@ -64,7 +64,7 @@ public class Game {
         
         for (int i = 0; i < count; i++) {
             int nbPath = r.nextInt(this.board.getPath().size());
-            Balloon b = new Balloon(health, speed, this.board.getPath().get(nbPath));
+            Balloon b = new Balloon(health, speed, this.board.getPath().get(nbPath), i+1);
             this.waitingBalloons.add(b);
         }
     }
@@ -75,20 +75,39 @@ public class Game {
     public void playRound(){
         this.actualizeBalloons();
         int i=0;
-
+        int time = 0;
         while (i < this.waitingBalloons.size() || !this.activeBalloons.isEmpty()) {
             
             if (i < this.waitingBalloons.size()) {
                 this.activeBalloons.add(this.waitingBalloons.get(i));
                 i++;
             }
-            System.out.println(this.activeBalloons);
-            for (Balloon balloon : this.activeBalloons ) {
-                balloon.move();
+            System.out.println("---- time: " + time);
+            System.out.println("---- balloons positions");
+            displayActiveBalloons();
+            for (int j = 0; j < this.activeBalloons.size(); j++){
+                Balloon b = this.activeBalloons.get(j);
+                if (b.hasFinished()){
+                    this.activeBalloons.remove(j);
+                    this.player.removeLife(b.getHealth());
+                    j--;
+                }
+                b.move();
             }
-            this.activeBalloons.removeIf(ballon -> ballon.hasFinished());
-            
+            time += 100;
         }
-            this.round++;
+        this.round++;
+        System.out.println("\n-- Round cleared --");
+        System.out.println("Money after round: " + this.player.getCredits());
+        System.out.println("Lives after round: " + this.player.getLives());
+    }
+
+    /**
+     * Display this game's list of active balloons.
+     */
+    public void displayActiveBalloons(){
+        for (Balloon b: this.activeBalloons){
+            System.out.println( b.toString());
+        }
     }
 }
