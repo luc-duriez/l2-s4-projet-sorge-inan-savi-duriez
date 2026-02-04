@@ -13,7 +13,6 @@ all: compile
 
 compile: $(CLASSES_DIR)
 	$(JC) -d $(CLASSES_DIR) $(SOURCES)
-	java -classpath classes btd.utils.MainLinear
 
 $(CLASSES_DIR):
 	mkdir -p $(CLASSES_DIR)
