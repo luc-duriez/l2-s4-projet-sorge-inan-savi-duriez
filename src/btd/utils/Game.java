@@ -15,7 +15,7 @@ public class Game {
     private Board board;
 
     /* This Game's numbers of rounds */
-    private int round;
+    public int round;
 
     /* List of balloons waiting in a specific round */
     private List<Balloon> waitingBalloons;
@@ -54,15 +54,14 @@ public class Game {
      * This function updates the waiting balloons. 
      * @param round : int
      */
-    private void actualizeBalloons() {
+    private void actualizeBalloons(int nbBalloons) {
         this.waitingBalloons = new ArrayList<Balloon>();
-        int count = 3 + (round * 3); 
         double speed = 100 + (this.round * 0.1); 
         int health = 1 + (this.round / 5);
 
         Random r = new Random();
         
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < nbBalloons; i++) {
             int nbPath = r.nextInt(this.board.getPath().size());
             Balloon b = new Balloon(health, speed, this.board.getPath().get(nbPath), i+1);
             this.waitingBalloons.add(b);
@@ -72,9 +71,9 @@ public class Game {
     /**
      * Play a round
      */
-    public void playRound(){
+    public void playRound(int nbBalloons){
         System.out.println("=== Round " + this.round + " ===");
-        this.actualizeBalloons();
+        this.actualizeBalloons(nbBalloons);
         int i=0;
         int time = 0;
         while (i < this.waitingBalloons.size() || !this.activeBalloons.isEmpty()) {
