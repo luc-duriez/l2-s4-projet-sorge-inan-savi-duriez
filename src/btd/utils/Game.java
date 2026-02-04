@@ -56,7 +56,7 @@ public class Game {
      */
     private void actualizeBalloons(int nbBalloons) {
         this.waitingBalloons = new ArrayList<Balloon>();
-        double speed = 100 + (this.round * 0.1); 
+        double speed = 25;
         int health = 1 + (this.round / 5);
 
         Random r = new Random();

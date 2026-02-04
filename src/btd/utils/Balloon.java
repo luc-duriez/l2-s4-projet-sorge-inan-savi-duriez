@@ -2,6 +2,7 @@ package btd.utils;
 
 import btd.boards.Cell;
 import java.util.List;
+import java.util.Random;
 
 public class Balloon {
 
@@ -18,22 +19,21 @@ public class Balloon {
     // the current cell of the balloon
     private Cell currentCell;
 
-    // Constructer of Balloon object
+    /**
+     * Build a balloon of a given health, speed, path and index
+     * 
+     * @param health this balloon's health
+     * @param speed this balloon's speed
+     * @param path this balloon's path
+     * @param index this balloon's index
+    */ 
     public Balloon(int health, double speed, List<Cell> path, int index) {
+        Random r = new Random();
         this.health = health;
-        this.speed = speed;
+        this.speed = speed * (1 + r.nextInt(3));
         this.path = path;
         this.distanceTravelled = 0;
         this.currentCell = path.get(0);
-        this.index = index;
-    }
-
-    public Balloon(int health, double speed, int index) {
-        this.health = health;
-        this.speed = speed;
-        this.path = null;
-        this.distanceTravelled = 0;
-        this.currentCell = null;
         this.index = index;
     }
 
