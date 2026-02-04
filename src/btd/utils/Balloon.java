@@ -108,7 +108,7 @@ public class Balloon {
 
     /**
      * Soustract a amount of speed to the balloon 
-     * @param malus
+     * @param malus the amount of speed decreased
      * 
      */
     public void decreaseSpeed(int malus) {
@@ -127,7 +127,7 @@ public class Balloon {
     /**
      * Increase the speed of the balloon
      * 
-     * @param speed
+     * @param bonus speed increased
      */
     public void increaseSpeed(int bonus) {
         this.speed += bonus;
@@ -169,7 +169,7 @@ public class Balloon {
     
     /**
      * Add the path in ballon
-     * @param path
+     * @param path the path of the baloons
      */
     public void addPath(List<Cell> path) throws IllegalStateException{
         if (this.path.size()==1){
