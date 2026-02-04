@@ -23,6 +23,24 @@ Les paragraphes concernant les livrables doivent être remplis avant la date de 
 
 Un lien vers une image de l'UML doit être fourni (une photo d'un diagramme UML fait à la main est suffisant).
 
+## Commande
+
+### Compilation des fichiers
+```bash
+make 
+```
+
+### Compilation et exécution des tests
+```bash
+make test
+```
+
+### Suppression dossier classes
+```bash
+make clean
+```
+
+
 ## Livrable 1
 
 ### Atteinte des objectifs
@@ -52,9 +70,31 @@ Les difficultés à résondre vont être pour la classe Baloon et la gestion de 
 
 ## Livrable 2
 
+### Commande du Livrable
+```bash
+java -jar .\Livrable\Livrable1a.jar # Pour un Classicboard
+
+java -jar .\Livrable\Livrable1b.jar # Pour un LinearBoard
+```
+
 ### Atteinte des objectifs
 
+Nous avons réussi à simuler un round uniquement avec les ballons (pas de tour) avec les deux types de Board.
+
+On a également questionné et choisi de mettre Board en abstract. On a donc LinearBoard et ClassicBoard qui sont enfant de Board (pour plus de logique).
+On a créé une classe Game pour pouvoir déléguer le code de Main dans Game, notamment pour la boucle de jeu. Dans le futur Main.java on va donc devoir appeler game.playRound() qui jouera le tour selon l'attribut round dans game.
+
+On a également dans Ballon.java, ajouter un attribut index qui va représenter son **index** de création. Cet attribut est exclusivement pour l'affichage en console.
+
+On a créé également StateCell qui représente l'affichage en console d'une Cellule (Une cellule peut-être vide(EMPTY) / un chemin(PATH) /ou une tower(TOWER)). 
+Pour le LinearBoard, nous avons choisi : si le joueur place une tour sur un chemin alors son état est uniquement TOWER. (Cette règle est uniquement pour LinearBoard car dans ClassicBoard, il est impossible d'ajouter une tour sur un chemin (ou empiler les tours)).
+
 ### Difficultés restant à résoudre
+
+Une des difficuté va être de gérer le cas où dans un LinearBoard, si une cellule est un chemin et que on pose une tour et qu'ensuite on vend la tour, on dois replacer son état initial. Il nous font donc retenir "l'etat de base" de la case. 
+Nous allons également devoir créer la classe abstraite Tower et les enfants.
+### UML Livrable 2
+[UML Livrable 2](https://gitlab-etu.fil.univ-lille.fr/luc.duriez.etu/l-2-s-4-projet-sorge-inan-savi-duriez/-/blob/main/imageUML/Livrable2.png?ref_type=heads)
 
 ## Livrable 3
 
