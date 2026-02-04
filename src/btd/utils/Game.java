@@ -40,7 +40,7 @@ public class Game {
      * Build a Game with a given board and player
      * 
      * @param board this game's board
-     * @param palyer this game's board
+     * @param player this game's board
      */
     public Game(Board board, Player player){
         this.player = player;
