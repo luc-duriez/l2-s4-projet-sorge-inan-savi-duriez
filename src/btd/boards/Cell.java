@@ -1,7 +1,7 @@
 package btd.boards;
 
 public class Cell {
-    public static final int SIZE = 100;
+    public static final int SIZE = 100; /* The size of a cell */
     private int x;
     private int y;
     private boolean isOccupied;
@@ -9,8 +9,8 @@ public class Cell {
 
     /**
      * Constructor of Cell class
-     * @param x
-     * @param y
+     * @param x the abscisse
+     * @param y the ordone
      */
     public Cell(int x,int y){
         this.x=x;
