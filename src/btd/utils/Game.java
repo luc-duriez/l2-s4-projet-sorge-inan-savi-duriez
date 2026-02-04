@@ -77,13 +77,14 @@ public class Game {
         int i=0;
         int time = 0;
         while (i < this.waitingBalloons.size() || !this.activeBalloons.isEmpty()) {
-            
-            if (i < this.waitingBalloons.size()) {
-                this.activeBalloons.add(this.waitingBalloons.get(i));
-                i++;
-            }
             System.out.println("---- time: " + time);
             System.out.println("---- balloons positions");
+            if (i < this.waitingBalloons.size()) {
+                Balloon b = this.waitingBalloons.get(i);
+                this.activeBalloons.add(b);
+                i++;
+                System.out.print("Balloon Incoming !!!  " + b + " speed: " + b.getSpeed() + " health: " + b.getHealth() + "\n");
+            }
             displayActiveBalloons();
             for (int j = 0; j < this.activeBalloons.size(); j++){
                 Balloon b = this.activeBalloons.get(j);
