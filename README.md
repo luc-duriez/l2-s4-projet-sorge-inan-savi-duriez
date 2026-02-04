@@ -77,7 +77,7 @@ Les difficultés à résondre vont être pour la classe Baloon et la gestion de 
 
 ### Commande du Livrable
 ```bash
-java -jar .\Livrable\Livrable1a.jar # Pour un Classicboard
+java -jar .\Livrable\Livrable1a.jar  # Pour un Classicboard
 
 java -jar .\Livrable\Livrable1b.jar # Pour un LinearBoard
 ```
@@ -96,7 +96,7 @@ Pour le LinearBoard, nous avons choisi : si le joueur place une tour sur un chem
 
 ### Difficultés restant à résoudre
 
-Une des difficuté va être de gérer le cas où dans un LinearBoard, si une cellule est un chemin et que on pose une tour et qu'ensuite on vend la tour, on dois replacer son état initial. Il nous font donc retenir "l'etat de base" de la case. 
+Une des difficuté va être de gérer le cas où dans un LinearBoard, si une cellule est un chemin et que on pose une tour et qu'ensuite on vend la tour, on dois replacer son état initial. Il nous faut donc retenir "l'etat de base" de la case. 
 Nous allons également devoir créer la classe abstraite Tower et les enfants.
 ### UML Livrable 2
 [UML Livrable 2](https://gitlab-etu.fil.univ-lille.fr/luc.duriez.etu/l-2-s-4-projet-sorge-inan-savi-duriez/-/blob/main/imageUML/Livrable2.png?ref_type=heads)
