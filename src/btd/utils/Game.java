@@ -85,6 +85,8 @@ public class Game {
                 i++;
                 System.out.print("Balloon Incoming !!!  " + b + " speed: " + b.getSpeed() + " health: " + b.getHealth() + "\n");
             }
+            
+
             displayActiveBalloons();
             for (int j = 0; j < this.activeBalloons.size(); j++){
                 Balloon b = this.activeBalloons.get(j);

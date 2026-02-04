@@ -76,10 +76,19 @@ Les difficultés à résondre vont être pour la classe Baloon et la gestion de 
 ## Livrable 2
 
 ### Commande du Livrable
-```bash
-java -jar .\Livrable\Livrable1a.jar  # Pour un Classicboard
 
-java -jar .\Livrable\Livrable1b.jar # Pour un LinearBoard
+#### Compilation
+
+```bash
+make jarClassic jarLinear
+```
+
+#### Execution
+
+```bash
+java -jar Livrable/Livrable2a.jar  # Pour un Classicboard
+
+java -jar Livrable/Livrable2b.jar  # Pour un LinearBoard
 ```
 
 ### Atteinte des objectifs
@@ -92,6 +101,14 @@ On a créé une classe Game pour pouvoir déléguer le code de Main dans Game, n
 On a également dans Ballon.java, ajouter un attribut index qui va représenter son **index** de création. Cet attribut est exclusivement pour l'affichage en console.
 
 On a créé également StateCell qui représente l'affichage en console d'une Cellule (Une cellule peut-être vide(EMPTY) / un chemin(PATH) /ou une tower(TOWER)). 
+
+
+#### Choix de modélisation
+
+Nous avons choisi de faire apparaître les ballons un à un. Pour un plateau linéaire, les ballons apparaissent aléatoirement sur les chemins.
+
+Pour une meilleure visibilité, nous avons fait le choix que le nombre maximum de chemin pouvant être mis en paramètre du constructeur de linearBoard doit être inférieur ou égal a : (largeur + hauteur) / 2 
+
 Pour le LinearBoard, nous avons choisi : si le joueur place une tour sur un chemin alors son état est uniquement TOWER. (Cette règle est uniquement pour LinearBoard car dans ClassicBoard, il est impossible d'ajouter une tour sur un chemin (ou empiler les tours)).
 
 ### Difficultés restant à résoudre
