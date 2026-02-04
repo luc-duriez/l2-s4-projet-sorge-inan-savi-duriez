@@ -15,8 +15,6 @@ all: compile
 compile: $(SOURCES)
 	$(JC) -d $(CLASSES_DIR) $(SOURCES)
 
-$(CLASSES): $(CLASSES:.class=.java)
-
 $(CLASSES_DIR):
 	mkdir -p $(CLASSES_DIR)
 
@@ -28,10 +26,10 @@ compileTest: $(CLASSES_DIR)
 execTest: 
 	java -jar junit-console.jar -classpath test:classes -scan-classpath
 
-jar classic:
-	jar cvfe Livrable/Livrable1a.jar btd.utils.MainClassic -C classes .
-jar linear:
-	jar cvfe Livrable/Livrable1b.jar btd.utils.MainLinear -C classes .
+jarClassic: $(CLASSES)
+	jar cvfe Livrable/Livrable2a.jar btd.utils.MainClassic -C classes .
+jarLinear: $(CLASSES)
+	jar cvfe Livrable/Livrable2b.jar btd.utils.MainLinear -C classes .
 
 
 
