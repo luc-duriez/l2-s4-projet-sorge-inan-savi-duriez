@@ -2,7 +2,9 @@ package btd.boards;
 import java.util.List;
 import java.util.ArrayList;
 
-
+/*
+* Create a abstract class Board
+*/
 public abstract class Board {
 
     /*This Board list of lists of Cells */
@@ -13,8 +15,8 @@ public abstract class Board {
     /**
      * Build a board of a given size x, y
      * 
-     * @param y this board's number of columns
-     * @param x this board's number of lines
+     * @param sizey this board's number of columns
+     * @param sizex this board's number of lines
      */
     public Board(int sizex, int sizey){
         this.path= new ArrayList<List<Cell>>();
@@ -130,14 +132,15 @@ public abstract class Board {
 
     /**
      * This function return 2 random Cell in array
-     * @return Cell[] 
+     * @param cellAlreadyUsed contains all the cells already used
+     *  @return Cell[] 
      */
     public abstract Cell[] randomCell(List<Cell> cellAlreadyUsed);
     
     /**
      * Count the number of neighbors of a cell that are in a given list
-     * @param c
-     * @param listCurr
+     * @param c the cell we want to know the neighbours
+     * @param listCurr the current list
      * @return int
      */
     protected int countPathNeighbors(Cell c, List<Cell> listCurr) {
