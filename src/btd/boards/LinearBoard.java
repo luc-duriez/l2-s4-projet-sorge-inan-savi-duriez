@@ -7,8 +7,12 @@ import java.util.Random;
 public class LinearBoard extends Board {
     
 
-    public LinearBoard(int sizex, int sizey, int numberPath){
+    public LinearBoard(int sizex, int sizey, int numberPath) throws IllegalArgumentException{
         super(sizex, sizey);
+        if (numberPath >= (sizex+sizey)/2){
+            throw new IllegalArgumentException("Le nombre de chemin est trop élevé.");
+        }
+        
         List<Cell> cellAlreadyUsed = new ArrayList<>();
         for (int i=0; i < numberPath; i++){
             Cell[] cells = this.randomCell(cellAlreadyUsed);
