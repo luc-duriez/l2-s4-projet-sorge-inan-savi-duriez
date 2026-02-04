@@ -40,6 +40,11 @@ make test
 make clean
 ```
 
+### Génération de la documentation
+```bash
+javadoc -sourcepath src -subpackages btd -d docs
+```
+
 
 ## Livrable 1
 
