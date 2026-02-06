@@ -2,6 +2,8 @@ package btd.towers;
 
 import btd.boards.Cell;
 import btd.towers.upgrades.*;
+import btd.utils.Balloon;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -89,4 +91,11 @@ public abstract class Tower{
         return finalRate;
     }
 
+    /**
+     * Shoots the balloon
+     * @parameter The balloon to shoot
+     */
+    public void shoot(Balloon b){
+        
+    }
 }
