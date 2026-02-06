@@ -64,5 +64,16 @@ public abstract class Tower{
     }
 
 
+    /**
+     * Return the final range after the upgrades
+     * @return the final range after the upgrades
+     */
+    public double getFinalRange(){
+        double finalRange = this.range;
+        for (Upgrade u : appliedUpgrades){
+            finalRange *= u.getDamageIncrease();
+        }
+        return finalRange;
+    }
 
 }
