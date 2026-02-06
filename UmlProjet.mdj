@@ -1889,6 +1889,7 @@
 											"width": 270,
 											"height": 13,
 											"text": "+Balloon(int , int , List Cell, int)",
+<<<<<<< HEAD
 											"horizontalAlignment": 0
 										},
 										{
@@ -1907,6 +1908,8 @@
 											"width": 270,
 											"height": 13,
 											"text": "+Ballon(int, int)",
+=======
+>>>>>>> bda3096 (Création calss towers + projectiles)
 											"horizontalAlignment": 0
 										},
 										{
@@ -10800,6 +10803,7 @@
 										"$ref": "AAAAAAGb222jl0cdgS0="
 									},
 									"name": "List Cell"
+<<<<<<< HEAD
 								},
 								{
 									"_type": "UMLParameter",
@@ -10828,12 +10832,14 @@
 									},
 									"name": "int",
 									"type": ""
+=======
+>>>>>>> bda3096 (Création calss towers + projectiles)
 								},
 								{
 									"_type": "UMLParameter",
-									"_id": "AAAAAAGcBb3FQhQYDmY=",
+									"_id": "AAAAAAGcMdW2esaP6MA=",
 									"_parent": {
-										"$ref": "AAAAAAGcBb2p6BQQHUI="
+										"$ref": "AAAAAAGb222jl0cdgS0="
 									},
 									"name": "int",
 									"type": ""
