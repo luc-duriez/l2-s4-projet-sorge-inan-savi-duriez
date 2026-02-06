@@ -76,4 +76,17 @@ public abstract class Tower{
         return finalRange;
     }
 
+
+    /**
+     * Return the final fire rate after the upgrades
+     * @return the final fire rate after the upgrades
+     */
+    public int getFinalRate(){
+        int finalRate = this.attackSpeed;
+        for (Upgrade u : appliedUpgrades){
+            finalRate *= u.getFireRate();
+        }
+        return finalRate;
+    }
+
 }
