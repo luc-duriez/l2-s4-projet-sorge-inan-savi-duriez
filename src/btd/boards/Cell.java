@@ -1,7 +1,8 @@
 package btd.boards;
 
 public class Cell {
-    public static final int SIZE = 100; /* The size of a cell */
+    /* The size of a cell */
+    public static final int SIZE = 100; 
     private int x;
     private int y;
     private boolean isOccupied;

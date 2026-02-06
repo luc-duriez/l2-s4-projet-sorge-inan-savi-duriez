@@ -211,9 +211,14 @@ Objectif général : Gestion d'un round dans sa totalité.
 
 ## Semaine 5
 
+On a réfléchis a l'implémentation des towers. On a fais un choix d'implémentation pour la range des tours et on a finalement choisis de considérer les cases au lieu d'une range circulaire.
+
 ### Ce qui a été réalisé
 
+On a modifi" l'UMl.
 ### Difficultés rencontrées
+
+Implémentation de la range et la gestion du temps et de la portée de chaque tower.
 
 ### Objectifs pour la semaine et répartition du travail par membre
 
