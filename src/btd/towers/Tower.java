@@ -3,6 +3,7 @@ package btd.towers;
 import btd.boards.Cell;
 import btd.towers.upgrades.*;
 import java.util.List;
+import java.util.ArrayList;
 
 public abstract class Tower{
     /* The position of this Tower */
@@ -34,6 +35,8 @@ public abstract class Tower{
         this.attackSpeed = attackSpeed;
         this.projectile = projectile;
         this.basePrice = basePrice;
+        this.remainingUpgrades = new ArrayList<Upgrade>();
+        this.appliedUpgrades = new ArrayList<Upgrade>();
     }
 
     /**
@@ -47,6 +50,19 @@ public abstract class Tower{
         }
         return totalCost;
     }
+
+    /**
+     * Return the total amount of damage for this Tower
+     * @return the total amount of damage for this Tower
+     */
+    public int getFinalDamage(){
+        int finalDmg = this.projectile.getDamage();
+        for (Upgrade u : appliedUpgrades){
+            finalDmg += u.getDamageIncrease();
+        }
+        return finalDmg;
+    }
+
 
 
 }
