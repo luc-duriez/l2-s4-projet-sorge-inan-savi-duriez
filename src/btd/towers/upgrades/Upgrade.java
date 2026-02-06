@@ -26,4 +26,10 @@ public interface Upgrade {
      * @return the name of this Upgrade
      */
     public String getName();
+
+    /**
+     * Returns the damage of this Upgrade
+     * @return the damage of this Upgrade
+     */
+    public int getDamageIncrease();
 }
