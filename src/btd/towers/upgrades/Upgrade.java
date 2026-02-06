@@ -32,4 +32,6 @@ public interface Upgrade {
      * @return the damage of this Upgrade
      */
     public int getDamageIncrease();
+
+    public double getFireRate();
 }
