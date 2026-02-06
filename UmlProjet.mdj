@@ -1889,6 +1889,7 @@
 											"width": 270,
 											"height": 13,
 											"text": "+Balloon(int , int , List Cell, int)",
+<<<<<<< HEAD
 											"horizontalAlignment": 0
 										},
 										{
@@ -1907,6 +1908,8 @@
 											"width": 270,
 											"height": 13,
 											"text": "+Ballon(int, int)",
+=======
+>>>>>>> bda3096 (Création calss towers + projectiles)
 											"horizontalAlignment": 0
 										},
 										{
@@ -2873,7 +2876,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": -880,
-									"top": 119,
+									"top": 24,
 									"width": 10,
 									"height": 10
 								},
@@ -2889,7 +2892,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": -880,
-									"top": 119,
+									"top": 24,
 									"width": 10,
 									"height": 10
 								}
@@ -9768,8 +9771,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 903,
-									"top": 700,
+									"left": 704,
+									"top": 283,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -9789,8 +9792,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 903,
-									"top": 685,
+									"left": 704,
+									"top": 268,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -9810,8 +9813,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 903,
-									"top": 730,
+									"left": 704,
+									"top": 313,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -9831,8 +9834,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 776,
-									"top": 700,
+									"left": 689,
+									"top": 541,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 30,
@@ -9852,8 +9855,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 779,
-									"top": 686,
+									"left": 675,
+									"top": 538,
 									"height": 13,
 									"alpha": 0.7853981633974483,
 									"distance": 40,
@@ -9873,8 +9876,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 772,
-									"top": 727,
+									"left": 716,
+									"top": 545,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -9894,8 +9897,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1030,
-									"top": 700,
+									"left": 1066,
+									"top": 283,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 30,
@@ -9914,8 +9917,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1027,
-									"top": 686,
+									"left": 1063,
+									"top": 269,
 									"height": 13,
 									"alpha": -0.7853981633974483,
 									"distance": 40,
@@ -9934,8 +9937,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1034,
-									"top": 727,
+									"left": 1070,
+									"top": 310,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
@@ -9974,12 +9977,12 @@
 							],
 							"font": "Arial;13;0",
 							"head": {
-								"$ref": "AAAAAAGbocDWCAKqtKs="
+								"$ref": "AAAAAAGbocEobwPQTGY="
 							},
 							"tail": {
 								"$ref": "AAAAAAGboaHhOdaAAbc="
 							},
-							"points": "751:721;1056:721",
+							"points": "704:573;704:304;1092:304",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGcDfuIOovboHE="
@@ -10048,7 +10051,7 @@
 									"$ref": "AAAAAAGcDfuIOYvWhsw="
 								},
 								"reference": {
-									"$ref": "AAAAAAGbocDWBwKoZbA="
+									"$ref": "AAAAAAGbocEobwPOtq8="
 								}
 							}
 						}
@@ -10800,6 +10803,7 @@
 										"$ref": "AAAAAAGb222jl0cdgS0="
 									},
 									"name": "List Cell"
+<<<<<<< HEAD
 								},
 								{
 									"_type": "UMLParameter",
@@ -10828,12 +10832,14 @@
 									},
 									"name": "int",
 									"type": ""
+=======
+>>>>>>> bda3096 (Création calss towers + projectiles)
 								},
 								{
 									"_type": "UMLParameter",
-									"_id": "AAAAAAGcBb3FQhQYDmY=",
+									"_id": "AAAAAAGcMdW2esaP6MA=",
 									"_parent": {
-										"$ref": "AAAAAAGcBb2p6BQQHUI="
+										"$ref": "AAAAAAGb222jl0cdgS0="
 									},
 									"name": "int",
 									"type": ""

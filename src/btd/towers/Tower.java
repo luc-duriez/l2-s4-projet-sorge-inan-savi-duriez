@@ -1,6 +1,7 @@
 package btd.towers;
 
 import btd.boards.Cell;
+import btd.towers.projectiles.Projectile;
 import btd.towers.upgrades.*;
 import btd.utils.Balloon;
 
