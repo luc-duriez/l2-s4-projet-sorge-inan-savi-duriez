@@ -1,7 +1,20 @@
 - ajouter attribut balloons isSlowed pour slowtower et icetower.
 
-- Créer deux types tower : - DmgTower
-                           - UtilyTower
-- enlever projectile constructeur Tower
-
 - Affichage linearBoard -> debut fin
+
+- Formule tir:
+    x1,y1 -> coo balloon
+    x2,y2 -> coo tower
+    formule -> ((x2-x1)² + (y2-y1)²) <= range²  -> si true, possibilité de tir
+
+- Recherche du balloon le plus avancé avec possibilité de tir.
+
+- Verfifier si la methode shoot des towers prends bien un balloon en parametre.
+
+- Methode de création de tower dans game ou board ou les deux.
+
+QUESTIONS :
+
+But exacte du livrable.
+
+Date de rendu du livrable.
