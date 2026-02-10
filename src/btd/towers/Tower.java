@@ -99,4 +99,17 @@ public abstract class Tower{
     public void shoot(Balloon b){
         
     }
+
+
+    /**
+     * Sells this Tower and return the money from selling it
+     * @return the money from selling this Tower
+     */
+    public int sell(){
+        int totalPrice = this.basePrice;
+        for(Upgrade u: this.appliedUpgrades){
+            totalPrice += u.getCost();
+        }
+        return totalPrice;
+    }
 }
