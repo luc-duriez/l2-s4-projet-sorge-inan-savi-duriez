@@ -19,7 +19,7 @@ public class BalloonTest {
         Cell c2 = new Cell(1, 2);
         l.add(c1);
         l.add(c2);
-        b = new Balloon(3, 2, l); 
+        b = new Balloon(3, 2, l, 1); 
         
     }
 
@@ -27,6 +27,11 @@ public class BalloonTest {
     public void getHealthTest(){
         assertEquals(3, b.getHealth());
     } 
+
+    @Test
+    public void getIndexTest(){
+        assertEquals(1, b.getIndex());
+    }
 
     @Test
     public void getSpeedTest(){
