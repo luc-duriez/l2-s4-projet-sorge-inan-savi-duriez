@@ -1,11 +1,11 @@
 package btd.towers;
 
 import btd.boards.Cell;
-import btd.towers.projectiles.Projectile;
+import btd.towers.projectiles.*;
 
 public class SniperTower extends DamageTower {
     
-    public SniperTower(Cell pos, double range, int attackSpeed, Projectile projectile, int basePrice){
-        super(pos, range, attackSpeed, projectile, basePrice);
+    public SniperTower(Cell pos){
+        super(pos, Integer.MAX_VALUE, 2000, new LinearProjectile("very sharp dart", 4), 500);
     }
 }

@@ -1,11 +1,11 @@
 package btd.towers;
 
 import btd.boards.Cell;
-import btd.towers.projectiles.Projectile;
+import btd.towers.projectiles.*;
 
 public class TackTower extends DamageTower {
     
-    public TackTower(Cell pos, double range, int attackSpeed, Projectile projectile, int basePrice){
-        super(pos, range, attackSpeed, projectile, basePrice);
+    public TackTower(Cell pos){
+        super(pos, 80, 1200, new LinearProjectile("tack", 1), 350);
     }
 }
