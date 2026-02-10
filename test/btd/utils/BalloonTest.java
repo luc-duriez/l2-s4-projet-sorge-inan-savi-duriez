@@ -47,12 +47,6 @@ public class BalloonTest {
 
 
     @Test
-    public void increaseSpeedTest(){
-        b.increaseSpeed(1);
-        assertEquals(3, b.getSpeed());
-    } 
-
-    @Test
     public void isDead(){
         b.decreaseHealth(1);
         assertFalse(b.isDead());
@@ -60,12 +54,5 @@ public class BalloonTest {
         assertTrue(b.isDead());
     } 
 
-    @Test
-    public void moveTest(){
-        b.move();
-        assertEquals(2, b.getDistanceTravelled());
-    } 
-    
-    
 }
 

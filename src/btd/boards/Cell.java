@@ -19,6 +19,7 @@ public class Cell {
         this.x=x;
         this.y=y;
         this.isOccupied=false;
+        this.state= new Stack<>();
         this.state.push(StateCell.EMPTY);
     }
 

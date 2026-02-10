@@ -1,8 +1,7 @@
 package btd.boards;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.*; 
+import org.junit.jupiter.api.*;
 
 public class CellTest {
     public Cell c1;

@@ -1,11 +1,12 @@
 package btd.boards;
 
+import static org.junit.jupiter.api.Assertions.*; 
+import org.junit.jupiter.api.*;
 
-import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
+
 
 public class ClassicBoardTest {
 

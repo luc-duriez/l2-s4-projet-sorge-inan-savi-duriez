@@ -18,7 +18,7 @@ compile: $(SOURCES)
 $(CLASSES_DIR):
 	mkdir -p $(CLASSES_DIR)
 
-test: compileTest execTest
+test: compile compileTest execTest
 
 compileTest: $(CLASSES_DIR)
 	$(JC) -classpath junit-console.jar:classes $(TEST_SOURCES) -d $(CLASSES_DIR)
