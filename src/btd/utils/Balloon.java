@@ -111,7 +111,7 @@ public class Balloon {
      * @param malus the amount of speed decreased
      * 
      */
-    public void decreaseSpeed(int malus) {
+    public void decreaseSpeed(double malus) {
         this.speed -= malus;
     }
 

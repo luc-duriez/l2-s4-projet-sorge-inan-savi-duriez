@@ -1,7 +1,6 @@
 package btd.towers;
 
 import btd.boards.Cell;
-import btd.towers.projectiles.Projectile;
 import btd.towers.upgrades.*;
 import btd.utils.Balloon;
 
@@ -15,8 +14,6 @@ public abstract class Tower{
     protected double range;
     /* The attack speed of this Tower */
     protected int attackSpeed;
-    /* The projectile for this Tower */
-    protected Projectile projectile;
     /* The remaining upgrades for this Tower */
     protected List<Upgrade> remainingUpgrades;
     /* The applied upgrades on this Tower */
@@ -32,11 +29,11 @@ public abstract class Tower{
      * @param projectile The projectile of this Tower
      * @param basePrice THe base price of this Tower
      */
-    public Tower(Cell pos, double range, int attackSpeed, Projectile projectile, int basePrice){
+    public Tower(Cell pos, double range, int attackSpeed, int basePrice){
         this.pos = pos;
         this.range = range;
         this.attackSpeed = attackSpeed;
-        this.projectile = projectile;
+        
         this.basePrice = basePrice;
         this.remainingUpgrades = new ArrayList<Upgrade>();
         this.appliedUpgrades = new ArrayList<Upgrade>();
@@ -53,20 +50,7 @@ public abstract class Tower{
         }
         return totalCost;
     }
-
-    /**
-     * Return the total amount of damage for this Tower
-     * @return the total amount of damage for this Tower
-     */
-    public int getFinalDamage(){
-        int finalDmg = this.projectile.getDamage();
-        for (Upgrade u : appliedUpgrades){
-            finalDmg += u.getDamageIncrease();
-        }
-        return finalDmg;
-    }
-
-
+    
     /**
      * Return the final range after the upgrades
      * @return the final range after the upgrades
@@ -96,9 +80,7 @@ public abstract class Tower{
      * Shoots the balloon
      * @parameter The balloon to shoot
      */
-    public void shoot(Balloon b){
-        
-    }
+    public abstract void shoot(Balloon b);
 
 
     /**
