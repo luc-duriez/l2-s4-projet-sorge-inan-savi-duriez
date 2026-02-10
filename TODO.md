@@ -1,3 +1,5 @@
+- Fusionner fonction decrease increase Balloon (health et speed)
+
 - ajouter attribut balloons isSlowed pour slowtower et icetower.
 
 - Affichage linearBoard -> debut fin
@@ -12,6 +14,11 @@
 - Verfifier si la methode shoot des towers prends bien un balloon en parametre.
 
 - Methode de création de tower dans game ou board ou les deux.
+
+
+- Reflexion comportement slow -> mettre attribut speed en double (initial et final) pour gérer le slow ou le freeze
+ou 1 0 attribut isSlowed
+
 
 QUESTIONS :
 
