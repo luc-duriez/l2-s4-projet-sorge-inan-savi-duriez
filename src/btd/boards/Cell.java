@@ -1,12 +1,14 @@
 package btd.boards;
 
+import java.util.Stack;
+
 public class Cell {
     /* The size of a cell */
     public static final int SIZE = 100; 
     private int x;
     private int y;
     private boolean isOccupied;
-    private StateCell state;
+    private Stack<StateCell> state;
 
     /**
      * Constructor of Cell class
@@ -17,7 +19,7 @@ public class Cell {
         this.x=x;
         this.y=y;
         this.isOccupied=false;
-        this.state = StateCell.EMPTY;
+        this.state.push(StateCell.EMPTY);
     }
 
     /**
@@ -76,7 +78,13 @@ public class Cell {
      * @param newState this cell's new state
      */
     public void setState(StateCell newState){
-        this.state = newState;
+        this.state.push(newState);
+    }
+    /**
+     * Remove the first state of this state.
+     */
+    public void popState(){
+        this.state.pop();
     }
 
     /**
@@ -85,6 +93,6 @@ public class Cell {
      * @return this cell's state
      */
     public StateCell getState(){
-        return this.state;
+        return this.state.peek();
     }
 }
