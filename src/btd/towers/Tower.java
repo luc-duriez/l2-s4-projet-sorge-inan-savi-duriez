@@ -94,4 +94,19 @@ public abstract class Tower{
         }
         return totalPrice;
     }
+
+    /**
+     * Return the cell with the highest travelled distance
+     * @param cellInRange list of the cells in the range of the tower
+     * @return the cell that would be shooted 
+     */
+    public Balloon selectBalloon(List<Balloon> inRangeBalloons){
+        Balloon max = inRangeBalloons.get(0);
+        for (Balloon b : inRangeBalloons) {
+            if (b.getDistanceTravelled() > max.getDistanceTravelled()){
+                max = b;
+            }
+        }
+        return max;
+    }
 }
