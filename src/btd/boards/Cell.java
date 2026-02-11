@@ -13,7 +13,7 @@ public class Cell {
     /**
      * Constructor of Cell class
      * @param x the abscisse
-     * @param y the ordone
+     * @param y the ordonne
      */
     public Cell(int x,int y){
         this.x=x;
@@ -81,10 +81,14 @@ public class Cell {
     public void setState(StateCell newState){
         this.state.push(newState);
     }
+
     /**
      * Remove the first state of this state.
      */
     public void popState(){
+        if (this.state.size() ==1){
+            throw new IllegalStateException("La cellule "+ this.toString()+" ne peut pas être dépilé (1 élément minimum)");
+        }
         this.state.pop();
     }
 
