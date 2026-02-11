@@ -1,4 +1,4 @@
-
+/* 
 package btd.utils;
 
 import btd.boards.*;
@@ -15,3 +15,4 @@ public class MainLinear {
         game.playRound(Integer.parseInt(args[2]));
     }
 }
+ */

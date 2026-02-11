@@ -1,4 +1,4 @@
-
+/* 
 package btd.utils;
 
 import btd.boards.*;
@@ -17,3 +17,4 @@ public class MainClassic {
         }
     }
 }
+ */
