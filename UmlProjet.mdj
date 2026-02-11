@@ -2042,7 +2042,7 @@
 											"top": 751,
 											"width": 270,
 											"height": 13,
-											"text": "+increaseSpeed(int)",
+											"text": "+changeSpeed(int)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2054,6 +2054,7 @@
 											"model": {
 												"$ref": "AAAAAAGb22T60DwyXvw="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 1581,
 											"top": 766,
@@ -2073,7 +2074,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1581,
-											"top": 781,
+											"top": 766,
 											"width": 270,
 											"height": 13,
 											"text": "+decreaseHealth(int): boolean",
@@ -2090,7 +2091,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1581,
-											"top": 796,
+											"top": 781,
 											"width": 270,
 											"height": 13,
 											"text": "+equals(): boolean",
@@ -2105,6 +2106,7 @@
 											"model": {
 												"$ref": "AAAAAAGcBb1JMBQHV/A="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 1581,
 											"top": 811,
@@ -2124,7 +2126,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1581,
-											"top": 826,
+											"top": 796,
 											"width": 270,
 											"height": 13,
 											"text": "+hasFinished(): boolean",
@@ -2141,7 +2143,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1581,
-											"top": 841,
+											"top": 811,
 											"width": 270,
 											"height": 13,
 											"text": "+toString(): String",
@@ -2158,7 +2160,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1581,
-											"top": 856,
+											"top": 826,
 											"width": 270,
 											"height": 13,
 											"text": "+getIndex(): int",
@@ -2169,7 +2171,7 @@
 									"left": 1576,
 									"top": 626,
 									"width": 280,
-									"height": 248
+									"height": 218
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -10991,7 +10993,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGboa9l5OMdEVY="
 							},
-							"name": "increaseSpeed",
+							"name": "changeSpeed",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -10999,8 +11001,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGb22TcFTooxFk="
 									},
-									"name": "int",
-									"type": ""
+									"name": "int"
 								}
 							]
 						},

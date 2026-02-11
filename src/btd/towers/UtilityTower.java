@@ -10,6 +10,6 @@ public class UtilityTower extends Tower{
 
     @Override
     public void shoot(Balloon b){
-        b.decreaseSpeed(b.getSpeed());
+        b.changeSpeed(b.getSpeed());
     }
 }
