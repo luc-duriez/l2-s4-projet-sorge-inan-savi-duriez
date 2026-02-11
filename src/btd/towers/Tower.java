@@ -112,4 +112,27 @@ public abstract class Tower{
         }
         return max;
     }
+
+    /**
+     * Returns all the baloons in range of the tower
+     * @param activeBalloons all the actives ballons 
+     * @return list of the ballons in the towers range
+     */
+    public List<Balloon> getBallonsInRange(List<Balloon> activeBalloons){
+        List<Balloon> res = new ArrayList<>();
+        if (this.range < 0) { 
+            return new ArrayList<>(activeBalloons);
+        }
+        double rangeCarre = this.range * this.range;
+        for(Balloon b : activeBalloons){
+            double dx = b.getCurrentCell().getX() - this.pos.getX();
+            double dy = b.getCurrentCell().getY() - this.pos.getY();
+            double distance = (dx * dx) + (dy * dy);
+
+            if (distance<= rangeCarre) {
+                res.add(b);
+            }
+        }
+        return res;
+    }
 }
