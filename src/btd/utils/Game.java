@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import btd.boards.Board;
+import btd.boards.*;
 
 public class Game {
     
@@ -113,4 +113,16 @@ public class Game {
             System.out.println( b.toString());
         }
     }
+    /**
+     * Return the square of distance of two points
+     * @param c1 The first Cell
+     * @param c2 The second Cell
+     * @return double
+     */
+    public double distanceOf(Cell c1,Cell c2){
+        int dx= c2.getX()-c1.getX();
+        int dy= c2.getY()-c1.getY();
+        return Math.pow(Math.pow(dx,2) + Math.pow(dy,2), 2);
+    }
+
 }
