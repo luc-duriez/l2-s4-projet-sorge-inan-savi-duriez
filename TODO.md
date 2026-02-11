@@ -18,7 +18,16 @@
 
 - Reflexion comportement slow -> mettre attribut speed en double (initial et final) pour gérer le slow ou le freeze
 ou 1 0 attribut isSlowed
+-------------------
+Pour le tri du tir ? Tir sur le 1er
 
+list.sort(Comparator.comparingDouble(key));
+
+selectTarget( b -> b.getDistanceTraveled())
+selectTarget( b -> b.getSpeed())
+              b -> b.getSpeed()
+
+-------------------
 
 QUESTIONS :
 
