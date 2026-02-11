@@ -119,10 +119,10 @@ public class Game {
      * @param c2 The second Cell
      * @return double
      */
-    public double distanceOf(Cell c1,Cell c2){
+    public double distanceSquaredOf(Cell c1,Cell c2){
         int dx= c2.getX()-c1.getX();
         int dy= c2.getY()-c1.getY();
-        return Math.pow(Math.pow(dx,2) + Math.pow(dy,2), 2);
+        return dx * dx + dy * dy;
     }
 
 }
