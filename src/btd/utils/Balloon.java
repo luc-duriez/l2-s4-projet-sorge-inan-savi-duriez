@@ -164,4 +164,25 @@ public class Balloon {
     public boolean hasFinished(){
         return this.distanceTravelled >= (this.path.size() * Cell.SIZE);
     }
+
+    /**
+     * Display the Balloon at spawn
+     */
+    public void displaySpawn(){
+        System.out.printf("Balloon Incoming !!!  %s speed: %d health: %d%n", getSpeed(), getHealth());
+    }
+
+    /**
+     * Display the Balloon when touched
+     */
+    public void displayTouched(){
+        System.out.printf( "%s touched (health: %d)%n", getHealth());
+    }
+
+    /**
+     * Display the Balloon when popped
+     */
+    public void displayPopped(){
+        System.out.printf("%s popped%n");
+    }
 }
