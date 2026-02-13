@@ -426,7 +426,7 @@
 											"top": 849,
 											"width": 250.04052734375,
 											"height": 13,
-											"text": "+revertUpgrade(): void",
+											"text": "+revertUpgrade(Player p): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -7555,8 +7555,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 64,
-									"top": 296,
+									"left": 96,
+									"top": 288,
 									"width": 10,
 									"height": 10
 								},
@@ -7571,8 +7571,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 64,
-									"top": 296,
+									"left": 96,
+									"top": 288,
 									"width": 10,
 									"height": 10
 								}
@@ -10335,6 +10335,15 @@
 									},
 									"type": "void",
 									"direction": "return"
+								},
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAGcVgD95MFCzn8=",
+									"_parent": {
+										"$ref": "AAAAAAGbobTBTetgbdQ="
+									},
+									"name": "Player p",
+									"type": ""
 								}
 							]
 						},
@@ -11001,7 +11010,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGb22TcFTooxFk="
 									},
-									"name": "int"
+									"name": "int",
+									"type": ""
 								}
 							]
 						},
@@ -13571,7 +13581,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGcTaggHlzWoug="
 									},
-									"name": "Cell"
+									"name": "Cell",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -13579,7 +13590,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGcTaggHlzWoug="
 									},
-									"name": "Cell"
+									"name": "Cell",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
