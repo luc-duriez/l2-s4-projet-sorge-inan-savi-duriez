@@ -1,6 +1,7 @@
 package btd.boards;
 import java.util.List;
 import java.util.ArrayList;
+import btd.towers.*;
 
 /*
 * Create a abstract class Board
@@ -12,6 +13,8 @@ public abstract class Board {
 
     /*This Board path for ballons */
     protected List<List<Cell>> path;
+
+    protected List<Tower> towers;
     /**
      * Build a board of a given size x, y
      * 
@@ -160,6 +163,15 @@ public abstract class Board {
      */
     public List<List<Cell>> getPath(){
         return this.path;
+    }
+
+    /**
+     * Return this board's list of tower
+     * 
+     * @return this board's list of tower
+     */
+    public List<Tower> getTowers(){
+        return towers;
     }
 
 }
