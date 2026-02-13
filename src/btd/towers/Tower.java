@@ -3,7 +3,7 @@ package btd.towers;
 import btd.boards.Cell;
 import btd.towers.upgrades.*;
 import btd.utils.Balloon;
-
+import btd.utils.Player;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -118,7 +118,7 @@ public abstract class Tower{
      * @param activeBalloons all the actives ballons 
      * @return list of the ballons in the towers range
      */
-    public List<Balloon> getBallonsInRange(List<Balloon> activeBalloons){
+    public List<Balloon> getBalloonsInRange(List<Balloon> activeBalloons){
         List<Balloon> res = new ArrayList<>();
         if (this.range < 0) { 
             return new ArrayList<>(activeBalloons);
@@ -134,5 +134,28 @@ public abstract class Tower{
             }
         }
         return res;
+    }
+
+    /**
+     * Adds a new upgrade to appliedUpgrade
+     * @param u The upgrade to apply
+     * @param p The player who upgrades this Tower
+     * @return true if upgraded. False otherwise
+     */
+    public boolean upgrade(Upgrade u, Player p){
+        boolean upgradable = true;
+        if(u.getCost() > p.getCredits()){
+            upgradable = false;
+        }
+        for (Upgrade u2: this.appliedUpgrades){
+            if (u2.equals(u)){
+                upgradable = false;
+            }
+        }
+        if(upgradable){
+            this.appliedUpgrades.add(u);
+            return upgradable;
+        }
+        return upgradable;
     }
 }
