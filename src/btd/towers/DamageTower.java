@@ -1,5 +1,7 @@
 package btd.towers;
 
+import java.util.List;
+
 import btd.boards.Cell;
 import btd.towers.projectiles.Projectile;
 import btd.towers.upgrades.Upgrade;
@@ -27,8 +29,33 @@ public class DamageTower extends Tower{
         return finalDmg;
     }
 
+    /**
+     * Return the cell with the highest travelled distance
+     * @param inRangeBalloons list of the cells in the range of the tower
+     * @return the cell that would be shooted 
+     */
+    private Balloon selectBalloon(List<Balloon> inRangeBalloons){
+        if (inRangeBalloons.isEmpty()){
+            return null;
+        }
+        Balloon max = inRangeBalloons.get(0);
+        for (Balloon b : inRangeBalloons) { // tri + tard
+            if (b.getDistanceTravelled() > max.getDistanceTravelled()){
+                max = b;
+            }
+        }
+        return max;
+    }
+    
+    
     @Override
-    public void shoot(Balloon b){
+    public void shoot(List<Balloon> inRange){
+        Balloon b = selectBalloon(inRange);
         b.decreaseHealth(this.getFinalDamage());
+    }
+
+    @Override
+    public void displayShoot(Balloon b){
+        System.out.println(toString() + " shoots " + projectile + " at " + b);
     }
 }
