@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import btd.boards.*;
+import btd.towers.Tower;
 
 public class Game {
     
@@ -83,10 +84,8 @@ public class Game {
                 Balloon b = this.waitingBalloons.get(i);
                 this.activeBalloons.add(b);
                 i++;
-                System.out.print("Balloon Incoming !!!  " + b + " speed: " + b.getSpeed() + " health: " + b.getHealth() + "\n");
+                b.dislaySpawn();
             }
-            
-
             displayActiveBalloons();
             for (int j = 0; j < this.activeBalloons.size(); j++){
                 Balloon b = this.activeBalloons.get(j);
@@ -97,6 +96,8 @@ public class Game {
                 }
                 b.move();
             }
+            System.out.println("---- towers shots");
+            towerShoot();
             time += 100;
         }
         this.round++;
@@ -113,6 +114,7 @@ public class Game {
             System.out.println( b.toString());
         }
     }
+
     /**
      * Return the square of distance of two points
      * @param c1 The first Cell
@@ -125,4 +127,14 @@ public class Game {
         return dx * dx + dy * dy;
     }
 
+    /**
+     * Make all tower shoot and display the shot.   
+     */
+    private void towerShoot(){
+        for (Tower t: board.getTowers()){
+            t.shoot(t.getBallonsInRange(activeBalloons));
+            t.displayShoot();
+        }
+    }
+    
 }
