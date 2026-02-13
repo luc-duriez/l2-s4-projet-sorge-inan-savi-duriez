@@ -80,7 +80,7 @@ public abstract class Tower{
      * Shoots the balloon
      * @parameter The balloon to shoot
      */
-    public abstract void shoot(Balloon b);
+    public abstract void shoot(List<Balloon> balloonsInRange);
 
 
     /**
@@ -93,24 +93,6 @@ public abstract class Tower{
             totalPrice += u.getCost();
         }
         return totalPrice;
-    }
-
-    /**
-     * Return the cell with the highest travelled distance
-     * @param cellInRange list of the cells in the range of the tower
-     * @return the cell that would be shooted 
-     */
-    public Balloon selectBalloon(List<Balloon> inRangeBalloons){
-        if (inRangeBalloons.isEmpty()){
-            return null;
-        }
-        Balloon max = inRangeBalloons.get(0);
-        for (Balloon b : inRangeBalloons) {
-            if (b.getDistanceTravelled() > max.getDistanceTravelled()){
-                max = b;
-            }
-        }
-        return max;
     }
 
     /**
@@ -167,4 +149,17 @@ public abstract class Tower{
         p.addCredits(this.appliedUpgrades.get(this.appliedUpgrades.size() - 1).getCost());
         this.appliedUpgrades.remove(this.appliedUpgrades.size() - 1);
     }
+
+     /* Return 
+     */
+    public String toString(){
+        return  getClass().getSimpleName() + "tower at (" + pos.getY() + ", " + pos.getX() +")";
+    }
+
+    /**
+     * Display the Tower's shot to a Balloon
+     * 
+     * @param b the balloon being shooted 
+     */
+    public abstract void displayShoot(Balloon b);
 }

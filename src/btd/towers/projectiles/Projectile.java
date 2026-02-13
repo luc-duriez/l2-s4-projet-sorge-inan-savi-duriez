@@ -29,5 +29,12 @@ public abstract class Projectile {
     public String getName(){
         return this.projectileName;
     }
+
+    /**
+     * Return a String representation of the projectile
+     */
+    public String toString(){
+        return projectileName + "(" + damage + ")";
+    }
     
 }

@@ -1,5 +1,6 @@
 package btd.towers;
 
+import java.util.List;
 import btd.boards.Cell;
 import btd.utils.Balloon;
 
@@ -9,7 +10,15 @@ public class UtilityTower extends Tower{
     }
 
     @Override
-    public void shoot(Balloon b){
-        b.changeSpeed(b.getSpeed());
+    public void shoot(List<Balloon> inRange){
+        for (Balloon b : inRange){
+            b.changeSpeed(b.getSpeed());
+        }
+        
+    }
+
+    @Override
+    public void displayShoot(Balloon b){
+        System.out.printf("");
     }
 }
