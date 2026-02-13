@@ -226,7 +226,11 @@ Implémentation de la range et la gestion du temps et de la portée de chaque to
 
 ### Ce qui a été réalisé
 
+On a fini la gestion de chacune des classes des tours. On s'est occupé des différents projectiles sauf pour la tour à bombes qui est encore en cours de réalisation, et par la même occasion, on a ajouté deux classes pour différencier les tours utilitaires et celles qui font des dégats.
+
 ### Difficultés rencontrées
+
+La principale difficulté rencontrée est la gestion des tirs et de la portée des différentes tours par exemple faire en sorte que la tour tape le dernier ballon ou encore que la tour à bombe tape en zone sur plusieurs ballons en plus du dernier. La reflexion a neanmoins été faite pour ce problème.
 
 ### Objectifs pour la semaine et répartition du travail par membre
 
