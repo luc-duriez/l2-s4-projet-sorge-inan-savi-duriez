@@ -158,4 +158,13 @@ public abstract class Tower{
         }
         return upgradable;
     }
+
+    /**
+     * Revert the latest upgrade of this Tower
+     * @param p The player to refund to gold
+     */
+    public void revertUpgrade(Player p){
+        p.addCredits(this.appliedUpgrades.get(this.appliedUpgrades.size() - 1).getCost());
+        this.appliedUpgrades.remove(this.appliedUpgrades.size() - 1);
+    }
 }
