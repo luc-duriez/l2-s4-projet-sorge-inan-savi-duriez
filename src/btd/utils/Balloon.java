@@ -203,4 +203,18 @@ public class Balloon {
     public void displayPopped(){
         System.out.printf("%s popped%n", this);
     }
+
+    /**
+     * Set this balloon's slow value to slow plower
+     */
+    public void setSlowValue(double slowPower) {
+        this.slowValue = slowPower;
+    }
+
+    /**
+     * Set this balloon's countdown to countdown2
+     */
+    public void setCountdown(int countdown2) {
+        this.countdown = countdown2;
+    }
 }
