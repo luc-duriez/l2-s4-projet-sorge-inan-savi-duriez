@@ -35,6 +35,7 @@ public class Game {
         this.round = 1;
         this.waitingBalloons = new ArrayList<Balloon>();
         this.activeBalloons = new ArrayList<Balloon>();
+        
     }
 
     /**
@@ -84,7 +85,7 @@ public class Game {
                 Balloon b = this.waitingBalloons.get(i);
                 this.activeBalloons.add(b);
                 i++;
-                b.dislaySpawn();
+                b.displaySpawn();
             }
             displayActiveBalloons();
             for (int j = 0; j < this.activeBalloons.size(); j++){
@@ -132,8 +133,7 @@ public class Game {
      */
     private void towerShoot(){
         for (Tower t: board.getTowers()){
-            t.shoot(t.getBallonsInRange(activeBalloons));
-            t.displayShoot();
+            t.shoot(t.getBalloonsInRange(activeBalloons));
         }
     }
     
