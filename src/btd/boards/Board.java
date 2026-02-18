@@ -15,6 +15,9 @@ public abstract class Board {
     protected List<List<Cell>> path;
 
     protected List<Tower> towers;
+
+    /*This board's size */
+    public static int sizeBoard;
     /**
      * Build a board of a given size x, y
      * 
@@ -31,6 +34,7 @@ public abstract class Board {
                 this.board[x][y] = c;
             }
         }
+        Board.sizeBoard = (sizex + sizey) * Cell.SIZE;
     }
 
     /**
