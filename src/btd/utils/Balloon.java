@@ -18,6 +18,10 @@ public class Balloon {
     private List<Cell> path;
     // the current cell of the balloon
     private Cell currentCell;
+    // the current slow value of the balloon
+    private double slowValue;
+    // the countdown of the balloon when it's slowed or frozen
+    private int countdown;
 
     /**
      * Build a balloon of a given health, speed, path and index
@@ -35,6 +39,8 @@ public class Balloon {
         this.distanceTravelled = 0;
         this.currentCell = path.get(0);
         this.index = index;
+        this.countdown = 0;
+        this.slowValue = 1;
     }
 
     /**
@@ -120,13 +126,16 @@ public class Balloon {
      * Move the balloon
      */
     public void move() {
-    this.distanceTravelled += this.speed;
-    
-    if (this.getIndexPosition() < this.path.size()) {
-        this.currentCell = this.path.get(this.getIndexPosition());
-    } else {
-        this.currentCell = this.path.get(this.path.size() - 1); // Si on est sur l'avant derniere case et que l'on avance de plus d'une case
-    }
+        if (countdown == 0){
+           this.distanceTravelled += this.slowValue * this.speed; 
+        }else{
+            countdown--;
+        }
+        if (this.getIndexPosition() < this.path.size()) {
+            this.currentCell = this.path.get(this.getIndexPosition());
+        } else {
+            this.currentCell = this.path.get(this.path.size() - 1); // Si on est sur l'avant derniere case et que l'on avance de plus d'une case
+        }
 }
 
     /**
