@@ -150,7 +150,7 @@ public abstract class Tower{
         this.appliedUpgrades.remove(this.appliedUpgrades.size() - 1);
     }
 
-     /* Return 
+     /* Return a representation of Tower
      */
     public String toString(){
         return  getClass().getSimpleName() + "tower at (" + pos.getY() + ", " + pos.getX() +")";
@@ -162,4 +162,8 @@ public abstract class Tower{
      * @param b the balloon being shooted 
      */
     public abstract void displayShoot(Balloon b);
+
+    public Cell getCell(){
+        return this.pos;
+    }
 }
