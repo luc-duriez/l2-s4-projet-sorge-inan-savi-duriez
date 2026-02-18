@@ -96,6 +96,15 @@ public class Balloon {
     }
 
     /**
+     * Return the current countdown of the Balloon
+     * 
+     * @return the current countdown of the Balloon
+     */
+    public int getCountdown(){
+        return this.countdown;
+    }
+
+    /**
      * Soustract the amount of damages of the balloon
      * 
      * @param damage
