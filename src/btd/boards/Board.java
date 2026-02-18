@@ -22,6 +22,7 @@ public abstract class Board {
      * @param sizex this board's number of lines
      */
     public Board(int sizex, int sizey){
+        this.towers = new ArrayList<>();
         this.path= new ArrayList<List<Cell>>();
         this.board = new Cell[sizex][sizey];
         for(int x = 0; x < sizex; x++){
