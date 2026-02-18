@@ -136,5 +136,9 @@ public class Game {
             t.shoot(t.getBalloonsInRange(activeBalloons));
         }
     }
-    
+    public void addTower(Tower t){
+        board.addTower(t);
+        board.getCell(t.getCell().getX(), t.getCell().getX()).setState(StateCell.TOWER);
+        
+    }
 }
