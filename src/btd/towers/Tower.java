@@ -20,6 +20,8 @@ public abstract class Tower{
     protected List<Upgrade> appliedUpgrades;
     /* The base price of this upgrade */
     protected int basePrice;
+    /* This Tower's shoot cooldown */
+    protected int cooldown;
 
     /**
      * Build a new Tower
@@ -33,7 +35,7 @@ public abstract class Tower{
         this.pos = pos;
         this.range = range;
         this.attackSpeed = attackSpeed;
-        
+        this.cooldown = attackSpeed;
         this.basePrice = basePrice;
         this.remainingUpgrades = new ArrayList<Upgrade>();
         this.appliedUpgrades = new ArrayList<Upgrade>();

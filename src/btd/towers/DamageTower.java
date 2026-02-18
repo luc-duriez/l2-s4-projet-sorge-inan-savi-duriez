@@ -50,8 +50,13 @@ public abstract class DamageTower extends Tower{
     
     @Override
     public void shoot(List<Balloon> inRange){
-        Balloon b = selectBalloon(inRange);
-        b.decreaseHealth(this.getFinalDamage());
+        if (cooldown == attackSpeed){
+            Balloon b = selectBalloon(inRange);
+            b.decreaseHealth(this.getFinalDamage());
+            cooldown = 0;
+        }else{
+            cooldown += 100;
+        }
     }
 
     @Override
