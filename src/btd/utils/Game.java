@@ -138,7 +138,7 @@ public class Game {
     }
     public void addTower(Tower t){
         board.addTower(t);
-        board.getCell(t.getCell().getX(), t.getCell().getX()).setState(StateCell.TOWER);
+        board.getCell(t.getCell().getX(), t.getCell().getY()).setState(StateCell.TOWER);
         
     }
 }

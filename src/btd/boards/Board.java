@@ -54,7 +54,7 @@ public abstract class Board {
      * @return true if the cell at position (x,y) can be used to place a tower.
      */
     public boolean isPlaceable(int x, int y){
-        return this.getCell(x, y).isOccupied();
+        return !(this.getCell(x, y).isOccupied());
     }
     
     /**

@@ -22,12 +22,11 @@ public class MainClassic {
             int x1 = r.nextInt(Integer.parseInt(args[0]));
             int x2 = r.nextInt(Integer.parseInt(args[1]));
 
-            while (!(board.isPlaceable(x1, x2))){
+            while (!(board.isPlaceable(x2, x1))){
                 x1 = r.nextInt(Integer.parseInt(args[0]));
                 x2 = r.nextInt(Integer.parseInt(args[1]));
-            }
-            
-            Tower t = new SniperTower(board.getCell(x1, x2));
+            }            
+            Tower t = new SniperTower(board.getCell(x2, x1));
             game.addTower(t);
             board.show();
             game.playRound(Integer.parseInt(args[2]));
