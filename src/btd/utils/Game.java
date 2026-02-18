@@ -35,6 +35,7 @@ public class Game {
         this.round = 1;
         this.waitingBalloons = new ArrayList<Balloon>();
         this.activeBalloons = new ArrayList<Balloon>();
+        
     }
 
     /**
@@ -133,7 +134,10 @@ public class Game {
     private void towerShoot(){
         for (Tower t: board.getTowers()){
             t.shoot(t.getBalloonsInRange(activeBalloons));
+<<<<<<< HEAD
     
+=======
+>>>>>>> c793759 (Changement towerShoot)
         }
     }
     
