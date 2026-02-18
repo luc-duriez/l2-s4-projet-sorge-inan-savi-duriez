@@ -169,20 +169,20 @@ public class Balloon {
      * Display the Balloon at spawn
      */
     public void displaySpawn(){
-        System.out.printf("Balloon Incoming !!!  %s speed: %d health: %d%n", getSpeed(), getHealth());
+        System.out.printf("Balloon Incoming !!!  %s speed: %f health: %d%n", this, getSpeed(), getHealth());
     }
 
     /**
      * Display the Balloon when touched
      */
     public void displayTouched(){
-        System.out.printf( "%s touched (health: %d)%n", getHealth());
+        System.out.printf( "%s touched (health: %d)%n", this, getHealth());
     }
 
     /**
      * Display the Balloon when popped
      */
     public void displayPopped(){
-        System.out.printf("%s popped%n");
+        System.out.printf("%s popped%n", this);
     }
 }
