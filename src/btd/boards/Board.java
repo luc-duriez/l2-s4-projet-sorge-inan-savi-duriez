@@ -175,4 +175,10 @@ public abstract class Board {
         return towers;
     }
 
+    /**
+     * Add the Path in Board's path
+     */
+    public void addPath(List<Cell> list){
+        this.path.add(list);
+    }
 }
