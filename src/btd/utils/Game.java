@@ -134,10 +134,6 @@ public class Game {
     private void towerShoot(){
         for (Tower t: board.getTowers()){
             t.shoot(t.getBalloonsInRange(activeBalloons));
-<<<<<<< HEAD
-    
-=======
->>>>>>> c793759 (Changement towerShoot)
         }
     }
     
