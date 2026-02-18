@@ -169,7 +169,7 @@ public class Balloon {
      * Display the Balloon at spawn
      */
     public void displaySpawn(){
-        System.out.printf("Balloon Incoming !!!  %s speed: %f health: %d%n", this, getSpeed(), getHealth());
+        System.out.printf("Balloon Incoming !!!  %s speed: %.1f health: %d%n", this, getSpeed(), getHealth());
     }
 
     /**
