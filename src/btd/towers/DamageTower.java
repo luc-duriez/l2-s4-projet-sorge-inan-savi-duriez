@@ -7,7 +7,7 @@ import btd.towers.projectiles.Projectile;
 import btd.towers.upgrades.Upgrade;
 import btd.utils.Balloon;
 
-public class DamageTower extends Tower{
+public abstract class DamageTower extends Tower{
     
     /* The projectile for this Tower */
     protected Projectile projectile;
