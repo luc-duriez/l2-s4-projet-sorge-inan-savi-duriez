@@ -84,7 +84,7 @@ public class Game {
                 Balloon b = this.waitingBalloons.get(i);
                 this.activeBalloons.add(b);
                 i++;
-                b.dislaySpawn();
+                b.displaySpawn();
             }
             displayActiveBalloons();
             for (int j = 0; j < this.activeBalloons.size(); j++){
@@ -132,8 +132,8 @@ public class Game {
      */
     private void towerShoot(){
         for (Tower t: board.getTowers()){
-            t.shoot(t.getBallonsInRange(activeBalloons));
-            t.displayShoot();
+            t.shoot(t.getBalloonsInRange(activeBalloons));
+    
         }
     }
     
