@@ -7,7 +7,7 @@ import btd.towers.projectiles.Projectile;
 import btd.towers.upgrades.Upgrade;
 import btd.utils.Balloon;
 
-public class DamageTower extends Tower{
+public abstract class DamageTower extends Tower{
     
     /* The projectile for this Tower */
     protected Projectile projectile;
@@ -50,8 +50,13 @@ public class DamageTower extends Tower{
     
     @Override
     public void shoot(List<Balloon> inRange){
-        Balloon b = selectBalloon(inRange);
-        b.decreaseHealth(this.getFinalDamage());
+        if (cooldown == attackSpeed){
+            Balloon b = selectBalloon(inRange);
+            b.decreaseHealth(this.getFinalDamage());
+            cooldown = 0;
+        }else{
+            cooldown += 100;
+        }
     }
 
     @Override

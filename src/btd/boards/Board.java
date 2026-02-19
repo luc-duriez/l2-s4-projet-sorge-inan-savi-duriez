@@ -15,6 +15,9 @@ public abstract class Board {
     protected List<List<Cell>> path;
 
     protected List<Tower> towers;
+
+    /*This board's size */
+    public static int sizeBoard;
     /**
      * Build a board of a given size x, y
      * 
@@ -31,6 +34,7 @@ public abstract class Board {
                 this.board[x][y] = c;
             }
         }
+        Board.sizeBoard = (sizex + sizey) * Cell.SIZE;
     }
 
     /**
@@ -54,7 +58,7 @@ public abstract class Board {
      * @return true if the cell at position (x,y) can be used to place a tower.
      */
     public boolean isPlaceable(int x, int y){
-        return this.getCell(x, y).isOccupied();
+        return !(this.getCell(x, y).isOccupied());
     }
     
     /**
@@ -175,4 +179,7 @@ public abstract class Board {
         return towers;
     }
 
+    public void addTower(Tower t) {
+        towers.add(t);
+    }
 }

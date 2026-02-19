@@ -18,6 +18,10 @@ public class Balloon {
     private List<Cell> path;
     // the current cell of the balloon
     private Cell currentCell;
+    // the current slow value of the balloon
+    private double slowValue;
+    // the countdown of the balloon when it's slowed or frozen
+    private int countdown;
 
     /**
      * Build a balloon of a given health, speed, path and index
@@ -35,6 +39,8 @@ public class Balloon {
         this.distanceTravelled = 0;
         this.currentCell = path.get(0);
         this.index = index;
+        this.countdown = 0;
+        this.slowValue = 1;
     }
 
     /**
@@ -90,6 +96,15 @@ public class Balloon {
     }
 
     /**
+     * Return the current countdown of the Balloon
+     * 
+     * @return the current countdown of the Balloon
+     */
+    public int getCountdown(){
+        return this.countdown;
+    }
+
+    /**
      * Soustract the amount of damages of the balloon
      * 
      * @param damage
@@ -120,13 +135,16 @@ public class Balloon {
      * Move the balloon
      */
     public void move() {
-    this.distanceTravelled += this.speed;
-    
-    if (this.getIndexPosition() < this.path.size()) {
-        this.currentCell = this.path.get(this.getIndexPosition());
-    } else {
-        this.currentCell = this.path.get(this.path.size() - 1); // Si on est sur l'avant derniere case et que l'on avance de plus d'une case
-    }
+        if (countdown == 0){
+           this.distanceTravelled += this.slowValue * this.speed; 
+        }else{
+            countdown--;
+        }
+        if (this.getIndexPosition() < this.path.size()) {
+            this.currentCell = this.path.get(this.getIndexPosition());
+        } else {
+            this.currentCell = this.path.get(this.path.size() - 1); // Si on est sur l'avant derniere case et que l'on avance de plus d'une case
+        }
 }
 
     /**
@@ -184,5 +202,19 @@ public class Balloon {
      */
     public void displayPopped(){
         System.out.printf("%s popped%n", this);
+    }
+
+    /**
+     * Set this balloon's slow value to slow plower
+     */
+    public void setSlowValue(double slowPower) {
+        this.slowValue = slowPower;
+    }
+
+    /**
+     * Set this balloon's countdown to countdown2
+     */
+    public void setCountdown(int countdown2) {
+        this.countdown = countdown2;
     }
 }
