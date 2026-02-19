@@ -155,7 +155,7 @@ public abstract class Tower{
      /* Return a representation of Tower
      */
     public String toString(){
-        return  getClass().getSimpleName() + "tower at (" + pos.getY() + ", " + pos.getX() +")";
+        return  getClass().getSimpleName() + " at (" + pos.getY() + ", " + pos.getX() +")";
     }
 
     /**

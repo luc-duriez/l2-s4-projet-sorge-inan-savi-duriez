@@ -55,6 +55,9 @@ public abstract class DamageTower extends Tower{
             Balloon b = selectBalloon(inRange);
             b.decreaseHealth(this.getFinalDamage());
             cooldown = 0;
+            displayShoot(b);
+            b.displayTouched();
+            touchedBalloons.add(b);
         }else{
             cooldown += Game.TICK;
         }

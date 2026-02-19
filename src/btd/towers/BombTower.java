@@ -34,7 +34,7 @@ public class BombTower extends DamageTower {
     
     
     @Override
-    public void shoot(List<Balloon> inRange){
+    public void shoot(List<Balloon> inRange, List<Balloon> touchedBalloons){
         if (cooldown == attackSpeed){
             List<Balloon> balloons = selectBalloons(inRange);
             for(Balloon b : balloons){
