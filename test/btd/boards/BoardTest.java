@@ -18,10 +18,10 @@ public class BoardTest {
         neighbors.add(b1.getCell(2, 1));
         neighbors.add(b1.getCell(1, 0));
         neighbors.add(b1.getCell(1, 2));
-        assertEquals(neighbors, b1.getNeighbors(c1));
+        assertEquals(neighbors, b1.getNeighbours(c1));
         neighbors = new ArrayList<>();
         neighbors.add(new Cell(1, 0));
         neighbors.add(new Cell(0, 1));
-        assertEquals(neighbors, b1.getNeighbors(c2));
+        assertEquals(neighbors, b1.getNeighbours(c2));
     }
 }
