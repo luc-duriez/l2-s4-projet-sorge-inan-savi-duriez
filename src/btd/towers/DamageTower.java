@@ -35,7 +35,7 @@ public abstract class DamageTower extends Tower{
      * @param inRangeBalloons list of the cells in the range of the tower
      * @return the cell that would be shooted 
      */
-    private Balloon selectBalloon(List<Balloon> inRangeBalloons){
+    protected Balloon selectBalloon(List<Balloon> inRangeBalloons){
         if (inRangeBalloons.isEmpty()){
             return null;
         }
