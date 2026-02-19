@@ -19,7 +19,7 @@ public abstract class Board {
      * Build a board of a given size x, y
      * 
      * @param sizey this board's number of columns
-     * @param sizex this board's number of lines
+     * @param sizex this board's num ber of lines
      */
     public Board(int sizex, int sizey){
         this.towers = new ArrayList<>();
@@ -62,7 +62,7 @@ public abstract class Board {
      * @param c The cell to get its neighbors
      * @return The neighbors of the cell
      */
-    protected List<Cell> getNeighbors(Cell c){
+    protected List<Cell> getNeighbours(Cell c){
         List<Cell> neighbors = new ArrayList<>();
         int x = c.getX();
         int y = c.getY();
