@@ -217,4 +217,11 @@ public class Balloon {
     public void setCountdown(int countdown2) {
         this.countdown = countdown2;
     }
+
+    /**
+     * Display the Balloon when the balloon finish his path.
+     */
+    public void displayFinished(){
+        System.out.printf("%s passed !! -%d Lives", this, getHealth());
+    }
 }
