@@ -1,4 +1,4 @@
-package btd.towers.upgrade;
+package btd.towers.upgrades;
 
 public class DamageUpgradeTest {
     
