@@ -80,7 +80,8 @@ public abstract class Tower{
 
     /**
      * Shoots the balloon
-     * @parameter The balloon to shoot
+     * @param balloonsInRange The balloon to shoot
+     * @param touchedBalloons The list of touched balloons
      */
     public abstract void shoot(List<Balloon> balloonsInRange, List<Balloon> touchedBalloons);
 
