@@ -91,6 +91,7 @@ public class Game {
             for (int j = 0; j < this.activeBalloons.size(); j++){
                 Balloon b = this.activeBalloons.get(j);
                 if (b.hasFinished()){
+                    b.displayFinished();
                     this.activeBalloons.remove(j);
                     this.player.removeLife(b.getHealth());
                     j--;
