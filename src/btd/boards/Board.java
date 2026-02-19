@@ -153,7 +153,7 @@ public abstract class Board {
      */
     protected int countPathNeighbors(Cell c, List<Cell> listCurr) {
         int count = 0;
-        for (Cell neighbor : getNeighbors(c)) {
+        for (Cell neighbor : getNeighbours(c)) {
             if (listCurr.contains(neighbor)) {
                 count++;
             }
