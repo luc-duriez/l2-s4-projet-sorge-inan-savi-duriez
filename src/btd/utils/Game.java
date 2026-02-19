@@ -132,8 +132,9 @@ public class Game {
      * Make all tower shoot and display the shot.   
      */
     private void towerShoot(){
+        List<Balloon> touchedBallon = new ArrayList<>();
         for (Tower t: board.getTowers()){
-            t.shoot(t.getBalloonsInRange(activeBalloons));
+            t.shoot(t.getBalloonsInRange(activeBalloons), touchedBallon);
         }
     }
     /**

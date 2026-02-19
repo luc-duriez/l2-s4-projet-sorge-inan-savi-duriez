@@ -13,7 +13,7 @@ public class TackTower extends DamageTower {
     }
 
     @Override
-    public void shoot(List<Balloon> inRange){
+    public void shoot(List<Balloon> inRange, List<Balloon> touchedBalloons){
         for (Balloon b : inRange){
             b.decreaseHealth(this.getFinalDamage());
         }

@@ -18,7 +18,7 @@ public abstract class UtilityTower extends Tower{
     }
 
     @Override
-    public void shoot(List<Balloon> balloonsInRange){
+    public void shoot(List<Balloon> balloonsInRange, List<Balloon> touchedBalloons){
         for (Balloon b : balloonsInRange){
             if (cooldown == attackSpeed){
                 if (b.getCountdown() == 0)
