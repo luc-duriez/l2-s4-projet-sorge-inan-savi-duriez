@@ -3,6 +3,7 @@ package btd.towers;
 import java.util.List;
 import btd.boards.Cell;
 import btd.utils.Balloon;
+import btd.utils.Game;
 
 public abstract class UtilityTower extends Tower{
 
@@ -25,7 +26,7 @@ public abstract class UtilityTower extends Tower{
                     b.setCountdown(countdown);
                 cooldown = 0;
             }else{
-                cooldown += 100;
+                cooldown += Game.TICK;
             }
         }
     }
