@@ -2,6 +2,7 @@ package btd.towers;
 
 import btd.boards.Cell;
 import btd.utils.Balloon;
+import btd.utils.Game;
 
 public class SlowTower extends UtilityTower {
 
@@ -17,6 +18,6 @@ public class SlowTower extends UtilityTower {
 
     @Override
     public void displayShoot(Balloon b){
-        System.out.printf("%s slowed for %dms %n", b, countdown*100);
+        System.out.printf("%s slowed for %dms %n", b, countdown*Game.TICK);
     }
 }

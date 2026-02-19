@@ -172,7 +172,7 @@ public class Balloon {
      * Return a String representation of this Balloon with numbering
      */
     public String toString(){
-        return "Balloon " + this.index + " at " + this.currentCell;
+        return "Balloon " + this.index + " at " + this.currentCell + " hp : " + this.health;
     }
 
     /**
@@ -187,14 +187,14 @@ public class Balloon {
      * Display the Balloon at spawn
      */
     public void displaySpawn(){
-        System.out.printf("Balloon Incoming !!!  %s speed: %.1f health: %d%n", this, getSpeed(), getHealth());
+        System.out.printf("Balloon Incoming !!!  %s speed: %.1f%n", this, getSpeed());
     }
 
     /**
      * Display the Balloon when touched
      */
     public void displayTouched(){
-        System.out.printf( "%s touched (health: %d)%n", this, getHealth());
+        System.out.printf( "%s touched %n", this);
     }
 
     /**
