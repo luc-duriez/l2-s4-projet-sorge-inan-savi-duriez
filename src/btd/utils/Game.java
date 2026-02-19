@@ -8,7 +8,7 @@ import btd.boards.*;
 import btd.towers.Tower;
 
 public class Game {
-    
+    public static final int TICK = 100;
     /* This Game's Player */
     private Player player;
 
@@ -99,7 +99,7 @@ public class Game {
             }
             System.out.println("---- towers shots");
             towerShoot();
-            time += 100;
+            time += Game.TICK;
         }
         this.round++;
         System.out.println("\n-- Round cleared --");
@@ -136,6 +136,10 @@ public class Game {
             t.shoot(t.getBalloonsInRange(activeBalloons));
         }
     }
+    /**
+     * Add t in board.
+     * @param t Tower
+     */
     public void addTower(Tower t){
         board.addTower(t);
         board.getCell(t.getCell().getX(), t.getCell().getY()).setState(StateCell.TOWER);

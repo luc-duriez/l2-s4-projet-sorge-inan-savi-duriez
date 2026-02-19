@@ -6,6 +6,7 @@ import btd.boards.Cell;
 import btd.towers.projectiles.Projectile;
 import btd.towers.upgrades.Upgrade;
 import btd.utils.Balloon;
+import btd.utils.Game;
 
 public abstract class DamageTower extends Tower{
     
@@ -55,7 +56,7 @@ public abstract class DamageTower extends Tower{
             b.decreaseHealth(this.getFinalDamage());
             cooldown = 0;
         }else{
-            cooldown += 100;
+            cooldown += Game.TICK;
         }
     }
 
