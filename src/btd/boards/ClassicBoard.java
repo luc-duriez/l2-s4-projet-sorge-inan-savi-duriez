@@ -24,7 +24,7 @@ public class ClassicBoard extends Board {
     public List<Cell> createPath(Cell curr, Cell finale, List<Cell> list){
         list.add(curr);
         if (curr.equals(finale)) return list;
-        List<Cell> neighbor = this.getNeighbors(curr);
+        List<Cell> neighbor = this.getNeighbours(curr);
         Collections.shuffle(neighbor);
         for(Cell next: neighbor){
             if (!(list.contains(next)) && (super.countPathNeighbors(next, list) == 1)){
