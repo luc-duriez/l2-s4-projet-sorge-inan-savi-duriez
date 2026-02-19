@@ -112,7 +112,7 @@ public class Game {
      */
     public void displayActiveBalloons(){
         for (Balloon b: this.activeBalloons){
-            System.out.println( b.toString());
+            System.out.println(b);
         }
     }
 
@@ -132,9 +132,15 @@ public class Game {
      * Make all tower shoot and display the shot.   
      */
     private void towerShoot(){
-        List<Balloon> touchedBallon = new ArrayList<>();
         for (Tower t: board.getTowers()){
+            List<Balloon> touchedBallon = new ArrayList<>();
             t.shoot(t.getBalloonsInRange(activeBalloons), touchedBallon);
+            for (Balloon b : touchedBallon){
+                if (b.getHealth() <= 0){
+                    activeBalloons.remove(b);
+                    b.displayPopped();
+                }
+            }
         }
     }
     /**
