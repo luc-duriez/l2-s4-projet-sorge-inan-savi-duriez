@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import btd.towers.Tower;
+
 public class ClassicBoard extends Board {
     
     public ClassicBoard(int sizex, int sizey) {
@@ -44,5 +46,10 @@ public class ClassicBoard extends Board {
         cells[0] = this.getCell(x1, 0);
         cells[1] = this.getCell(x2, this.board[0].length-1); 
         return cells;
+    }
+    @Override
+    public void addTower(Tower t) {
+        towers.add(t);
+        this.getCell(t.getCell().getX(), t.getCell().getY()).switchIsOccupied();
     }
 }

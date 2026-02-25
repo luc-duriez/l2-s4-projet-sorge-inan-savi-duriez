@@ -79,7 +79,7 @@ public class Game {
         int i=0;
         int time = 0;
         while (i < this.waitingBalloons.size() || !this.activeBalloons.isEmpty()) {
-            System.out.println("---- time: " + time);
+            System.out.println("\n---- time: " + time);
             System.out.println("---- balloons positions");
             if (i < this.waitingBalloons.size()) {
                 Balloon b = this.waitingBalloons.get(i);
