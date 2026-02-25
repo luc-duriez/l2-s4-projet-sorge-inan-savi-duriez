@@ -6,6 +6,7 @@ import java.util.List;
 import btd.boards.Cell;
 import btd.towers.projectiles.*;
 import btd.utils.Balloon;
+import btd.utils.Game;
 
 public class BombTower extends DamageTower {
     
@@ -20,12 +21,13 @@ public class BombTower extends DamageTower {
      */
     private List<Balloon> selectBalloons(List<Balloon> inRangeBalloons){
         List<Balloon> balloonsToHit = new ArrayList<Balloon>();
-        if (inRangeBalloons.isEmpty()){
-            return null;
+        List<Balloon> targets = super.selectBalloon(inRangeBalloons);
+
+        if (targets == null || targets.isEmpty()) {
+        return balloonsToHit; 
         }
-        Balloon max = super.selectBalloon(inRangeBalloons);
         for (Balloon b : inRangeBalloons) { // tri + tard
-            if (b.getDistanceTravelled() == max.getDistanceTravelled()){
+            if (b.getDistanceTravelled() == targets.get(0).getDistanceTravelled()){
                 balloonsToHit.add(b);
             }
         }
@@ -35,14 +37,20 @@ public class BombTower extends DamageTower {
     
     @Override
     public void shoot(List<Balloon> inRange, List<Balloon> touchedBalloons){
-        if (cooldown == attackSpeed){
+        if (cooldown >= attackSpeed){
             List<Balloon> balloons = selectBalloons(inRange);
             for(Balloon b : balloons){
                 b.decreaseHealth(this.getFinalDamage());
+                touchedBalloons.add(b);
+                displayShoot(b);
+                b.displayTouched();
+
             }
-            cooldown = 0;
+            if (!balloons.isEmpty()) {
+                cooldown = 0;
+            }
         }else{
-            cooldown += 100;
+            cooldown += Game.TICK;
         }
     }
 }
