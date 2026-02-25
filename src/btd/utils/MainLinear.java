@@ -53,7 +53,6 @@ public class MainLinear {
         } catch (RuntimeException e) {
             System.out.println(e.getMessage());
         }
-        System.out.println(board.getTowers());
         board.show();
         
         game.playRound(Integer.parseInt(args[2]));
