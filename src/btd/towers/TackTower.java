@@ -19,6 +19,7 @@ public class TackTower extends DamageTower {
             displayShoot(b);
             b.displayTouched();
             touchedBalloons.add(b);
+            displayShoot(b);
         }
         
     }

@@ -35,7 +35,7 @@ public abstract class DamageTower extends Tower{
      * @param inRangeBalloons list of the cells in the range of the tower
      * @return the cell that would be shooted 
      */
-    protected Balloon selectBalloon(List<Balloon> inRangeBalloons){
+    protected List<Balloon> selectBalloon(List<Balloon> inRangeBalloons){
         if (inRangeBalloons.isEmpty()){
             return null;
         }
@@ -45,19 +45,21 @@ public abstract class DamageTower extends Tower{
                 max = b;
             }
         }
-        return max;
+        return List.of(max);
     }
     
     
     @Override
     public void shoot(List<Balloon> inRange, List<Balloon> touchedBalloons){
-        if (cooldown == attackSpeed){
-            Balloon b = selectBalloon(inRange);
-            b.decreaseHealth(this.getFinalDamage());
-            cooldown = 0;
-            displayShoot(b);
-            b.displayTouched();
-            touchedBalloons.add(b);
+        if (cooldown >= attackSpeed){
+            List<Balloon> b = selectBalloon(inRange);
+            if (b != null && !b.isEmpty()) {
+                b.get(0).decreaseHealth(this.getFinalDamage());
+                cooldown = 0;
+                displayShoot(b.get(0));
+                b.get(0).displayTouched();
+                touchedBalloons.add(b.get(0));
+            }
         }else{
             cooldown += Game.TICK;
         }
