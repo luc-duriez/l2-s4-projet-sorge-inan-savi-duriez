@@ -149,6 +149,13 @@ Nous avons créé beaucoup de méthode qui servent à l'affichage.
 En difficulté, nous avons eu beaucoup de mal avec BombTower, TackTower et les Slow/Ice Tower. 
 L'affichage est à retravailler pour plus de lisibilité. 
 
+### Choix de modélisation
+
+On a choisi de faire deux sous classe, DamageTower et UtilityTower pour plus de claireté dans le code.  
+
+### UML Livrable 3
+[UML Livrable 3](https://gitlab-etu.fil.univ-lille.fr/luc.duriez.etu/l-2-s-4-projet-sorge-inan-savi-duriez/-/blob/main/imageUML/Livrable3.png?ref_type=heads)
+
 ## Livrable 4
 
 ### Atteinte des objectifs
