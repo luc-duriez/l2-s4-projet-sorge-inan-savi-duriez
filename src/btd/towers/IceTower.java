@@ -2,7 +2,7 @@ package btd.towers;
 
 import btd.boards.Cell;
 import btd.utils.Balloon;
-import btd.utils.Game;
+
 
 public class IceTower extends SlowTower  {
     
@@ -13,6 +13,6 @@ public class IceTower extends SlowTower  {
 
     @Override
     public void displayShoot(Balloon b){
-        System.out.printf("%s frozen for %dms %n", b, countdown*Game.TICK);
+        System.out.printf("%s frozen for %dms %n", b, this.attackSpeed);
     }
 }
