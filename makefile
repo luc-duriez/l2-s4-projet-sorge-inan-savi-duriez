@@ -6,32 +6,29 @@ CLASSES_DIR = classes
 
 SOURCES = $(shell find $(SRC_DIR) -name "*.java")
 TEST_SOURCES = $(shell find $(TEST_DIR) -name "*.java")
-CLASSES = $(shell find $(TEST_DIR) -name "*.class")
 
-.PHONY: all clean compile
+.PHONY: all docs classes jar tests runtests clean
 
-all: compile
+all: classes
 
-compile: $(SOURCES)
+docs:
+	mkdir -p docs
+	javadoc -sourcepath $(SRC_DIR) -subpackages btd -d docs
+
+classes:
+	mkdir -p $(CLASSES_DIR)
 	$(JC) -d $(CLASSES_DIR) $(SOURCES)
 
-$(CLASSES_DIR):
-	mkdir -p $(CLASSES_DIR)
+jar: classes
+	jar cfe Livrable/Livrable4/livrable4a.jar btd.utils.MainClassic -C $(CLASSES_DIR) .
+	jar cfe Livrable/Livrable4/livrable4b.jar btd.utils.MainLinear -C $(CLASSES_DIR) .
 
-test: compile compileTest execTest
+tests: classes
+	$(JC) -classpath junit-console.jar:$(CLASSES_DIR) $(TEST_SOURCES) -d $(CLASSES_DIR)
 
-compileTest: $(CLASSES_DIR)
-	$(JC) -classpath junit-console.jar:classes $(TEST_SOURCES) -d $(CLASSES_DIR)
-
-execTest: 
-	java -jar junit-console.jar -classpath test:classes -scan-classpath
-
-jarClassic: $(CLASSES)
-	jar cvfe Livrable/Livrable2a.jar btd.utils.MainClassic -C classes .
-jarLinear: $(CLASSES)
-	jar cvfe Livrable/Livrable2b.jar btd.utils.MainLinear -C classes .
-
+runtests: tests
+	java -jar junit-console.jar -classpath $(TEST_DIR):$(CLASSES_DIR) -scan-classpath
 
 
 clean:
-	rm -rf $(CLASSES_DIR)
+	rm -rf $(CLASSES_DIR) docs
