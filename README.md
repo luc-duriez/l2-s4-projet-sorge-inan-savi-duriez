@@ -115,14 +115,39 @@ Pour le LinearBoard, nous avons choisi : si le joueur place une tour sur un chem
 
 Une des difficuté va être de gérer le cas où dans un LinearBoard, si une cellule est un chemin et que on pose une tour et qu'ensuite on vend la tour, on dois replacer son état initial. Il nous faut donc retenir "l'etat de base" de la case. 
 Nous allons également devoir créer la classe abstraite Tower et les enfants.
+
 ### UML Livrable 2
 [UML Livrable 2](https://gitlab-etu.fil.univ-lille.fr/luc.duriez.etu/l-2-s-4-projet-sorge-inan-savi-duriez/-/blob/main/imageUML/Livrable2.png?ref_type=heads)
 
 ## Livrable 3
 
+### Commande du Livrable
+
+#### Compilation
+
+```bash
+make jar
+```
+
+#### Execution
+
+```bash
+java -jar Livrable/Livrable3/Livrable3a.jar  # Pour un Classicboard
+
+java -jar Livrable/Livrable3/Livrable3b.jar   # Pour un LinearBoard
+```
+
 ### Atteinte des objectifs
 
+Nous avons réussi lors de ce livrable à créer l'intégralité des 7 tours. L'ensemble est fonctionnel. 
+On a également créé les enfants DamageTower.java et UtilityTower.java qui hérite de Tower tout deux. UtilityTower va servir au tour utilitaire qui ne réalise pas de dégât au ballon, mais leur applique un effet. Au contraire donc de DamageTower qui lui a un projectile qui a un certain dégât cumulé avec les upgrades (prochain livrable).
+
+Nous avons créé beaucoup de méthode qui servent à l'affichage.
+
 ### Difficultés restant à résoudre
+
+En difficulté, nous avons eu beaucoup de mal avec BombTower, TackTower et les Slow/Ice Tower. 
+L'affichage est à retravailler pour plus de lisibilité. 
 
 ## Livrable 4
 
