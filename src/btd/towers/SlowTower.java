@@ -27,8 +27,8 @@ public class SlowTower extends UtilityTower {
     if (this.cooldown >= this.getFinalRate()) {
         if (!inRange.isEmpty()) {
             for (Balloon b : inRange) {
-                b.setSlowValue(this.slowPower);
-                b.setCountdown(this.countdown);
+                b.applyMovementEffect(this.slowPower, this.countdown);
+
                 touched.add(b);
                 displayShoot(b);
             }

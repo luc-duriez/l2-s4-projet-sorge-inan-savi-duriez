@@ -103,7 +103,13 @@ public class Balloon {
     public int getCountdown(){
         return this.countdown;
     }
-
+    /**
+     * Return the current slow value of the balloon
+     * @return double the current slow value of the balloon
+     */
+    public double getSlowValue() {
+        return this.slowValue;
+    }
     /**
      * Soustract the amount of damages of the balloon
      * 
@@ -138,14 +144,14 @@ public class Balloon {
      * Move the balloon
      */
     public void move() {
+        this.distanceTravelled += (this.speed * this.slowValue);
+        
         if (this.countdown > 0) {
             this.countdown--;
-            
-            if (this.countdown == 0) {
+            if (this.countdown <= 0) {
                 this.slowValue = 1.0;
             }
         }
-        this.distanceTravelled += (this.speed * this.slowValue);
         if (this.getIndexPosition() < this.path.size()) {
             this.currentCell = this.path.get(this.getIndexPosition());
         } else {
@@ -209,18 +215,20 @@ public class Balloon {
     public void displayPopped(){
         System.out.printf("%s popped%n", this);
     }
-
     /**
-     * Set this balloon's slow value to slow plower
+     * Apply a movement effect to the balloon
+     * @param speedDown the speed down appliqued (0 < speedDown <= 1)
+     * @param countdown countdown of the effect in number of moves (countdown > 0)
+     * @throws IllegalArgumentException if speedDown is not between 0 and 1 or if countdown is not greater than 0
      */
-    public void setSlowValue(double slowPower) {
-        this.slowValue = slowPower;
-    }
-
-    /**
-     * Set this balloon's countdown to countdown2
-     */
-    public void setCountdown(int countdown) {
+    public void applyMovementEffect(double speedDown, int countdown)  throws IllegalArgumentException{
+        if (speedDown < 0 || speedDown > 1) {
+            throw new IllegalArgumentException("speedDown must be between 0 and 1");
+        }
+        if (countdown <= 0) {
+            throw new IllegalArgumentException("countdown must be greater than 0");
+        }
+        this.slowValue = 1-speedDown;
         this.countdown = countdown;
     }
 
@@ -230,11 +238,5 @@ public class Balloon {
     public void displayFinished(){
         System.out.printf("%s passed !! -1 Lives%n", this);
     }
-    /**
-     * Return the current slow value of the balloon
-     * @return double the current slow value of the balloon
-     */
-    public double getSlowValue() {
-        return this.slowValue;
-    }
+    
 }
