@@ -5,12 +5,20 @@ public class ExplosiveProjectile extends Projectile {
     /** This Explosive projectile range of explosion */
     private int range;
 
-    /** Creates an explosive projectile */
+    /**
+     * Creates an explosive projectile
+     * @param projectileName name
+     * @param damage damage
+     * @param radius radius
+     */
     public ExplosiveProjectile(String projectileName, int damage, int radius) {
         super(projectileName, damage);
         this.range = radius / 2; // /2 pour toucher que la case actuelle
     }
-    /** Gets the explosion radius */
+    /**
+     * Gets the explosion radius
+     * @return explosion radius
+     */
     public int getExplosionRadius() {
         return range;
     }

@@ -13,7 +13,7 @@ all: classes
 
 docs: classes
 	mkdir -p docs
-	javadoc -sourcepath $(SRC_DIR) -subpackages btd -d docs
+	javadoc -sourcepath src -subpackages btd -d docs -Xdoclint:none -quiet 
 
 classes:
 	mkdir -p $(CLASSES_DIR)

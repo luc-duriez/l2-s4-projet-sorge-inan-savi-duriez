@@ -17,7 +17,7 @@ public abstract class Board {
     /** This Board's list of towers */
     protected List<Tower> towers;
 
-    /* This board's size */
+    /** This board's size */
     public static int sizeBoard;
     /**
      * Build a board of a given size x, y
@@ -25,7 +25,7 @@ public abstract class Board {
      * @param sizey this board's number of columns
      * @param sizex this board's num ber of lines
      */
-    public Board(int sizex, int sizey){
+    public Board(int sizex, int sizey) {
         this.towers = new ArrayList<>();
         this.path = new ArrayList<List<Cell>>();
         this.board = new Cell[sizex][sizey];
@@ -160,7 +160,6 @@ public abstract class Board {
 
     /**
      * Return the Board's path
-     * 
      * @return this Board's path
      */
     public List<List<Cell>> getPath() {
@@ -169,14 +168,16 @@ public abstract class Board {
 
     /**
      * Return this board's list of tower
-     * 
      * @return this board's list of tower
      */
     public List<Tower> getTowers() {
         return towers;
     }
 
-    /** Adds a tower to the board */
+    /**
+     * Adds a tower to the board
+     * @param t the tower to add
+     */
     public void addTower(Tower t) {
         towers.add(t);
     }

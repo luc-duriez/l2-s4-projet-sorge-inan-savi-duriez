@@ -13,7 +13,13 @@ public abstract class UtilityTower extends Tower {
     /** This Tower slow power */
     protected double slowPower;
 
-    /** Creates a utility tower */
+    /**
+     * Creates a utility tower
+     * @param pos position
+     * @param range range
+     * @param attackSpeed attack speed
+     * @param basePrice base price
+     */
     public UtilityTower(Cell pos, double range, int attackSpeed, int basePrice) {
         super(pos, range, attackSpeed, basePrice);
     }

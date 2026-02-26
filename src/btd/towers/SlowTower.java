@@ -10,14 +10,21 @@ import btd.utils.Game;
 /** A slow tower */
 public class SlowTower extends UtilityTower {
 
-    /** Creates a slow tower */
+    /**
+     * Creates a slow tower
+     * @param pos position
+     */
     public SlowTower(Cell pos) {
         super(pos, 100, 1500, 500);
         this.slowPower = 0.5;
         this.countdown = 5;
     }
 
-    /** Protected constructor */
+    /**
+     * Protected constructor
+     * @param pos       position
+     * @param basePrice base price
+     */
     protected SlowTower(Cell pos, int basePrice) {
         super(pos, 100, 1500, basePrice);
         this.slowPower = 0.5;

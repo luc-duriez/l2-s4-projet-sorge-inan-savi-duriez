@@ -15,7 +15,14 @@ public abstract class DamageTower extends Tower {
     /** The projectile for this Tower */
     protected Projectile projectile;
 
-    /** Creates a damage tower */
+    /**
+     * Creates a damage tower
+     * @param pos position
+     * @param range range
+     * @param attackSpeed attack speed
+     * @param projectile projectile
+     * @param basePrice base price
+     */
     public DamageTower(Cell pos, double range, int attackSpeed, Projectile projectile, int basePrice) {
         super(pos, range, attackSpeed, basePrice);
         this.projectile = projectile;
@@ -50,8 +57,7 @@ public abstract class DamageTower extends Tower {
         }
         return List.of(max);
     }
-    
-    
+
     @Override
     public List<Balloon> shoot(List<Balloon> inRange) {
         List<Balloon> touchedBalloons = new ArrayList<Balloon>();
@@ -75,6 +81,7 @@ public abstract class DamageTower extends Tower {
     public void displayShoot(Balloon b) {
         System.out.println(toString() + " shoots " + projectile + " at " + b);
     }
+    
     /**
      * Return the projectile of this Tower
      * @return Projectile the projectile of this Tower

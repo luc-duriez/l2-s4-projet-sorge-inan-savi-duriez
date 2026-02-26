@@ -10,7 +10,11 @@ import btd.towers.Tower;
 /** A classic board with random path generation */
 public class ClassicBoard extends Board {
 
-    /** Creates a classic board */
+    /**
+     * Creates a classic board
+     * @param sizex width
+     * @param sizey height
+     */
     public ClassicBoard(int sizex, int sizey) {
         super(sizex, sizey);
         Cell[] cells = this.randomCell(new ArrayList<>());

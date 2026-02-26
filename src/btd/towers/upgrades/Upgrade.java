@@ -34,6 +34,9 @@ public interface Upgrade {
      */
     public int getDamageIncrease();
 
-    /** Gets the fire rate */
+    /**
+     * Gets the fire rate 
+     * @return fire rate
+     */
     public double getFireRate();
 }

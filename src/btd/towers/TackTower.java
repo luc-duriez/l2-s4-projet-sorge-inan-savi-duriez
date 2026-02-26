@@ -10,7 +10,10 @@ import btd.utils.Balloon;
 /** A tack tower */
 public class TackTower extends DamageTower {
 
-    /** Creates a tack tower */
+    /**
+     * Creates a tack tower
+     * @param pos position
+     */
     public TackTower(Cell pos) {
         super(pos, 100, 1200, new LinearProjectile("tack", 1), 350);
     }
@@ -25,6 +28,6 @@ public class TackTower extends DamageTower {
             b.displayTouched();
         }
         return touchedBalloons;
-        
+
     }
 }

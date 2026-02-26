@@ -28,11 +28,10 @@ public class Balloon {
 
     /**
      * Build a balloon of a given health, speed, path and index
-     * 
      * @param health this balloon's health
-     * @param speed this balloon's speed
-     * @param path this balloon's path
-     * @param index this balloon's index
+     * @param speed  this balloon's speed
+     * @param path   this balloon's path
+     * @param index  this balloon's index
      */
     public Balloon(int health, double speed, List<Cell> path, int index) {
         Random r = new Random();
@@ -75,7 +74,6 @@ public class Balloon {
 
     /**
      * Return the distance travelled of the balloon
-     * 
      * @return int
      */
     public double getDistanceTravelled() {
@@ -135,7 +133,7 @@ public class Balloon {
     }
 
     /**
-     * Verify if the health of the balloon is lower than zero
+     * Verify if the health of the balloon is lower than zero 
      * @return a boolean
      */
     public boolean isDead() {
@@ -190,7 +188,7 @@ public class Balloon {
     }
 
     /**
-     * Returns true if the balloon has finished the path
+     * Returns true if the balloon has finished the path 
      * @return boolean
      */
     public boolean hasFinished() {
@@ -219,8 +217,8 @@ public class Balloon {
     }
     /**
      * Apply a movement effect to the balloon
-     * @param speedDown the speed down appliqued (0 < speedDown <= 1)
-     * @param countdown countdown of the effect in number of moves (countdown > 0)
+     * @param speedDown the speed down appliqued {@code (0 < speedDown <= 1)}
+     * @param countdown countdown of the effect in number of moves {@code (0 < countdown)}
      * @throws IllegalArgumentException if speedDown is not between 0 and 1 or if countdown is not greater than 0
      */
     public void applyMovementEffect(double speedDown, int countdown) throws IllegalArgumentException {
@@ -240,5 +238,4 @@ public class Balloon {
     public void displayFinished() {
         System.out.printf("%s passed !! -1 Lives%n", this);
     }
-    
 }

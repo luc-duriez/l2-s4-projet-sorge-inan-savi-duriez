@@ -11,12 +11,14 @@ import btd.utils.Game;
 /** A bomb tower that deals area damage */
 public class BombTower extends DamageTower {
 
-    /** Creates a bomb tower */
+    /**
+     * Creates a bomb tower
+     * @param pos position
+     */
     public BombTower(Cell pos) {
         super(pos, 150, 1800, new ExplosiveProjectile("Bomb", 2, Cell.SIZE), 600);
         this.projectile = this.getProjectile();
     }
-   
     
     @Override
     public List<Balloon> shoot(List<Balloon> inRange) {
@@ -26,9 +28,9 @@ public class BombTower extends DamageTower {
             List<Balloon> targets = super.selectBalloon(inRange);
             if (targets != null && !targets.isEmpty()) {
                 Balloon mainTarget = targets.get(0);
-                
+
                 if (this.getProjectile() instanceof ExplosiveProjectile) {
-                
+
                     double radius = this.getFinalExplosionRadius();
                     double explosionRangeSq = radius * radius;
                     displayShoot(mainTarget);
@@ -40,8 +42,7 @@ public class BombTower extends DamageTower {
                             b.displayTouched();
                         }
                     }
-                    
-                    
+
                     this.cooldown = 0;
                 }
             }
@@ -57,7 +58,6 @@ public class BombTower extends DamageTower {
     private double getFinalExplosionRadius() {
         return ((ExplosiveProjectile) this.projectile).getExplosionRadius();
     }
-
 
     @Override
     public void displayShoot(Balloon b) {

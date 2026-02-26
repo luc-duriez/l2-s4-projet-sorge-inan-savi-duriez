@@ -7,7 +7,12 @@ import java.util.Random;
 /** A board with linear paths */
 public class LinearBoard extends Board {
 
-    /** Creates a linear board */
+    /**
+     * Creates a linear board
+     * @param sizex width
+     * @param sizey height
+     * @param numberPath number of paths
+     */
     public LinearBoard(int sizex, int sizey, int numberPath) throws IllegalArgumentException {
         super(sizex, sizey);
         if (numberPath >= (sizex + sizey) / 2) {
@@ -27,7 +32,6 @@ public class LinearBoard extends Board {
             }
         }
     }
-
 
     @Override
     public List<Cell> createPath(Cell curr, Cell finale, List<Cell> list) throws IllegalArgumentException {

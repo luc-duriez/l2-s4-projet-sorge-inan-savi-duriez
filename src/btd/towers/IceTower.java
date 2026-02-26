@@ -6,8 +6,11 @@ import btd.utils.Game;
 
 /** An ice tower that freezes balloons */
 public class IceTower extends SlowTower {
-    
-    /** Creates an ice tower */
+
+    /**
+     * Creates an ice tower
+     * @param pos position
+     */
     public IceTower(Cell pos) {
         super(pos, 400);
         this.slowPower = 0.0;

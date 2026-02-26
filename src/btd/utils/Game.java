@@ -13,24 +13,23 @@ import btd.towers.Tower;
 public class Game {
     /** Tick rate */
     public static final int TICK = 100;
-    /* This Game's Player */
+    /** This Game's Player */
     private Player player;
 
-    /* This Game's board */
+    /** This Game's board */
     private Board board;
 
-    /* This Game's numbers of rounds */
+    /** This Game's numbers of rounds */
     public int round;
 
-    /* List of balloons waiting in a specific round */
+    /** List of balloons waiting in a specific round */
     private List<Balloon> waitingBalloons;
 
-    /* List of active balloons in a specific round */
+    /** List of active balloons in a specific round */
     private List<Balloon> activeBalloons;
 
     /**
      * Build a Game with a given board
-     * 
      * @param board this game's board
      */
     public Game(Board board) {
@@ -56,8 +55,8 @@ public class Game {
     }
 
     /**
-     * This function updates the waiting balloons. 
-     * @param round : int
+     * This function updates the waiting balloons.
+     * @param nbBalloons the number of balloons to update
      */
     private void actualizeBalloons(int nbBalloons) {
         this.waitingBalloons = new ArrayList<Balloon>();
