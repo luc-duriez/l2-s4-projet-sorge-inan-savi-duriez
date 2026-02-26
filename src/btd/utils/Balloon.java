@@ -111,6 +111,9 @@ public class Balloon {
      */
     public void decreaseHealth(int damage) {
         this.health -= damage;
+        if (this.health < 0) {
+            this.health = 0;
+        }
     }
 
     /**
@@ -135,17 +138,20 @@ public class Balloon {
      * Move the balloon
      */
     public void move() {
-        if (countdown == 0){
-           this.distanceTravelled += this.slowValue * this.speed; 
-        }else{
-            countdown--;
+        if (this.countdown > 0) {
+            this.countdown--;
+            
+            if (this.countdown == 0) {
+                this.slowValue = 1.0;
+            }
         }
+        this.distanceTravelled += (this.speed * this.slowValue);
         if (this.getIndexPosition() < this.path.size()) {
             this.currentCell = this.path.get(this.getIndexPosition());
         } else {
             this.currentCell = this.path.get(this.path.size() - 1); // Si on est sur l'avant derniere case et que l'on avance de plus d'une case
         }
-}
+    }
 
     /**
      * Returns the index of this Balloon in the path
@@ -172,7 +178,7 @@ public class Balloon {
      * Return a String representation of this Balloon with numbering
      */
     public String toString(){
-        return "Balloon " + this.index + " at " + this.currentCell + " hp : " + this.health;
+        return "Balloon " + this.index + " at " + this.currentCell;
     }
 
     /**
@@ -187,14 +193,14 @@ public class Balloon {
      * Display the Balloon at spawn
      */
     public void displaySpawn(){
-        System.out.printf("Balloon Incoming !!!  %s speed: %.1f%n", this, getSpeed());
+        System.out.printf("Balloon Incoming !!! %s speed: %.1f%n", this, getSpeed());
     }
 
     /**
      * Display the Balloon when touched
      */
     public void displayTouched(){
-        System.out.printf( "%s touched %n", this);
+        System.out.printf( "%s touched (health: %d)%n", this, getHealth());
     }
 
     /**
@@ -214,14 +220,21 @@ public class Balloon {
     /**
      * Set this balloon's countdown to countdown2
      */
-    public void setCountdown(int countdown2) {
-        this.countdown = countdown2;
+    public void setCountdown(int countdown) {
+        this.countdown = countdown;
     }
 
     /**
      * Display the Balloon when the balloon finish his path.
      */
     public void displayFinished(){
-        System.out.printf("%s passed !! -%d Lives\n", this, getHealth());
+        System.out.printf("%s passed !! -1 Lives%n", this);
+    }
+    /**
+     * Return the current slow value of the balloon
+     * @return double the current slow value of the balloon
+     */
+    public double getSlowValue() {
+        return this.slowValue;
     }
 }
