@@ -60,7 +60,6 @@ public class Game {
         this.waitingBalloons = new ArrayList<Balloon>();
         double speed = 25;
         int health = 1 + (this.round / 5);
-
         Random r = new Random();
         
         for (int i = 0; i < nbBalloons; i++) {
@@ -78,17 +77,16 @@ public class Game {
         this.actualizeBalloons(nbBalloons);
         int i=0;
         int time = 0;
-        while (i < this.waitingBalloons.size() || !this.activeBalloons.isEmpty()) {
+        while (i < this.waitingBalloons.size() || !this.activeBalloons.isEmpty()) { // Mouvement des ballons 
             System.out.println("\n---- time: " + time);
-            System.out.println("---- balloons positions");
+            Balloon newBalloon = null;
             if (i < this.waitingBalloons.size()) {
+                newBalloon = this.waitingBalloons.get(i);
                 Balloon b = this.waitingBalloons.get(i);
                 this.activeBalloons.add(b);
                 i++;
-                b.displaySpawn();
             }
-            displayActiveBalloons();
-            for (int j = 0; j < this.activeBalloons.size(); j++){
+            for (int j = 0; j < this.activeBalloons.size(); j++){ // Verification si ballons ont fini parcours
                 Balloon b = this.activeBalloons.get(j);
                 if (b.hasFinished()){
                     b.displayFinished();
@@ -96,10 +94,17 @@ public class Game {
                     this.player.removeLife(b.getHealth());
                     j--;
                 }
-                b.move();
+                else{
+                    b.move();
+                }
             }
+            System.out.println("---- balloons positions");
+            if (newBalloon != null) {
+            newBalloon.displaySpawn(); 
+            }
+            this.displayActiveBalloons();
             System.out.println("---- towers shots");
-            towerShoot();
+            towerShoot(); 
             time += Game.TICK;
         }
         this.round++;
@@ -113,7 +118,13 @@ public class Game {
      */
     public void displayActiveBalloons(){
         for (Balloon b: this.activeBalloons){
-            System.out.println(b);
+            String status = "";
+            if (b.getCountdown() > 0) {
+                status = " [FREEZE]";
+            } else if (b.getSlowValue() < 1.0) {
+                status = " [SLOW]";
+        }
+            System.out.println(b +  " (health: " + b.getHealth() + ")" + status);
         }
     }
 
@@ -123,9 +134,9 @@ public class Game {
      * @param c2 The second Cell
      * @return double
      */
-    public double distanceSquaredOf(Cell c1,Cell c2){
-        int dx= c2.getX()-c1.getX();
-        int dy= c2.getY()-c1.getY();
+    public static double distanceSquaredOf(Cell c1,Cell c2){
+        int dx= (c2.getX()-c1.getX())* Cell.SIZE;
+        int dy= (c2.getY()-c1.getY())* Cell.SIZE;
         return dx * dx + dy * dy;
     }
 
@@ -134,8 +145,7 @@ public class Game {
      */
     private void towerShoot(){
         for (Tower t: board.getTowers()){
-            List<Balloon> touchedBallon = new ArrayList<>();
-            t.shoot(t.getBalloonsInRange(activeBalloons), touchedBallon);
+            List<Balloon> touchedBallon = t.shoot(t.getBalloonsInRange(activeBalloons));
             for (Balloon b : touchedBallon){
                 if (b.getHealth() <= 0){
                     activeBalloons.remove(b);
