@@ -12,19 +12,19 @@ import java.util.ArrayList;
  * Abstract base class for all towers in the game.
  */
 public abstract class Tower{
-    /* The position of this Tower */
+    /** The position of this Tower */
     protected Cell pos;
-    /* The range of this Tower */
+    /** The range of this Tower */
     protected double range;
-    /* The attack speed of this Tower */
+    /** The attack speed of this Tower */
     protected int attackSpeed;
-    /* The remaining upgrades for this Tower */
+    /** The remaining upgrades for this Tower */
     protected List<Upgrade> remainingUpgrades;
-    /* The applied upgrades on this Tower */
+    /** The applied upgrades on this Tower */
     protected List<Upgrade> appliedUpgrades;
-    /* The base price of this upgrade */
+    /** The base price of this tower */
     protected int basePrice;
-    /* This Tower's shoot cooldown */
+    /** The cooldown timer for this tower's attacks */
     protected int cooldown;
 
     /**
@@ -55,7 +55,7 @@ public abstract class Tower{
         }
         return totalCost;
     }
-    
+
     /**
      * Return the final range after the upgrades
      * @return the final range after the upgrades
@@ -88,14 +88,13 @@ public abstract class Tower{
      */
     public abstract List<Balloon> shoot(List<Balloon> balloonsInRange);
 
-
     /**
      * Sells this Tower and return the money from selling it
      * @return the money from selling this Tower
      */
     public int sell(){
         int totalPrice = this.basePrice;
-        for(Upgrade u: this.appliedUpgrades){
+        for (Upgrade u : this.appliedUpgrades){
             totalPrice += u.getCost();
         }
         return totalPrice;
@@ -112,7 +111,7 @@ public abstract class Tower{
             return new ArrayList<>(activeBalloons);
         }
         double rangeCarre = this.range * this.range;
-        for(Balloon b : activeBalloons){
+        for (Balloon b : activeBalloons){
             double distance = Game.distanceSquaredOf(this.pos, b.getCurrentCell());
             if (distance <= rangeCarre) {
                 inRangeList.add(b);
@@ -129,15 +128,15 @@ public abstract class Tower{
      */
     public boolean upgrade(Upgrade u, Player p){
         boolean upgradable = true;
-        if(u.getCost() > p.getCredits()){
+        if (u.getCost() > p.getCredits()){
             upgradable = false;
         }
-        for (Upgrade u2: this.appliedUpgrades){
+        for (Upgrade u2 : this.appliedUpgrades){
             if (u2.equals(u)){
                 upgradable = false;
             }
         }
-        if(upgradable){
+        if (upgradable){
             this.appliedUpgrades.add(u);
             return upgradable;
         }
@@ -153,10 +152,11 @@ public abstract class Tower{
         this.appliedUpgrades.remove(this.appliedUpgrades.size() - 1);
     }
 
-     /* Return a representation of Tower
+    /**
+     * Return a representation of Tower
      */
     public String toString(){
-        return  getClass().getSimpleName() + " at (" + pos.getX() + ", " + pos.getY() +")";
+        return getClass().getSimpleName() + " at (" + pos.getX() + ", " + pos.getY() + ")";
     }
 
     /**
@@ -166,8 +166,19 @@ public abstract class Tower{
      */
     public abstract void displayShoot(Balloon b);
 
+    /**
+     * Select balloons to shoot from those in range
+     * 
+     * @param inRangeBalloons the balloons in range
+     * @return the balloons selected as targets
+     */
     protected abstract List<Balloon> selectBalloon(List<Balloon> inRangeBalloons);
 
+    /**
+     * Get the cell where this tower is located
+     * 
+     * @return the cell of this tower
+     */
     public Cell getCell(){
         return this.pos;
     }
