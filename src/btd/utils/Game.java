@@ -7,6 +7,9 @@ import java.util.Random;
 import btd.boards.*;
 import btd.towers.Tower;
 
+/**
+ * Manages the game logic including rounds, balloons and towers.
+ */
 public class Game {
     public static final int TICK = 100;
     /* This Game's Player */
@@ -71,6 +74,7 @@ public class Game {
     
     /**
      * Play a round
+     * @param nbBalloons the number of balloons to spawn in this round
      */
     public void playRound(int nbBalloons){
         System.out.println("=== Round " + this.round + " ===");

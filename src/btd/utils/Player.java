@@ -1,5 +1,8 @@
 package btd.utils;
 
+/**
+ * Represents a player during the game.
+ */
 public class Player {
     /* Remains credits of player */
     private int credits;

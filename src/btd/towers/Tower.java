@@ -8,6 +8,9 @@ import btd.utils.Player;
 import java.util.List;
 import java.util.ArrayList;
 
+/**
+ * Abstract base class for all towers in the game.
+ */
 public abstract class Tower{
     /* The position of this Tower */
     protected Cell pos;
@@ -29,7 +32,6 @@ public abstract class Tower{
      * @param pos The position of this Tower
      * @param range The range of this Tower
      * @param attackSpeed The attack speed of this Tower
-     * @param projectile The projectile of this Tower
      * @param basePrice THe base price of this Tower
      */
     public Tower(Cell pos, double range, int attackSpeed, int basePrice){
@@ -82,7 +84,7 @@ public abstract class Tower{
     /**
      * Shoots the balloon
      * @param balloonsInRange The balloon to shoot
-     * @param touchedBalloons The list of touched balloons
+     * @return The list of touched balloons
      */
     public abstract List<Balloon> shoot(List<Balloon> balloonsInRange);
 

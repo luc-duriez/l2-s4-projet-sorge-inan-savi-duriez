@@ -2,6 +2,9 @@ package btd.boards;
 
 import java.util.Stack;
 
+/**
+ * Represents a cell on the game board at a specific position.
+ */
 public class Cell {
     /* The size of a cell */
     public static final int SIZE = 100; 

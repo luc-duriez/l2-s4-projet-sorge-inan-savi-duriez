@@ -11,7 +11,7 @@ TEST_SOURCES = $(shell find $(TEST_DIR) -name "*.java")
 
 all: classes
 
-docs:
+docs: classes
 	mkdir -p docs
 	javadoc -sourcepath $(SRC_DIR) -subpackages btd -d docs
 

@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.ArrayList;
 import btd.towers.*;
 
-/*
+/**
 * Create a abstract class Board
 */
 public abstract class Board {

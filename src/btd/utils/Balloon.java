@@ -4,6 +4,9 @@ import btd.boards.Cell;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Represents a balloon that travels along a path on the game board.
+ */
 public class Balloon {
 
     // The index of the balloon used in specifical round
@@ -113,7 +116,7 @@ public class Balloon {
     /**
      * Soustract the amount of damages of the balloon
      * 
-     * @param damage
+     * @param damage the amount of damage to subtract
      */
     public void decreaseHealth(int damage) {
         this.health -= damage;
@@ -124,7 +127,7 @@ public class Balloon {
 
     /**
      * Soustract a amount of speed to the balloon 
-     * @param speed the amount of speed decreased
+     * @param changespeed the amount of speed decreased
      * 
      */
     public void changeSpeed(double changespeed) {
