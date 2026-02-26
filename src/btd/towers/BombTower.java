@@ -8,16 +8,18 @@ import btd.towers.projectiles.*;
 import btd.utils.Balloon;
 import btd.utils.Game;
 
+/** A bomb tower that deals area damage */
 public class BombTower extends DamageTower {
-    
-    public BombTower(Cell pos){
-        super(pos, 150, 1800, new ExplosiveProjectile("Bomb", 2,Cell.SIZE), 600);
+
+    /** Creates a bomb tower */
+    public BombTower(Cell pos) {
+        super(pos, 150, 1800, new ExplosiveProjectile("Bomb", 2, Cell.SIZE), 600);
         this.projectile = this.getProjectile();
     }
    
     
     @Override
-    public List<Balloon> shoot(List<Balloon> inRange){
+    public List<Balloon> shoot(List<Balloon> inRange) {
         List<Balloon> touchedBalloons = new ArrayList<>();
 
         if (this.cooldown >= this.getFinalRate()) {
@@ -31,7 +33,8 @@ public class BombTower extends DamageTower {
                     double explosionRangeSq = radius * radius;
                     displayShoot(mainTarget);
                     for (Balloon b : inRange) {
-                        if (Game.distanceSquaredOf(mainTarget.getCurrentCell(), b.getCurrentCell()) <= explosionRangeSq) {
+                        if (Game.distanceSquaredOf(mainTarget.getCurrentCell(),
+                                b.getCurrentCell()) <= explosionRangeSq) {
                             b.decreaseHealth(this.getFinalDamage());
                             touchedBalloons.add(b);
                             b.displayTouched();
@@ -57,7 +60,7 @@ public class BombTower extends DamageTower {
 
 
     @Override
-    public void displayShoot(Balloon b){
-        System.out.println(toString() + " fires a " + projectile + " at " + b );
+    public void displayShoot(Balloon b) {
+        System.out.println(toString() + " fires a " + projectile + " at " + b);
     }
 }

@@ -33,7 +33,7 @@ public class Balloon {
      * @param speed this balloon's speed
      * @param path this balloon's path
      * @param index this balloon's index
-    */ 
+     */
     public Balloon(int health, double speed, List<Cell> path, int index) {
         Random r = new Random();
         this.health = health;
@@ -64,7 +64,7 @@ public class Balloon {
         return this.speed;
     }
 
-     /**
+    /**
      * Return the index of the balloon
      * 
      * @return int
@@ -86,7 +86,7 @@ public class Balloon {
      * Return the path of this Balloon
      * @return the path of this Balloon
      */
-    public List<Cell> getPath(){
+    public List<Cell> getPath() {
         return this.path;
     }
 
@@ -94,18 +94,18 @@ public class Balloon {
      * Return the current cell of this Balloon
      * @return the current cell of this Balloon
      */
-    public Cell getCurrentCell(){
+    public Cell getCurrentCell() {
         return this.currentCell;
     }
 
     /**
      * Return the current countdown of the Balloon
-     * 
      * @return the current countdown of the Balloon
      */
-    public int getCountdown(){
+    public int getCountdown() {
         return this.countdown;
     }
+
     /**
      * Return the current slow value of the balloon
      * @return double the current slow value of the balloon
@@ -113,9 +113,9 @@ public class Balloon {
     public double getSlowValue() {
         return this.slowValue;
     }
+
     /**
      * Soustract the amount of damages of the balloon
-     * 
      * @param damage the amount of damage to subtract
      */
     public void decreaseHealth(int damage) {
@@ -126,7 +126,7 @@ public class Balloon {
     }
 
     /**
-     * Soustract a amount of speed to the balloon 
+     * Soustract a amount of speed to the balloon
      * @param changespeed the amount of speed decreased
      * 
      */
@@ -136,7 +136,6 @@ public class Balloon {
 
     /**
      * Verify if the health of the balloon is lower than zero
-     * 
      * @return a boolean
      */
     public boolean isDead() {
@@ -148,7 +147,7 @@ public class Balloon {
      */
     public void move() {
         this.distanceTravelled += (this.speed * this.slowValue);
-        
+
         if (this.countdown > 0) {
             this.countdown--;
             if (this.countdown <= 0) {
@@ -166,7 +165,7 @@ public class Balloon {
      * Returns the index of this Balloon in the path
      * @return the index of this Balloon in the path
      */
-    public int getIndexPosition(){
+    public int getIndexPosition() {
         return (int) (this.distanceTravelled / Cell.SIZE);
     }
 
@@ -175,8 +174,8 @@ public class Balloon {
      * @param o The object to compare this Balloon with
      * @return true if the object is equal to this Balloon
      */
-    public boolean equals(Object o){
-        if(!(o instanceof Balloon)){
+    public boolean equals(Object o) {
+        if (!(o instanceof Balloon)) {
             return false;
         }
         Balloon b = (Balloon) o;
@@ -186,7 +185,7 @@ public class Balloon {
     /**
      * Return a String representation of this Balloon with numbering
      */
-    public String toString(){
+    public String toString() {
         return "Balloon " + this.index + " at " + this.currentCell;
     }
 
@@ -194,28 +193,28 @@ public class Balloon {
      * Returns true if the balloon has finished the path
      * @return boolean
      */
-    public boolean hasFinished(){
+    public boolean hasFinished() {
         return this.distanceTravelled >= (this.path.size() * Cell.SIZE);
     }
 
     /**
      * Display the Balloon at spawn
      */
-    public void displaySpawn(){
+    public void displaySpawn() {
         System.out.printf("Balloon Incoming !!! %s speed: %.1f%n", this, getSpeed());
     }
 
     /**
      * Display the Balloon when touched
      */
-    public void displayTouched(){
-        System.out.printf( "%s touched (health: %d)%n", this, getHealth());
+    public void displayTouched() {
+        System.out.printf("%s touched (health: %d)%n", this, getHealth());
     }
 
     /**
      * Display the Balloon when popped
      */
-    public void displayPopped(){
+    public void displayPopped() {
         System.out.printf("%s popped%n", this);
     }
     /**
@@ -224,21 +223,21 @@ public class Balloon {
      * @param countdown countdown of the effect in number of moves (countdown > 0)
      * @throws IllegalArgumentException if speedDown is not between 0 and 1 or if countdown is not greater than 0
      */
-    public void applyMovementEffect(double speedDown, int countdown)  throws IllegalArgumentException{
+    public void applyMovementEffect(double speedDown, int countdown) throws IllegalArgumentException {
         if (speedDown < 0 || speedDown > 1) {
             throw new IllegalArgumentException("speedDown must be between 0 and 1");
         }
         if (countdown <= 0) {
             throw new IllegalArgumentException("countdown must be greater than 0");
         }
-        this.slowValue = 1-speedDown;
+        this.slowValue = 1 - speedDown;
         this.countdown = countdown;
     }
 
     /**
      * Display the Balloon when the balloon finish his path.
      */
-    public void displayFinished(){
+    public void displayFinished() {
         System.out.printf("%s passed !! -1 Lives%n", this);
     }
     

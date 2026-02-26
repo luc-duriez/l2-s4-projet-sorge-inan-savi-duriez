@@ -2,6 +2,7 @@ package btd.towers.upgrades;
 
 import btd.towers.Tower;
 
+/** Interface for upgrades */
 public interface Upgrade {
     /**
      * Apply the upgrade to the tower
@@ -33,5 +34,6 @@ public interface Upgrade {
      */
     public int getDamageIncrease();
 
+    /** Gets the fire rate */
     public double getFireRate();
 }

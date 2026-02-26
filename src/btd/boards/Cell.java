@@ -6,7 +6,8 @@ import java.util.Stack;
  * Represents a cell on the game board at a specific position.
  */
 public class Cell {
-    /* The size of a cell */
+
+    /** The size of a cell */
     public static final int SIZE = 100; 
     private int x;
     private int y;
@@ -18,11 +19,11 @@ public class Cell {
      * @param x the abscisse
      * @param y the ordonne
      */
-    public Cell(int x,int y){
-        this.x=x;
-        this.y=y;
-        this.isOccupied=false;
-        this.state= new Stack<>();
+    public Cell(int x, int y) {
+        this.x = x;
+        this.y = y;
+        this.isOccupied = false;
+        this.state = new Stack<>();
         this.state.push(StateCell.EMPTY);
     }
 
@@ -30,22 +31,22 @@ public class Cell {
      * This function return true if cell is occupied, false otherwise
      * @return boolean
      */
-    public boolean isOccupied(){
+    public boolean isOccupied() {
         return this.isOccupied;
     }
 
     /**
      * This function switch the isOccupied value
      */
-    public void switchIsOccupied(){
-        this.isOccupied=!this.isOccupied;
+    public void switchIsOccupied() {
+        this.isOccupied = !this.isOccupied;
     }
 
     /**
      * Return the position x
-     * @return int x 
+     * @return int x
      */
-    public int getX(){
+    public int getX() {
         return this.x;
     }
 
@@ -53,7 +54,7 @@ public class Cell {
      * Return the position y
      * @return int y
      */
-    public int getY(){
+    public int getY() {
         return this.y;
     }
 
@@ -61,8 +62,8 @@ public class Cell {
      * Return true if the object is a Cell
      * @return boolean
      */
-    public boolean equals(Object o){
-        if(!(o instanceof Cell)){
+    public boolean equals(Object o) {
+        if (!(o instanceof Cell)) {
             return false;
         }
         Cell c = (Cell) o;
@@ -72,7 +73,7 @@ public class Cell {
     /**
      * Return a String representation of this Cell
      */
-    public String toString(){
+    public String toString() {
         return "(" + this.x + ", " + this.y + ")";
     }
 
@@ -81,26 +82,25 @@ public class Cell {
      * 
      * @param newState this cell's new state
      */
-    public void setState(StateCell newState){
+    public void setState(StateCell newState) {
         this.state.push(newState);
     }
 
     /**
      * Remove the first state of this state.
      */
-    public void popState(){
-        if (this.state.size() ==1){
-            throw new IllegalStateException("La cellule "+ this.toString()+" ne peut pas être dépilé (1 élément minimum)");
+    public void popState() {
+        if (this.state.size() == 1) {
+            throw new IllegalStateException("La cellule " + this.toString() + " ne peut pas être dépilé (1 élément minimum)");
         }
         this.state.pop();
     }
 
     /**
      * Return this cell's state
-     * 
      * @return this cell's state
      */
-    public StateCell getState(){
+    public StateCell getState() {
         return this.state.peek();
     }
 }

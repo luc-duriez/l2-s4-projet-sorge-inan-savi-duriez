@@ -9,12 +9,14 @@ import btd.towers.upgrades.Upgrade;
 import btd.utils.Balloon;
 import btd.utils.Game;
 
-public abstract class DamageTower extends Tower{
-    
-    /* The projectile for this Tower */
+/** Abstract tower that deals damage */
+public abstract class DamageTower extends Tower {
+
+    /** The projectile for this Tower */
     protected Projectile projectile;
 
-    public DamageTower(Cell pos, double range, int attackSpeed, Projectile projectile, int basePrice){
+    /** Creates a damage tower */
+    public DamageTower(Cell pos, double range, int attackSpeed, Projectile projectile, int basePrice) {
         super(pos, range, attackSpeed, basePrice);
         this.projectile = projectile;
     }
@@ -23,9 +25,9 @@ public abstract class DamageTower extends Tower{
      * Return the total amount of damage for this Tower
      * @return the total amount of damage for this Tower
      */
-    public int getFinalDamage(){
+    public int getFinalDamage() {
         int finalDmg = this.projectile.getDamage();
-        for (Upgrade u : appliedUpgrades){
+        for (Upgrade u : appliedUpgrades) {
             finalDmg += u.getDamageIncrease();
         }
         return finalDmg;
@@ -34,15 +36,15 @@ public abstract class DamageTower extends Tower{
     /**
      * Return the cell with the highest travelled distance
      * @param inRangeBalloons list of the cells in the range of the tower
-     * @return the cell that would be shooted 
+     * @return the cell that would be shooted
      */
-    protected List<Balloon> selectBalloon(List<Balloon> inRangeBalloons){
-        if (inRangeBalloons.isEmpty()){
+    protected List<Balloon> selectBalloon(List<Balloon> inRangeBalloons) {
+        if (inRangeBalloons.isEmpty()) {
             return null;
         }
         Balloon max = inRangeBalloons.get(0);
         for (Balloon b : inRangeBalloons) { // tri + tard
-            if (b.getDistanceTravelled() > max.getDistanceTravelled()){
+            if (b.getDistanceTravelled() > max.getDistanceTravelled()) {
                 max = b;
             }
         }
@@ -51,9 +53,9 @@ public abstract class DamageTower extends Tower{
     
     
     @Override
-    public List<Balloon> shoot(List<Balloon> inRange){
+    public List<Balloon> shoot(List<Balloon> inRange) {
         List<Balloon> touchedBalloons = new ArrayList<Balloon>();
-        if (cooldown >= attackSpeed){
+        if (cooldown >= attackSpeed) {
             List<Balloon> b = selectBalloon(inRange);
             if (b != null && !b.isEmpty()) {
                 Balloon cible = b.get(0);
@@ -63,15 +65,15 @@ public abstract class DamageTower extends Tower{
                 touchedBalloons.add(cible);
                 cooldown = 0;
             }
-        }else{
+        } else {
             cooldown += Game.TICK;
         }
         return touchedBalloons;
     }
 
     @Override
-    public void displayShoot(Balloon b){
-        System.out.println(toString() + " shoots " + projectile + " at " + b );
+    public void displayShoot(Balloon b) {
+        System.out.println(toString() + " shoots " + projectile + " at " + b);
     }
     /**
      * Return the projectile of this Tower
@@ -79,4 +81,5 @@ public abstract class DamageTower extends Tower{
      */
     public Projectile getProjectile() {
         return projectile;
-}   }
+    }
+}

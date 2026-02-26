@@ -4,19 +4,20 @@ import java.util.ArrayList;
 import btd.towers.*;
 
 /**
-* Create a abstract class Board
-*/
+ * Create a abstract class Board
+ */
 public abstract class Board {
 
-    /*This Board list of lists of Cells */
+    /** This Board list of lists of Cells */
     protected Cell[][] board;
 
-    /*This Board path for ballons */
+    /** This Board's path(s) for balloons */
     protected List<List<Cell>> path;
 
+    /** This Board's list of towers */
     protected List<Tower> towers;
 
-    /*This board's size */
+    /* This board's size */
     public static int sizeBoard;
     /**
      * Build a board of a given size x, y
@@ -26,10 +27,10 @@ public abstract class Board {
      */
     public Board(int sizex, int sizey){
         this.towers = new ArrayList<>();
-        this.path= new ArrayList<List<Cell>>();
+        this.path = new ArrayList<List<Cell>>();
         this.board = new Cell[sizex][sizey];
-        for(int x = 0; x < sizex; x++){
-            for(int y = 0; y < sizey; y++){
+        for (int x = 0; x < sizex; x++) {
+            for (int y = 0; y < sizey; y++) {
                 Cell c = new Cell(x, y);
                 this.board[x][y] = c;
             }
@@ -45,7 +46,7 @@ public abstract class Board {
      * @param y this Cell's column
      * @return the Cell at the given position of this Board's grid
      */
-    public Cell getCell(int x, int y){
+    public Cell getCell(int x, int y) {
         return this.board[x][y];
     }
 
@@ -57,30 +58,31 @@ public abstract class Board {
      * @param y this Cell's line
      * @return true if the cell at position (x,y) can be used to place a tower.
      */
-    public boolean isPlaceable(int x, int y){
+    public boolean isPlaceable(int x, int y) {
         return !(this.getCell(x, y).isOccupied());
     }
-    
+
     /**
-     *  Returns the neighbors of a gives cell
+     * Returns the neighbors of a gives cell
+     * 
      * @param c The cell to get its neighbors
      * @return The neighbors of the cell
      */
-    protected List<Cell> getNeighbours(Cell c){
+    protected List<Cell> getNeighbours(Cell c) {
         List<Cell> neighbors = new ArrayList<>();
         int x = c.getX();
         int y = c.getY();
-        if(x >= 1){
-            neighbors.add(this.getCell(x-1, y));
+        if (x >= 1) {
+            neighbors.add(this.getCell(x - 1, y));
         }
-        if(x <= this.board.length-2){
-            neighbors.add(this.getCell(x+1, y));
+        if (x <= this.board.length - 2) {
+            neighbors.add(this.getCell(x + 1, y));
         }
-        if(y >= 1){
-            neighbors.add(this.getCell(x, y-1));
+        if (y >= 1) {
+            neighbors.add(this.getCell(x, y - 1));
         }
-        if(y <= this.board[0].length-2){
-            neighbors.add(this.getCell(x, y+1));
+        if (y <= this.board[0].length - 2) {
+            neighbors.add(this.getCell(x, y + 1));
         }
         return neighbors;
     }
@@ -89,12 +91,10 @@ public abstract class Board {
      */
     public void show() {
 
-        String strLineSeparator="   +";
+        String strLineSeparator = "   +";
         for (int c = 0; c < this.board[0].length; c++) {
-            strLineSeparator+="-----+";
+            strLineSeparator += "-----+";
         }
-
-
 
         System.out.print("    "); // Numero en haut
         for (int i = 0; i < this.board[0].length; i++) {
@@ -105,12 +105,12 @@ public abstract class Board {
             }
         }
         System.out.println();
-        
+
         System.out.println(strLineSeparator);
 
-        for (int j = 0; j < this.board.length; j++) { // Toutes les lignes 
+        for (int j = 0; j < this.board.length; j++) { // Toutes les lignes
             if (j < 10) {
-                System.out.print(j + "  |"); 
+                System.out.print(j + "  |");
             } else {
                 System.out.print(j + " |");
             }
@@ -122,9 +122,6 @@ public abstract class Board {
 
             System.out.println(strLineSeparator);
         }
-
-        
-        
     }
 
     /**
@@ -141,10 +138,10 @@ public abstract class Board {
     /**
      * This function return 2 random Cell in array
      * @param cellAlreadyUsed contains all the cells already used
-     *  @return Cell[] 
+     * @return Cell[]
      */
     public abstract Cell[] randomCell(List<Cell> cellAlreadyUsed);
-    
+
     /**
      * Count the number of neighbors of a cell that are in a given list
      * @param c the cell we want to know the neighbours
@@ -166,7 +163,7 @@ public abstract class Board {
      * 
      * @return this Board's path
      */
-    public List<List<Cell>> getPath(){
+    public List<List<Cell>> getPath() {
         return this.path;
     }
 
@@ -175,10 +172,11 @@ public abstract class Board {
      * 
      * @return this board's list of tower
      */
-    public List<Tower> getTowers(){
+    public List<Tower> getTowers() {
         return towers;
     }
 
+    /** Adds a tower to the board */
     public void addTower(Tower t) {
         towers.add(t);
     }
