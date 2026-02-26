@@ -3,7 +3,7 @@ package btd.towers;
 import java.util.List;
 import btd.boards.Cell;
 import btd.utils.Balloon;
-import btd.utils.Game;
+
 
 public abstract class UtilityTower extends Tower{
 
@@ -18,18 +18,7 @@ public abstract class UtilityTower extends Tower{
     }
 
     @Override
-    public void shoot(List<Balloon> balloonsInRange, List<Balloon> touchedBalloons){
-        for (Balloon b : balloonsInRange){
-            if (cooldown == attackSpeed){
-                if (b.getCountdown() == 0)
-                    System.out.printf("%s shoots %s%n", this, b);
-                    b.setSlowValue(slowPower);
-                    b.setCountdown(countdown);
-                cooldown = 0;
-                displayShoot(b);
-            }else{
-                cooldown += Game.TICK;
-            }
-        }
+    protected List<Balloon> selectBalloon(List<Balloon> inRangeBalloons){
+        return inRangeBalloons;
     }
 }
