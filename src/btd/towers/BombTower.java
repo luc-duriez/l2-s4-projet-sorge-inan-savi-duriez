@@ -11,46 +11,53 @@ import btd.utils.Game;
 public class BombTower extends DamageTower {
     
     public BombTower(Cell pos){
-        super(pos, 150, 1800, new ExplosiveProjectile("Bomb", 2), 600);
+        super(pos, 150, 1800, new ExplosiveProjectile("Bomb", 2,Cell.SIZE), 600);
+        this.projectile = this.getProjectile();
     }
-
-    /**
-     * Return the cells that the BombTower should shoot
-     * @param inRangeBalloons list of the cells in the range of the tower
-     * @return the cell that would be shooted 
-     */
-    private List<Balloon> selectBalloons(List<Balloon> inRangeBalloons){
-        List<Balloon> balloonsToHit = new ArrayList<Balloon>();
-        List<Balloon> targets = super.selectBalloon(inRangeBalloons);
-
-        if (targets == null || targets.isEmpty()) {
-        return balloonsToHit; 
-        }
-        for (Balloon b : inRangeBalloons) { // tri + tard
-            if (b.getDistanceTravelled() == targets.get(0).getDistanceTravelled()){
-                balloonsToHit.add(b);
-            }
-        }
-        return balloonsToHit;
-    }
-    
+   
     
     @Override
-    public void shoot(List<Balloon> inRange, List<Balloon> touchedBalloons){
-        if (cooldown >= attackSpeed){
-            List<Balloon> balloons = selectBalloons(inRange);
-            for(Balloon b : balloons){
-                b.decreaseHealth(this.getFinalDamage());
-                touchedBalloons.add(b);
-                displayShoot(b);
-                b.displayTouched();
+    public List<Balloon> shoot(List<Balloon> inRange){
+        List<Balloon> touchedBalloons = new ArrayList<>();
 
+        if (this.cooldown >= this.getFinalRate()) {
+            List<Balloon> targets = super.selectBalloon(inRange);
+            if (targets != null && !targets.isEmpty()) {
+                Balloon mainTarget = targets.get(0);
+                
+                if (this.getProjectile() instanceof ExplosiveProjectile) {
+                
+                    double radius = this.getFinalExplosionRadius();
+                    double explosionRangeSq = radius * radius;
+                    displayShoot(mainTarget);
+                    for (Balloon b : inRange) {
+                        if (Game.distanceSquaredOf(mainTarget.getCurrentCell(), b.getCurrentCell()) <= explosionRangeSq) {
+                            b.decreaseHealth(this.getFinalDamage());
+                            touchedBalloons.add(b);
+                            b.displayTouched();
+                        }
+                    }
+                    
+                    
+                    this.cooldown = 0;
+                }
             }
-            if (!balloons.isEmpty()) {
-                cooldown = 0;
-            }
-        }else{
-            cooldown += Game.TICK;
+        } else {
+            this.cooldown += Game.TICK;
         }
+        return touchedBalloons;
+    }
+    /**
+     * Calculate the final explosion radius for this Tower
+     * @return double the final explosion radius for this Tower
+     */
+    private double getFinalExplosionRadius() {
+        return ((ExplosiveProjectile) this.projectile).getExplosionRadius();
+    }
+
+
+    @Override
+    public void displayShoot(Balloon b){
+        System.out.println(toString() + " fires a " + projectile + " at " + b );
     }
 }

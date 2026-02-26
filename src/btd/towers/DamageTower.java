@@ -1,5 +1,6 @@
 package btd.towers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import btd.boards.Cell;
@@ -50,23 +51,32 @@ public abstract class DamageTower extends Tower{
     
     
     @Override
-    public void shoot(List<Balloon> inRange, List<Balloon> touchedBalloons){
+    public List<Balloon> shoot(List<Balloon> inRange){
+        List<Balloon> touchedBalloons = new ArrayList<Balloon>();
         if (cooldown >= attackSpeed){
             List<Balloon> b = selectBalloon(inRange);
             if (b != null && !b.isEmpty()) {
-                b.get(0).decreaseHealth(this.getFinalDamage());
+                Balloon cible = b.get(0);
+                cible.decreaseHealth(this.getFinalDamage());
+                displayShoot(cible);
+                cible.displayTouched();
+                touchedBalloons.add(cible);
                 cooldown = 0;
-                displayShoot(b.get(0));
-                b.get(0).displayTouched();
-                touchedBalloons.add(b.get(0));
             }
         }else{
             cooldown += Game.TICK;
         }
+        return touchedBalloons;
     }
 
     @Override
     public void displayShoot(Balloon b){
-        System.out.println(toString() + " shoots " + projectile + " at " + b);
+        System.out.println(toString() + " shoots " + projectile + " at " + b );
     }
-}
+    /**
+     * Return the projectile of this Tower
+     * @return Projectile the projectile of this Tower
+     */
+    public Projectile getProjectile() {
+        return projectile;
+}   }

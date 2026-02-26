@@ -1,5 +1,6 @@
 package btd.towers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import btd.boards.Cell;
@@ -9,18 +10,19 @@ import btd.utils.Balloon;
 public class TackTower extends DamageTower {
     
     public TackTower(Cell pos){
-        super(pos, 80, 1200, new LinearProjectile("tack", 1), 350);
+        super(pos, 100, 1200, new LinearProjectile("tack", 1), 350);
     }
 
     @Override
-    public void shoot(List<Balloon> inRange, List<Balloon> touchedBalloons){
+    public List<Balloon> shoot(List<Balloon> inRange){
+        List<Balloon> touchedBalloons = new ArrayList<>();
         for (Balloon b : inRange){
             b.decreaseHealth(this.getFinalDamage());
-            displayShoot(b);
-            b.displayTouched();
             touchedBalloons.add(b);
             displayShoot(b);
+            b.displayTouched();
         }
+        return touchedBalloons;
         
     }
 }
