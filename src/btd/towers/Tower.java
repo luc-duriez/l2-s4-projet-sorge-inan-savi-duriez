@@ -3,6 +3,7 @@ package btd.towers;
 import btd.boards.Cell;
 import btd.towers.upgrades.*;
 import btd.utils.Balloon;
+import btd.utils.Game;
 import btd.utils.Player;
 import java.util.List;
 import java.util.ArrayList;
@@ -83,7 +84,7 @@ public abstract class Tower{
      * @param balloonsInRange The balloon to shoot
      * @param touchedBalloons The list of touched balloons
      */
-    public abstract void shoot(List<Balloon> balloonsInRange, List<Balloon> touchedBalloons);
+    public abstract List<Balloon> shoot(List<Balloon> balloonsInRange);
 
 
     /**
@@ -104,21 +105,18 @@ public abstract class Tower{
      * @return list of the ballons in the towers range
      */
     public List<Balloon> getBalloonsInRange(List<Balloon> activeBalloons){
-        List<Balloon> res = new ArrayList<>();
+        List<Balloon> inRangeList = new ArrayList<>();
         if (this.range < 0) { 
             return new ArrayList<>(activeBalloons);
         }
         double rangeCarre = this.range * this.range;
         for(Balloon b : activeBalloons){
-            double dx = b.getCurrentCell().getX() - this.pos.getX();
-            double dy = b.getCurrentCell().getY() - this.pos.getY();
-            double distance = (dx * dx) + (dy * dy);
-
-            if (distance<= rangeCarre) {
-                res.add(b);
+            double distance = Game.distanceSquaredOf(this.pos, b.getCurrentCell());
+            if (distance <= rangeCarre) {
+                inRangeList.add(b);
             }
         }
-        return res;
+        return inRangeList;
     }
 
     /**
@@ -156,7 +154,7 @@ public abstract class Tower{
      /* Return a representation of Tower
      */
     public String toString(){
-        return  getClass().getSimpleName() + " at (" + pos.getY() + ", " + pos.getX() +")";
+        return  getClass().getSimpleName() + " at (" + pos.getX() + ", " + pos.getY() +")";
     }
 
     /**
@@ -165,6 +163,8 @@ public abstract class Tower{
      * @param b the balloon being shooted 
      */
     public abstract void displayShoot(Balloon b);
+
+    protected abstract List<Balloon> selectBalloon(List<Balloon> inRangeBalloons);
 
     public Cell getCell(){
         return this.pos;
