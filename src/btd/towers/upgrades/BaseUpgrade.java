@@ -21,4 +21,6 @@ public class BaseUpgrade implements upgrade {
     public String getName() { return this.name; }
 
     public int getDamageIncrease() { return this.damageIncrease; }
+
+    public double getFireRate() { return this.fireRate; }
 }
