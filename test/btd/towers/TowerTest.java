@@ -13,9 +13,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TowerTest {
+
+    // Création d'une classe TestTower afin de tester les méthodes propres a tower
     public class TestTower extends Tower{
         public TestTower(Cell pos, double range, int attackSpeed, int basePrice){
             super(pos, range, attackSpeed,basePrice);
         }
+
+        
+        @Override
+        public List<Balloon> shoot(List<Balloon> balloonsInRange) { return new ArrayList<>(); }
     }
 }
