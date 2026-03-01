@@ -20,8 +20,13 @@ public class TowerTest {
             super(pos, range, attackSpeed,basePrice);
         }
 
-        
+
         @Override
         public List<Balloon> shoot(List<Balloon> balloonsInRange) { return new ArrayList<>(); }
+
+        @Override
+        public void displayShoot(Balloon b){};
+        
+
     }
 }
