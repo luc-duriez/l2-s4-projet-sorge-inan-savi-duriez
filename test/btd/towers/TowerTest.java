@@ -30,9 +30,15 @@ public class TowerTest {
         @Override
         protected List<Balloon> selectBalloon(List<Balloon> inRangeBalloons) { return new ArrayList<>();}
     }
+    private TestTower test;
 
     @BeforeEach
     public void before(){
-        Tower test = new TestTower(new Cell(0, 0), 5.0, 10, 100);
+        test = new TestTower(new Cell(0, 0), 5.0, 10, 100);
+    }
+
+    @Test
+    public void getTotalValueTest(){
+        assertEquals(100, test.getTotalValue());
     }
 }
