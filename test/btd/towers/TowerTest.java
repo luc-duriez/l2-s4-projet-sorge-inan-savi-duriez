@@ -28,6 +28,11 @@ public class TowerTest {
         public void displayShoot(Balloon b){};
 
         @Override
-        protected List<Balloon> selectBalloon(List<Balloon> inRangeBalloons) { return new ArrayList<>()}; 
+        protected List<Balloon> selectBalloon(List<Balloon> inRangeBalloons) { return new ArrayList<>();}
+    }
+
+    @BeforeEach
+    public void before(){
+        Tower test = new TestTower(new Cell(0, 0), 5.0, 10, 100);
     }
 }
