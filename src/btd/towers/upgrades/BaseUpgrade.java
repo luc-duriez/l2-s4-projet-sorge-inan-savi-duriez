@@ -19,4 +19,6 @@ public class BaseUpgrade implements upgrade {
     public int getCost() { return this.cost; }
 
     public String getName() { return this.name; }
+
+    public int getDamageIncrease() { return this.damageIncrease; }
 }
