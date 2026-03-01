@@ -137,6 +137,7 @@ public abstract class Tower{
             }
         }
         if (upgradable){
+            p.removeCredits(u.getCost());
             this.appliedUpgrades.add(u);
             return upgradable;
         }
