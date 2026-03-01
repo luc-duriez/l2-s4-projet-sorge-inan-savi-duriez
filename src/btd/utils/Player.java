@@ -67,10 +67,9 @@ public class Player {
      * @return boolean
      */
     public boolean removeLife(int amount) {
-        if (0 < amount && this.lives >= amount) {
+        if (amount > 0){
             this.lives -= amount;
-            return true;
         }
-        return false;
+        return this.lives > 0;
     }
 }
