@@ -26,7 +26,8 @@ public class TowerTest {
 
         @Override
         public void displayShoot(Balloon b){};
-        
 
+        @Override
+        protected List<Balloon> selectBalloon(List<Balloon> inRangeBalloons) { return new ArrayList<>()}; 
     }
 }
