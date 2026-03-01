@@ -33,5 +33,5 @@ public interface Upgrade {
     * Return if 2 upgrades are equals
     * @return boolean
     */ 
-    public boolean equals();
+    public boolean equals(Object o);
 }
