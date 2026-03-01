@@ -28,4 +28,10 @@ public interface Upgrade {
      * @return fire rate
      */
     public double getFireRate();
+
+    /**
+    * Return if 2 upgrades are equals
+    * @return boolean
+    */ 
+    public boolean equals();
 }
