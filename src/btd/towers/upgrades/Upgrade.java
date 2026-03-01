@@ -4,17 +4,6 @@ import btd.towers.Tower;
 
 /** Interface for upgrades */
 public interface Upgrade {
-    /**
-     * Apply the upgrade to the tower
-     * @param t The tower to apply this upgrade
-     */
-    public void apply(Tower t);
-
-    /**
-     * Revert the upgrade of a tower
-     * @param t The tower to revert the upgrade
-     */
-    public void revert(Tower t);
 
     /**
      * Returns the cost of this Upgrade
