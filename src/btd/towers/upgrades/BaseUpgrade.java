@@ -14,4 +14,9 @@ public class BaseUpgrade implements upgrade {
         this.damageIncrease = damageIncrease;
         this.fireRate = fireRate;
     }
+
+
+    public int getCost() { return this.cost; }
+
+    
 }
