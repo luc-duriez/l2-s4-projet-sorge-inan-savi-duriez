@@ -1,6 +1,5 @@
 package btd.towers.upgrades;
 
-import btd.towers.Tower;
 
 /** Interface for upgrades */
 public interface Upgrade {
@@ -21,17 +20,15 @@ public interface Upgrade {
      * Returns the damage of this Upgrade
      * @return the damage of this Upgrade
      */
-    public int getDamageIncrease();
+    default int getDamageIncrease() {
+        return 0;
+    }
 
     /**
      * Gets the fire rate 
      * @return fire rate
      */
-    public double getFireRate();
-
-    /**
-    * Return if 2 upgrades are equals
-    * @return boolean
-    */ 
-    public boolean equals(Object o);
+    default double getFireRate() {
+        return 1.0;
+    }
 }

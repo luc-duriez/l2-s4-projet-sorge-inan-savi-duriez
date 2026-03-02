@@ -63,7 +63,7 @@ public abstract class Tower{
     public double getFinalRange(){
         double finalRange = this.range;
         for (Upgrade u : appliedUpgrades){
-            finalRange *= u.getDamageIncrease();
+            finalRange *= u.getDamageIncrease(); // ? getDamageIncrease pas ca je pense ? 
         }
         return finalRange;
     }
@@ -126,23 +126,15 @@ public abstract class Tower{
      * @param p The player who upgrades this Tower
      * @return true if upgraded. False otherwise
      */
-    public boolean upgrade(Upgrade u, Player p){
-        boolean upgradable = true;
-        if (u.getCost() > p.getCredits()){
-            upgradable = false;
-        }
-        for (Upgrade u2 : this.appliedUpgrades){
-            if (u2.equals(u)){
-                upgradable = false;
-            }
-        }
-        if (upgradable){
-            p.removeCredits(u.getCost());
-            this.appliedUpgrades.add(u);
-            return upgradable;
-        }
-        return upgradable;
+    public boolean upgrade(Upgrade u, Player p) {
+    if (u.getCost() <= p.getCredits()) {
+        p.removeCredits(u.getCost());
+        this.remainingUpgrades.remove(u); 
+        this.appliedUpgrades.add(u); 
+        return true;
     }
+    return false;
+}
 
     /**
      * Revert the latest upgrade of this Tower

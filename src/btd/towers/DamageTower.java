@@ -89,4 +89,11 @@ public abstract class DamageTower extends Tower {
     public Projectile getProjectile() {
         return projectile;
     }
+    /**
+     * Set new projecile in DamageTower
+     * @param p
+     */
+    public void setProjectile(Projectile p){
+        this.projectile = p;
+    }
 }
