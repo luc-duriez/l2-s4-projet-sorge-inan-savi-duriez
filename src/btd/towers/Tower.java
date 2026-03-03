@@ -63,7 +63,7 @@ public abstract class Tower{
     public double getFinalRange(){
         double finalRange = this.range;
         for (Upgrade u : appliedUpgrades){
-            finalRange *= u.getDamageIncrease(); // ? getDamageIncrease pas ca je pense ? 
+            finalRange *= u.getRangeIncrease(); // ? getDamageIncrease pas ca je pense ? 
         }
         return finalRange;
     }
@@ -76,7 +76,7 @@ public abstract class Tower{
     public int getFinalRate(){
         int finalRate = this.attackSpeed;
         for (Upgrade u : appliedUpgrades){
-            finalRate *= u.getFireRate();
+            finalRate *= u.getAttackSpeedIncrease();
         }
         return finalRate;
     }
