@@ -1,35 +1,43 @@
 package btd.towers.upgrades;
 
-import btd.towers.Tower;
+import btd.towers.*;
 
 public class RangeUpgrade implements Upgrade {
-    
-    /*This range upgrade's upgrade value */
-    private double value;
 
-    /*This range upgrade's cost */
+    /*This upgrade's multiplier */
+    private double multiplier;
+
+    /*This upgrade's cost */
     private int cost;
 
     /**
+     * Build a Range upgrade of a given bonus damage and cost.
      * 
-     * @param value this upgrade
+     * @param multiplier this upgrade's multiplier
+     * @param cost this upgrade's cost
      */
-    public RangeUpgrade(double value, int cost){
-        this.value = value;
+    public RangeUpgrade(double multiplier, int cost) {
+        this.multiplier = multiplier;
         this.cost = cost;
     }
 
+    @Override
+    public void apply(DamageTower tower) {
+        tower.multiplyRange(multiplier);
+    }
 
-    /**
-     * Returns the cost of this Upgrade
-     * @return the cost of this Upgrade
-     */
-    public int getCost(){
+    @Override
+    public void remove(DamageTower tower) {
+        tower.multiplyRange(1.0 / multiplier);
+    }
+
+    @Override
+    public int getCost() {
         return cost;
     }
 
-    public void apply(Tower t){
-        t.increaseRange(this.value);
-        t.upgrade(null, null)
+    @Override
+    public String toString(){
+        return "Range x" + multiplier + " (coût " + cost + ")";
     }
 }
