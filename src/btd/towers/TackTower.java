@@ -5,6 +5,7 @@ import java.util.List;
 
 import btd.boards.Cell;
 import btd.towers.projectiles.*;
+import btd.towers.upgrades.*;
 import btd.utils.Balloon;
 
 /** A tack tower */
@@ -16,6 +17,11 @@ public class TackTower extends DamageTower {
      */
     public TackTower(Cell pos) {
         super(pos, 100, 1200, new LinearProjectile("tack", 1), 350);
+
+        Upgrade u1 = new RangeUpgrade(1.2, 150);
+        Upgrade u2 = new AttackSpeedUpgrade(1.25, 200);
+        remainingUpgrades.add(u1);
+        remainingUpgrades.add(u2);
     }
 
     @Override
