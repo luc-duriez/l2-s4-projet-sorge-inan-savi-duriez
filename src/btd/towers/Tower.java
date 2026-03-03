@@ -127,8 +127,8 @@ public abstract class Tower{
      * @return true if upgraded. False otherwise
      */
     public boolean upgrade(Upgrade u, Player p) {
-    if (u.getCost() <= p.getCredits()) {
-        p.removeCredits(u.getCost());
+    if (p.hasEnoughCredits(u.getCost())) {
+        p.decreaseCredits(u.getCost());
         this.remainingUpgrades.remove(u); 
         this.appliedUpgrades.add(u); 
         return true;
