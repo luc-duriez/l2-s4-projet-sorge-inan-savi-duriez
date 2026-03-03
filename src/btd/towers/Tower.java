@@ -18,10 +18,6 @@ public abstract class Tower{
     protected double range;
     /** The attack speed of this Tower */
     protected int attackSpeed;
-    /** The remaining upgrades for this Tower */
-    protected List<Upgrade> remainingUpgrades;
-    /** The applied upgrades on this Tower */
-    protected List<Upgrade> appliedUpgrades;
     /** The base price of this tower */
     protected int basePrice;
     /** The cooldown timer for this tower's attacks */
@@ -40,20 +36,6 @@ public abstract class Tower{
         this.attackSpeed = attackSpeed;
         this.cooldown = attackSpeed;
         this.basePrice = basePrice;
-        this.remainingUpgrades = new ArrayList<Upgrade>();
-        this.appliedUpgrades = new ArrayList<Upgrade>();
-    }
-
-    /**
-     * Returns the total value of this Tower
-     * @return The total value of this Tower
-     */
-    public int getTotalValue(){
-        int totalCost = basePrice;
-        for (Upgrade u : appliedUpgrades){
-            totalCost += u.getCost();
-        }
-        return totalCost;
     }
 
     /**
@@ -61,11 +43,7 @@ public abstract class Tower{
      * @return the final range after the upgrades
      */
     public double getFinalRange(){
-        double finalRange = this.range;
-        for (Upgrade u : appliedUpgrades){
-            finalRange *= u.getRangeIncrease(); // ? getDamageIncrease pas ca je pense ? 
-        }
-        return finalRange;
+        return range;
     }
 
 
@@ -74,11 +52,7 @@ public abstract class Tower{
      * @return the final fire rate after the upgrades
      */
     public int getFinalRate(){
-        int finalRate = this.attackSpeed;
-        for (Upgrade u : appliedUpgrades){
-            finalRate *= u.getAttackSpeedIncrease();
-        }
-        return finalRate;
+        return attackSpeed;
     }
 
     /**
@@ -93,11 +67,7 @@ public abstract class Tower{
      * @return the money from selling this Tower
      */
     public int sell(){
-        int totalPrice = this.basePrice;
-        for (Upgrade u : this.appliedUpgrades){
-            totalPrice += u.getCost();
-        }
-        return totalPrice;
+        return basePrice;
     }
 
     /**
@@ -118,31 +88,6 @@ public abstract class Tower{
             }
         }
         return inRangeList;
-    }
-
-    /**
-     * Adds a new upgrade to appliedUpgrade
-     * @param u The upgrade to apply
-     * @param p The player who upgrades this Tower
-     * @return true if upgraded. False otherwise
-     */
-    public boolean upgrade(Upgrade u, Player p) {
-    if (p.hasEnoughCredits(u.getCost())) {
-        p.decreaseCredits(u.getCost());
-        this.remainingUpgrades.remove(u); 
-        this.appliedUpgrades.add(u); 
-        return true;
-    }
-    return false;
-}
-
-    /**
-     * Revert the latest upgrade of this Tower
-     * @param p The player to refund to gold
-     */
-    public void revertUpgrade(Player p){
-        p.addCredits(this.appliedUpgrades.get(this.appliedUpgrades.size() - 1).getCost());
-        this.appliedUpgrades.remove(this.appliedUpgrades.size() - 1);
     }
 
     /**
