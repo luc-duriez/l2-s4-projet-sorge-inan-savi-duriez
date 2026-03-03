@@ -20,7 +20,7 @@ public abstract class DamageTower extends Tower {
     /*This tower's range multiplier */
     protected double rangeMultiplier = 1.0;
     /*This tower's fire rate multiplier */
-    protected double fireRateMultiplier = 1.0;
+    protected double AttackSpeedMultiplier = 1.0;
     /** The remaining upgrades for this Tower */
     protected List<Upgrade> remainingUpgrades;
     /** The applied upgrades on this Tower */
@@ -139,8 +139,8 @@ public abstract class DamageTower extends Tower {
      * 
      * @param multiplier the increase amount
      */
-    public void multiplyFireRate(double multiplier) {
-        fireRateMultiplier *= multiplier;
+    public void multiplyAttackSpeed(double multiplier) {
+        AttackSpeedMultiplier *= multiplier;
     }
 
     /**
