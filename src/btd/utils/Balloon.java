@@ -116,7 +116,7 @@ public class Balloon {
      * Soustract the amount of damages of the balloon
      * @param damage the amount of damage to subtract
      */
-    public void decreaseHealth(int damage) {
+    public void decreaseHealth(double damage) {
         this.health -= damage;
         if (this.health < 0) {
             this.health = 0;
