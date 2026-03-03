@@ -3,16 +3,16 @@ package btd.towers.projectiles;
 /** Abstract projectile */
 public abstract class Projectile {
     /** The damage of Projectile */
-    protected int damage;
+    protected double damage;
     /* Name of Projectile */
-    private final String projectileName;
+    protected final String projectileName;
 
     /**
      * Constructor of Projectile
      * @param projectileName String
-     * @param damage int
+     * @param damage double
      */
-    public Projectile(String projectileName, int damage) {
+    public Projectile(String projectileName, double damage) {
         this.projectileName = projectileName;
         this.damage = damage;
     }
@@ -20,7 +20,7 @@ public abstract class Projectile {
      * Getter of damage
      * @return damage : int
      */
-    public int getDamage() {
+    public double getDamage() {
         return this.damage;
     }
     /**
