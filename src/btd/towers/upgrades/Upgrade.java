@@ -1,34 +1,35 @@
 package btd.towers.upgrades;
 
+import btd.towers.*;
 
 /** Interface for upgrades */
 public interface Upgrade {
 
     /**
-     * Returns the cost of this Upgrade
-     * @return the cost of this Upgrade
-     */
-    public int getCost();
+     * apply this upgrade to tower 
+     * 
+     * @param tower this upgrade's target
+    */
+    void apply(DamageTower tower);
 
     /**
-     * Returns the name of this Upgrade
-     * @return the name of this Upgrade
+     * Remove this upgrade from tower.
+     * 
+     * @param tower the tower we wants to remove this upgrade.
      */
-    public String getName();
+    void remove(DamageTower tower);
 
     /**
-     * Returns the damage of this Upgrade
-     * @return the damage of this Upgrade
+     * return this upgrade's cost.
+     * 
+     * @return this upgrade's cost.
      */
-    default int getDamageIncrease() {
-        return 0;
-    }
+    int getCost();
 
     /**
-     * Gets the fire rate 
-     * @return fire rate
+     * Return a string representation of this upgrade
+     * 
+     * @return a string representation of this upgrade
      */
-    default double getFireRate() {
-        return 1.0;
-    }
+    String toString();
 }
