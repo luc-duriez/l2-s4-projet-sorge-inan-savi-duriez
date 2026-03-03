@@ -43,8 +43,8 @@ public class Player {
      * @param amount : int
      * @return new amount : int
      */
-    public int addCredits(int amount) {
-        return this.credits += amount;
+    public void addCredits(int amount) {
+        this.credits += amount;
     }
 
     /**
@@ -53,12 +53,8 @@ public class Player {
      * @param amount : int
      * @return boolean
      */
-    public boolean removeCredits(int amount) {
-        if (0 < amount && this.credits >= amount) {
-            this.credits -= amount;
-            return true;
-        }
-        return false;
+    public void decreaseCredits(int amount) {
+        this.credits -= amount;
     }
     /**
      * Remove amount of lives.
@@ -66,10 +62,26 @@ public class Player {
      * @param amount : int
      * @return boolean
      */
-    public boolean removeLife(int amount) {
-        if (amount > 0){
-            this.lives -= amount;
-        }
-        return this.lives > 0;
+    public void decreaseLife(int amount) {
+        this.lives -= amount;
+    }
+
+    /**
+     * Return true if this player's dead (lives below or equals 0).
+     * 
+     * @return true if this player's dead
+     */
+    public boolean isDead(){
+        return lives <= 0;
+    }
+
+    /**
+     * Return true if price is equals or lower than this player's credits.
+     * 
+     * @param price the amout of credits we are checking.
+     * @return true if price is equals or lower than this player's credits.
+     */
+    public boolean hasEnoughCredits(int price){
+        return price <= credits;
     }
 }
