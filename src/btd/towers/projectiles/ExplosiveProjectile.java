@@ -11,7 +11,7 @@ public class ExplosiveProjectile extends Projectile {
      * @param damage damage
      * @param radius radius
      */
-    public ExplosiveProjectile(String projectileName, int damage, int radius) {
+    public ExplosiveProjectile(String projectileName, double damage, int radius) {
         super(projectileName, damage);
         this.range = radius / 2; // /2 pour toucher que la case actuelle
     }
@@ -21,5 +21,10 @@ public class ExplosiveProjectile extends Projectile {
      */
     public int getExplosionRadius() {
         return range;
+    }
+
+    @Override
+    public String toString(){
+        return projectileName + "(" + damage + " damage, " + range + " range)"; 
     }
 }
