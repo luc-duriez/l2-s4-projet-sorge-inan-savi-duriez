@@ -1,29 +1,43 @@
 package btd.towers.upgrades;
 
-/** Damage upgrade */
+import btd.towers.*;
+
 public class DamageUpgrade implements Upgrade{
     
-    public DamageUpgrade() {
-    }
-    private String name;
-    private int cost;
-    private int damageIncrease;
+    /*This upgrade's bonus damage */
+    private double damageBonus;
 
-    public DamageUpgrade(String name, int cost, int damageIncrease, double fireRate) {
-        this.name = name;
-        this.cost = cost;
-        this.damageIncrease = damageIncrease;
-    }
+    /*This upgrade's cost */
+    private int cost;
 
     /**
-     * la doc Kamal par pitié
-     * @return 
+     * Build a Damage upgrade of a given bonus damage and cost.
+     * 
+     * @param damageBonus this upgrade's bonus damage
+     * @param cost this upgrade's cost
      */
-    public int getCost() { return this.cost; }
+    public DamageUpgrade(double damageBonus, int cost) {
+        this.damageBonus = damageBonus;
+        this.cost = cost;
+    }
 
-    public String getName() { return this.name; }
+    @Override
+    public void apply(DamageTower tower) {
+        tower.increaseDamage(damageBonus);
+    }
 
-    public int getDamageIncrease() { return this.damageIncrease; }
+    @Override
+    public void remove(DamageTower tower) {
+        tower.increaseDamage(-damageBonus);
+    }
 
-    public double getFireRate(){ return 1.0;}
+    @Override
+    public int getCost() {
+        return cost;
+    }
+
+    @Override
+    public String toString(){
+        return "Damage +" + damageBonus + " (coût " + cost + ")";
+    }
 }
