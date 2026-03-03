@@ -217,7 +217,7 @@ public class Balloon {
     }
     /**
      * Apply a movement effect to the balloon
-     * @param speedDown the speed down appliqued {@code (0 < speedDown <= 1)}
+     * @param speedDown the speed down applied {@code (0 < speedDown <= 1)}
      * @param countdown countdown of the effect in number of moves {@code (0 < countdown)}
      * @throws IllegalArgumentException if speedDown is not between 0 and 1 or if countdown is not greater than 0
      */

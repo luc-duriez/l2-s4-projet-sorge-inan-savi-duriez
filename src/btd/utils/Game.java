@@ -76,6 +76,7 @@ public class Game {
      * @param nbBalloons the number of balloons to spawn in this round
      */
     public void playRound(int nbBalloons) {
+        
         System.out.println("=== Round " + this.round + " ===");
         this.actualizeBalloons(nbBalloons);
         int i = 0;
@@ -94,7 +95,7 @@ public class Game {
                 if (b.hasFinished()) {
                     b.displayFinished();
                     this.activeBalloons.remove(j);
-                    this.player.removeLife(b.getHealth());
+                    this.player.decreaseLife(b.getHealth());
                     j--;
                 } else {
                     b.move();
@@ -108,11 +109,21 @@ public class Game {
             System.out.println("---- towers shots");
             towerShoot();
             time += Game.TICK;
+            if (player.isDead()){
+                System.out.println("GAME OVER !!"); // BREAK ?
+            }
         }
         this.round++;
-        System.out.println("\n-- Round cleared --");
-        System.out.println("Money after round: " + this.player.getCredits());
-        System.out.println("Lives after round: " + this.player.getLives());
+
+        if (player.isDead()){
+            System.out.println("\n=== Game Finished ===");
+        }
+        else{
+            System.out.println("\nRound cleared !");
+        
+        System.out.println("Player Lives: " + this.player.getLives());
+        System.out.println("Player Credits: " + this.player.getCredits());
+        }
     }
 
     /**
@@ -121,7 +132,7 @@ public class Game {
     public void displayActiveBalloons() {
         for (Balloon b : this.activeBalloons) {
             String status = "";
-            if (b.getCountdown() > 0) {
+            if (b.getSlowValue() == 0) {
                 status = " [FREEZE]";
             } else if (b.getSlowValue() < 1.0) {
                 status = " [SLOW]";

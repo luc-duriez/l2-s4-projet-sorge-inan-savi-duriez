@@ -35,6 +35,7 @@ public class SlowTower extends UtilityTower {
 
         if (this.cooldown >= this.getFinalRate()) {
             if (!inRange.isEmpty()) {
+                System.out.println(toString() + " shoots");
                 for (Balloon b : inRange) {
                     b.applyMovementEffect(this.slowPower, this.countdown);
 
@@ -51,6 +52,6 @@ public class SlowTower extends UtilityTower {
 
     @Override
     public void displayShoot(Balloon b) {
-        System.out.printf("%s slowed for %dms %n", b, this.countdown * Game.TICK);
+        System.out.printf(" %s slowed for %dms %n", b, this.countdown * Game.TICK);
     }
 }

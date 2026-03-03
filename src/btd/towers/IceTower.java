@@ -13,7 +13,7 @@ public class IceTower extends SlowTower {
      */
     public IceTower(Cell pos) {
         super(pos, 400);
-        this.slowPower = 0.0;
+        this.slowPower = 1.0;
         this.countdown = 5;
     }
 
