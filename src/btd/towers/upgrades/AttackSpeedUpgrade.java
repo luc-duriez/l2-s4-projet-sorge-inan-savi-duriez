@@ -22,12 +22,12 @@ public class AttackSpeedUpgrade implements Upgrade {
 
     @Override
     public void apply(DamageTower tower) {
-        tower.multiplyFireRate(multiplier);
+        tower.multiplyAttackSpeed(multiplier);
     }
 
     @Override
     public void remove(DamageTower tower) {
-        tower.multiplyFireRate(1.0 / multiplier);
+        tower.multiplyAttackSpeed(1.0 / multiplier);
     }
 
     @Override

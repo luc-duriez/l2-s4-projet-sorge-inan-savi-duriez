@@ -8,12 +8,23 @@ import btd.towers.projectiles.Projectile;
 import btd.towers.upgrades.Upgrade;
 import btd.utils.Balloon;
 import btd.utils.Game;
+import btd.utils.Player;
 
 /** Abstract tower that deals damage */
 public abstract class DamageTower extends Tower {
 
     /** The projectile for this Tower */
-    protected Projectile projectile;
+    protected Projectile projectile;    
+    /*This tower's bonus damage */
+    protected double bonusDamage = 0;
+    /*This tower's range multiplier */
+    protected double rangeMultiplier = 1.0;
+    /*This tower's fire rate multiplier */
+    protected double fireRateMultiplier = 1.0;
+    /** The remaining upgrades for this Tower */
+    protected List<Upgrade> remainingUpgrades;
+    /** The applied upgrades on this Tower */
+    protected List<Upgrade> appliedUpgrades;
 
     /**
      * Creates a damage tower
@@ -26,18 +37,33 @@ public abstract class DamageTower extends Tower {
     public DamageTower(Cell pos, double range, int attackSpeed, Projectile projectile, int basePrice) {
         super(pos, range, attackSpeed, basePrice);
         this.projectile = projectile;
+        this.remainingUpgrades = new ArrayList<Upgrade>();
+        this.appliedUpgrades = new ArrayList<Upgrade>();
     }
 
     /**
      * Return the total amount of damage for this Tower
      * @return the total amount of damage for this Tower
      */
-    public int getFinalDamage() {
-        int finalDmg = this.projectile.getDamage();
-        for (Upgrade u : appliedUpgrades) {
-            finalDmg += u.getDamageIncrease();
+    public double getFinalDamage() {
+        return projectile.getDamage() + bonusDamage;
+    }
+
+    @Override //Changement de la range de la tower pour passer à range * rangeMultiplier
+    public List<Balloon> getBalloonsInRange(List<Balloon> activeBalloons){
+        List<Balloon> inRangeList = new ArrayList<>();
+        if (this.range < 0) { 
+            return new ArrayList<>(activeBalloons);
         }
-        return finalDmg;
+        double newRange = range * rangeMultiplier;
+        double rangeCarre = newRange * newRange;
+        for (Balloon b : activeBalloons){
+            double distance = Game.distanceSquaredOf(this.pos, b.getCurrentCell());
+            if (distance <= rangeCarre) {
+                inRangeList.add(b);
+            }
+        }
+        return inRangeList;
     }
 
     /**
@@ -89,11 +115,66 @@ public abstract class DamageTower extends Tower {
     public Projectile getProjectile() {
         return projectile;
     }
+
     /**
-     * Set new projecile in DamageTower
-     * @param p
+     * Increase this tower's bonus damge by amount.
+     * 
+     * @param amount the increase amount
      */
-    public void setProjectile(Projectile p){
-        this.projectile = p;
+    public void increaseDamage(double amount) {
+        bonusDamage += amount;
+    }
+
+    /**
+     * Increase this tower's range multiplier by multiplier.
+     * 
+     * @param multiplier the increase amount
+     */
+    public void multiplyRange(double multiplier) {
+        rangeMultiplier *= multiplier;
+    }
+
+    /**
+     * Increase this tower's fire rate multiplier by multiplier.
+     * 
+     * @param multiplier the increase amount
+     */
+    public void multiplyFireRate(double multiplier) {
+        fireRateMultiplier *= multiplier;
+    }
+
+    /**
+     * Adds a new upgrade to appliedUpgrade
+     * @param u The upgrade to apply
+     * @param p The player who upgrades this Tower
+     */
+    public void upgrade(Upgrade u, Player p) {
+        if (p.hasEnoughCredits(u.getCost())) {
+            p.decreaseCredits(u.getCost());
+            u.apply(this);
+            this.remainingUpgrades.remove(u); 
+            this.appliedUpgrades.add(u); 
+        }
+    }
+
+    /**
+     * Revert the latest upgrade of this Tower
+     * @param p The player to refund to gold
+     */
+    public void revertUpgrade(Player p){
+        Upgrade u = this.appliedUpgrades.get(this.appliedUpgrades.size() - 1);
+        p.addCredits(u.getCost());
+        u.remove(this);
+        this.appliedUpgrades.remove(u);
+        this.remainingUpgrades.add(u);
+    }
+
+    @Override
+    public int sell(){
+        int price = basePrice;
+        for (Upgrade u: appliedUpgrades){
+            price += u.getCost();
+        }
+        return price;
     }
 }
