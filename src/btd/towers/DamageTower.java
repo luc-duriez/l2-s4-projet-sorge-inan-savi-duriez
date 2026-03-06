@@ -161,8 +161,7 @@ public abstract class DamageTower extends Tower {
      * Revert the latest upgrade of this Tower
      * @param p The player to refund to gold
      */
-    public void revertUpgrade(Player p){
-        Upgrade u = this.appliedUpgrades.get(this.appliedUpgrades.size() - 1);
+    public void revertUpgrade(Upgrade u, Player p){
         p.addCredits(u.getCost());
         u.remove(this);
         this.appliedUpgrades.remove(u);
@@ -174,6 +173,7 @@ public abstract class DamageTower extends Tower {
         int price = basePrice;
         for (Upgrade u: appliedUpgrades){
             price += u.getCost();
+
         }
         return price;
     }
