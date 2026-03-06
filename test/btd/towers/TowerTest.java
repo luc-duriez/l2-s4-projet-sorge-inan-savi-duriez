@@ -26,7 +26,7 @@ public class TowerTest {
         protected List<Balloon> selectBalloon(List<Balloon> inRangeBalloons) { return new ArrayList<>();}
 
 
-        public Integer getTotalValue() {
+        public int getTotalValue() {
             throw new UnsupportedOperationException("Unimplemented method 'getTotalValue'");
         }
     }

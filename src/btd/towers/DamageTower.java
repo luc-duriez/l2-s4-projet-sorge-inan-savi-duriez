@@ -169,7 +169,7 @@ public abstract class DamageTower extends Tower {
     }
 
     @Override
-    public int sell(){
+    public int getTotalValue(){
         int price = basePrice;
         for (Upgrade u: appliedUpgrades){
             price += u.getCost();

@@ -61,10 +61,10 @@ public abstract class Tower{
     public abstract List<Balloon> shoot(List<Balloon> balloonsInRange);
 
     /**
-     * Sells this Tower and return the money from selling it
+     * Return this Tower and return the money from selling it
      * @return the money from selling this Tower
      */
-    public int sell(){
+    public int getTotalValue(){
         return basePrice;
     }
 
