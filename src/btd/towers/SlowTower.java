@@ -19,17 +19,8 @@ public class SlowTower extends UtilityTower {
         this.slowPower = 0.5;
         this.countdown = 5;
     }
-
-    /**
-     * Protected constructor
-     * @param pos       position
-     * @param basePrice base price
-     */
-    protected SlowTower(Cell pos, int basePrice) {
-        super(pos, 100, 1500, basePrice);
-        this.slowPower = 0.5;
-    }
-
+    
+    
     public List<Balloon> shoot(List<Balloon> inRange) {
         List<Balloon> touched = new ArrayList<>();
 
