@@ -10,4 +10,4 @@ j'ai pas tester les upgrades j'ai juste "finie" les classes.
 
 methodes a faire :
 - Afficher la liste des remainingUpgrades
--
+- dmgTower -> getFinalRange, getFinalAttacSpeed

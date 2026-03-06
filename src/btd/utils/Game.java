@@ -61,7 +61,7 @@ public class Game {
     private void actualizeBalloons(int nbBalloons) {
         this.waitingBalloons = new ArrayList<Balloon>();
         double speed = 25;
-        int health = 1 + (this.round / 5);
+        int health = 2 + (this.round / 2);
         Random r = new Random();
 
         for (int i = 0; i < nbBalloons; i++) {
@@ -176,4 +176,9 @@ public class Game {
         board.getCell(t.getCell().getX(), t.getCell().getY()).setState(StateCell.TOWER);
 
     }
+    /**
+     * Return player
+     * @return Player 
+     */
+    public Player getPlayer(){return this.player;}
 }

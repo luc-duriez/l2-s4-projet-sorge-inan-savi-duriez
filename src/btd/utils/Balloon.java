@@ -236,6 +236,6 @@ public class Balloon {
      * Display the Balloon when the balloon finish his path.
      */
     public void displayFinished() {
-        System.out.printf("%s passed !! -1 Lives%n", this);
+        System.out.printf("%s passed !! -%d Lives\n", this, getHealth());
     }
 }

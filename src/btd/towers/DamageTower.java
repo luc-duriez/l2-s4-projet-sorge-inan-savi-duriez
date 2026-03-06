@@ -2,6 +2,7 @@ package btd.towers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import btd.boards.Cell;
 import btd.towers.projectiles.Projectile;
@@ -105,7 +106,7 @@ public abstract class DamageTower extends Tower {
 
     @Override
     public void displayShoot(Balloon b) {
-        System.out.println(toString() + " shoots " + projectile + " at " + b);
+        System.out.printf("%s shoots %s(%.0f) at %s%n", toString(), getProjectile().getName(), getFinalDamage(), b);
     }
     
     /**
@@ -148,12 +149,18 @@ public abstract class DamageTower extends Tower {
      * @param u The upgrade to apply
      * @param p The player who upgrades this Tower
      */
-    public void upgrade(Upgrade u, Player p) {
+    public void upgrade(Upgrade u, Player p) throws NoSuchElementException{
+        if (!remainingUpgrades.contains(u)){
+            throw new NoSuchElementException("This upgrade doesn't exist in remaining upgrade");
+        }
         if (p.hasEnoughCredits(u.getCost())) {
             p.decreaseCredits(u.getCost());
             u.apply(this);
             this.remainingUpgrades.remove(u); 
             this.appliedUpgrades.add(u); 
+        }
+        else{
+            
         }
     }
 
@@ -162,6 +169,9 @@ public abstract class DamageTower extends Tower {
      * @param p The player to refund to gold
      */
     public void revertUpgrade(Upgrade u, Player p){
+        if (!appliedUpgrades.contains(u)){
+            throw new NoSuchElementException("This upgrade doesn't exist in applied upgrade");
+        }
         p.addCredits(u.getCost());
         u.remove(this);
         this.appliedUpgrades.remove(u);
@@ -187,4 +197,19 @@ public abstract class DamageTower extends Tower {
     public double getFinalRate(){
         return attackSpeed * AttackSpeedMultiplier;
     }
+    /**
+     * Return the remainining upgrade of this Tower
+     * @return List<Upgrade>
+     */
+    public List<Upgrade> getRemainingUpgrade() {
+        return this.remainingUpgrades;
+    }
+    /**
+     * Return the applied upgrade of this Tower
+     * @return List<Upgrade>
+     */
+    public List<Upgrade> getAppliedUpgrade() {
+        return this.appliedUpgrades;
+    }
+
 }

@@ -61,7 +61,7 @@ public class BombTower extends DamageTower {
                         }
                     }
 
-                    this.cooldown = 0;
+                    this.cooldown = 100;
                 }
             }
         } else {
@@ -76,12 +76,7 @@ public class BombTower extends DamageTower {
     private double getFinalExplosionRadius() {
         return ((ExplosiveProjectile) this.projectile).getExplosionRadius();
     }
-
-    @Override
-    public void displayShoot(Balloon b) {
-        System.out.println(toString() + " fires a " + projectile + " at " + b);
-    }
-
+    
     /**
      * Add a new projectile to this tower.
      * 

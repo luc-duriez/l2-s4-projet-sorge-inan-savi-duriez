@@ -1,4 +1,4 @@
-/* 
+
 package btd.utils;
 
 import java.util.Random;
@@ -58,4 +58,3 @@ public class MainLinear {
         game.playRound(Integer.parseInt(args[2]));
     }
 }
- */
