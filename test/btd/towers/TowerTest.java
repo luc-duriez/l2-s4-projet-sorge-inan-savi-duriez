@@ -1,10 +1,7 @@
 package btd.towers;
 
 import btd.boards.Cell;
-import btd.towers.upgrades.*;
 import btd.utils.Balloon;
-import btd.utils.Game;
-import btd.utils.Player;
 import java.util.List;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
@@ -30,7 +27,6 @@ public class TowerTest {
 
 
         public Integer getTotalValue() {
-            // TODO Auto-generated method stub
             throw new UnsupportedOperationException("Unimplemented method 'getTotalValue'");
         }
     }
