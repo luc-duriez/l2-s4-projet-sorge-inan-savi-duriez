@@ -41,7 +41,6 @@ public class Player {
     /**
      * Add amount of credits and return this value
      * @param amount : int
-     * @return new amount : int
      */
     public void addCredits(int amount) {
         this.credits += amount;
@@ -51,7 +50,6 @@ public class Player {
      * Remove amount of credits
      * if the player has enough credit, returns true, false otherwise
      * @param amount : int
-     * @return boolean
      */
     public void decreaseCredits(int amount) {
         this.credits -= amount;
@@ -60,7 +58,6 @@ public class Player {
      * Remove amount of lives.
      * if the player has enough lives, returns true, false otherwise
      * @param amount : int
-     * @return boolean
      */
     public void decreaseLife(int amount) {
         this.lives -= amount;
