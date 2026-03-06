@@ -270,9 +270,17 @@ La principale difficulté rencontrée est la gestion des tirs et de la portée d
 
 ### Ce qui a été réalisé
 
+On a créé une interface Upgrade et des classes de tous les types d'upgrades (dmg, range,...) qui l'implémentent l'interface.
+On a fait en sorte que seule les sous-classes de DamageTower peuvent avoir des upgrades.
+Les upgrades fonctionnent sur les tours, on peut les retirer, si on demande d'upgrade une tower avec une upgrade qui n'existe pas dans ses upgrades, une exception se lance.
+
 ### Difficultés rencontrées
 
+Gérer la revente d'une upgrade d'une tour en prennant en compte les multipicateurs des différentes statistiques d'une tour ou d'un changement de projectile pour la bombTower.
+
 ### Objectifs pour la semaine et répartition du travail par membre
+
+Commencer le choix joueur.
 
 ## Semaine 8
 
