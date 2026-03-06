@@ -182,4 +182,9 @@ public abstract class DamageTower extends Tower {
     public double getFinalRange(){
         return range * rangeMultiplier;
     }
+
+    @Override
+    public double getFinalRate(){
+        return attackSpeed * AttackSpeedMultiplier;
+    }
 }

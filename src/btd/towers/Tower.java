@@ -49,7 +49,7 @@ public abstract class Tower{
      * Return the final fire rate after the upgrades
      * @return the final fire rate after the upgrades
      */
-    public int getFinalRate(){
+    public double getFinalRate(){
         return attackSpeed;
     }
 
