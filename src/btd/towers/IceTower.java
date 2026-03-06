@@ -19,6 +19,6 @@ public class IceTower extends SlowTower {
 
     @Override
     public void displayShoot(Balloon b) {
-        System.out.printf("%s frozen for %dms %n", b, this.countdown * Game.TICK);
+        System.out.printf("\t%s frozen for %dms %n", b, this.countdown * Game.TICK);
     }
 }

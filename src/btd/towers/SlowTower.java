@@ -47,6 +47,6 @@ public class SlowTower extends UtilityTower {
 
     @Override
     public void displayShoot(Balloon b) {
-        System.out.printf(" %s slowed for %dms %n", b, this.countdown * Game.TICK);
+        System.out.printf("\t%s slowed for %dms %n", b, this.countdown * Game.TICK);
     }
 }
