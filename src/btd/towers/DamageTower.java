@@ -177,4 +177,9 @@ public abstract class DamageTower extends Tower {
         }
         return price;
     }
+
+    @Override
+    public double getFinalRange(){
+        return range * rangeMultiplier;
+    }
 }
