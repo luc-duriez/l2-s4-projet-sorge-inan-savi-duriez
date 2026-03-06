@@ -20,7 +20,11 @@ public class SlowTower extends UtilityTower {
         this.countdown = 5;
     }
     
-    
+    /**
+     * Slows all the balloons in range
+     * @param inRange The list of balloons in range
+     * @return The slowed balloons
+     */
     public List<Balloon> shoot(List<Balloon> inRange) {
         List<Balloon> touched = new ArrayList<>();
 
