@@ -29,6 +29,12 @@ public class TowerTest {
 
         @Override
         protected List<Balloon> selectBalloon(List<Balloon> inRangeBalloons) { return new ArrayList<>();}
+
+
+        public Integer getTotalValue() {
+            // TODO Auto-generated method stub
+            throw new UnsupportedOperationException("Unimplemented method 'getTotalValue'");
+        }
     }
     private TestTower test;
 
