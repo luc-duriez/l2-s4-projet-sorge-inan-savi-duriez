@@ -25,6 +25,6 @@ public class ExplosiveProjectile extends Projectile {
 
     @Override
     public String toString(){
-        return projectileName + "(" + damage + " damage, " + range + " range)"; 
+        return projectileName + "(" + (int) damage +")"; 
     }
 }

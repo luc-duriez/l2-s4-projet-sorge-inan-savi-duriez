@@ -158,10 +158,15 @@ public abstract class DamageTower extends Tower {
             u.apply(this);
             this.remainingUpgrades.remove(u); 
             this.appliedUpgrades.add(u); 
+            displayUpgrade(u,p);
         }
         else{
             
         }
+    }
+
+    private void displayUpgrade(Upgrade u,Player p) {
+        System.out.printf("%s[fireRate:%s,range:%s][upgradeLevel:%s, projectile:%s] has been bought (money:%s -> %s)%n",this,(int) this.getFinalRate(),(int) getFinalRange(),this.appliedUpgrades.size(),this.getProjectile(),p.getCredits()+u.getCost(),p.getCredits());
     }
 
     /**
