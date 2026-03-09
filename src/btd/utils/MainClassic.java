@@ -35,9 +35,8 @@ public class MainClassic {
                 for (int i = 0; i < 2; i++) {
                     DamageTower tower= new BombTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1])));
                     game.addTower(tower);
-                    System.out.println(tower.getFinalDamage());
                     tower.upgrade(tower.getRemainingUpgrade().get(2), game.getPlayer());
-                    System.out.println(tower.getFinalDamage());
+                    tower.revertUpgrade(tower.getAppliedUpgrade().get(0), game.getPlayer());
                     System.out.println("BombTower added");
                     game.addTower(new DartTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1]))));
                     System.out.println("DartTower added");
