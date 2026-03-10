@@ -224,4 +224,23 @@ public abstract class DamageTower extends Tower {
         return this.appliedUpgrades;
     }
 
+    /**
+     * Display the remaining upgrade of a tower
+     */
+    public void displayRemainingUpgrade(){
+        System.out.printf("Remaining upgrades for %s :%n", this);
+        for(Upgrade u: remainingUpgrades){
+            System.out.printf("\t-%s%n",u);
+        }
+    }
+
+    /**
+     * Display the applied upgrade of a tower
+     */
+    public void diplayAppliedUpgrade(){
+        System.out.printf("Applied upgrades of %s :%n", this);
+        for(Upgrade u: appliedUpgrades){
+            System.out.printf("\t-%s%n",u);
+        }
+    }
 }
