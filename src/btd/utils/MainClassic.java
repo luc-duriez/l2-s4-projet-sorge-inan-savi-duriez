@@ -57,7 +57,17 @@ public class MainClassic {
             
             board.show();
             game.playRound(Integer.parseInt(args[2]));
-        
+            
+            System.out.println("\n\n Tests upgrades : \n");
+            DamageTower t =new BombTower(new Cell(0,0));
+            t.displayRemainingUpgrade();
+            t.diplayAppliedUpgrade();
+            t.upgrade(t.getRemainingUpgrade().get(0), game.getPlayer());
+            t.displayRemainingUpgrade();
+            t.diplayAppliedUpgrade();
+            t.revertUpgrade(t.getAppliedUpgrade().get(0), game.getPlayer());
+            t.diplayAppliedUpgrade();
+            t.displayRemainingUpgrade();
         }   
     }
 }
