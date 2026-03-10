@@ -7,7 +7,3 @@ Les upgrades sont finies (normalement ou presque) -> Penser au choix du joueur q
 un truc du genre. Pareil pour revertUpgrade.
 
 j'ai pas tester les upgrades j'ai juste "finie" les classes.
-
-methodes a faire :
-- Afficher la liste des remainingUpgrades
-- dmgTower -> getFinalRange, getFinalAttacSpeed
