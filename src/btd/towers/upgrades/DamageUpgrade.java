@@ -38,6 +38,6 @@ public class DamageUpgrade implements Upgrade{
 
     @Override
     public String toString(){
-        return "Damage +" + damageBonus + " (coût " + cost + ")";
+        return "Damage +" + damageBonus + " (cost " + cost + ")";
     }
 }

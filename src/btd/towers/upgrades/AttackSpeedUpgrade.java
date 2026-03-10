@@ -37,7 +37,7 @@ public class AttackSpeedUpgrade implements Upgrade {
 
     @Override
     public String toString(){
-        return "AttackSpeed x" + multiplier + " (coût " + cost + ")";
+        return "AttackSpeed x" + multiplier + " (cost " + cost + ")";
     }
 }
 

@@ -38,6 +38,6 @@ public class RangeUpgrade implements Upgrade {
 
     @Override
     public String toString(){
-        return "Range x" + multiplier + " (coût " + cost + ")";
+        return "Range x" + multiplier + " (cost " + cost + ")";
     }
 }

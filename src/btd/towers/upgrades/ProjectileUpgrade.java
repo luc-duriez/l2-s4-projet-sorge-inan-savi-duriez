@@ -43,6 +43,6 @@ public class ProjectileUpgrade implements Upgrade {
 
     @Override
     public String toString(){
-        return "Change projectile to :" + newProjectile + " (coût " + cost + ")";
+        return "Change projectile to :" + newProjectile + " (cost " + cost + ")";
     }
 }
