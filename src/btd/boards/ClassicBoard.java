@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-import btd.towers.Tower;
+import btd.towers.towers.*;
 
 /** A classic board with random path generation */
 public class ClassicBoard extends Board {
@@ -45,6 +45,7 @@ public class ClassicBoard extends Board {
         list.remove(curr);
         return null;
     }
+    
     @Override
     public Cell[] randomCell(List<Cell> cellAlreadyUsed) {
         Random r = new Random();
@@ -55,6 +56,7 @@ public class ClassicBoard extends Board {
         cells[1] = this.getCell(x2, this.board[0].length - 1);
         return cells;
     }
+    
     @Override
     public void addTower(Tower t) {
         towers.add(t);

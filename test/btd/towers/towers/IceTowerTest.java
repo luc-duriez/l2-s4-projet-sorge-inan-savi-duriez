@@ -1,4 +1,4 @@
-package btd.towers;
+package btd.towers.towers;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;
@@ -29,7 +29,7 @@ public class IceTowerTest {
 
         iceTower.shoot(inRange);
 
-        assertEquals(1, b.getSlowValue());
+        assertEquals(0, b.getSlowValue());
         assertEquals(5, b.getCountdown());
     }
 }

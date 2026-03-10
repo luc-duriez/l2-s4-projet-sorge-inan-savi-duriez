@@ -1,6 +1,6 @@
 package btd.towers.upgrades;
 
-import btd.towers.*;
+import btd.towers.towers.*;
 
 public class AttackSpeedUpgrade implements Upgrade {
 
@@ -22,12 +22,12 @@ public class AttackSpeedUpgrade implements Upgrade {
 
     @Override
     public void apply(DamageTower tower) {
-        tower.multiplyAttackSpeed(multiplier);
+        tower.multiplyBonusAttackSpeed(multiplier);
     }
 
     @Override
     public void remove(DamageTower tower) {
-        tower.multiplyAttackSpeed(1.0 / multiplier);
+        tower.multiplyBonusAttackSpeed(1.0 / multiplier);
     }
 
     @Override
@@ -38,6 +38,11 @@ public class AttackSpeedUpgrade implements Upgrade {
     @Override
     public String toString(){
         return "AttackSpeed x" + multiplier + " (cost " + cost + ")";
+    }
+
+    @Override
+    public String displayAppliedUpgrade(DamageTower tower){
+        return String.format("Applying upgrade Increase attack speed by %.0f%% %nAttackSpeed:%.0f ratefactor:%.2f", (multiplier-1)*100, tower.getRate(), multiplier);
     }
 }
 

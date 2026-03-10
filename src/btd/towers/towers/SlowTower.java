@@ -1,8 +1,7 @@
-package btd.towers;
+package btd.towers.towers;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import btd.boards.Cell;
 import btd.utils.Balloon;
 import btd.utils.Game;
@@ -28,7 +27,7 @@ public class SlowTower extends UtilityTower {
     public List<Balloon> shoot(List<Balloon> inRange) {
         List<Balloon> touched = new ArrayList<>();
 
-        if (this.cooldown >= this.getFinalRate()) {
+        if (this.cooldown >= this.getRate()) {
             if (!inRange.isEmpty()) {
                 System.out.println(toString() + " shoots");
                 for (Balloon b : inRange) {

@@ -1,4 +1,4 @@
-package btd.towers;
+package btd.towers.towers;
 
 import btd.boards.Cell;
 import btd.utils.Balloon;
@@ -25,10 +25,6 @@ public class TowerTest {
         @Override
         protected List<Balloon> selectBalloon(List<Balloon> inRangeBalloons) { return new ArrayList<>();}
 
-
-        public int getTotalValue() {
-            throw new UnsupportedOperationException("Unimplemented method 'getTotalValue'");
-        }
     }
     private TestTower test;
 

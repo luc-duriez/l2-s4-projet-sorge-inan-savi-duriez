@@ -15,6 +15,7 @@ public class ExplosiveProjectile extends Projectile {
         super(projectileName, damage);
         this.range = radius / 2; // /2 pour toucher que la case actuelle
     }
+    
     /**
      * Gets the explosion radius
      * @return explosion radius

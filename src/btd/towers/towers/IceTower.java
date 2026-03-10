@@ -1,4 +1,4 @@
-package btd.towers;
+package btd.towers.towers;
 
 import btd.boards.Cell;
 import btd.utils.Balloon;

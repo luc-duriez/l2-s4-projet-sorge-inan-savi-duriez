@@ -1,4 +1,4 @@
-package btd.towers;
+package btd.towers.towers;
 
 import btd.boards.Cell;
 import btd.utils.Balloon;
@@ -28,7 +28,7 @@ public abstract class Tower{
      * @param attackSpeed The attack speed of this Tower
      * @param basePrice THe base price of this Tower
      */
-    public Tower(Cell pos, double range, int attackSpeed, int basePrice){
+    protected Tower(Cell pos, double range, int attackSpeed, int basePrice){
         this.pos = pos;
         this.range = range;
         this.attackSpeed = attackSpeed;
@@ -40,7 +40,7 @@ public abstract class Tower{
      * Return the final range after the upgrades
      * @return the final range after the upgrades
      */
-    public double getFinalRange(){
+    public double getRange(){
         return range;
     }
 
@@ -49,23 +49,25 @@ public abstract class Tower{
      * Return the final fire rate after the upgrades
      * @return the final fire rate after the upgrades
      */
-    public double getFinalRate(){
+    public double getRate(){
         return attackSpeed;
     }
-
-    /**
-     * Shoots the balloon
-     * @param balloonsInRange The balloon to shoot
-     * @return The list of touched balloons
-     */
-    public abstract List<Balloon> shoot(List<Balloon> balloonsInRange);
-
+    
     /**
      * Return this Tower and return the money from selling it
      * @return the money from selling this Tower
      */
     public int getTotalValue(){
         return basePrice;
+    }
+
+    /**
+     * Get the cell where this tower is located
+     * 
+     * @return the cell of this tower
+     */
+    public Cell getCell(){
+        return this.pos;
     }
 
     /**
@@ -87,6 +89,21 @@ public abstract class Tower{
         }
         return inRangeList;
     }
+    
+    /**
+     * Shoots the balloon
+     * @param balloonsInRange The balloon to shoot
+     * @return The list of touched balloons
+     */
+    public abstract List<Balloon> shoot(List<Balloon> balloonsInRange);
+
+    /**
+     * Select balloons to shoot from those in range
+     * 
+     * @param inRangeBalloons the balloons in range
+     * @return the balloons selected as targets
+     */
+    protected abstract List<Balloon> selectBalloon(List<Balloon> inRangeBalloons);
 
     /**
      * Return a representation of Tower
@@ -101,21 +118,4 @@ public abstract class Tower{
      * @param b the balloon being shooted 
      */
     public abstract void displayShoot(Balloon b);
-
-    /**
-     * Select balloons to shoot from those in range
-     * 
-     * @param inRangeBalloons the balloons in range
-     * @return the balloons selected as targets
-     */
-    protected abstract List<Balloon> selectBalloon(List<Balloon> inRangeBalloons);
-
-    /**
-     * Get the cell where this tower is located
-     * 
-     * @return the cell of this tower
-     */
-    public Cell getCell(){
-        return this.pos;
-    }
 }

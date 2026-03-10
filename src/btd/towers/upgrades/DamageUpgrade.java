@@ -1,6 +1,6 @@
 package btd.towers.upgrades;
 
-import btd.towers.*;
+import btd.towers.towers.*;
 
 public class DamageUpgrade implements Upgrade{
     
@@ -23,12 +23,12 @@ public class DamageUpgrade implements Upgrade{
 
     @Override
     public void apply(DamageTower tower) {
-        tower.increaseDamage(damageBonus);
+        tower.changeBonusDamage(damageBonus);
     }
 
     @Override
     public void remove(DamageTower tower) {
-        tower.increaseDamage(-damageBonus);
+        tower.changeBonusDamage(-damageBonus);
     }
 
     @Override
@@ -39,5 +39,10 @@ public class DamageUpgrade implements Upgrade{
     @Override
     public String toString(){
         return "Damage +" + damageBonus + " (cost " + cost + ")";
+    }
+
+    @Override
+    public String displayAppliedUpgrade(DamageTower tower){
+        return String.format("Applying upgrade Increase damage by %.0f %nCurrent damage:%.0f next:%.0f", damageBonus, tower.getDamage(), tower.getDamage()+damageBonus);
     }
 }

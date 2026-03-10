@@ -113,6 +113,14 @@ public class Balloon {
     }
 
     /**
+     * Returns the index of this Balloon in the path
+     * @return the index of this Balloon in the path
+     */
+    public int getIndexPosition() {
+        return (int) (this.distanceTravelled / Cell.SIZE);
+    }
+
+    /**
      * Soustract the amount of damages of the balloon
      * @param damage the amount of damage to subtract
      */
@@ -133,11 +141,36 @@ public class Balloon {
     }
 
     /**
+     * Apply a movement effect to the balloon
+     * @param speedDown the speed down applied {@code (0 < speedDown <= 1)}
+     * @param countdown countdown of the effect in number of moves {@code (0 < countdown)}
+     * @throws IllegalArgumentException if speedDown is not between 0 and 1 or if countdown is not greater than 0
+     */
+    public void applyMovementEffect(double speedDown, int countdown) throws IllegalArgumentException {
+        if (speedDown < 0 || speedDown > 1) {
+            throw new IllegalArgumentException("speedDown must be between 0 and 1");
+        }
+        if (countdown <= 0) {
+            throw new IllegalArgumentException("countdown must be greater than 0");
+        }
+        this.slowValue = 1 - speedDown;
+        this.countdown = countdown;
+    }
+
+    /**
      * Verify if the health of the balloon is lower than zero 
      * @return a boolean
      */
     public boolean isDead() {
         return this.health <= 0;
+    }
+
+    /**
+     * Returns true if the balloon has finished the path 
+     * @return boolean
+     */
+    public boolean hasFinished() {
+        return this.distanceTravelled >= (this.path.size() * Cell.SIZE);
     }
 
     /**
@@ -157,14 +190,6 @@ public class Balloon {
         } else {
             this.currentCell = this.path.get(this.path.size() - 1); // Si on est sur l'avant derniere case et que l'on avance de plus d'une case
         }
-    }
-
-    /**
-     * Returns the index of this Balloon in the path
-     * @return the index of this Balloon in the path
-     */
-    public int getIndexPosition() {
-        return (int) (this.distanceTravelled / Cell.SIZE);
     }
 
     /**
@@ -188,14 +213,6 @@ public class Balloon {
     }
 
     /**
-     * Returns true if the balloon has finished the path 
-     * @return boolean
-     */
-    public boolean hasFinished() {
-        return this.distanceTravelled >= (this.path.size() * Cell.SIZE);
-    }
-
-    /**
      * Display the Balloon at spawn
      */
     public void displaySpawn() {
@@ -214,22 +231,6 @@ public class Balloon {
      */
     public void displayPopped() {
         System.out.printf("%s popped%n", this);
-    }
-    /**
-     * Apply a movement effect to the balloon
-     * @param speedDown the speed down applied {@code (0 < speedDown <= 1)}
-     * @param countdown countdown of the effect in number of moves {@code (0 < countdown)}
-     * @throws IllegalArgumentException if speedDown is not between 0 and 1 or if countdown is not greater than 0
-     */
-    public void applyMovementEffect(double speedDown, int countdown) throws IllegalArgumentException {
-        if (speedDown < 0 || speedDown > 1) {
-            throw new IllegalArgumentException("speedDown must be between 0 and 1");
-        }
-        if (countdown <= 0) {
-            throw new IllegalArgumentException("countdown must be greater than 0");
-        }
-        this.slowValue = 1 - speedDown;
-        this.countdown = countdown;
     }
 
     /**

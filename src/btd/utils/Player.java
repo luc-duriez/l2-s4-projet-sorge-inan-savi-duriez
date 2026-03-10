@@ -14,6 +14,7 @@ public class Player {
         this.credits = 2000;
         this.lives = 20;
     }
+    
     /**
      * Constructor of Player with 2 parameters
 
@@ -24,6 +25,7 @@ public class Player {
         this.credits = credits;
         this.lives = lives;
     }
+    
     /**
      * Getter of credits
      * @return credits : int
@@ -31,6 +33,7 @@ public class Player {
     public int getCredits() {
         return this.credits;
     }
+    
     /**
      * Getter of lives
      * @return lives : int
@@ -38,6 +41,7 @@ public class Player {
     public int getLives() {
         return this.lives;
     }
+    
     /**
      * Add amount of credits and return this value
      * @param amount : int
@@ -54,6 +58,7 @@ public class Player {
     public void decreaseCredits(int amount) {
         this.credits -= amount;
     }
+    
     /**
      * Remove amount of lives.
      * if the player has enough lives, returns true, false otherwise

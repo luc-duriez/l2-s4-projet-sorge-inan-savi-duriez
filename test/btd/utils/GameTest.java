@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;
 
 import btd.boards.*;
-import btd.towers.IceTower;
-import btd.towers.Tower;
+import btd.towers.towers.IceTower;
+import btd.towers.towers.Tower;
 
 public class GameTest {
     private Game game;

@@ -1,4 +1,4 @@
-package btd.towers;
+package btd.towers.towers;
 
 import java.util.List;
 import btd.boards.Cell;
@@ -20,7 +20,7 @@ public abstract class UtilityTower extends Tower {
      * @param attackSpeed attack speed
      * @param basePrice base price
      */
-    public UtilityTower(Cell pos, double range, int attackSpeed, int basePrice) {
+    protected UtilityTower(Cell pos, double range, int attackSpeed, int basePrice) {
         super(pos, range, attackSpeed, basePrice);
     }
 

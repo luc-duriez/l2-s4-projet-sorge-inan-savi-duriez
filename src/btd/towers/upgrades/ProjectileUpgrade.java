@@ -1,6 +1,6 @@
 package btd.towers.upgrades;
 
-import btd.towers.*;
+import btd.towers.towers.*;
 import btd.towers.projectiles.*;
 
 public class ProjectileUpgrade implements Upgrade {
@@ -44,5 +44,10 @@ public class ProjectileUpgrade implements Upgrade {
     @Override
     public String toString(){
         return "Change projectile to :" + newProjectile + " (cost " + cost + ")";
+    }
+
+    @Override
+    public String displayAppliedUpgrade(DamageTower tower){
+        return String.format("Applying upgrade change projectile by %S %nCurrent projectile:%s next:%s", newProjectile, tower.getProjectile(), newProjectile);
     }
 }

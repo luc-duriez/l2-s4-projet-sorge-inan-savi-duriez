@@ -1,8 +1,7 @@
-package btd.towers;
+package btd.towers.towers;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import btd.boards.Cell;
 import btd.towers.projectiles.*;
 import btd.towers.upgrades.*;

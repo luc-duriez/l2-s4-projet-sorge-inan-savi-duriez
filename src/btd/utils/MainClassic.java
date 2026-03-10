@@ -4,7 +4,8 @@ package btd.utils;
 import java.util.Random;
 
 import btd.boards.*;
-import btd.towers.*;
+import btd.towers.towers.*;
+import btd.towers.upgrades.*;
 
 /** Main classic mode */
 public class MainClassic {
@@ -55,19 +56,23 @@ public class MainClassic {
                 System.out.println(e.getMessage());
             }
             
-            board.show();
+            board.displayBoard();
             game.playRound(Integer.parseInt(args[2]));
             
             System.out.println("\n\n Tests upgrades : \n");
             DamageTower t =new BombTower(new Cell(0,0));
-            t.displayRemainingUpgrade();
-            t.diplayAppliedUpgrade();
-            t.upgrade(t.getRemainingUpgrade().get(0), game.getPlayer());
-            t.displayRemainingUpgrade();
-            t.diplayAppliedUpgrade();
-            t.revertUpgrade(t.getAppliedUpgrade().get(0), game.getPlayer());
-            t.diplayAppliedUpgrade();
-            t.displayRemainingUpgrade();
+            for(int i = 0; i < 4; i++){
+                t.upgrade(t.getRemainingUpgrade().get(0), game.getPlayer());
+                System.out.println();
+            }
+            
+            
+            
+            // t.displayRemainingUpgrade();
+            // t.diplayAppliedUpgrade();
+            // t.revertUpgrade(t.getAppliedUpgrade().get(0), game.getPlayer());
+            // t.diplayAppliedUpgrade();
+            // t.displayRemainingUpgrade();
         }   
     }
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import btd.boards.*;
-import btd.towers.Tower;
+import btd.towers.towers.Tower;
 
 /**
  * Manages the game logic including rounds, balloons and towers.
@@ -55,6 +55,35 @@ public class Game {
     }
 
     /**
+     * Return player
+     * @return Player 
+     */
+    public Player getPlayer(){
+        return this.player;
+    }
+
+     /**
+     * Return the square of distance of two points
+     * @param c1 The first Cell
+     * @param c2 The second Cell
+     * @return double
+     */
+    public static double distanceSquaredOf(Cell c1, Cell c2) {
+        int dx = (c2.getX() - c1.getX()) * Cell.SIZE;
+        int dy = (c2.getY() - c1.getY()) * Cell.SIZE;
+        return dx * dx + dy * dy;
+    }
+    
+    /**
+     * Add t in board.
+     * @param t Tower
+     */
+    public void addTower(Tower t) {
+        board.addTower(t);
+        board.getCell(t.getCell().getX(), t.getCell().getY()).setState(StateCell.TOWER);
+    }
+    
+    /**
      * This function updates the waiting balloons.
      * @param nbBalloons the number of balloons to update
      */
@@ -71,6 +100,21 @@ public class Game {
         }
     }
 
+    /**
+     * Make all tower shoot and display the shot.
+     */
+    private void towerShoot() {
+        for (Tower t : board.getTowers()) {
+            List<Balloon> touchedBallon = t.shoot(t.getBalloonsInRange(activeBalloons));
+            for (Balloon b : touchedBallon) {
+                if (b.getHealth() <= 0) {
+                    activeBalloons.remove(b);
+                    b.displayPopped();
+                }
+            }
+        }
+    }
+    
     /**
      * Play a round
      * @param nbBalloons the number of balloons to spawn in this round
@@ -140,45 +184,4 @@ public class Game {
             System.out.println(b + " (health: " + b.getHealth() + ")" + status);
         }
     }
-
-    /**
-     * Return the square of distance of two points
-     * @param c1 The first Cell
-     * @param c2 The second Cell
-     * @return double
-     */
-    public static double distanceSquaredOf(Cell c1, Cell c2) {
-        int dx = (c2.getX() - c1.getX()) * Cell.SIZE;
-        int dy = (c2.getY() - c1.getY()) * Cell.SIZE;
-        return dx * dx + dy * dy;
-    }
-
-    /**
-     * Make all tower shoot and display the shot.
-     */
-    private void towerShoot() {
-        for (Tower t : board.getTowers()) {
-            List<Balloon> touchedBallon = t.shoot(t.getBalloonsInRange(activeBalloons));
-            for (Balloon b : touchedBallon) {
-                if (b.getHealth() <= 0) {
-                    activeBalloons.remove(b);
-                    b.displayPopped();
-                }
-            }
-        }
-    }
-    /**
-     * Add t in board.
-     * @param t Tower
-     */
-    public void addTower(Tower t) {
-        board.addTower(t);
-        board.getCell(t.getCell().getX(), t.getCell().getY()).setState(StateCell.TOWER);
-
-    }
-    /**
-     * Return player
-     * @return Player 
-     */
-    public Player getPlayer(){return this.player;}
 }

@@ -4,7 +4,7 @@ package btd.utils;
 import java.util.Random;
 
 import btd.boards.*;
-import btd.towers.*;
+import btd.towers.towers.*;
 
 /** Main classic mode */
 public class MainClassic {

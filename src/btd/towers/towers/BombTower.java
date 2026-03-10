@@ -1,8 +1,7 @@
-package btd.towers;
+package btd.towers.towers;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import btd.boards.Cell;
 import btd.towers.projectiles.*;
 import btd.towers.upgrades.*;
@@ -37,6 +36,29 @@ public class BombTower extends DamageTower {
         return (overrideProjectile != null) ? overrideProjectile : projectile;
     }
 
+    /**
+     * Calculate the final explosion radius for this Tower
+     * @return double the final explosion radius for this Tower
+     */
+    private double getFinalExplosionRadius() {
+        return ((ExplosiveProjectile) this.projectile).getExplosionRadius();
+    }
+    
+    /**
+     * Add a new projectile to this tower.
+     * 
+     * @param p the new projectile for this tower
+     */
+    public void setProjectileOverride(Projectile p) {
+        overrideProjectile = p;
+    }
+
+    /**
+     * Remove this bomb tower's override projectile
+     */
+    public void removeProjectileOverride() {
+        overrideProjectile = null;
+    }
     
     @Override
     public List<Balloon> shoot(List<Balloon> inRange) {
@@ -68,28 +90,5 @@ public class BombTower extends DamageTower {
             this.cooldown += Game.TICK;
         }
         return touchedBalloons;
-    }
-    /**
-     * Calculate the final explosion radius for this Tower
-     * @return double the final explosion radius for this Tower
-     */
-    private double getFinalExplosionRadius() {
-        return ((ExplosiveProjectile) this.projectile).getExplosionRadius();
-    }
-    
-    /**
-     * Add a new projectile to this tower.
-     * 
-     * @param p the new projectile for this tower
-     */
-    public void setProjectileOverride(Projectile p) {
-        overrideProjectile = p;
-    }
-
-    /**
-     * Remove this bomb tower's override projectile
-     */
-    public void removeProjectileOverride() {
-        overrideProjectile = null;
     }
 }

@@ -4,13 +4,8 @@ package btd.utils;
 import java.util.Random;
 
 import btd.boards.*;
-import btd.towers.BombTower;
-import btd.towers.DartTower;
-import btd.towers.IceTower;
-import btd.towers.SlowTower;
-import btd.towers.SniperTower;
-import btd.towers.SuperTower;
-import btd.towers.TackTower;
+import btd.towers.towers.*;
+
 public class MainLinear {
     private static Cell findUnusedCell(Board board, int w, int h) throws RuntimeException {
         int x, y;
@@ -54,7 +49,7 @@ public class MainLinear {
         } catch (RuntimeException e) {
             System.out.println(e.getMessage());
         }
-        board.show();
+        board.displayBoard();
         
         game.playRound(Integer.parseInt(args[2]));
     }

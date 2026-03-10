@@ -1,6 +1,6 @@
 package btd.towers.upgrades;
 
-import btd.towers.*;
+import btd.towers.towers.*;
 
 public class RangeUpgrade implements Upgrade {
 
@@ -23,12 +23,12 @@ public class RangeUpgrade implements Upgrade {
 
     @Override
     public void apply(DamageTower tower) {
-        tower.multiplyRange(multiplier);
+        tower.multiplyBonusRange(multiplier);
     }
 
     @Override
     public void remove(DamageTower tower) {
-        tower.multiplyRange(1.0 / multiplier);
+        tower.multiplyBonusRange(1.0 / multiplier);
     }
 
     @Override
@@ -39,5 +39,10 @@ public class RangeUpgrade implements Upgrade {
     @Override
     public String toString(){
         return "Range x" + multiplier + " (cost " + cost + ")";
+    }
+
+    @Override
+    public String displayAppliedUpgrade(DamageTower tower){
+        return String.format("Applying upgrade Increase range by %.0f%% %nRange:%.0f ratefactor:%.2f", ((multiplier-1)*100), tower.getRange(), multiplier);
     }
 }

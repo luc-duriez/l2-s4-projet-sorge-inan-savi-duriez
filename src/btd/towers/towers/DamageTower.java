@@ -1,9 +1,8 @@
-package btd.towers;
+package btd.towers.towers;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
-
 import btd.boards.Cell;
 import btd.towers.projectiles.Projectile;
 import btd.towers.upgrades.Upgrade;
@@ -35,7 +34,7 @@ public abstract class DamageTower extends Tower {
      * @param projectile projectile
      * @param basePrice base price
      */
-    public DamageTower(Cell pos, double range, int attackSpeed, Projectile projectile, int basePrice) {
+    protected DamageTower(Cell pos, double range, int attackSpeed, Projectile projectile, int basePrice) {
         super(pos, range, attackSpeed, basePrice);
         this.projectile = projectile;
         this.remainingUpgrades = new ArrayList<Upgrade>();
@@ -47,7 +46,19 @@ public abstract class DamageTower extends Tower {
      * @return the total amount of damage for this Tower
      */
     public double getFinalDamage() {
-        return projectile.getDamage() + bonusDamage;
+        return getDamage() + bonusDamage;
+    }
+
+    public double getDamage(){
+        return getProjectile().getDamage();
+    }
+    
+    public double getFinalRate(){
+        return attackSpeed - ((attackSpeed * AttackSpeedMultiplier) - attackSpeed);
+    }
+
+    public double getFinalRange(){
+        return range * rangeMultiplier;
     }
 
     @Override //Changement de la range de la tower pour passer à range * rangeMultiplier
@@ -67,6 +78,66 @@ public abstract class DamageTower extends Tower {
         return inRangeList;
     }
 
+    /**
+     * Return the projectile of this Tower
+     * @return Projectile the projectile of this Tower
+     */
+    public Projectile getProjectile() {
+        return projectile;
+    }
+
+    @Override
+    public int getTotalValue(){
+        int price = basePrice;
+        for (Upgrade u: appliedUpgrades){
+            price += u.getCost();
+
+        }
+        return price;
+    }
+    
+    /**
+     * Return the remainining upgrade of this Tower
+     * @return List<Upgrade>
+     */
+    public List<Upgrade> getRemainingUpgrade() {
+        return this.remainingUpgrades;
+    }
+    /**
+     * Return the applied upgrade of this Tower
+     * @return List<Upgrade>
+     */
+    public List<Upgrade> getAppliedUpgrade() {
+        return this.appliedUpgrades;
+    }
+    
+    /**
+     * Increase this tower's bonus damge by amount.
+     * 
+     * @param amount the increase amount
+     */
+    public void changeBonusDamage(double amount) {
+        bonusDamage += amount;
+    }
+
+    /**
+     * Increase this tower's range multiplier by multiplier.
+     * 
+     * @param multiplier the increase amount
+     */
+    public void multiplyBonusRange(double multiplier) {
+        rangeMultiplier *= multiplier;
+    }
+
+    /**
+     * Increase this tower's fire rate multiplier by multiplier.
+     * 
+     * @param multiplier the increase amount
+     */
+    public void multiplyBonusAttackSpeed(double multiplier) {
+        AttackSpeedMultiplier *= multiplier;
+    }
+    
     /**
      * Return the cell with the highest travelled distance
      * @param inRangeBalloons list of the cells in the range of the tower
@@ -104,46 +175,6 @@ public abstract class DamageTower extends Tower {
         return touchedBalloons;
     }
 
-    @Override
-    public void displayShoot(Balloon b) {
-        System.out.printf("%s shoots %s(%.0f) at %s%n", toString(), getProjectile().getName(), getFinalDamage(), b);
-    }
-    
-    /**
-     * Return the projectile of this Tower
-     * @return Projectile the projectile of this Tower
-     */
-    public Projectile getProjectile() {
-        return projectile;
-    }
-
-    /**
-     * Increase this tower's bonus damge by amount.
-     * 
-     * @param amount the increase amount
-     */
-    public void increaseDamage(double amount) {
-        bonusDamage += amount;
-    }
-
-    /**
-     * Increase this tower's range multiplier by multiplier.
-     * 
-     * @param multiplier the increase amount
-     */
-    public void multiplyRange(double multiplier) {
-        rangeMultiplier *= multiplier;
-    }
-
-    /**
-     * Increase this tower's fire rate multiplier by multiplier.
-     * 
-     * @param multiplier the increase amount
-     */
-    public void multiplyAttackSpeed(double multiplier) {
-        AttackSpeedMultiplier *= multiplier;
-    }
-
     /**
      * Adds a new upgrade to appliedUpgrade
      * @param u The upgrade to apply
@@ -155,20 +186,15 @@ public abstract class DamageTower extends Tower {
         }
         if (p.hasEnoughCredits(u.getCost())) {
             p.decreaseCredits(u.getCost());
+            displayUpgrade(u,p);
             u.apply(this);
             this.remainingUpgrades.remove(u); 
             this.appliedUpgrades.add(u); 
-            displayUpgrade(u,p);
+            
         }
         else{
             
         }
-    }
-    private void displayUpgrade(Upgrade u,Player p){
-        System.out.printf("%s has been bought (money:%s -> %s)%n",displayUpgrade(u),p.getCredits()+u.getCost(),p.getCredits());
-    }
-    private String displayUpgrade(Upgrade u) {
-        return String.format("%s[fireRate:%s,range:%s][upgradeLevel:%s, projectile:%s]",this,(int) this.getFinalRate(),(int) getFinalRange(),this.appliedUpgrades.size(),this.getProjectile());
     }
 
     /**
@@ -186,42 +212,21 @@ public abstract class DamageTower extends Tower {
         displayRevert(u,p);
     }
 
+    @Override
+    public void displayShoot(Balloon b) {
+        System.out.printf("%s shoots %s(%.0f) at %s%n", toString(), getProjectile().getName(), getFinalDamage(), b);
+    }
+
+    private void displayUpgrade(Upgrade u,Player p){
+        System.out.printf("%s has been bought (money:%d -> %d)%n",displayUpgrade(u),p.getCredits()+u.getCost(),p.getCredits());
+    }
+
+    private String displayUpgrade(Upgrade u) {
+        return String.format("%s%n%s[fireRate:%.0f, range:%.0f][upgradeLevel:%d, projectile:%s(%.0f)]", u.displayAppliedUpgrade(this), this, getFinalRate(), getFinalRange(), appliedUpgrades.size(), getProjectile().getName(), getFinalDamage());
+    }
+
     private void displayRevert(Upgrade u, Player p) {
         System.out.printf("%s has been sold (money:%s -> %s)%n", displayUpgrade(u), p.getCredits()-u.getCost(),p.getCredits());
-    }
-
-    @Override
-    public int getTotalValue(){
-        int price = basePrice;
-        for (Upgrade u: appliedUpgrades){
-            price += u.getCost();
-
-        }
-        return price;
-    }
-
-    @Override
-    public double getFinalRange(){
-        return range * rangeMultiplier;
-    }
-
-    @Override
-    public double getFinalRate(){
-        return attackSpeed * AttackSpeedMultiplier;
-    }
-    /**
-     * Return the remainining upgrade of this Tower
-     * @return List<Upgrade>
-     */
-    public List<Upgrade> getRemainingUpgrade() {
-        return this.remainingUpgrades;
-    }
-    /**
-     * Return the applied upgrade of this Tower
-     * @return List<Upgrade>
-     */
-    public List<Upgrade> getAppliedUpgrade() {
-        return this.appliedUpgrades;
     }
 
     /**

@@ -1,4 +1,4 @@
-package btd.towers;
+package btd.towers.towers;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;

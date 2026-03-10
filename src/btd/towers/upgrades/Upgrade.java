@@ -1,6 +1,6 @@
 package btd.towers.upgrades;
 
-import btd.towers.*;
+import btd.towers.towers.*;
 
 /** Interface for upgrades */
 public interface Upgrade {
@@ -32,4 +32,9 @@ public interface Upgrade {
      * @return a string representation of this upgrade
      */
     String toString();
+
+    /**
+     * Display the upgrade applied
+      */
+    String displayAppliedUpgrade(DamageTower tower);
 }

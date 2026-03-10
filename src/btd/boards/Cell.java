@@ -28,21 +28,6 @@ public class Cell {
     }
 
     /**
-     * This function return true if cell is occupied, false otherwise
-     * @return boolean
-     */
-    public boolean isOccupied() {
-        return this.isOccupied;
-    }
-
-    /**
-     * This function switch the isOccupied value
-     */
-    public void switchIsOccupied() {
-        this.isOccupied = !this.isOccupied;
-    }
-
-    /**
      * Return the position x
      * @return int x
      */
@@ -56,6 +41,48 @@ public class Cell {
      */
     public int getY() {
         return this.y;
+    }
+
+    /**
+     * Return this cell's state
+     * @return this cell's state
+     */
+    public StateCell getState() {
+        return this.state.peek();
+    }
+    
+    /**
+     * Set this cell's state to newState.
+     * 
+     * @param newState this cell's new state
+     */
+    public void setState(StateCell newState) {
+        this.state.push(newState);
+    }
+    
+   /**
+     * Remove the first state of this state.
+     */
+    public void popState() {
+        if (this.state.size() == 1) {
+            throw new IllegalStateException("La cellule " + this.toString() + " ne peut pas être dépilé (1 élément minimum)");
+        }
+        this.state.pop();
+    }
+    
+    /**
+     * This function switch the isOccupied value
+     */
+    public void switchIsOccupied() {
+        this.isOccupied = !this.isOccupied;
+    }
+    
+    /**
+     * This function return true if cell is occupied, false otherwise
+     * @return boolean
+     */
+    public boolean isOccupied() {
+        return this.isOccupied;
     }
 
     /**
@@ -77,30 +104,5 @@ public class Cell {
         return "(" + this.x + ", " + this.y + ")";
     }
 
-    /**
-     * Set this cell's state to newState.
-     * 
-     * @param newState this cell's new state
-     */
-    public void setState(StateCell newState) {
-        this.state.push(newState);
-    }
-
-    /**
-     * Remove the first state of this state.
-     */
-    public void popState() {
-        if (this.state.size() == 1) {
-            throw new IllegalStateException("La cellule " + this.toString() + " ne peut pas être dépilé (1 élément minimum)");
-        }
-        this.state.pop();
-    }
-
-    /**
-     * Return this cell's state
-     * @return this cell's state
-     */
-    public StateCell getState() {
-        return this.state.peek();
-    }
+ 
 }

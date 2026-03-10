@@ -2,7 +2,7 @@
 package btd.utils;
 
 import btd.boards.*;
-import btd.towers.*;
+import btd.towers.towers.*;
 public class MainClassic {
 
     public static void main(String[] args) {
