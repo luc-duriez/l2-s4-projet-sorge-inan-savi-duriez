@@ -13,5 +13,9 @@ public class DamageTowerTest {
         public TestDamage(Cell pos, double range, int attackSpeed, Projectile projectile, int basePrice){
             super(pos, range, attackSpeed, projectile, basePrice);
         }
+
+        @Override
+        public List<Balloon> getBalloonsInRange(List<Balloon> activeBalloons){ return new ArrayList<>();}
+
     }
 }
