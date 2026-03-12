@@ -7,3 +7,6 @@ Les upgrades sont finies (normalement ou presque) -> Penser au choix du joueur q
 un truc du genre. Pareil pour revertUpgrade.
 
 j'ai pas tester les upgrades j'ai juste "finie" les classes.
+
+
+une fonction qui récup l'input et qui verifie si c un nombre (renvoie nombre)
