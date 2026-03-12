@@ -19,4 +19,11 @@ public class PlayerTest {
         p.addCredits(1000);
         assertEquals(6000, p.getCredits());
     }
+
+     @Test
+    public void decreaseCreditsTest() {
+        p.decreaseCredits(1000);
+        assertEquals(4000, p.getCredits());
+    }
+
 }
