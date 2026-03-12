@@ -19,5 +19,8 @@ public class DamageTowerTest {
 
         @Override
         public int getTotalValue(){return 0;}
+
+        @Override
+        public List<Balloon> shoot(List<Balloon> inRange) { return new ArrayList<>();}
     }
 }
