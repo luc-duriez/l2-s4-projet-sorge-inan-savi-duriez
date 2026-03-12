@@ -38,5 +38,12 @@ public class PlayerTest {
         assertTrue(p.isDead());
     }
 
+    @Test
+    public void hasEnoughCreditsTest() {
+        assertTrue(p.hasEnoughCredits(4000));
+        assertFalse(p.hasEnoughCredits(6000));
+
+
+    }
 
 }
