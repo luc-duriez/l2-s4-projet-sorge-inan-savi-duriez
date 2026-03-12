@@ -20,10 +20,16 @@ public class PlayerTest {
         assertEquals(6000, p.getCredits());
     }
 
-     @Test
+    @Test
     public void decreaseCreditsTest() {
         p.decreaseCredits(1000);
         assertEquals(4000, p.getCredits());
+    }
+
+    @Test
+    public void decreaseLifeTest() {
+        p.decreaseLife(1);
+        assertEquals(6, p.getLives());
     }
 
 }
