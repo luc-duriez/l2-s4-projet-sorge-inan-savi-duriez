@@ -13,4 +13,10 @@ public class PlayerTest {
     public void before() {
         p = new Player(5000, 7);
     }
+
+    @Test
+    public void addCreditsTest() {
+        p.addCredits(1000);
+        assertEquals(6000, p.getCredits());
+    }
 }
