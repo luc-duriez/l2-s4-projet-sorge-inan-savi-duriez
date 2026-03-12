@@ -32,4 +32,11 @@ public class PlayerTest {
         assertEquals(6, p.getLives());
     }
 
+    @Test
+    public void isDeadTest() {
+        p.decreaseLife(7);
+        assertTrue(p.isDead());
+    }
+
+
 }
