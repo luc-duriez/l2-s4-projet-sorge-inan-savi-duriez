@@ -22,5 +22,8 @@ public class DamageTowerTest {
 
         @Override
         public List<Balloon> shoot(List<Balloon> inRange) { return new ArrayList<>();}
+
+        @Override
+        public void displayShoot(Balloon b){}
     }
 }
