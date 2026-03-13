@@ -17,7 +17,7 @@ import org.junit.jupiter.api.*;
 public class DamageTowerTest {
 
     // initialisation des différentes upgrades 
-    Upgrade u1 = new AttackSpeedUpgrade(0.25, 200);
+    Upgrade u1 = new AttackSpeedUpgrade(1.25, 200);
     Upgrade u2 = new DamageUpgrade(1.5, 300);
     Upgrade u3 = new RangeUpgrade( 1.25, 500);
     // Création d'un classe de test de Damage test afin de vérifier la multitude tests inhérente à cette fonction
@@ -61,7 +61,7 @@ public class DamageTowerTest {
 
     @Test
     public void getFinalRateTest(){
-        assertEquals(1.75, test.getFinalRate());
+        assertEquals(0.75, test.getFinalRate());
     }
 
     @Test
