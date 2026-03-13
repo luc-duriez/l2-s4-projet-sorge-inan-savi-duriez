@@ -82,6 +82,9 @@ public class MainClassic {
                     dmgTower.revertUpgrade(dmgTower.getAppliedUpgrade().get(0), game.getPlayer());
                 }
             }
+            for(int i = 6; i < 11; i++){
+                game.playRound(Integer.parseInt(args[2]) * i);
+            }
             // t.displayRemainingUpgrade();
             // t.diplayAppliedUpgrade();
             // t.revertUpgrade(t.getAppliedUpgrade().get(0), game.getPlayer());
