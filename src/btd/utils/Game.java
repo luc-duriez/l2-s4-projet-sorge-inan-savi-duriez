@@ -7,6 +7,13 @@ import java.util.Random;
 import java.util.Scanner;
 
 import btd.boards.*;
+import btd.towers.towers.BombTower;
+import btd.towers.towers.DartTower;
+import btd.towers.towers.IceTower;
+import btd.towers.towers.SlowTower;
+import btd.towers.towers.SniperTower;
+import btd.towers.towers.SuperTower;
+import btd.towers.towers.TackTower;
 import btd.towers.towers.Tower;
 
 /**
@@ -135,10 +142,44 @@ public class Game {
      */
     public void playRound(int nbBalloons) {
         
-        System.out.println("=== Round " + this.round + " ===");
+        System.out.println("=== Starting Round " + this.round + " ===");
         this.actualizeBalloons(nbBalloons);
         int i = 0;
         int time = 0;
+        board.displayBoard();
+        boolean roundStarted = false;
+        int nbTentatives=5;
+        while (!roundStarted && nbTentatives-- > 0) {
+            displayChoice();
+            System.out.println(nbTentatives);
+            try {
+                int input = getInput("\t\tchoice ?\n");
+                switch (input) {
+                case 0:
+                    System.out.println("No more action");
+                    roundStarted=!roundStarted;
+                    break;
+                case 1:
+                    System.out.println("view");
+                    board.displayBoard();
+                    break;
+                case 2:
+                    System.out.println("Executing action : buy a new IceTower (cost: 400) ");
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+
+                }
+            } catch (NoSuchElementException e) {
+                System.out.println("ERROR : Invalid input ");
+            }
+        }
         while (i < this.waitingBalloons.size() || !this.activeBalloons.isEmpty()) { // Mouvement des ballons
             System.out.println("\n---- time: " + time);
             Balloon newBalloon = null;
@@ -196,6 +237,22 @@ public class Game {
                 status = " [SLOW]";
             }
             System.out.println(b + " (health: " + b.getHealth() + ")" + status);
+        }
+    }
+    private void displayChoice(){
+        
+        System.out.println("\n\n===== Step 1 : player plays");
+        System.out.println("Which action ?");
+        System.out.println("\t0 - start round");
+        System.out.println("\t1 - view");
+        List<Tower> existingTowers = new ArrayList<>();
+        existingTowers.add(new IceTower(null));existingTowers.add(new SlowTower(null));
+        existingTowers.add(new BombTower(null));existingTowers.add(new DartTower(null));
+        existingTowers.add(new SniperTower(null));existingTowers.add(new SuperTower(null));
+        existingTowers.add(new TackTower(null));
+        for (int i=2; i < existingTowers.size();i++){
+            Tower t=existingTowers.get(i);
+            System.out.printf("\t%d - buy a new %s (cost: %d)%n",i , t.getClass().getSimpleName(),t.getTotalValue());
         }
     }
 }
