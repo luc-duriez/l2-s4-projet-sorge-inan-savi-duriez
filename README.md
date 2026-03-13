@@ -286,7 +286,13 @@ Commencer le choix joueur.
 
 ### Ce qui a été réalisé
 
+Pendant la séance on s'est occoupé d'ajouter l=la gestion des 10 manches du jeu ainsi que d'ajouter 2 tours de chaque type, une upgrade pour chaque tour au début du jeu et l'inversion de ces upgrades juste avant le round 6.
+
+On a aussi réalisé le choix de l'action par le joueur pour le livrable 5.
+
 ### Difficultés rencontrées
+
+Nous n'avons pas rencontré de réelles difficultées à part l'inversion des upgrades car il fallait inverser uniquement les DamageUpgrade et non les UtilityTower.
 
 ### Objectifs pour la semaine et répartition du travail par membre
 
