@@ -19,12 +19,15 @@ public class DamageTowerTest {
     // initialisation des différentes upgrades 
     Upgrade u1 = new AttackSpeedUpgrade(1.25, 200);
     Upgrade u2 = new DamageUpgrade(1.5, 300);
+    Upgrade u3 = new RangeUpgrade( 1.25, 500);
     // Création d'un classe de test de Damage test afin de vérifier la multitude tests inhérente à cette fonction
     private class TestDamage extends DamageTower{
         public TestDamage(Cell pos, double range, int attackSpeed, Projectile projectile, int basePrice){
             super(pos, range, attackSpeed, projectile, basePrice);
             this.remainingUpgrades.add(u1);
             this.remainingUpgrades.add(u2);
+            this.remainingUpgrades.add(u3);
+
         }
 
         @Override
@@ -48,6 +51,7 @@ public class DamageTowerTest {
         Player player1 = new Player();
         test.upgrade(u1, player1);
         test.upgrade(u2, player1);
+        test.upgrade(u3, player1);
     }
 
     @Test
