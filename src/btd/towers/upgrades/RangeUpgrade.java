@@ -43,6 +43,6 @@ public class RangeUpgrade implements Upgrade {
 
     @Override
     public String displayAppliedUpgrade(DamageTower tower){
-        return String.format("Applying upgrade Increase range by %.0f%% %nRange:%.0f ratefactor:%.2f", ((multiplier-1)*100), tower.getRange(), multiplier);
+        return String.format("Applied upgrade Increase range by %.0f%% %nRange:%.0f ratefactor:%.2f", ((multiplier-1)*100), tower.getRange(), multiplier);
     }
 }

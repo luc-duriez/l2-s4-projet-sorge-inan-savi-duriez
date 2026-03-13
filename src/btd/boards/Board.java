@@ -150,7 +150,7 @@ public abstract class Board {
      */
     
     public void displayBoard() {
-
+        System.out.println();
         String strLineSeparator = "   +";
         for (int c = 0; c < this.board[0].length; c++) {
             strLineSeparator += "-----+";
