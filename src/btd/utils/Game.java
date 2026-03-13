@@ -43,7 +43,6 @@ public class Game {
         this.waitingBalloons = new ArrayList<Balloon>();
         this.activeBalloons = new ArrayList<Balloon>();
         this.SCANNER = new Scanner(System.in);
-        getInput("testInput ta mère\n");
     }
 
     /**
