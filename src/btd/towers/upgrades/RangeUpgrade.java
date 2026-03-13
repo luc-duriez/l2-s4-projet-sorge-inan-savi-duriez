@@ -13,7 +13,7 @@ public class RangeUpgrade implements Upgrade {
     /**
      * Build a Range upgrade of a given bonus damage and cost.
      * 
-     * @param multiplier this upgrade's multiplier
+     * @param multiplier this upgrade's multiplier must be 
      * @param cost this upgrade's cost
      */
     public RangeUpgrade(double multiplier, int cost) {
