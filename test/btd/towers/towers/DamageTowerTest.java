@@ -15,12 +15,14 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;
 
 public class DamageTowerTest {
+
+    // initialisation des différentes upgrades 
+    Upgrade u1 = new AttackSpeedUpgrade(1.25, 200);
+    Upgrade u2 = new DamageUpgrade(1.5, 300);
     // Création d'un classe de test de Damage test afin de vérifier la multitude tests inhérente à cette fonction
     private class TestDamage extends DamageTower{
         public TestDamage(Cell pos, double range, int attackSpeed, Projectile projectile, int basePrice){
             super(pos, range, attackSpeed, projectile, basePrice);
-            Upgrade u1 = new AttackSpeedUpgrade(1.25, 200);
-            Upgrade u2 = new DamageUpgrade(2, 300);
             this.remainingUpgrades.add(u1);
             this.remainingUpgrades.add(u2);
         }
@@ -44,10 +46,13 @@ public class DamageTowerTest {
     public void before(){
         test = new TestDamage(new Cell(0, 0), 1.5, 1,new LinearProjectile("aaa", 5),250);
         Player player1 = new Player();
-        Upgrade u3 = new RangeUpgrade(1.25, 500);
-        test.upgrade(u3, player1);
-        Upgrade u4 = new DamageUpgrade(1.5, 500);
-        test.upgrade(u4, player1);
+        test.upgrade(u1, player1);
+        test.upgrade(u2, player1);
+    }
+
+    @Test
+    public void getFinalDamageAfterUpgrade(){
+        assertEquals(6.5, test.getFinalDamage());
     }
 
 
