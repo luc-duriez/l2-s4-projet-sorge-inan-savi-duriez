@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import btd.boards.Cell;
 import btd.towers.projectiles.Projectile;
+import btd.towers.upgrades.AttackSpeedUpgrade;
 import btd.towers.upgrades.Upgrade;
 import btd.utils.Balloon;
 import btd.utils.Game;
@@ -127,8 +128,8 @@ public abstract class DamageTower extends Tower {
      */
     public void multiplyBonusRange(double multiplier) {
         rangeMultiplier *= multiplier;
-    }
-
+    }     
+    
     /**
      * Increase this tower's fire rate multiplier by multiplier.
      * 
