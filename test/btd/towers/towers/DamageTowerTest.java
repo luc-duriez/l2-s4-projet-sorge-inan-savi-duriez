@@ -19,7 +19,7 @@ public class DamageTowerTest {
     // initialisation des différentes upgrades 
     Upgrade u1 = new AttackSpeedUpgrade(1.25, 200);
     Upgrade u2 = new DamageUpgrade(1.5, 300);
-    Upgrade u3 = new RangeUpgrade( 1.25, 500);
+    Upgrade u3 = new RangeUpgrade( 0.25, 500);
     // Création d'un classe de test de Damage test afin de vérifier la multitude tests inhérente à cette fonction
     private class TestDamage extends DamageTower{
         public TestDamage(Cell pos, double range, int attackSpeed, Projectile projectile, int basePrice){
@@ -57,6 +57,11 @@ public class DamageTowerTest {
     @Test
     public void getFinalDamageAfterUpgrade(){
         assertEquals(6.5, test.getFinalDamage());
+    }
+
+    @Test
+    public void getFinalRateTest(){
+        assertEquals(u1, test.getFinalRate());
     }
 
 
