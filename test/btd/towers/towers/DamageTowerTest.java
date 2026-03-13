@@ -46,6 +46,10 @@ public class DamageTowerTest {
         Player player1 = new Player();
         Upgrade u3 = new RangeUpgrade(1.25, 500);
         test.upgrade(u3, player1);
+        Upgrade u4 = new DamageUpgrade(1.5, 500);
+        test.upgrade(u4, player1);
     }
+
+
 
 }
