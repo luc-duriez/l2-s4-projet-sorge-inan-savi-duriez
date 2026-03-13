@@ -2,7 +2,9 @@ package btd.utils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Random;
+import java.util.Scanner;
 
 import btd.boards.*;
 import btd.towers.towers.Tower;
@@ -28,6 +30,8 @@ public class Game {
     /** List of active balloons in a specific round */
     private List<Balloon> activeBalloons;
 
+    /** The scanner for input */
+    private final Scanner SCANNER;
     /**
      * Build a Game with a given board
      * @param board this game's board
@@ -38,7 +42,8 @@ public class Game {
         this.round = 1;
         this.waitingBalloons = new ArrayList<Balloon>();
         this.activeBalloons = new ArrayList<Balloon>();
-
+        this.SCANNER = new Scanner(System.in);
+        getInput("testInput ta mère\n");
     }
 
     /**
@@ -52,6 +57,7 @@ public class Game {
         this.round = 1;
         this.waitingBalloons = new ArrayList<Balloon>();
         this.activeBalloons = new ArrayList<Balloon>();
+        this.SCANNER = new Scanner(System.in);
     }
 
     /**
@@ -61,7 +67,16 @@ public class Game {
     public Player getPlayer(){
         return this.player;
     }
-
+    private int getInput(String a) throws NoSuchElementException{
+        System.out.print(a);
+        String var = SCANNER.nextLine();
+        try{
+            return Integer.parseInt(var);
+        }
+        catch(NumberFormatException e) {
+            throw new NoSuchElementException("Input is not int");
+        }
+    }
      /**
      * Return the square of distance of two points
      * @param c1 The first Cell
@@ -169,7 +184,7 @@ public class Game {
         System.out.println("Player Credits: " + this.player.getCredits());
         }
     }
-
+    
     /**
      * Display this game's list of active balloons.
      */
