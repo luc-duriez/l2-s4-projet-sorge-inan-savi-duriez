@@ -1,6 +1,7 @@
 
 package btd.utils;
 
+import java.util.List;
 import java.util.Random;
 
 import btd.boards.*;
@@ -70,16 +71,17 @@ public class MainClassic {
             for(int i = 1; i < 6; i++){
                 game.playRound(Integer.parseInt(args[2]) * i);
             }
-            
-            System.out.println("\n\n Tests upgrades : \n");
-            DamageTower t =new BombTower(new Cell(0,0));
-            for(int i = 0; i < 4; i++){
-                t.upgrade(t.getRemainingUpgrade().get(0), game.getPlayer());
-                System.out.println();
+            for (int i = 0; i < board.getTowers().size(); i++) {
+                // Copie de la référence de liste de Tower de board
+                Tower currentTower = board.getTowers().get(i);
+                
+                if (currentTower instanceof DamageTower) {
+                    DamageTower dmgTower = (DamageTower) currentTower;
+
+                    System.out.println("The upgrade " + dmgTower.getAppliedUpgrade().get(0) + " has been reverted from the " + dmgTower.toString());
+                    dmgTower.revertUpgrade(dmgTower.getAppliedUpgrade().get(0), game.getPlayer());
+                }
             }
-            
-            
-            
             // t.displayRemainingUpgrade();
             // t.diplayAppliedUpgrade();
             // t.revertUpgrade(t.getAppliedUpgrade().get(0), game.getPlayer());
