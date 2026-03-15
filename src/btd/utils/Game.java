@@ -147,24 +147,29 @@ public class Game {
         int i = 0;
         int time = 0;
         board.displayBoard();
+        System.out.println("===== Step 1 : player plays");
         boolean roundStarted = false;
-        int nbTentatives=5;
-        while (!roundStarted && nbTentatives-- > 0) {
-            displayChoice();
-            System.out.println(nbTentatives);
+        while (!roundStarted) {
+            List<Tower> existingTowers = new ArrayList<>();
+            existingTowers.add(new IceTower(null));existingTowers.add(new SlowTower(null));
+            existingTowers.add(new BombTower(null));existingTowers.add(new DartTower(null));
+            existingTowers.add(new SniperTower(null));existingTowers.add(new SuperTower(null));
+            existingTowers.add(new TackTower(null));
+            List<String> actions = displayChoice(existingTowers);
+            
             try {
                 int input = getInput("\t\tchoice ?\n");
+                if (input >= 0 && input < actions.size()) {
+                    System.out.println("Executing action : " + actions.get(input));
+                }
                 switch (input) {
                 case 0:
-                    System.out.println("No more action");
                     roundStarted=!roundStarted;
                     break;
                 case 1:
-                    System.out.println("view");
                     board.displayBoard();
                     break;
                 case 2:
-                    System.out.println("Executing action : buy a new IceTower (cost: 400) ");
                     break;
                 case 3:
                     break;
@@ -174,12 +179,15 @@ public class Game {
                     break;
                 case 6:
                     break;
-
+                default:
+                    System.out.println("Warning: Not in the list of actions");
+                    break;
                 }
             } catch (NoSuchElementException e) {
                 System.out.println("ERROR : Invalid input ");
             }
         }
+        System.out.println("===== Step 2 : spawn ballons");
         while (i < this.waitingBalloons.size() || !this.activeBalloons.isEmpty()) { // Mouvement des ballons
             System.out.println("\n---- time: " + time);
             Balloon newBalloon = null;
@@ -239,20 +247,28 @@ public class Game {
             System.out.println(b + " (health: " + b.getHealth() + ")" + status);
         }
     }
-    private void displayChoice(){
-        
-        System.out.println("\n\n===== Step 1 : player plays");
-        System.out.println("Which action ?");
-        System.out.println("\t0 - start round");
-        System.out.println("\t1 - view");
-        List<Tower> existingTowers = new ArrayList<>();
-        existingTowers.add(new IceTower(null));existingTowers.add(new SlowTower(null));
-        existingTowers.add(new BombTower(null));existingTowers.add(new DartTower(null));
-        existingTowers.add(new SniperTower(null));existingTowers.add(new SuperTower(null));
-        existingTowers.add(new TackTower(null));
-        for (int i=2; i < existingTowers.size();i++){
-            Tower t=existingTowers.get(i);
-            System.out.printf("\t%d - buy a new %s (cost: %d)%n",i , t.getClass().getSimpleName(),t.getTotalValue());
+    /** Display the choice of action for the player
+     * function returns the list of labels for the choice, in order to be used in the main function
+     * For example, if in the list existingTowers we have a BombTower and a DartTower, the display will be :
+     *      0 - start round
+     *      1 - view
+     *      2 - buy a new BombTower (cost: 500) 
+     *      3 - buy a new DartTower (cost: 300)
+     *  and function will return the list ["start round", "view", "buy a new BombTower (cost: 500)", "buy a new DartTower (cost: 300)"]
+     * @param existingTowers the list of towers already existing in the game
+     * @return List<String> the list of labels for the choice, in order to be used in the main function
+     */
+    private List<String> displayChoice(List<Tower> existingTowers){
+        List<String> labels = new ArrayList<>();
+        labels.add("start round");
+        labels.add("view");
+        for (Tower t : existingTowers) {
+            labels.add("buy a new " + t.getClass().getSimpleName() + " (cost: " + t.getTotalValue() + ")");
         }
+        System.out.println("Which action ?");
+        for (int i=0; i < labels.size();i++){
+            System.out.printf("\t%d - %s%n",i , labels.get(i));
+        }
+        return labels;
     }
 }
