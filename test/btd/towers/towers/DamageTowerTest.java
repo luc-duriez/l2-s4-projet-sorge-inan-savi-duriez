@@ -32,7 +32,6 @@ public class DamageTowerTest {
             this.remainingUpgrades.add(u3);
 
         }
-        public List<Balloon> getBalloonsInRange(List<Balloon> activeBalloons){ return super.getBalloonsInRange(activeBalloons);}
 
         @Override
         public int getTotalValue(){return 0;}
