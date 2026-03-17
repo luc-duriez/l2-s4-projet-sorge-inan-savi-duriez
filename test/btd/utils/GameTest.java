@@ -29,12 +29,12 @@ public class GameTest {
     }
 
     @Test
-    public void addTowerTest() {
+    public void buyTowerTest() {
         Cell target = board.getCell(2, 2);
         Tower ice = new IceTower(target);
         
         assertNotEquals(StateCell.TOWER, target.getState());
-        game.addTower(ice);
+        game.buyTower(ice);
 
         assertEquals(StateCell.TOWER, board.getCell(2, 2).getState());
         assertTrue(board.getTowers().contains(ice));

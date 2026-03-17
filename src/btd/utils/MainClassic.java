@@ -38,29 +38,29 @@ public class MainClassic {
             try {
                 for (int i = 0; i < 2; i++) {
                     DamageTower tower= new BombTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1])));
-                    game.addTower(tower);
+                    game.buyTower(tower);
                     System.out.println("\nBombTower added\n");
                     tower.upgrade(tower.getRemainingUpgrade().get(0), game.getPlayer());
                     tower = new DartTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1])));
-                    game.addTower(tower);
+                    game.buyTower(tower);
                     System.out.println("\nDartTower added\n");
                     tower.upgrade(tower.getRemainingUpgrade().get(0), game.getPlayer());                    
-                    game.addTower(new IceTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1]))));
+                    game.buyTower(new IceTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1]))));
                     System.out.println("\nIceTower added\n");
                     tower.upgrade(tower.getRemainingUpgrade().get(0), game.getPlayer());     
-                    game.addTower(new SlowTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1]))));
+                    game.buyTower(new SlowTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1]))));
                     tower.upgrade(tower.getRemainingUpgrade().get(0), game.getPlayer());
                     System.out.println("\nSlowTower added");
                     tower = new SniperTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1])));
-                    game.addTower(tower);
+                    game.buyTower(tower);
                     System.out.println("\nSniperTower added\n");
                     tower.upgrade(tower.getRemainingUpgrade().get(0), game.getPlayer());                   
                     tower = new SuperTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1])));
-                    game.addTower(tower);
+                    game.buyTower(tower);
                     System.out.println("\nSuperTower added\n");
                     tower.upgrade(tower.getRemainingUpgrade().get(0), game.getPlayer());                    
                     tower = new TackTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1])));
-                    game.addTower(tower);
+                    game.buyTower(tower);
                     System.out.println("\nTackTower added\n");
                     tower.upgrade(tower.getRemainingUpgrade().get(0), game.getPlayer());            
                 }
@@ -87,11 +87,6 @@ public class MainClassic {
             for(int i = 6; i < 11; i++){
                 game.playRound(Integer.parseInt(args[2]) * i);
             }
-            // t.displayRemainingUpgrade();
-            // t.diplayAppliedUpgrade();
-            // t.revertUpgrade(t.getAppliedUpgrade().get(0), game.getPlayer());
-            // t.diplayAppliedUpgrade();
-            // t.displayRemainingUpgrade();
         }   
     }
 }
