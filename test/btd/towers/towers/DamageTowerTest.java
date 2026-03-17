@@ -1,5 +1,7 @@
 package btd.towers.towers;
+import btd.boards.Board;
 import btd.boards.Cell;
+import btd.boards.ClassicBoard;
 import btd.towers.projectiles.LinearProjectile;
 import btd.towers.projectiles.Projectile;
 import btd.towers.upgrades.AttackSpeedUpgrade;
@@ -7,6 +9,7 @@ import btd.towers.upgrades.DamageUpgrade;
 import btd.towers.upgrades.RangeUpgrade;
 import btd.towers.upgrades.Upgrade;
 import btd.utils.Balloon;
+import btd.utils.Game;
 import btd.utils.Player;
 
 import java.util.List;
@@ -29,9 +32,7 @@ public class DamageTowerTest {
             this.remainingUpgrades.add(u3);
 
         }
-
-        @Override
-        public List<Balloon> getBalloonsInRange(List<Balloon> activeBalloons){ return new ArrayList<>();}
+        public List<Balloon> getBalloonsInRange(List<Balloon> activeBalloons){ return super.getBalloonsInRange(activeBalloons);}
 
         @Override
         public int getTotalValue(){return 0;}
@@ -47,7 +48,7 @@ public class DamageTowerTest {
 
     @BeforeEach
     public void before(){
-        test = new TestDamage(new Cell(0, 0), 1.5, 1,new LinearProjectile("aaa", 5),250);
+        test = new TestDamage(new Cell(0, 0), 2.0, 1,new LinearProjectile("aaa", 5),250);
         Player player1 = new Player();
         test.upgrade(u1, player1);
         test.upgrade(u2, player1);
@@ -67,6 +68,25 @@ public class DamageTowerTest {
     @Test
     public void getFinalRangeTest(){
         assertEquals(1.875, test.getFinalRange());
+    }
+
+    @Test
+    public void getBalloonsInRangeTest(){
+        List<Cell> path1 = List.of(new Cell(1, 0));
+        Balloon Ballon1 = new Balloon(2, 1.2, path1, 0);
+        List<Cell> path2 = List.of(new Cell(2, 3));
+        Balloon Ballon2 = new Balloon(5, 1.2, path2, 1);
+
+        List<Balloon> listeDesBallons = new ArrayList<>();
+        listeDesBallons.add(Ballon1);
+        listeDesBallons.add(Ballon2);
+
+        List<Balloon> res = test.getBalloonsInRange(listeDesBallons);
+
+        assertEquals(1, res.size());
+        assertTrue(res.contains(Ballon1));
+        assertFalse(res.contains(Ballon2));
+
     }
 
 
