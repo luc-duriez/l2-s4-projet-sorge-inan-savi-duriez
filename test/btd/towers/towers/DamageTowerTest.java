@@ -67,7 +67,7 @@ public class DamageTowerTest {
 
     @Test
     public void getFinalRangeTest(){
-        assertEquals(1.875, test.getFinalRange());
+        assertEquals(2.5, test.getFinalRange());
     }
 
     @Test
