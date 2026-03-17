@@ -86,4 +86,26 @@ public class Player {
     public boolean hasEnoughCredits(int price){
         return price <= credits;
     }
+
+    /**
+     * Display this player's Lives
+     */
+    public void displayLives(){
+        System.out.printf("%nPlayer Lives: %d", lives);
+    }
+
+    /**
+     * Display this player's Credits
+     */
+    public void displayCredits(){
+        System.out.printf("%nPlayer Credits: %d", credits);
+    }
+
+    /**
+     * Display this player's stats
+     */
+    public void displayStats(){
+        displayLives();
+        displayCredits();
+    }
 }
