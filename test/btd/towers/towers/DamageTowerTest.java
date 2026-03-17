@@ -47,7 +47,7 @@ public class DamageTowerTest {
 
     @BeforeEach
     public void before(){
-        test = new TestDamage(new Cell(0, 0), 2.0, 1,new LinearProjectile("aaa", 5),250);
+        test = new TestDamage(new Cell(0, 0), 2.0 * 100, 1,new LinearProjectile("aaa", 5),250);
         Player player1 = new Player();
         test.upgrade(u1, player1);
         test.upgrade(u2, player1);
@@ -71,7 +71,7 @@ public class DamageTowerTest {
 
     @Test
     public void getBalloonsInRangeTest(){
-        List<Cell> path1 = List.of(new Cell(1, 0));
+        List<Cell> path1 = List.of(new Cell(0, 1));
         Balloon Ballon1 = new Balloon(2, 1.2, path1, 0);
         List<Cell> path2 = List.of(new Cell(2, 3));
         Balloon Ballon2 = new Balloon(5, 1.2, path2, 1);
