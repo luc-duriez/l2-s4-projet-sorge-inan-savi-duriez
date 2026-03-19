@@ -90,5 +90,13 @@ public class DamageTowerTest {
         assertEquals(450, test.getTotalValue());
     }
 
+    @Test
+    public void getRemainingUpgradeTest(){
+        List<Upgrade> res = test.getRemainingUpgrade();
+        assertTrue(res.contains(u3));
+        assertFalse(res.contains(u1));
+
+    }
+
 
 }
