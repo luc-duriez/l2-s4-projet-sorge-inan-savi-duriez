@@ -121,10 +121,31 @@ public class DamageTowerTest {
         assertEquals(300, test.getFinalRange() );
     }
 
-     @Test
+    @Test
     public void multiplyAttackSpeedTest(){
         test.multiplyBonusAttackSpeed(1.5);
         assertEquals(0.125, test.getFinalRate() );
+    }
+
+    @Test
+    public void selectBallonTest(){
+        List<Cell> path1 = List.of(new Cell(0, 1));
+        Balloon Ballon1 = new Balloon(2, 1.2, path1, 0);
+        List<Cell> path2 = List.of(new Cell(2, 3));
+        Balloon Ballon2 = new Balloon(5, 1.2, path2, 1);
+
+        List<Balloon> listeDesBallons = new ArrayList<>();
+        listeDesBallons.add(Ballon1);
+        listeDesBallons.add(Ballon2);
+
+        // Cas ou la liste des ballons dans la range est nulle
+        List<Balloon> listeDesBallonsVide = new ArrayList<>();
+        assertSame(null, test.selectBalloon(listeDesBallonsVide));
+
+        List<Balloon> res = test.selectBalloon(listeDesBallons);
+        assertTrue(res.contains(Ballon1));
+        assertFalse(res.contains(Ballon2));
+
     }
 
 }
