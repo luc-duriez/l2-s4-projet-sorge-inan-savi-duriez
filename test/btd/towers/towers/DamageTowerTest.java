@@ -34,12 +34,6 @@ public class DamageTowerTest {
         }
 
         @Override
-        public int getTotalValue(){return 0;}
-
-        @Override
-        public List<Balloon> shoot(List<Balloon> inRange) { return new ArrayList<>();}
-
-        @Override
         public void displayShoot(Balloon b){}
     }
 
@@ -86,6 +80,11 @@ public class DamageTowerTest {
         assertTrue(res.contains(Ballon1));
         assertFalse(res.contains(Ballon2));
 
+    }
+
+    @Test
+    public void getTotalValueTest(){
+        assertEquals(1250, test.getTotalValue());
     }
 
 
