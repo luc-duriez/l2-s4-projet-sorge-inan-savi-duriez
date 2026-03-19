@@ -148,4 +148,20 @@ public class DamageTowerTest {
 
     }
 
+    @Test
+    public void shootTest(){
+        List<Cell> path1 = List.of(new Cell(0, 1));
+        Balloon Ballon1 = new Balloon(2, 1.2, path1, 0);
+        List<Cell> path2 = List.of(new Cell(2, 3));
+        Balloon Ballon2 = new Balloon(5, 1.2, path2, 1);
+
+        List<Balloon> listeDesBallons = new ArrayList<>();
+        listeDesBallons.add(Ballon1);
+        listeDesBallons.add(Ballon2);
+
+        List<Balloon> res = test.shoot(listeDesBallons);
+
+        
+    }
+
 }
