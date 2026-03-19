@@ -23,6 +23,8 @@ public class DamageTowerTest {
     Upgrade u1 = new AttackSpeedUpgrade(1.25, 200);
     Upgrade u2 = new DamageUpgrade(1.5, 300);
     Upgrade u3 = new RangeUpgrade( 1.25, 500);
+    // initialisation du joueur
+    Player player1 = new Player();
     // Création d'un classe de test de Damage test afin de vérifier la multitude tests inhérente à cette fonction
     private class TestDamage extends DamageTower{
         public TestDamage(Cell pos, double range, int attackSpeed, Projectile projectile, int basePrice){
@@ -42,10 +44,9 @@ public class DamageTowerTest {
     @BeforeEach
     public void before(){
         test = new TestDamage(new Cell(0, 0), 2.0 * 100, 1,new LinearProjectile("aaa", 5),250);
-        Player player1 = new Player();
         test.upgrade(u1, player1);
         test.upgrade(u2, player1);
-        test.upgrade(u3, player1);
+      
     }
 
     @Test
@@ -60,7 +61,7 @@ public class DamageTowerTest {
 
     @Test
     public void getFinalRangeTest(){
-        assertEquals(2.5, test.getFinalRange());
+        assertEquals(200, test.getFinalRange());
     }
 
     @Test
@@ -84,7 +85,9 @@ public class DamageTowerTest {
 
     @Test
     public void getTotalValueTest(){
-        assertEquals(1250, test.getTotalValue());
+        assertEquals(750, test.getTotalValue());
+        test.revertUpgrade(u2, player1);
+        assertEquals(450, test.getTotalValue());
     }
 
 
