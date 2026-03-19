@@ -108,4 +108,11 @@ public class DamageTowerTest {
     }
 
 
+    @Test
+    public void changeBonusDamageTest(){
+        assertEquals(6.5, test.getFinalDamage());
+        test.changeBonusDamage(1.5);
+        assertEquals(8, test.getFinalDamage());
+    }
+
 }
