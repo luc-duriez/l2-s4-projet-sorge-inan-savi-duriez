@@ -115,4 +115,10 @@ public class DamageTowerTest {
         assertEquals(8, test.getFinalDamage());
     }
 
+    @Test
+    public void multiplyBonusRangeTest(){
+        test.multiplyBonusRange(1.5);
+        assertEquals(300, test.getFinalRange() );
+    }
+
 }
