@@ -98,5 +98,14 @@ public class DamageTowerTest {
 
     }
 
+    @Test
+    public void getAppliedUpgradeTest(){
+        List<Upgrade> res = test.getAppliedUpgrade();
+        assertFalse(res.contains(u3));
+        assertTrue(res.contains(u1));
+        assertTrue(res.contains(u2));
+
+    }
+
 
 }
