@@ -121,4 +121,10 @@ public class DamageTowerTest {
         assertEquals(300, test.getFinalRange() );
     }
 
+     @Test
+    public void multiplyAttackSpeedTest(){
+        test.multiplyBonusAttackSpeed(1.5);
+        assertEquals(0.125, test.getFinalRate() );
+    }
+
 }
