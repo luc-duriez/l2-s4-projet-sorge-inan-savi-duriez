@@ -4,7 +4,10 @@ import btd.boards.Cell;
 import btd.towers.upgrades.Upgrade;
 import btd.utils.Balloon;
 import btd.utils.Game;
+import btd.utils.Player;
+
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.ArrayList;
 
 /**
@@ -121,6 +124,19 @@ public abstract class Tower{
      * @return The list of touched balloons
      */
     public abstract List<Balloon> shoot(List<Balloon> balloonsInRange);
+
+    /**
+     * Adds a new upgrade to appliedUpgrade
+     * @param u The upgrade to apply
+     * @param p The player who upgrades this Tower
+     */
+    public abstract void upgrade(Upgrade u, Player p) throws NoSuchElementException;
+
+    /**
+     * Revert the latest upgrade of this Tower
+     * @param p The player to refund to gold
+     */
+    public abstract void revertUpgrade(Upgrade u, Player p) throws NoSuchElementException;
 
     /**
      * Select balloons to shoot from those in range

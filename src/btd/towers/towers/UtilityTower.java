@@ -1,8 +1,12 @@
 package btd.towers.towers;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+
 import btd.boards.Cell;
+import btd.towers.upgrades.Upgrade;
 import btd.utils.Balloon;
+import btd.utils.Player;
 
 /** Abstract utility tower */
 public abstract class UtilityTower extends Tower {
@@ -27,5 +31,15 @@ public abstract class UtilityTower extends Tower {
     @Override
     protected List<Balloon> selectBalloon(List<Balloon> inRangeBalloons) {
         return inRangeBalloons;
+    }
+
+    @Override
+    public void upgrade(Upgrade u, Player p) throws NoSuchElementException{
+        throw new NoSuchElementException("This tower is not upgradable.");
+    }
+
+    @Override
+    public  void revertUpgrade(Upgrade u, Player p) throws NoSuchElementException{
+        throw new NoSuchElementException("This tower doesn't possesse any upgrade.");
     }
 }

@@ -154,11 +154,7 @@ public abstract class DamageTower extends Tower {
         return touchedBalloons;
     }
 
-    /**
-     * Adds a new upgrade to appliedUpgrade
-     * @param u The upgrade to apply
-     * @param p The player who upgrades this Tower
-     */
+    @Override
     public void upgrade(Upgrade u, Player p) throws NoSuchElementException{
         if (!remainingUpgrades.contains(u)){
             throw new NoSuchElementException("This upgrade doesn't exist in remaining upgrade");
@@ -176,11 +172,8 @@ public abstract class DamageTower extends Tower {
         }
     }
 
-    /**
-     * Revert the latest upgrade of this Tower
-     * @param p The player to refund to gold
-     */
-    public void revertUpgrade(Upgrade u, Player p){
+    @Override
+    public void revertUpgrade(Upgrade u, Player p) throws NoSuchElementException{
         if (!appliedUpgrades.contains(u)){
             throw new NoSuchElementException("This upgrade doesn't exist in applied upgrade");
         }
