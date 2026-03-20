@@ -21,12 +21,6 @@ public abstract class Tower{
     protected int basePrice;
     /** The cooldown timer for this tower's attacks */
     protected int cooldown;
-    /*This tower's bonus damage */
-    protected double bonusDamage = 0;
-    /*This tower's range multiplier */
-    protected double rangeMultiplier = 1.0;
-    /*This tower's fire rate multiplier */
-    protected double AttackSpeedMultiplier = 1.0;
     /** The remaining upgrades for this Tower */
     protected List<Upgrade> remainingUpgrades;
     /** The applied upgrades on this Tower */
@@ -47,7 +41,6 @@ public abstract class Tower{
         this.basePrice = basePrice;
         this.remainingUpgrades = new ArrayList<Upgrade>();
         this.appliedUpgrades = new ArrayList<Upgrade>();
-        
     }
 
     /**
@@ -104,6 +97,24 @@ public abstract class Tower{
         return inRangeList;
     }
     
+    /**
+     * Return the list of remaining upgrade of this Tower
+     * 
+     * @return the list of remaining upgrade of this Tower
+     */
+    public List<Upgrade> getRemainingUpgrade(){
+        return remainingUpgrades;
+    }
+
+    /**
+     * Return the list of applied upgrade of this Tower
+     * 
+     * @return the list of applied upgrade of this Tower
+     */
+    public List<Upgrade> getAppliedUpgrade(){
+        return appliedUpgrades;
+    }
+
     /**
      * Shoots the balloon
      * @param balloonsInRange The balloon to shoot

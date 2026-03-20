@@ -15,6 +15,12 @@ public abstract class DamageTower extends Tower {
 
     /** The projectile for this Tower */
     protected Projectile projectile;    
+    /*This tower's bonus damage */
+    protected double bonusDamage = 0;
+    /*This tower's range multiplier */
+    protected double rangeMultiplier = 1.0;
+    /*This tower's fire rate multiplier */
+    protected double AttackSpeedMultiplier = 1.0;
 
     /**
      * Creates a damage tower
@@ -82,21 +88,6 @@ public abstract class DamageTower extends Tower {
 
         }
         return price;
-    }
-    
-    /**
-     * Return the remainining upgrade of this Tower
-     * @return List<Upgrade>
-     */
-    public List<Upgrade> getRemainingUpgrade() {
-        return this.remainingUpgrades;
-    }
-    /**
-     * Return the applied upgrade of this Tower
-     * @return List<Upgrade>
-     */
-    public List<Upgrade> getAppliedUpgrade() {
-        return this.appliedUpgrades;
     }
     
     /**
