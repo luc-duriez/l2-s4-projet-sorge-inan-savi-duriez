@@ -80,13 +80,12 @@ public class MainLinear {
                 
             if (currentTower instanceof DamageTower) {
                 DamageTower dmgTower = (DamageTower) currentTower;
-
-                System.out.println("\nThe upgrade " + dmgTower.getAppliedUpgrade().get(0) + " has been reverted from the " + dmgTower.toString());
                 try{
+                    System.out.println("\nThe upgrade " + dmgTower.getAppliedUpgrade().get(0) + " has been reverted from the " + dmgTower.toString());
                     dmgTower.revertUpgrade(dmgTower.getAppliedUpgrade().get(0), game.getPlayer());
                 }
                 catch(IndexOutOfBoundsException e){
-                    System.out.println("Impossible d'annuler une amélioration d'une tour qui n'a pas d'amélioration");
+                    System.out.println("The next upgrade can't be reverted");
                 }
                 System.out.println("\n");
             }
