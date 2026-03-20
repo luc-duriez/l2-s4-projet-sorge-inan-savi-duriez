@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.logging.ErrorManager;
 
 import btd.boards.*;
 import btd.towers.towers.*;

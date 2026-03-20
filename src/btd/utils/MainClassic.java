@@ -1,12 +1,10 @@
 
 package btd.utils;
 
-import java.util.List;
 import java.util.Random;
 
 import btd.boards.*;
 import btd.towers.towers.*;
-import btd.towers.upgrades.*;
 
 /** Main classic mode */
 public class MainClassic {
