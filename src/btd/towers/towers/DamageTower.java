@@ -198,7 +198,7 @@ public abstract class DamageTower extends Tower {
     }
 
     private void displayRevert(Upgrade u, Player p) {
-        System.out.printf("%s has been sold (money:%s -> %s)%n", displayUpgrade(u), p.getCredits()-u.getCost(),p.getCredits());
+        System.out.printf("%s has its upgrade reverted (money:%s -> %s)%n", displayUpgrade(u), p.getCredits()-u.getCost(),p.getCredits());
     }
 
     /**
