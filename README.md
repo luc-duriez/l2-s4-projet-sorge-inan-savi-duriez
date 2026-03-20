@@ -300,7 +300,11 @@ Nous n'avons pas rencontré de réelles difficultés à part l'inversion des upg
 
 ### Ce qui a été réalisé
 
+Pendant cette semaine 8, on s'est occupé de finir les deux classes main classic et linear afin de finir le livrable 4 pour les deux types de plateau. On a aussi ajouté la gestion de l'exception si on essaye d'appliquer une upgrade qui n'existe pas. Les méthodes d'amélioration, d'inverson d'une amélioration et d'autres en rapport avec cela ont été déplacées dans la class Tower.
+
 ### Difficultés rencontrées
+
+Aucune difficulté n'a été rencontré pour cette semaine.
 
 ### Objectifs pour la semaine et répartition du travail par membre
 
