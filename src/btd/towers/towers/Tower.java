@@ -1,6 +1,7 @@
 package btd.towers.towers;
 
 import btd.boards.Cell;
+import btd.towers.upgrades.Upgrade;
 import btd.utils.Balloon;
 import btd.utils.Game;
 import java.util.List;
@@ -20,6 +21,16 @@ public abstract class Tower{
     protected int basePrice;
     /** The cooldown timer for this tower's attacks */
     protected int cooldown;
+    /*This tower's bonus damage */
+    protected double bonusDamage = 0;
+    /*This tower's range multiplier */
+    protected double rangeMultiplier = 1.0;
+    /*This tower's fire rate multiplier */
+    protected double AttackSpeedMultiplier = 1.0;
+    /** The remaining upgrades for this Tower */
+    protected List<Upgrade> remainingUpgrades;
+    /** The applied upgrades on this Tower */
+    protected List<Upgrade> appliedUpgrades;
 
     /**
      * Build a new Tower
@@ -34,6 +45,9 @@ public abstract class Tower{
         this.attackSpeed = attackSpeed;
         this.cooldown = attackSpeed;
         this.basePrice = basePrice;
+        this.remainingUpgrades = new ArrayList<Upgrade>();
+        this.appliedUpgrades = new ArrayList<Upgrade>();
+        
     }
 
     /**

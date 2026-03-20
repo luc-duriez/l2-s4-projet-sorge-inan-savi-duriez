@@ -15,16 +15,6 @@ public abstract class DamageTower extends Tower {
 
     /** The projectile for this Tower */
     protected Projectile projectile;    
-    /*This tower's bonus damage */
-    protected double bonusDamage = 0;
-    /*This tower's range multiplier */
-    protected double rangeMultiplier = 1.0;
-    /*This tower's fire rate multiplier */
-    protected double AttackSpeedMultiplier = 1.0;
-    /** The remaining upgrades for this Tower */
-    protected List<Upgrade> remainingUpgrades;
-    /** The applied upgrades on this Tower */
-    protected List<Upgrade> appliedUpgrades;
 
     /**
      * Creates a damage tower
@@ -37,8 +27,6 @@ public abstract class DamageTower extends Tower {
     protected DamageTower(Cell pos, double range, int attackSpeed, Projectile projectile, int basePrice) {
         super(pos, range, attackSpeed, basePrice);
         this.projectile = projectile;
-        this.remainingUpgrades = new ArrayList<Upgrade>();
-        this.appliedUpgrades = new ArrayList<Upgrade>();
     }
 
     /**
