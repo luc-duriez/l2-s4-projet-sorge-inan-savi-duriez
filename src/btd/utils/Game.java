@@ -277,7 +277,7 @@ public class Game {
 
             time += Game.TICK;
             if (player.isDead()){
-                System.out.println("GAME OVER !!"); // BREAK ?
+                System.out.println("GAME OVER !!"); // BREAK 
             }
         }
         //
