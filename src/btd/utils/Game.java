@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 import btd.boards.*;
 import btd.towers.towers.*;
+import btd.towers.upgrades.Upgrade;
 
 /**
  * Manages the game logic including rounds, balloons and towers.
@@ -160,7 +161,7 @@ public class Game {
                         sellTowerChoice();
                         break;
                     case 4:
-                        buyUpgradeTowerChoice();
+                        upgradeTowerChoice();
                         break;
                     default:
                         throw new NoSuchFieldError("Warning: Not in the list of actions");              
@@ -233,7 +234,7 @@ public class Game {
         }
     }
 
-    private void buyUpgradeTowerChoice(){
+    private Tower TowerForUpgradeChoice(){
         List<String> actions = displayChoice(3);
         boolean choice = false;
         while (!choice){
@@ -244,9 +245,71 @@ public class Game {
                 }
                 if (input > 0 && input < actions.size()) {
                     Tower t = board.getTowers().get(input-1);
-                    t.upgrade(t.getRemainingUpgrade().get(input-1));
+                    List<String> up = choiceUpgrade(t); // refaire une fonction ici pour plus de facilté de lecture 
+
+                    t.upgrade(t.getRemainingUpgrade().get(input-1),this.player);
                     choice = true;
                     }
+            }catch(NoSuchElementException e){
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+    private List<String> choiceUpgrade(Tower t){
+        List<String> list = new ArrayList<>();
+        list.add("return");
+        for (Upgrade u: t.getAppliedUpgrade())
+            list.add(String.format("%s",u));
+
+        System.out.println("Which action ?");
+        for (int i=0; i < list.size();i++){
+            System.out.printf("\t%d - %s%n",i , list.get(i));
+        }
+        return list;
+
+    }
+
+    private void sellUpgradeTowerChoice(){
+        List<String> actions = displayChoice(4);
+        boolean choice = false;
+        while (!choice){
+            try{
+                int input = getInput("\t\tchoice ?\n");
+                if (input ==0){
+                    choice=true;
+                }
+                if (input > 0 && input < actions.size()) {
+                    Tower t = board.getTowers().get(input-1);
+                    t.revertUpgrade(t.getRemainingUpgrade().get(input-1),this.player);
+                    choice = true;
+                    }
+            }catch(NoSuchElementException e){
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+    private void upgradeTowerChoice(){
+        List<String> actions = displayChoice(5);
+        boolean choice = false;
+        while (!choice){
+            try{
+                int input = getInput("\t\tchoice ?\n");
+                if (input ==0){
+                    choice=true;
+                }
+                if (input > 0 && input < actions.size()) {
+                    System.out.println("Executing action : " + actions.get(input));
+                    switch (input){
+                    case 1:
+                        buyUpgradeTowerChoice();
+                        choice=true;
+                        break;
+                    case 2:
+                        sellUpgradeTowerChoice();
+                        choice=true;
+                        break;
+                    }
+                }
             }catch(NoSuchElementException e){
                 System.out.println(e.getMessage());
             }
@@ -377,14 +440,28 @@ public class Game {
                 }
                 break;
             
-            case 3: // buy Upgrade Towers
+            case 3: // select Tower to buy upgrade
                 List<Tower> upgradeTower = board.getTowers();
                 list.add("return");
-                upgradeTower.removeIf(t -> t.getRemainingUpgrade().size() !=0 );
-                for (int i=1;i< upgradeTower.size();i++){&
+                upgradeTower.removeIf(t -> t.getRemainingUpgrade().isEmpty() );
+                for (int i=0;i< upgradeTower.size();i++){
                     Tower t = upgradeTower.get(i);
-                    list.add(String.format("%s - %d",i,t));
+                    list.add(String.format("%s",t));
                 }
+                break;
+            case 4: // select Tower to sell upgrade
+                List<Tower> upgradedTower = board.getTowers();
+                list.add("return");
+                upgradedTower.removeIf(t -> t.getAppliedUpgrade().isEmpty() );
+                for (int i=0;i< upgradedTower.size();i++){
+                    Tower t = upgradedTower.get(i);
+                    list.add(String.format("%s",t));
+                }
+                break;
+            case 5:
+                list.add("return");
+                list.add("buy Upgrade");
+                list.add("sell Upgrade");
         }
 
 
