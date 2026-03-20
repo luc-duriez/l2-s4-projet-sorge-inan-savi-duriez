@@ -160,7 +160,7 @@ public class Game {
                         sellTowerChoice();
                         break;
                     case 4:
-                        //upgradeTowerChoice();
+                        buyUpgradeTowerChoice();
                         break;
                     default:
                         throw new NoSuchFieldError("Warning: Not in the list of actions");              
@@ -225,6 +225,26 @@ public class Game {
                     System.out.printf("%s has been sold (%d -> %d) ", t, player.getCredits(), player.getCredits()+t.getTotalValue());
                     player.addCredits(t.getTotalValue());
                     board.getTowers().remove(input-1);
+                    choice = true;
+                    }
+            }catch(NoSuchElementException e){
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    private void buyUpgradeTowerChoice(){
+        List<String> actions = displayChoice(3);
+        boolean choice = false;
+        while (!choice){
+            try{
+                int input = getInput("\t\tchoice ?\n");
+                if (input ==0){
+                    choice=true;
+                }
+                if (input > 0 && input < actions.size()) {
+                    Tower t = board.getTowers().get(input-1);
+                    t.upgrade(t.getRemainingUpgrade().get(input-1));
                     choice = true;
                     }
             }catch(NoSuchElementException e){
@@ -356,18 +376,17 @@ public class Game {
                     list.add(String.format("sell %s for %d credits", t, t.getTotalValue()));
                 }
                 break;
-            /*
-            case 3: // Upgrade Towers
-                for(Towert: board.getTowers()){
-                    if (t.)
-                }
-                List<Tower> t3 = board.getTowers();
+            
+            case 3: // buy Upgrade Towers
+                List<Tower> upgradeTower = board.getTowers();
                 list.add("return");
-                for (Tower t : t3) {
-                    list.add(String.format("sell %s for %d", t, t.getTotalValue()));
-                }*/
-
+                upgradeTower.removeIf(t -> t.getRemainingUpgrade().size() !=0 );
+                for (int i=1;i< upgradeTower.size();i++){&
+                    Tower t = upgradeTower.get(i);
+                    list.add(String.format("%s - %d",i,t));
+                }
         }
+
 
 
         System.out.println("Which action ?");
