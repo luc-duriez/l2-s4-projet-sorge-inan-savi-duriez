@@ -37,29 +37,29 @@ public class MainClassic {
                 for (int i = 0; i < 2; i++) {
                     DamageTower tower= new BombTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1])));
                     game.buyTower(tower);
-                    System.out.println("\nBombTower added\n");
+                    System.out.println("\nBombTower added");
                     tower.upgrade(tower.getRemainingUpgrade().get(0), game.getPlayer());
                     tower = new DartTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1])));
                     game.buyTower(tower);
-                    System.out.println("\nDartTower added\n");
+                    System.out.println("\nDartTower added");
                     tower.upgrade(tower.getRemainingUpgrade().get(0), game.getPlayer());                    
                     game.buyTower(new IceTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1]))));
-                    System.out.println("\nIceTower added\n");
+                    System.out.println("\nIceTower added");
                     tower.upgrade(tower.getRemainingUpgrade().get(0), game.getPlayer());     
                     game.buyTower(new SlowTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1]))));
                     tower.upgrade(tower.getRemainingUpgrade().get(0), game.getPlayer());
                     System.out.println("\nSlowTower added");
                     tower = new SniperTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1])));
                     game.buyTower(tower);
-                    System.out.println("\nSniperTower added\n");
+                    System.out.println("\nSniperTower added");
                     tower.upgrade(tower.getRemainingUpgrade().get(0), game.getPlayer());                   
                     tower = new SuperTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1])));
                     game.buyTower(tower);
-                    System.out.println("\nSuperTower added\n");
+                    System.out.println("\nSuperTower added");
                     tower.upgrade(tower.getRemainingUpgrade().get(0), game.getPlayer());                    
                     tower = new TackTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1])));
                     game.buyTower(tower);
-                    System.out.println("\nTackTower added\n");
+                    System.out.println("\nTackTower added");
                     tower.upgrade(tower.getRemainingUpgrade().get(0), game.getPlayer());            
                 }
                 
@@ -69,10 +69,16 @@ public class MainClassic {
             
             board.displayBoard();
             for(int i = 1; i < 6; i++){
+                if(game.getPlayer().getLives() <= 0){
+                    return;
+                }
                 System.out.printf("%n%n=== Starting Round %d", i);
                 game.playRound(Integer.parseInt(args[2]) * i);
             }
             for (int i = 0; i < board.getTowers().size(); i++) {
+                if(game.getPlayer().getLives() <= 0){
+                    return;
+                }
                 // Copie de la référence de liste de Tower de board
                 Tower currentTower = board.getTowers().get(i);
                 
@@ -81,9 +87,13 @@ public class MainClassic {
 
                     System.out.println("\nThe upgrade " + dmgTower.getAppliedUpgrade().get(0) + " has been reverted from the " + dmgTower.toString() + "\n");
                     dmgTower.revertUpgrade(dmgTower.getAppliedUpgrade().get(0), game.getPlayer());
+                    System.out.println("\n");
                 }
             }
             for(int i = 6; i < 11; i++){
+                if(game.getPlayer().getLives() <= 0){
+                    return;
+                }
                 System.out.printf("%n%n=== Starting Round %d", i);
                 game.playRound(Integer.parseInt(args[2]) * i);
             }
