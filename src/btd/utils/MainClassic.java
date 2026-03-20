@@ -71,6 +71,7 @@ public class MainClassic {
             
             board.displayBoard();
             for(int i = 1; i < 6; i++){
+                System.out.printf("%n%n=== Starting Round %d", i);
                 game.playRound(Integer.parseInt(args[2]) * i);
             }
             for (int i = 0; i < board.getTowers().size(); i++) {
@@ -85,6 +86,7 @@ public class MainClassic {
                 }
             }
             for(int i = 6; i < 11; i++){
+                System.out.printf("%n%n=== Starting Round %d", i);
                 game.playRound(Integer.parseInt(args[2]) * i);
             }
         }   

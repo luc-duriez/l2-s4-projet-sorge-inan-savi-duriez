@@ -91,14 +91,14 @@ public class Player {
      * Display this player's Lives
      */
     public void displayLives(){
-        System.out.printf("%nPlayer Lives: %d", lives);
+        System.out.printf("Player Lives: %d%n", lives);
     }
 
     /**
      * Display this player's Credits
      */
     public void displayCredits(){
-        System.out.printf("%nPlayer Credits: %d", credits);
+        System.out.printf("Player Credits: %d%n", credits);
     }
 
     /**

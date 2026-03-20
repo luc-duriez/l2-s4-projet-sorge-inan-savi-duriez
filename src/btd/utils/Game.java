@@ -244,7 +244,7 @@ public class Game {
         int time = 0;
         this.actualizeBalloons(nbBalloons); // waiting balloons
         
-        System.out.println("===== Step 2 : spawn ballons");
+        System.out.println("\n\n\n===== Step 2 : spawn ballons");
         int i = 0;
         while (i < this.waitingBalloons.size() || !this.activeBalloons.isEmpty()) { // Mouvement des ballons
             System.out.println("\n---- time: " + time);
@@ -293,11 +293,11 @@ public class Game {
      */
     public void play(){
         while (!player.isDead()){
-            System.out.println("\n\n\n=== Starting Round " + this.round + " ===");
+            System.out.println("\n\n=== Starting Round " + this.round + " ===");
             board.displayBoard();
             System.out.println("\n===== Step 1 : player plays");
             playerChoice();
-            playRound(round*2);
+            playRound(3);
             this.round++;
         }
         System.out.println("\n=== Game Finished ===");
