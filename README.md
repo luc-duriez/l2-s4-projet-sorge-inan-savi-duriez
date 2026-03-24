@@ -190,6 +190,7 @@ Enfin, nous avons mis en place une gestion d'exceptions pour empêcher l'applica
 Nous avons fait le choix d'utiliser une interface Upgrade en créant des méthodes apply() et remove(). Cela nous permet d'avoir la logique de modification des statistiques (range, damage, projectile et attackSpeed) directement dans la classe Upgrade, rendant le code des tours beaucoup plus propre et flexible.
 
 Avoir créé deux sous-classes DamageTower et UtilityTower lors du livrable précédent nous a permis de restreindre très facilement le système d'amélioration aux tours infligeant des dégâts via la signature des méthodes de l'interface Upgrade.
+Nous avons également modifié les packages de tower. (tower.tower, tower.upgrade, tower.projectile)
 
 ### Difficultés restant à résoudre
 
