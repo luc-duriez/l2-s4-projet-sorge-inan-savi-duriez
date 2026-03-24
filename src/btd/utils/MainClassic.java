@@ -32,7 +32,7 @@ public class MainClassic {
             Board board = new ClassicBoard(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
             Game game = new Game(board);
             game.getPlayer().addCredits(10000);
-            System.out.println("Crédits du joueur : " + game.getPlayer().getCredits());
+            game.getPlayer().decreaseLife(-10000);
             try {
                 for (int i = 0; i < 2; i++) {
                     DamageTower tower= new BombTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1])));

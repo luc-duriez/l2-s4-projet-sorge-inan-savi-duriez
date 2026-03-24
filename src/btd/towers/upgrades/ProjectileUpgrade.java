@@ -48,6 +48,6 @@ public class ProjectileUpgrade implements Upgrade {
 
     @Override
     public String displayAppliedUpgrade(DamageTower tower){
-        return String.format("Applying upgrade change projectile by %S %nCurrent projectile:%s next:%s", newProjectile, tower.getProjectile(), newProjectile);
+        return String.format("Applying upgrade change projectile by %s (Projectile  : %s -> %s)", newProjectile, tower.getProjectile(), newProjectile);
     }
 }

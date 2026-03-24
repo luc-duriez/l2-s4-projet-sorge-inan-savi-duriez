@@ -161,14 +161,10 @@ public abstract class DamageTower extends Tower {
         }
         if (p.hasEnoughCredits(u.getCost())) {
             p.decreaseCredits(u.getCost());
-            displayUpgrade(u,p);
             u.apply(this);
             this.remainingUpgrades.remove(u); 
             this.appliedUpgrades.add(u); 
-            
-        }
-        else{
-            
+            displayUpgrade(u,p);            
         }
     }
 
@@ -190,22 +186,22 @@ public abstract class DamageTower extends Tower {
     }
 
     private void displayUpgrade(Upgrade u,Player p){
-        System.out.printf("%s has been bought (money:%d -> %d)%n",displayUpgrade(u),p.getCredits()+u.getCost(),p.getCredits());
+        System.out.printf("%s%n %s has been bought (money: %d -> %d)%n", u.displayAppliedUpgrade(this), displayUpgrade(u),p.getCredits()+u.getCost(),p.getCredits());
     }
 
     private String displayUpgrade(Upgrade u) {
-        return String.format("%s%n%s[fireRate:%.0f, range:%.0f][upgradeLevel:%d, projectile:%s(%.0f)]", u.displayAppliedUpgrade(this), this, getFinalRate(), getFinalRange(), appliedUpgrades.size(), getProjectile().getName(), getFinalDamage());
+        return String.format("%s[fireRate: %.0f, range: %s][upgradeLevel: %d, projectile: %s(%.0f)]", this, getFinalRate(), getFinalRange() !=-1 ? String.format("%.0f", getFinalRange()):"infinite", appliedUpgrades.size(), getProjectile().getName(), getFinalDamage());
     }
 
     private void displayRevert(Upgrade u, Player p) {
-        System.out.printf("%s has its upgrade reverted (money:%s -> %s)%n", displayUpgrade(u), p.getCredits()-u.getCost(),p.getCredits());
+        System.out.printf("%s has its upgrade sold (money: %s -> %s)%n", displayUpgrade(u), p.getCredits()-u.getCost(),p.getCredits());
     }
 
     /**
      * Display the remaining upgrade of a tower
      */
     public void displayRemainingUpgrade(){
-        System.out.printf("Remaining upgrades for %s :%n", this);
+        System.out.printf("Remaining upgrades for %s : %n", this);
         for(Upgrade u: remainingUpgrades){
             System.out.printf("\t-%s%n",u);
         }

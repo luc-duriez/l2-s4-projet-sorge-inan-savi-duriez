@@ -234,7 +234,7 @@ public class Game {
         }
     }
 
-    private Tower TowerForUpgradeChoice(){
+    private void TowerForUpgradeChoice(){
         List<String> actions = displayChoice(3);
         boolean choice = false;
         while (!choice){
@@ -288,6 +288,7 @@ public class Game {
             }
         }
     }
+
     private void upgradeTowerChoice(){
         List<String> actions = displayChoice(5);
         boolean choice = false;
@@ -301,7 +302,7 @@ public class Game {
                     System.out.println("Executing action : " + actions.get(input));
                     switch (input){
                     case 1:
-                        buyUpgradeTowerChoice();
+                        // buyUpgradeTowerChoice();
                         choice=true;
                         break;
                     case 2:

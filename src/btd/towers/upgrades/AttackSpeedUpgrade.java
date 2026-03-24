@@ -42,7 +42,7 @@ public class AttackSpeedUpgrade implements Upgrade {
 
     @Override
     public String displayAppliedUpgrade(DamageTower tower){
-        return String.format("Applying upgrade Increase attack speed by %.0f%% %nAttackSpeed:%.0f ratefactor:%.2f", (multiplier-1)*100, tower.getRate(), multiplier);
+        return String.format("Applying upgrade Increase attack speed by %.0f%% (attackSpeed : %.0f -> %.0f)", (multiplier-1)*100, tower.getRate(), tower.getFinalRate());
     }
 }
 

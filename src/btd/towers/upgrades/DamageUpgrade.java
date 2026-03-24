@@ -43,6 +43,6 @@ public class DamageUpgrade implements Upgrade{
 
     @Override
     public String displayAppliedUpgrade(DamageTower tower){
-        return String.format("Applying upgrade Increase damage by %.0f %nCurrent damage:%.0f next:%.0f", damageBonus, tower.getDamage(), tower.getDamage()+damageBonus);
+        return String.format("Applying upgrade Increase damage by %.0f (damage: %.0f -> %.0f)", damageBonus, tower.getDamage(), tower.getDamage()+damageBonus);
     }
 }
