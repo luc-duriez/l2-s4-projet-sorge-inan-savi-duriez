@@ -158,9 +158,42 @@ On a choisi de faire deux sous classe, DamageTower et UtilityTower pour plus de 
 
 ## Livrable 4
 
+### Commande du Livrable
+
+#### Compilation
+
+```bash
+make jar
+```
+
+#### Execution
+
+```bash
+java -jar Livrable/Livrable4/Livrable4a.jar  # Pour un Classicboard
+
+java -jar Livrable/Livrable4/Livrable4b.jar   # Pour un LinearBoard
+```
+
 ### Atteinte des objectifs
 
+Pour ce quatrième livrable, nous avons implémenté avec succès le système d'améliorations (Upgrade) pour les tours. Nous avons créé une interface Upgrade qui est implémentée par 4 classes distinctes modifiant les statistiques des tours : DamageUpgrade, RangeUpgrade, AttackSpeedUpgrade et ProjectileUpgrade.
+
+L'achat et la revente de ces améliorations sont gérés dynamiquement et impactent directement les crédits du joueur. Seules les classes héritant de DamageTower peuvent recevoir ces améliorations. Les UtilityTower (comme IceTower ou SlowTower) lancent explicitement une exception (NoSuchElementException) si l'on tente de les améliorer ou de revendre une amélioration.
+
+Nous avons mis à jour nos classes MainClassic et MainLinear pour simuler une partie de 10 manches. Dans cette simulation, 2 tours de chaque type sont placées et reçoivent une amélioration dès le début du jeu. Juste avant la manche 6, le programme parcourt les tours et revend (revert) les améliorations appliquées aux DamageTower.
+
+Enfin, nous avons mis en place une gestion d'exceptions pour empêcher l'application d'une amélioration qui n'est pas dans la liste des améliorations disponibles de la tour, ou la revente d'une amélioration non possédée.
+
+
+### Choix de modélisation
+
+Nous avons fait le choix d'utiliser une interface Upgrade en créant des méthodes apply() et remove(). Cela nous permet d'avoir la logique de modification des statistiques (range, damage, projectile et attackSpeed) directement dans la classe Upgrade, rendant le code des tours beaucoup plus propre et flexible.
+
+Avoir créé deux sous-classes DamageTower et UtilityTower lors du livrable précédent nous a permis de restreindre très facilement le système d'amélioration aux tours infligeant des dégâts via la signature des méthodes de l'interface Upgrade.
+
 ### Difficultés restant à résoudre
+
+Nous avons rencontré quelques difficultés comme l'amélioration de damageTower et non utilityTower mais elles ont toutes été résolues. Un point d'amélioration est de vérifier au maximum les cas extrêmes qui peuvent arrêter le programme et générer une erreur.
 
 ## Livrable 5
 
