@@ -39,7 +39,6 @@ public class LinearBoard extends Board {
             throw new IllegalArgumentException("Cells must be in the same row or column");
         }
         list.add(curr);
-        curr.switchIsOccupied();
 
         if (curr.getX() == finale.getX()) {
             int diffY = finale.getY() - curr.getY();
@@ -48,7 +47,6 @@ public class LinearBoard extends Board {
 
             for (int i = 1; i < distance; i++) {
                 list.add(getCell(curr.getX(), curr.getY() + (i * step)));
-                this.getCell(curr.getX(), curr.getY() + (i * step)).switchIsOccupied();
             }
         } else {
             int diffX = finale.getX() - curr.getX();
@@ -57,13 +55,11 @@ public class LinearBoard extends Board {
 
             for (int i = 1; i < distance; i++) {
                 list.add(getCell(curr.getX() + (i * step), curr.getY()));
-                this.getCell(curr.getX() + (i * step), curr.getY()).switchIsOccupied();
             }
         }
 
         if (!curr.equals(finale)) {
             list.add(finale);
-            finale.switchIsOccupied();
         }
 
         return list;
