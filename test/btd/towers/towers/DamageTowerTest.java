@@ -1,7 +1,5 @@
 package btd.towers.towers;
-import btd.boards.Board;
 import btd.boards.Cell;
-import btd.boards.ClassicBoard;
 import btd.towers.projectiles.LinearProjectile;
 import btd.towers.projectiles.Projectile;
 import btd.towers.upgrades.AttackSpeedUpgrade;
@@ -9,7 +7,6 @@ import btd.towers.upgrades.DamageUpgrade;
 import btd.towers.upgrades.RangeUpgrade;
 import btd.towers.upgrades.Upgrade;
 import btd.utils.Balloon;
-import btd.utils.Game;
 import btd.utils.Player;
 
 import java.util.List;
