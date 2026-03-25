@@ -145,7 +145,8 @@ public class Game {
     }
     
     /**
-     * Manage the player's choice
+     * Manages the main interaction loop where the player chooses actions before a round begins.
+     * Provides options to start the round, view the board, or manage towers and upgrades.
      */
     private void playerChoice(){
         boolean roundStarted = false;
@@ -197,7 +198,10 @@ public class Game {
         }
     }
     
-
+    /**
+     * Displays the tower shop menu and handles the logic for purchasing and placing a new tower.
+     * Prompts the player for the tower type and the coordinates on the board.
+     */
     private void buyTowerChoice(){
         List<String> list = new ArrayList<>();
         List<Tower> placeableTowers = List.of(
@@ -242,7 +246,10 @@ public class Game {
             }
         }
     }
-
+    /**
+     * Manages the process of selling an existing tower from the board.
+     * Displays the list of current towers, updates the player's credits, and clears the board cell.
+     */
     private void sellTowerChoice(){
         List<String> list = new ArrayList<>();
         list.add("return");
@@ -281,6 +288,10 @@ public class Game {
 
         }
     }
+    /**
+     * Identifies towers that are eligible for upgrades and prompts the player to select one.
+     * Filters the list to only show towers that still have available upgrades.
+     */
     private void buyUpgradeTowerChoice() {
         List<String> list = new ArrayList<>();
         list.add("return");
@@ -360,13 +371,18 @@ public class Game {
     // }
     
     
-            
+    /**
+     * Handles the selection and application of a specific upgrade for a chosen tower.
+     * @param tower The tower to be upgraded.
+     */
     private void whichUpgradeApplied(Tower tower) {
-        // Gère l'upgrade de la tower
         throw new UnsupportedOperationException("Unimplemented method 'whichUpgradeApplied'");
     }
 
-
+    /**
+     * Identifies towers with active upgrades and prompts the player to select one for reversion.
+     * Filters the list to only show towers that have at least one applied upgrade.
+     */
     private void sellUpgradeTowerChoice() {
         List<String> list = new ArrayList<>();
         list.add("return");
@@ -396,6 +412,10 @@ public class Game {
             }
         }
     }
+    /**
+     * Handles the selection and removal of an applied upgrade from a chosen tower.
+     * @param tower The tower whose upgrade will be reverted.
+     */
     private void whichUpgradeRevert(Tower tower) {
         // Gère le revert de la tower
         throw new UnsupportedOperationException("Unimplemented method 'whichUpgradeApplied'");

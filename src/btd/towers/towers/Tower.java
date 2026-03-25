@@ -117,6 +117,10 @@ public abstract class Tower{
     public List<Upgrade> getAppliedUpgrade(){
         return appliedUpgrades;
     }
+    /**
+     * Set cell of Tower
+     * @param cell the cell to set in this Tower
+     */
     public void setCell(Cell cell) {
             this.pos=cell;
         }
