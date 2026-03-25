@@ -221,23 +221,22 @@ public class Game {
                 if (input ==0){
                     choice=true;
                 }
-                else{
-                    if (input >= 0 && input < actions.size()) {
-                        int x, y;
-                        do{
-                            x = getInput("x ? ");
-                            y = getInput("y ? ");
-                        }while(!board.isPlaceable(x, y));
-                        Cell cell = board.getCell(x, y);
-                        Tower addedTower = placeableTowers.get(input-1);
-                        addedTower.setCell(cell);
-                        buyTower(addedTower); // Exception sami stp
-                        choice = true;
-                    }
-                    else{
-                        throw new NoSuchFieldError("Warning: Not in the list of actions");
-                    }
+                else if (input >= 0 && input < actions.size()) {
+                    int x, y;
+                    do{
+                        x = getInput("x ? ");
+                        y = getInput("y ? ");
+                    }while(!board.isPlaceable(x, y));
+                    Cell cell = board.getCell(x, y);
+                    Tower addedTower = placeableTowers.get(input-1);
+                    addedTower.setCell(cell);
+                    buyTower(addedTower); // Exception sami stp
+                    choice = true;
                 }
+                else{
+                    throw new NoSuchFieldError("Warning: Not in the list of actions");
+                }
+                
             }catch(NoSuchElementException e){
                 System.out.println(e.getMessage());
             }
@@ -265,7 +264,7 @@ public class Game {
                 if (input ==0){
                     choice=true;
                 }
-                if (input > 0 && input < actions.size()) {
+                else if (input > 0 && input < actions.size()) {
                     
                     Tower sellTower = sellableTowers.get(input-1);
                     System.out.println(board.getTowers());
@@ -308,7 +307,7 @@ public class Game {
                 if (input ==0){
                     choice=true;
                 }
-                if (input > 0 && input < actions.size()) {
+                else if (input > 0 && input < actions.size()) {
                     whichUpgradeApplied(upgradableTower.get(input-1));
                 }
                 else{
@@ -399,7 +398,7 @@ public class Game {
                 if (input ==0){
                     choice=true;
                 }
-                if (input > 0 && input < actions.size()) {
+                else if (input > 0 && input < actions.size()) {
                     whichUpgradeRevert(revertableTower.get(input));
                 }
                 else{
@@ -516,27 +515,6 @@ public class Game {
      * @return List<String> the list of labels for the choice, in order to be used in the main function
      */
     private List<String> displayChoice(List<String> list){
-        switch (0){
-            case 3: // select Tower to buy upgrade
-                
-                break;
-            case 4: // select Tower to sell upgrade
-                List<Tower> upgradedTower = board.getTowers();
-                list.add("return");
-                upgradedTower.removeIf(t -> t.getAppliedUpgrade().isEmpty() );
-                for (int i=0;i< upgradedTower.size();i++){
-                    Tower t = upgradedTower.get(i);
-                    list.add(String.format("%s",t));
-                }
-                break;
-            case 5:
-                list.add("return");
-                list.add("buy Upgrade");
-                list.add("sell Upgrade");
-        }
-
-
-
         System.out.println("Which action ?");
         for (int i=0; i < list.size();i++){
             System.out.printf("\t%d - %s%n",i , list.get(i));
