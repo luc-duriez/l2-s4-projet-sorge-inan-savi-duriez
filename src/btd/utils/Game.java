@@ -67,8 +67,18 @@ public class Game {
     public Player getPlayer(){
         return this.player;
     }
-    private int getInput(String a) throws NoSuchElementException{
-        System.out.print(a);
+
+    /**
+     * Displays a msg and reads an integer input from the console.
+     * This method reads the entire input line. If the input cannot be 
+     * parsed into a valid integer, a NoSuchElementException is thrown.
+     *
+     * @param msg The message to be displayed to the player.
+     * @return The integer value entered by the player.
+     * @throws NoSuchElementException If the input is not a valid integer.
+     */
+    private int getInput(String msg) throws NoSuchElementException{
+        System.out.print(msg);
         String var = SCANNER.nextLine();
         try{
             return Integer.parseInt(var);
@@ -140,28 +150,38 @@ public class Game {
     private void playerChoice(){
         boolean roundStarted = false;
         while (!roundStarted) {
-            List<String> actions = displayChoice(0); // A refaire
+            List<String> list = new ArrayList<>();
+            list.add("start round");
+            list.add("view");
+            list.add("buy Tower");
+            list.add("sell Tower"); // a afficher seulement si au moins une tour est placé 
+            list.add("buy upgrade Tower"); // a afficher seulement si une tour placé et a au moins une upgrade ou si tt upgrade sont pas deja mise
+            list.add("sell upgrade Tower"); // a afficher seulement si une tour placé a au moins une upgrade d'appliqué
+            List<String> actions = displayChoice(list);
             try {
                 int input = getInput("\t\tchoice ?\n");
                 if (input >= 0 && input < actions.size()) {
                     System.out.println("Executing action : " + actions.get(input));
                 }
                 switch (input) {
-                    case 0:
+                    case 0: // start round
                         roundStarted=!roundStarted;
                         break;
-                    case 1:
+                    case 1: // view
                         player.displayStats();
                         board.displayBoard();
                         break;
-                    case 2:
+                    case 2: // buy Tower
                         buyTowerChoice();
                         break;
-                    case 3:
+                    case 3: // sell Tower
                         sellTowerChoice();
                         break;
-                    case 4:
-                        upgradeTowerChoice();
+                    case 4: // buy upgrade Tower
+                        buyUpgradeTowerChoice();
+                        break;
+                    case 5: // sell upgrade Tower
+                        sellUpgradeTowerChoice();
                         break;
                     default:
                         throw new NoSuchFieldError("Warning: Not in the list of actions");              
@@ -179,7 +199,17 @@ public class Game {
     
 
     private void buyTowerChoice(){
-        List<String> actions =displayChoice(1);
+        List<String> list = new ArrayList<>();
+        List<Tower> placeableTowers = List.of(
+            new IceTower(null), new BombTower(null), 
+            new SlowTower(null), new DartTower(null),
+            new SniperTower(null), new SuperTower(null),
+            new TackTower(null));
+            list.add("return");
+        for (Tower tower : placeableTowers) {
+            list.add("buy a new " + tower.getClass().getSimpleName() + " (cost: " + tower.getTotalValue() + ")");
+        }
+        List<String> actions =displayChoice(list);
         boolean choice = false;
         while (!choice){
             try{
@@ -195,82 +225,32 @@ public class Game {
                             y = getInput("y ? ");
                         }while(!board.isPlaceable(x, y));
                         Cell cell = board.getCell(x, y);
-                        List<Tower> liste = List.of(
-                            new IceTower(cell), new BombTower(cell), new SlowTower(cell),
-                            new DartTower(cell), new SniperTower(cell), new SuperTower(cell),
-                            new TackTower(cell));
-                        Tower t = liste.get(input-1);
-                        buyTower(t);
+                        Tower addedTower = placeableTowers.get(input-1);
+                        addedTower.setCell(cell);
+                        buyTower(addedTower); // Exception sami stp
                         choice = true;
-                    }else{
-                        
+                    }
+                    else{
+                        throw new NoSuchFieldError("Warning: Not in the list of actions");
                     }
                 }
             }catch(NoSuchElementException e){
+                System.out.println(e.getMessage());
+            }
+            catch (NoSuchFieldError e){
                 System.out.println(e.getMessage());
             }
         }
     }
 
     private void sellTowerChoice(){
-        List<String> actions = displayChoice(2);
-        boolean choice = false;
-        while (!choice){
-            try{
-                int input = getInput("\t\tchoice ?\n");
-                if (input ==0){
-                    choice=true;
-                }
-                if (input > 0 && input < actions.size()) {
-                    Tower t = board.getTowers().get(input-1);
-                    System.out.printf("%s has been sold (%d -> %d) ", t, player.getCredits(), player.getCredits()+t.getTotalValue());
-                    player.addCredits(t.getTotalValue());
-                    board.getTowers().remove(input-1);
-                    choice = true;
-                    }
-            }catch(NoSuchElementException e){
-                System.out.println(e.getMessage());
-            }
-        }
-    }
-
-    private void TowerForUpgradeChoice(){
-        List<String> actions = displayChoice(3);
-        boolean choice = false;
-        while (!choice){
-            try{
-                int input = getInput("\t\tchoice ?\n");
-                if (input ==0){
-                    choice=true;
-                }
-                if (input > 0 && input < actions.size()) {
-                    Tower t = board.getTowers().get(input-1);
-                    List<String> up = choiceUpgrade(t); // refaire une fonction ici pour plus de facilté de lecture 
-
-                    t.upgrade(t.getRemainingUpgrade().get(input-1),this.player);
-                    choice = true;
-                    }
-            }catch(NoSuchElementException e){
-                System.out.println(e.getMessage());
-            }
-        }
-    }
-    private List<String> choiceUpgrade(Tower t){
         List<String> list = new ArrayList<>();
         list.add("return");
-        for (Upgrade u: t.getAppliedUpgrade())
-            list.add(String.format("%s",u));
-
-        System.out.println("Which action ?");
-        for (int i=0; i < list.size();i++){
-            System.out.printf("\t%d - %s%n",i , list.get(i));
+        List<Tower> sellableTowers = board.getTowers();
+        for (Tower towers : sellableTowers) {
+            list.add(String.format("sell %s for %d credits", towers, towers.getTotalValue()));
         }
-        return list;
-
-    }
-
-    private void sellUpgradeTowerChoice(){
-        List<String> actions = displayChoice(4);
+        List<String> actions = displayChoice(list);
         boolean choice = false;
         while (!choice){
             try{
@@ -279,18 +259,37 @@ public class Game {
                     choice=true;
                 }
                 if (input > 0 && input < actions.size()) {
-                    Tower t = board.getTowers().get(input-1);
-                    t.revertUpgrade(t.getRemainingUpgrade().get(input-1),this.player);
+                    
+                    Tower sellTower = sellableTowers.get(input-1);
+                    System.out.println(board.getTowers());
+                    
+                    System.out.printf("%s has been sold (%d -> %d)%n", sellTower, player.getCredits(), player.getCredits()+sellTower.getTotalValue()); // une fonction pr l'affichage ?
+                    player.addCredits(sellTower.getTotalValue());
+                    board.getTowers().remove(input-1);
+                    sellTower.getCell().popState(); 
+                    sellTower.getCell().switchIsOccupied(); // Si on est sur un Classic il faut le faire mais pas sur un Linear donc faut faire une fonction board.removeTower(Tower t) -> exception si pas dans la liste au cas ou svp
+                    System.out.println(board.getTowers());
                     choice = true;
-                    }
+                }else{
+                    throw new NoSuchFieldError("Warning: Not in the list of actions");
+                }
             }catch(NoSuchElementException e){
                 System.out.println(e.getMessage());
+            }catch (NoSuchFieldError e){
+                System.out.println(e.getMessage());
             }
+
         }
     }
-
-    private void upgradeTowerChoice(){
-        List<String> actions = displayChoice(5);
+    private void buyUpgradeTowerChoice() {
+        List<String> list = new ArrayList<>();
+        list.add("return");
+        List<Tower> upgradableTower = board.getTowers();
+        upgradableTower.removeIf(t -> t.getRemainingUpgrade().isEmpty());
+        for (int i=0;i< upgradableTower.size();i++){
+            list.add(String.format("%s",upgradableTower.get(i)));
+        }
+        List<String> actions = displayChoice(list);
         boolean choice = false;
         while (!choice){
             try{
@@ -299,26 +298,109 @@ public class Game {
                     choice=true;
                 }
                 if (input > 0 && input < actions.size()) {
-                    System.out.println("Executing action : " + actions.get(input));
-                    switch (input){
-                    case 1:
-                        // buyUpgradeTowerChoice();
-                        choice=true;
-                        break;
-                    case 2:
-                        sellUpgradeTowerChoice();
-                        choice=true;
-                        break;
-                    }
+                    whichUpgradeApplied(upgradableTower.get(input-1));
+                }
+                else{
+                    throw new NoSuchFieldError("Warning: Not in the list of actions");
                 }
             }catch(NoSuchElementException e){
+                System.out.println(e.getMessage());
+            }catch (NoSuchFieldError e){
                 System.out.println(e.getMessage());
             }
         }
     }
+
+    // private void sellUpgradeTowerChoice(){
+    //     List<String> actions = displayChoice(4);
+    //     boolean choice = false;
+    //     while (!choice){
+    //         try{
+    //             int input = getInput("\t\tchoice ?\n");
+    //             if (input ==0){
+    //                 choice=true;
+    //             }
+    //             if (input > 0 && input < actions.size()) {
+    //                 Tower t = board.getTowers().get(input-1);
+    //                 t.revertUpgrade(t.getRemainingUpgrade().get(input-1),this.player);
+    //                 choice = true;
+    //                 }
+    //         }catch(NoSuchElementException e){
+    //             System.out.println(e.getMessage());
+    //         }
+    //     }
+    // }
+
+    // private void upgradeTowerChoice(){
+    //     List<String> actions = displayChoice(5);
+    //     boolean choice = false;
+    //     while (!choice){
+    //         try{
+    //             int input = getInput("\t\tchoice ?\n");
+    //             if (input ==0){
+    //                 choice=true;
+    //             }
+    //             if (input > 0 && input < actions.size()) {
+    //                 System.out.println("Executing action : " + actions.get(input));
+    //                 switch (input){
+    //                 case 1:
+    //                     // buyUpgradeTowerChoice();
+    //                     choice=true;
+    //                     break;
+    //                 case 2:
+    //                     sellUpgradeTowerChoice();
+    //                     choice=true;
+    //                     break;
+    //                 }
+    //             }
+    //         }catch(NoSuchElementException e){
+    //             System.out.println(e.getMessage());
+    //         }
+    //     }
+    // }
     
     
             
+    private void whichUpgradeApplied(Tower tower) {
+        // Gère l'upgrade de la tower
+        throw new UnsupportedOperationException("Unimplemented method 'whichUpgradeApplied'");
+    }
+
+
+    private void sellUpgradeTowerChoice() {
+        List<String> list = new ArrayList<>();
+        list.add("return");
+        List<Tower> revertableTower = board.getTowers();
+        revertableTower.removeIf(t -> t.getAppliedUpgrade().isEmpty() );
+        for (int i=0;i< revertableTower.size();i++){
+            list.add(String.format("%s",revertableTower.get(i)));
+        }
+        List<String> actions = displayChoice(list);
+        boolean choice = false;
+        while (!choice){
+            try{
+                int input = getInput("\t\tchoice ?\n");
+                if (input ==0){
+                    choice=true;
+                }
+                if (input > 0 && input < actions.size()) {
+                    whichUpgradeRevert(revertableTower.get(input));
+                }
+                else{
+                    throw new NoSuchFieldError("Warning: Not in the list of actions");
+                }
+            }catch(NoSuchElementException e){
+                System.out.println(e.getMessage());
+            }catch (NoSuchFieldError e){
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+    private void whichUpgradeRevert(Tower tower) {
+        // Gère le revert de la tower
+        throw new UnsupportedOperationException("Unimplemented method 'whichUpgradeApplied'");
+    }
+
     /**
      * Play a round
      * @param nbBalloons the number of balloons to spawn in this round
@@ -413,42 +495,10 @@ public class Game {
      * @param existingTowers the list of towers already existing in the game
      * @return List<String> the list of labels for the choice, in order to be used in the main function
      */
-    private List<String> displayChoice(int nb){
-        List<String> list = new ArrayList<>();
-        switch (nb){
-            case 0: //Actions de base
-                list.add("start round");
-                list.add("view");
-                list.add("buy Tower");
-                list.add("sell Tower");
-                list.add("upgrade Tower");
-                break;
-            case 1: //Achat Towers
-                List<Tower> t1 = List.of(
-                new IceTower(null), new BombTower(null), new SlowTower(null),
-                new DartTower(null), new SniperTower(null), new SuperTower(null),
-                new TackTower(null));
-                list.add("return");
-                for (Tower t : t1) {
-                    list.add("buy a new " + t.getClass().getSimpleName() + " (cost: " + t.getTotalValue() + ")");
-                }
-                break;
-            case 2: //Vente Towers
-                List<Tower> t2 = board.getTowers();
-                list.add("return");
-                for (Tower t : t2) {
-                    list.add(String.format("sell %s for %d credits", t, t.getTotalValue()));
-                }
-                break;
-            
+    private List<String> displayChoice(List<String> list){
+        switch (0){
             case 3: // select Tower to buy upgrade
-                List<Tower> upgradeTower = board.getTowers();
-                list.add("return");
-                upgradeTower.removeIf(t -> t.getRemainingUpgrade().isEmpty() );
-                for (int i=0;i< upgradeTower.size();i++){
-                    Tower t = upgradeTower.get(i);
-                    list.add(String.format("%s",t));
-                }
+                
                 break;
             case 4: // select Tower to sell upgrade
                 List<Tower> upgradedTower = board.getTowers();

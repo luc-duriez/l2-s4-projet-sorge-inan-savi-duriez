@@ -117,7 +117,9 @@ public abstract class Tower{
     public List<Upgrade> getAppliedUpgrade(){
         return appliedUpgrades;
     }
-
+    public void setCell(Cell cell) {
+            this.pos=cell;
+        }
     /**
      * Shoots the balloon
      * @param balloonsInRange The balloon to shoot
@@ -159,4 +161,6 @@ public abstract class Tower{
      * @param b the balloon being shooted 
      */
     public abstract void displayShoot(Balloon b);
+
+    
 }
