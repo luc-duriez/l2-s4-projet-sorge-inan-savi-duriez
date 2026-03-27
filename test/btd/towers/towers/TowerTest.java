@@ -23,6 +23,9 @@ public class TowerTest {
         public void upgrade(Upgrade u, Player p) throws NoSuchElementException { };
 
         @Override
+        public void revertUpgrade(Upgrade u, Player p) throws NoSuchElementException{};
+
+        @Override
         public List<Balloon> shoot(List<Balloon> balloonsInRange) { return new ArrayList<>(); }
 
         @Override
