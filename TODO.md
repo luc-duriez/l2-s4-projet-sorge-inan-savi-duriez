@@ -10,5 +10,5 @@
 
 
 Ajouter dans l'UML:
-    tower.setCell()
+    board.removeTower(Tower) et override aussi dans Classic et Linear a ajouter stp sami 
     

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import btd.towers.towers.Tower;
+
 /** A board with linear paths */
 public class LinearBoard extends Board {
 
@@ -99,4 +101,8 @@ public class LinearBoard extends Board {
         return cells;
     }
     
+    @Override
+    public void removeTower(Tower t){
+        this.towers.remove(t);
+    }
 }

@@ -183,4 +183,6 @@ public abstract class Board {
             System.out.println(strLineSeparator);
         }
     }
+
+    public abstract void removeTower(Tower t);
 }
