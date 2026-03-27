@@ -111,6 +111,10 @@ public class Game {
         board.getCell(t.getCell().getX(), t.getCell().getY()).setState(StateCell.TOWER);
         player.addCredits(-t.getTotalValue());
     }
+    public void removeTower(Tower t){
+        board.removeTower(t);
+        player.addCredits(t.getTotalValue());
+    }
     
     /**
      * This function updates the waiting balloons.
@@ -309,6 +313,7 @@ public class Game {
                 }
                 else if (input > 0 && input < list.size()) {
                     whichUpgradeApplied(upgradableTower.get(input-1));
+                    choice = true;
                 }
                 else{
                     throw new NoSuchFieldError("Warning: Not in the list of list");
@@ -375,7 +380,8 @@ public class Game {
                     choice=true;
                 }
                 else if (input > 0 && input < list.size()) {
-                    whichUpgradeRevert(revertableTower.get(input));
+                    whichUpgradeRevert(revertableTower.get(input-1));
+                    choice = true;
                 }
                 else{
                     throw new NoSuchFieldError("Warning: Not in the list of list");
@@ -406,7 +412,8 @@ public class Game {
                     choice=true;
                 }
                 else if (input > 0 && input < choices.size()) {
-                    tower.revertUpgrade(tower.getRemainingUpgrade().get(input-1),this.player);
+                    tower.revertUpgrade(tower.getAppliedUpgrade().get(input-1),this.player);
+                    choice = true;
                 }
                 else{
                     throw new NoSuchFieldError("Warning: Not in the list of actions");
