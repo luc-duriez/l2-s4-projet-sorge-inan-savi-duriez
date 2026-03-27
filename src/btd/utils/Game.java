@@ -415,10 +415,34 @@ public class Game {
      * Handles the selection and removal of an applied upgrade from a chosen tower.
      * @param tower The tower whose upgrade will be reverted.
      */
-    private void whichUpgradeRevert(Tower tower) {
-        // Gère le revert de la tower
-        throw new UnsupportedOperationException("Unimplemented method 'whichUpgradeApplied'");
+    private void whichUpgradeRevert(Tower tower){
+        List<String> choices = new ArrayList<>();
+        choices.add("return");
+        for(Upgrade u : tower.getAppliedUpgrade()){
+            choices.add(u.toString());
+        }
+        displayChoice(choices);
+        boolean choice = false;
+        while (!choice){
+            try{
+                int input = getInput("\t\tchoice ?\n");
+                if (input ==0){
+                    choice=true;
+                }
+                else if (input > 0 && input < choices.size()) {
+                    tower.revertUpgrade(tower.getRemainingUpgrade().get(input-1),this.player);
+                }
+                else{
+                    throw new NoSuchFieldError("Warning: Not in the list of actions");
+                }
+            }catch(NoSuchElementException e){
+                System.out.println(e.getMessage());
+            }catch (NoSuchFieldError e){
+                System.out.println(e.getMessage());
+            }
+        }
     }
+
 
     /**
      * Play a round
