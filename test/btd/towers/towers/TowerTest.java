@@ -1,8 +1,12 @@
 package btd.towers.towers;
 
 import btd.boards.Cell;
+import btd.towers.upgrades.Upgrade;
 import btd.utils.Balloon;
+import btd.utils.Player;
+
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;
@@ -15,6 +19,8 @@ public class TowerTest {
             super(pos, range, attackSpeed,basePrice);
         }
 
+        @Override
+        public void upgrade(Upgrade u, Player p) throws NoSuchElementException { };
 
         @Override
         public List<Balloon> shoot(List<Balloon> balloonsInRange) { return new ArrayList<>(); }
