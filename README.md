@@ -346,9 +346,15 @@ Aucune difficulté n'a été rencontré pour cette semaine.
 
 ### Ce qui a été réalisé
 
+Durant cette semaine 10, nous avons continué dans l'affichage et la logique des choix proposés au joueur. Nous avons également réglé certains bugs dans cette gestion de choix afin d'éviter les différents arrêts du programme. Nous avons donc fini l'amélioration d'une tour et aussi la vente de cette même amélioration.
+
 ### Difficultés rencontrées
 
+La gestion du choix pour le joueur a posé un problème au niveau des améliorations qui ne fonctionnait pas mais nous avons pu résoudre ce soucis. Aucune autre difficulté n'a été rencontrée pendant cette semaine.
+
 ### Objectifs pour la semaine et répartition du travail par membre
+
+Les objectifs de cette semaine étaient d'améliorer l'affichage des choix et de résoudre les différents bugs liés à cela.
 
 ## Semaine 11
 
