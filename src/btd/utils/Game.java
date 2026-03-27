@@ -155,19 +155,36 @@ public class Game {
     private void playerChoice(){
         boolean roundStarted = false;
         while (!roundStarted) {
+            List<Tower> allTowers = board.getTowers();
+        
+            List<Tower> upgradableTowers = new ArrayList<>(allTowers);
+            upgradableTowers.removeIf(t -> t.getRemainingUpgrade().isEmpty());
+            
+            List<Tower> towersWithUpgrades = new ArrayList<>(allTowers);
+            towersWithUpgrades.removeIf(t -> t.getAppliedUpgrade().isEmpty());
+
+            boolean showSell = !allTowers.isEmpty();
+            boolean showBuyUpgrade = !upgradableTowers.isEmpty();
+            boolean showSellUpgrade = !towersWithUpgrades.isEmpty();
+
             List<String> list = new ArrayList<>();
             list.add("start round");
             list.add("view");
             list.add("buy Tower");
-            list.add("sell Tower"); // a afficher seulement si au moins une tour est placé 
-            list.add("buy upgrade Tower"); // a afficher seulement si une tour placé et a au moins une upgrade ou si tt upgrade sont pas deja mise
-            list.add("sell upgrade Tower"); // a afficher seulement si une tour placé a au moins une upgrade d'appliqué
+            if (showSell)
+                list.add("sell Tower"); // a afficher seulement si au moins une tour est placé 
+            if (showBuyUpgrade)
+                list.add("buy upgrade Tower"); // a afficher seulement si une tour placé et a au moins une upgrade ou si tt upgrade sont pas deja mise
+            if (showSellUpgrade)
+                list.add("sell upgrade Tower"); // a afficher seulement si une tour placé a au moins une upgrade d'appliqué
             displayChoice(list);
             try {
                 int input = getInput("\t\tchoice ?\n");
                 if (input >= 0 && input < list.size()) {
                     System.out.println("Executing action : " + list.get(input));
                 }
+                
+
                 switch (input) {
                     case 0: // start round
                         roundStarted=!roundStarted;
@@ -180,16 +197,22 @@ public class Game {
                         buyTowerChoice();
                         break;
                     case 3: // sell Tower
+                        if (!showSell)
+                            throw new NoSuchFieldError("Warning: Not in the list of actions");
                         sellTowerChoice();
                         break;
                     case 4: // buy upgrade Tower
+                        if (!showBuyUpgrade)
+                            throw new NoSuchFieldError("Warning: Not in the list of actions");
                         buyUpgradeTowerChoice();
                         break;
                     case 5: // sell upgrade Tower
+                        if (!showSellUpgrade)
+                            throw new NoSuchFieldError("Warning: Not in the list of actions");
                         sellUpgradeTowerChoice();
                         break;
                     default:
-                        throw new NoSuchFieldError("Warning: Not in the list of list");              
+                        throw new NoSuchFieldError("Warning: Not in the list of actions");              
                 }
             }
             catch (NoSuchElementException e) {
@@ -277,11 +300,11 @@ public class Game {
                     player.addCredits(sellTower.getTotalValue());
                     board.getTowers().remove(input-1);
                     sellTower.getCell().popState(); 
-                    sellTower.getCell().switchIsOccupied(); // Si on est sur un Classic il faut le faire mais pas sur un Linear donc faut faire une fonction board.removeTower(Tower t) -> exception si pas dans la liste au cas ou svp
+                    sellTower.getCell().switchIsOccupied(); 
                     System.out.println(board.getTowers());
                     choice = true;
                 }else{
-                    throw new NoSuchFieldError("Warning: Not in the list of list");
+                    throw new NoSuchFieldError("Warning: Not in the list of actions");
                 }
             }catch(NoSuchElementException e){
                 System.out.println(e.getMessage());
