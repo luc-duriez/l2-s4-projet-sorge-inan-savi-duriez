@@ -61,7 +61,7 @@ public class BalloonTest {
         assertEquals(oldDistance + 2 * b.getSpeed() * b.getSlowValue(), b.getDistanceTravelled());
     }
     @Test
-    public void SlowIceTest() {
+    public void applyMovementEffectTest() {
         b.applyMovementEffect(0.5, 1);
         assertEquals(0.5, b.getSlowValue());
         b.applyMovementEffect(1, 1);
