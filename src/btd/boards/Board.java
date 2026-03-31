@@ -17,6 +17,8 @@ public abstract class Board {
     /** This Board's list of towers */
     protected List<Tower> towers;
 
+    public Object isPlaceable;
+
     /** This board's size */
     public static int sizeBoard;
     
@@ -120,7 +122,11 @@ public abstract class Board {
      * @return true if the cell at position (x,y) can be used to place a tower.
      */
     public boolean isPlaceable(int x, int y) {
-        return !(this.getCell(x, y).isOccupied());
+        if ( (0 <= x) && (x < board.length) && (0 <= y) && (y<board[0].length) ){
+            return !(this.getCell(x, y).isOccupied());
+        }
+        return false;
+    
     }
    
         /**
