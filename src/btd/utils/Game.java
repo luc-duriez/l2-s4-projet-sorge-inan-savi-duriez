@@ -355,8 +355,10 @@ public class Game {
     private void buyUpgradeTowerChoice() {
         List<String> list = new ArrayList<>();
         list.add("return");
-        List<Tower> upgradableTower = board.getTowers();
-        upgradableTower.removeIf(t -> t.getRemainingUpgrade().isEmpty());
+        List<Tower> upgradableTower = new ArrayList<>();
+        for (Tower t: board.getTowers())
+            if (!t.getRemainingUpgrade().isEmpty())
+                upgradableTower.add(t);
         for (int i=0;i< upgradableTower.size();i++){
             list.add(String.format("%s",upgradableTower.get(i)));
         }
