@@ -84,7 +84,7 @@ public class Game {
             return Integer.parseInt(var);
         }
         catch(NumberFormatException e) {
-            throw new NoSuchElementException("ERROR : Invalid input");
+            throw new NoSuchElementException("ERROR : Invalid input\n");
         }
     }
      /**
@@ -240,10 +240,11 @@ public class Game {
         for (Tower tower : placeableTowers) {
             list.add("buy a new " + tower.getClass().getSimpleName() + " (cost: " + tower.getTotalValue() + ")");
         }
-        displayChoice(list);
+        
         boolean choice = false;
         while (!choice){
             try{
+                displayChoice(list);
                 int input = getInput("\t\tchoice ?\n");
                 if (input ==0){
                     choice=true;
@@ -256,7 +257,7 @@ public class Game {
                     // }while(!board.isPlaceable(x, y));
                     List<Integer> coordinate = managePlacement();
                     if (coordinate  == null){
-                        throw new NoSuchFieldError("Warning: Not in the list of list");
+                        throw new NoSuchFieldError("Warning: Not in the list of actions\n");
                     }
                     Cell cell = board.getCell(coordinate.get(0), coordinate.get(1));
                     Tower addedTower = placeableTowers.get(input-1);
@@ -265,7 +266,7 @@ public class Game {
                     choice = true;
                 }
                 else{
-                    throw new NoSuchFieldError("Warning: Not in the list of list");
+                    throw new NoSuchFieldError("Warning: Not in the list of actions\n");
                 }
                 
             }catch(NoSuchElementException e){
@@ -286,24 +287,23 @@ public class Game {
         int x=-1,y=-1;
         boolean choice = false;
         
-        while (!choice) {
+        while (!choice && 0 < essai) {
             try {
-                while (!choice && 0 < essai){
-                    x = getInput("x ?");
-                    y = getInput("y ?");
-                    choice = board.isPlaceable(x, y);
-                    if (!choice){
-                        board.displayBoard();
-                        System.out.printf("Warning : Wrong coordinates.%nRemaining try : %s%n",essai);
-                    }
-                    essai--;
+                x = getInput("x ?");
+                y = getInput("y ?");
+                choice = board.isPlaceable(x, y);
+                if (choice){
+                    return List.of(x,y);
                 }
-                return List.of(x,y);
+                board.displayBoard();
+                System.out.printf("Warning : Wrong coordinates.%nRemaining try : %s%n",--essai);
+                
             } 
             catch (NoSuchElementException e) {
                 System.out.println(e.getMessage());
-                essai--;
-                }
+                board.displayBoard();
+                System.out.printf("Warning : Wrong coordinates.%nRemaining try : %s%n",--essai);
+            }
         }
         return null;
     }
@@ -373,7 +373,7 @@ public class Game {
                     choice = true;
                 }
                 else{
-                    throw new NoSuchFieldError("Warning: Not in the list of list");
+                    throw new NoSuchFieldError("Warning: Not in the list of actions");
                 }
             }catch(NoSuchElementException e){
                 System.out.println(e.getMessage());
@@ -406,7 +406,7 @@ public class Game {
                     choice = true;
                 }
                 else{
-                    throw new NoSuchFieldError("Warning: Not in the list of list");
+                    throw new NoSuchFieldError("Warning: Not in the list of actions");
                 }
             }catch(NoSuchElementException e){
                 System.out.println(e.getMessage());
@@ -441,7 +441,7 @@ public class Game {
                     choice = true;
                 }
                 else{
-                    throw new NoSuchFieldError("Warning: Not in the list of list");
+                    throw new NoSuchFieldError("Warning: Not in the list of actions");
                 }
             }catch(NoSuchElementException e){
                 System.out.println(e.getMessage());
