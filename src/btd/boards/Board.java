@@ -157,12 +157,12 @@ public abstract class Board {
     
     public void displayBoard() {
         System.out.println();
-        String strLineSeparator = "   +";
+        String strLineSeparator = "  +";
         for (int c = 0; c < this.board[0].length; c++) {
             strLineSeparator += "-----+";
         }
 
-        System.out.print("    "); // Numero en haut
+        System.out.print("   y"); // Numero en haut
         for (int i = 0; i < this.board[0].length; i++) {
             if (i < 10) {
                 System.out.print("  " + i + "   ");
@@ -171,9 +171,9 @@ public abstract class Board {
             }
         }
         System.out.println();
-
+        System.out.print("x");
         System.out.println(strLineSeparator);
-
+        
         for (int j = 0; j < this.board.length; j++) { // Toutes les lignes
             if (j < 10) {
                 System.out.print(j + "  |");
@@ -186,7 +186,7 @@ public abstract class Board {
             }
             System.out.println();
 
-            System.out.println(strLineSeparator);
+            System.out.printf(" %s%n",strLineSeparator);
         }
     }
 
