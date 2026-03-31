@@ -249,12 +249,16 @@ public class Game {
                     choice=true;
                 }
                 else if (input >= 0 && input < list.size()) {
-                    int x, y;
-                    do{
-                        x = getInput("x ? ");
-                        y = getInput("y ? ");
-                    }while(!board.isPlaceable(x, y));
-                    Cell cell = board.getCell(x, y);
+                    // int x, y;
+                    // do{
+                    //     x = getInput("x ? ");
+                    //     y = getInput("y ? ");
+                    // }while(!board.isPlaceable(x, y));
+                    List<Integer> coordinate = managePlacement();
+                    if (coordinate  == null){
+                        throw new NoSuchFieldError("Warning: Not in the list of list");
+                    }
+                    Cell cell = board.getCell(coordinate.get(0), coordinate.get(1));
                     Tower addedTower = placeableTowers.get(input-1);
                     addedTower.setCell(cell);
                     buyTower(addedTower); // Exception sami stp
@@ -272,6 +276,38 @@ public class Game {
             }
         }
     }
+    /**
+     * This function manage the placement in board.
+     * Return x,y valid
+     * @return
+     */
+    private List<Integer> managePlacement() {
+        int essai = 5;
+        int x=-1,y=-1;
+        boolean choice = false;
+        
+        while (!choice) {
+            try {
+                while (!choice && 0 < essai){
+                    x = getInput("x ?");
+                    y = getInput("y ?");
+                    choice = board.isPlaceable(x, y);
+                    if (!choice){
+                        board.displayBoard();
+                        System.out.printf("Warning : Wrong coordinates.%nRemaining try : %s%n",essai);
+                    }
+                    essai--;
+                }
+                return List.of(x,y);
+            } 
+            catch (NoSuchElementException e) {
+                System.out.println(e.getMessage());
+                essai--;
+                }
+        }
+        return null;
+    }
+
     /**
      * Manages the process of selling an existing tower from the board.
      * Displays the list of current towers, updates the player's credits, and clears the board cell.
@@ -294,14 +330,12 @@ public class Game {
                 else if (input > 0 && input < list.size()) {
                     
                     Tower sellTower = sellableTowers.get(input-1);
-                    System.out.println(board.getTowers());
                     
                     System.out.printf("%s has been sold (%d -> %d)%n", sellTower, player.getCredits(), player.getCredits()+sellTower.getTotalValue()); // une fonction pr l'affichage ?
                     player.addCredits(sellTower.getTotalValue());
                     board.getTowers().remove(input-1);
                     sellTower.getCell().popState(); 
-                    sellTower.getCell().switchIsOccupied(); 
-                    System.out.println(board.getTowers());
+                    sellTower.getCell().switchIsOccupied(); // a changer ca parce que on ne switch pas le isOccupied si c un LinearBoard (créer un  boolean board.removeTower(Tower))
                     choice = true;
                 }else{
                     throw new NoSuchFieldError("Warning: Not in the list of actions");
