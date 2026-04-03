@@ -182,7 +182,7 @@ public abstract class Board {
             }
             for (int k = 0; k < this.board[0].length; k++) {
                 StateCell state = this.board[j][k].getState();
-                System.out.print("  " + state + "  |");
+                System.out.print("" + state + "  |");
             }
             System.out.println();
 
