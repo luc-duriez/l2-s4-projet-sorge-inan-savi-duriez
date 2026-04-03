@@ -111,6 +111,11 @@ public class Game {
         board.getCell(t.getCell().getX(), t.getCell().getY()).setState(StateCell.TOWER);
         player.addCredits(-t.getTotalValue());
     }
+
+    /**
+     * Removes the Tower t from the board
+     * @param t The tower to remove
+     */
     public void removeTower(Tower t){
         board.removeTower(t);
         player.addCredits(t.getTotalValue());
