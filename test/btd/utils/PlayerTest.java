@@ -15,7 +15,7 @@ public class PlayerTest {
 
     @Test
     public void addCreditsTest() {
-        p.addCredits(1000);
+        p.changeCredits(1000);
         assertEquals(6000, p.getCredits());
     }
 
