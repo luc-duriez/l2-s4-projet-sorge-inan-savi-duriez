@@ -29,7 +29,7 @@ public class MainLinear {
         }
         Board board = new LinearBoard(Integer.parseInt(args[0]), Integer.parseInt(args[1]), Integer.parseInt(args[3]));
         Game game = new Game(board);
-        game.getPlayer().addCredits(10000);
+        game.getPlayer().changeCredits(10000);
         game.getPlayer().decreaseLife(-10000);
         try {
             for (int i = 0; i < 2; i++) {
