@@ -6,6 +6,7 @@ import java.util.NoSuchElementException;
 import java.util.Random;
 import java.util.Scanner;
 
+import btd.exceptions.NotEnoughCreditsException;
 import btd.boards.*;
 import btd.towers.towers.*;
 import btd.towers.upgrades.Upgrade;
@@ -103,15 +104,22 @@ public class Game {
     /**
      * Add t in board.
      * @param t Tower
+     * @throws NotEnoughCreditsException 
      */
-    public void buyTower(Tower t) {
+    public void buyTower(Tower t) throws NotEnoughCreditsException {
         if(!player.hasEnoughCredits(t.getTotalValue())){
-            throw new NoSuchElementException("pas de thune et sami fais l'exception. Merci");
+            throw new NotEnoughCreditsException("Not enough credits to buy this tower !");
         }
         board.addTower(t);
         board.getCell(t.getCell().getX(), t.getCell().getY()).setState(StateCell.TOWER);
         player.addCredits(-t.getTotalValue());
+        System.out.printf("%s has been bought\n\n", t);
     }
+
+    /**
+     * Removes the Tower t from the board
+     * @param t The tower to remove
+     */
     public void removeTower(Tower t){
         board.removeTower(t);
         player.addCredits(t.getTotalValue());
@@ -144,6 +152,7 @@ public class Game {
                 if (b.getHealth() <= 0) {
                     activeBalloons.remove(b);
                     b.displayPopped();
+                    player.addCredits(Balloon.CREDITSPOPPED);
                 }
             }
         }
@@ -183,37 +192,39 @@ public class Game {
                 int input = getInput("\t\tchoice ?\n");
                 if (input >= 0 && input < list.size()) {
                     System.out.println("Executing action : " + list.get(input));
-                }
-                
 
-                switch (input) {
-                    case 0: // start round
-                        roundStarted=!roundStarted;
-                        break;
-                    case 1: // view
-                        player.displayStats();
-                        board.displayBoard();
-                        break;
-                    case 2: // buy Tower
-                        buyTowerChoice();
-                        break;
-                    case 3: // sell Tower
-                        if (!showSell)
-                            throw new NoSuchFieldError("Warning: Not in the list of actions");
-                        sellTowerChoice();
-                        break;
-                    case 4: // buy upgrade Tower
-                        if (!showBuyUpgrade)
-                            throw new NoSuchFieldError("Warning: Not in the list of actions");
-                        buyUpgradeTowerChoice();
-                        break;
-                    case 5: // sell upgrade Tower
-                        if (!showSellUpgrade)
-                            throw new NoSuchFieldError("Warning: Not in the list of actions");
-                        sellUpgradeTowerChoice();
-                        break;
-                    default:
-                        throw new NoSuchFieldError("Warning: Not in the list of actions");              
+                    switch (list.get(input)) {
+                        case "start round":
+                            roundStarted=!roundStarted;
+                            break;
+                        case "view": // view
+                            player.displayStats();
+                            board.displayBoard();
+                            break;
+                        case "buy Tower": 
+                            buyTowerChoice();
+                            break;
+                        case "sell Tower": 
+                            if (!showSell)
+                                throw new NoSuchFieldError("Warning: Not in the list of actions");
+                            sellTowerChoice();
+                            break;
+                        case "buy upgrade Tower": 
+                            if (!showBuyUpgrade)
+                                throw new NoSuchFieldError("Warning: Not in the list of actions");
+                            buyUpgradeTowerChoice();
+                            break;
+                        case "sell upgrade Tower":
+                            if (!showSellUpgrade)
+                                throw new NoSuchFieldError("Warning: Not in the list of actions");
+                            sellUpgradeTowerChoice();
+                            break;
+                        default:
+                            throw new NoSuchFieldError("Warning: Not in the list of actions");              
+                    }
+                }
+                else{
+                    throw new NoSuchFieldError("Warning: Not in the list of actions");  
                 }
             }
             catch (NoSuchElementException e) {
@@ -222,7 +233,6 @@ public class Game {
             catch (NoSuchFieldError e){
                 System.out.println(e.getMessage());
             }
-            
         }
     }
     
@@ -251,11 +261,6 @@ public class Game {
                     choice=true;
                 }
                 else if (input >= 0 && input < list.size()) {
-                    // int x, y;
-                    // do{
-                    //     x = getInput("x ? ");
-                    //     y = getInput("y ? ");
-                    // }while(!board.isPlaceable(x, y));
                     List<Integer> coordinate = managePlacement();
                     if (coordinate  == null){
                         throw new NoSuchFieldError("Warning: Not in the list of actions\n");
@@ -274,6 +279,9 @@ public class Game {
                 System.out.println(e.getMessage());
             }
             catch (NoSuchFieldError e){
+                System.out.println(e.getMessage());
+            }
+            catch (NotEnoughCreditsException e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -416,6 +424,9 @@ public class Game {
             }catch (NoSuchFieldError e){
                 System.out.println(e.getMessage());
             }
+            catch (NotEnoughCreditsException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 
@@ -532,7 +543,6 @@ public class Game {
                 System.out.println("GAME OVER !!"); // BREAK 
             }
         }
-        //
         if (!player.isDead()){
             System.out.println("\nRound cleared !");
             player.displayStats();
@@ -587,7 +597,7 @@ public class Game {
      */
     private List<String> displayChoice(List<String> list){
         player.displayCredits();
-        System.out.println("Which action ?");
+        System.out.println("\nWhich action ?");
         for (int i=0; i < list.size();i++){
             System.out.printf("\t%d - %s%n",i , list.get(i));
         }

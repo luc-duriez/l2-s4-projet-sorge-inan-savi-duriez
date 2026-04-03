@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import btd.boards.Cell;
+import btd.exceptions.NotEnoughCreditsException;
 import btd.towers.projectiles.Projectile;
 import btd.towers.upgrades.Upgrade;
 import btd.utils.Balloon;
 import btd.utils.Game;
 import btd.utils.Player;
+import btd.exceptions.NotEnoughCreditsException;
 
 /** Abstract tower that deals damage */
 public abstract class DamageTower extends Tower {
@@ -155,17 +157,16 @@ public abstract class DamageTower extends Tower {
     }
 
     @Override
-    public void upgrade(Upgrade u, Player p) throws NoSuchElementException{
-        if (!remainingUpgrades.contains(u)){
+    public void upgrade(Upgrade u, Player p) throws NoSuchElementException, NotEnoughCreditsException{
+        if (!remainingUpgrades.contains(u))
             throw new NoSuchElementException("This upgrade doesn't exist in remaining upgrade");
-        }
-        if (p.hasEnoughCredits(u.getCost())) {
-            p.decreaseCredits(u.getCost());
-            u.apply(this);
-            this.remainingUpgrades.remove(u); 
-            this.appliedUpgrades.add(u); 
-            displayUpgrade(u,p);            
-        }
+        if (!p.hasEnoughCredits(u.getCost())) 
+            throw new NotEnoughCreditsException("Not enough credits to buy this upgrade !");
+        p.decreaseCredits(u.getCost());
+        u.apply(this);
+        this.remainingUpgrades.remove(u); 
+        this.appliedUpgrades.add(u); 
+        displayUpgrade(u,p);            
     }
 
     @Override

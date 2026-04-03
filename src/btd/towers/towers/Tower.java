@@ -1,6 +1,7 @@
 package btd.towers.towers;
 
 import btd.boards.Cell;
+import btd.exceptions.NotEnoughCreditsException;
 import btd.towers.upgrades.Upgrade;
 import btd.utils.Balloon;
 import btd.utils.Game;
@@ -135,8 +136,9 @@ public abstract class Tower{
      * Adds a new upgrade to appliedUpgrade
      * @param u The upgrade to apply
      * @param p The player who upgrades this Tower
+     * @throws NotEnoughCreditsException 
      */
-    public abstract void upgrade(Upgrade u, Player p) throws NoSuchElementException;
+    public abstract void upgrade(Upgrade u, Player p) throws NoSuchElementException, NotEnoughCreditsException;
 
     /**
      * Revert the latest upgrade of this Tower
