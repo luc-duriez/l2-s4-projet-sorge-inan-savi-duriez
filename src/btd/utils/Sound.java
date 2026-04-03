@@ -4,7 +4,8 @@ import java.io.File;
 
 public class Sound {
     private Clip music;
-    public void playBackgroundMusic(String filePath) {
+
+    public void playBackgroundSound(String filePath) {
         try {
             File musicPath = new File(filePath);
             if (musicPath.exists()) {
@@ -19,4 +20,10 @@ public class Sound {
             System.out.println("Erreur de lecture audio : " + e.getMessage());
         }
     }
+
+    public void stopSound() {
+        if (music != null && music.isRunning()) {
+            music.stop();
+        }
+}
 }
