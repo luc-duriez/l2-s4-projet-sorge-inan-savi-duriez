@@ -360,7 +360,12 @@ Les objectifs de cette semaine étaient d'améliorer l'affichage des choix et de
 
 ### Ce qui a été réalisé
 
+Corrections des derniers bugs, ajout de l'exception pour les crédits du joueur, ajout des crédits gagnés lorsqu'un balloon est détruit.
+Commencement d'un affichage différent pour les tours (avec des émojis pour les différentier) + musique du jeu.
+
 ### Difficultés rencontrées
+
+Essayé de faire une interface graphique pour le chemin avec javafx mais abandon.
 
 ### Objectifs pour la semaine et répartition du travail par membre
 
