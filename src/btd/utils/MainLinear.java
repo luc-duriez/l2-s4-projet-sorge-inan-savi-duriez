@@ -4,6 +4,7 @@ package btd.utils;
 import java.util.Random;
 
 import btd.boards.*;
+import btd.exceptions.NotEnoughCreditsException;
 import btd.towers.towers.*;
 
 public class MainLinear {
@@ -62,7 +63,10 @@ public class MainLinear {
             }
         } catch (RuntimeException e) {
             System.out.println(e.getMessage());
-        }
+        }catch (NotEnoughCreditsException e) {
+                System.out.println(e.getMessage());
+            }
+        
         board.displayBoard();
         
         for(int i = 1; i < 6; i++){

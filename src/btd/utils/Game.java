@@ -6,6 +6,7 @@ import java.util.NoSuchElementException;
 import java.util.Random;
 import java.util.Scanner;
 
+import btd.exceptions.NotEnoughCreditsException;
 import btd.boards.*;
 import btd.towers.towers.*;
 import btd.towers.upgrades.Upgrade;
@@ -102,14 +103,16 @@ public class Game {
     /**
      * Add t in board.
      * @param t Tower
+     * @throws NotEnoughCreditsException 
      */
-    public void buyTower(Tower t) {
+    public void buyTower(Tower t) throws NotEnoughCreditsException {
         if(!player.hasEnoughCredits(t.getTotalValue())){
-            throw new NoSuchElementException("pas de thune et sami fais l'exception. Merci");
+            throw new NotEnoughCreditsException("Not enough credits to buy this tower !");
         }
         board.addTower(t);
         board.getCell(t.getCell().getX(), t.getCell().getY()).setState(StateCell.TOWER);
         player.addCredits(-t.getTotalValue());
+        System.out.printf("%s has been bought\n\n", t);
     }
 
     /**
@@ -148,6 +151,7 @@ public class Game {
                 if (b.getHealth() <= 0) {
                     activeBalloons.remove(b);
                     b.displayPopped();
+                    player.addCredits(Balloon.CREDITSPOPPED);
                 }
             }
         }
@@ -187,8 +191,6 @@ public class Game {
                 int input = getInput("\t\tchoice ?\n");
                 if (input >= 0 && input < list.size()) {
                     System.out.println("Executing action : " + list.get(input));
-                    System.out.println("test");
-                
 
                     switch (list.get(input)) {
                         case "start round":
@@ -230,7 +232,6 @@ public class Game {
             catch (NoSuchFieldError e){
                 System.out.println(e.getMessage());
             }
-            
         }
     }
     
@@ -277,6 +278,9 @@ public class Game {
                 System.out.println(e.getMessage());
             }
             catch (NoSuchFieldError e){
+                System.out.println(e.getMessage());
+            }
+            catch (NotEnoughCreditsException e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -419,6 +423,9 @@ public class Game {
             }catch (NoSuchFieldError e){
                 System.out.println(e.getMessage());
             }
+            catch (NotEnoughCreditsException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 
@@ -535,7 +542,6 @@ public class Game {
                 System.out.println("GAME OVER !!"); // BREAK 
             }
         }
-        //
         if (!player.isDead()){
             System.out.println("\nRound cleared !");
             player.displayStats();
@@ -586,7 +592,7 @@ public class Game {
      */
     private List<String> displayChoice(List<String> list){
         player.displayCredits();
-        System.out.println("Which action ?");
+        System.out.println("\nWhich action ?");
         for (int i=0; i < list.size();i++){
             System.out.printf("\t%d - %s%n",i , list.get(i));
         }
