@@ -46,7 +46,7 @@ public class Player {
      * Add amount of credits and return this value
      * @param amount : int
      */
-    public void addCredits(int amount) {
+    public void changeCredits(int amount) {
         this.credits += amount;
     }
 
