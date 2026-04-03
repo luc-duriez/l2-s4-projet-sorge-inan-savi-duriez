@@ -173,7 +173,7 @@ public abstract class DamageTower extends Tower {
         if (!appliedUpgrades.contains(u)){
             throw new NoSuchElementException("This upgrade doesn't exist in applied upgrade");
         }
-        p.addCredits(u.getCost());
+        p.changeCredits(u.getCost());
         u.remove(this);
         this.appliedUpgrades.remove(u);
         this.remainingUpgrades.add(u);
