@@ -109,7 +109,21 @@ public class Game {
         }
         board.addTower(t);
         board.getCell(t.getCell().getX(), t.getCell().getY()).setState(StateCell.TOWER);
-        player.addCredits(-t.getTotalValue());
+        switch(t.getClass().getName()){
+            case "btd.towers.towers.BombTower":
+                board.getCell(t.getCell().getX(), t.getCell().getY()).getState().setSymbol(" 💣");
+                break;
+            case "btd.towers.towers.SuperTower":
+                board.getCell(t.getCell().getX(), t.getCell().getY()).getState().setSymbol("\u001B[38;5;88m" + "  🅢" + "\u001B[0m");
+                break;
+            case "btd.towers.towers.IceTower":
+                board.getCell(t.getCell().getX(), t.getCell().getY()).getState().setSymbol("  ❄️");
+                break;
+            default:
+                board.getCell(t.getCell().getX(), t.getCell().getY()).getState().setSymbol(" ♜");
+                break;
+        }
+        player.changeCredits(-t.getTotalValue());
     }
 
     /**
@@ -118,7 +132,7 @@ public class Game {
      */
     public void removeTower(Tower t){
         board.removeTower(t);
-        player.addCredits(t.getTotalValue());
+        player.changeCredits(t.getTotalValue());
     }
     
     /**
@@ -337,7 +351,7 @@ public class Game {
                     Tower sellTower = sellableTowers.get(input-1);
                     
                     System.out.printf("%s has been sold (%d -> %d)%n", sellTower, player.getCredits(), player.getCredits()+sellTower.getTotalValue()); // une fonction pr l'affichage ?
-                    player.addCredits(sellTower.getTotalValue());
+                    player.changeCredits(sellTower.getTotalValue());
                     board.getTowers().remove(input-1);
                     sellTower.getCell().popState(); 
                     sellTower.getCell().switchIsOccupied(); // a changer ca parce que on ne switch pas le isOccupied si c un LinearBoard (créer un  boolean board.removeTower(Tower))
