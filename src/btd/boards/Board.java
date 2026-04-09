@@ -199,4 +199,16 @@ public abstract class Board {
             System.out.printf(" %s%n",strLineSeparator);
         }
     }
+
+    /**
+     * Return the tower located at (x, y), or null if none exists.
+     */
+    public Tower getTowerAt(int x, int y) {
+        for (Tower t : this.towers) {
+            if (t.getCell().getX() == x && t.getCell().getY() == y) {
+                return t;
+            }
+        }
+        return null;
+    }
 }
