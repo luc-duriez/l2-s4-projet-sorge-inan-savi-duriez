@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;
 
 import btd.boards.*;
+import btd.exceptions.NotEnoughCreditsException;
 import btd.towers.towers.IceTower;
 import btd.towers.towers.Tower;
 
@@ -29,7 +30,7 @@ public class GameTest {
     }
 
     @Test
-    public void buyTowerTest() {
+    public void buyTowerTest() throws NotEnoughCreditsException {
         Cell target = board.getCell(2, 2);
         Tower ice = new IceTower(target);
         

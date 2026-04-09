@@ -17,8 +17,6 @@ public abstract class Board {
     /** This Board's list of towers */
     protected List<Tower> towers;
 
-    public Object isPlaceable;
-
     /** This board's size */
     public static int sizeBoard;
     
@@ -113,6 +111,8 @@ public abstract class Board {
         towers.add(t);
     }
 
+    public abstract void removeTower(Tower t);
+    
     /**
      * Return true if the cell at position (x,y) can be used to place a tower.
      * X and Y must be valid.
@@ -189,6 +189,4 @@ public abstract class Board {
             System.out.printf(" %s%n",strLineSeparator);
         }
     }
-
-    public abstract void removeTower(Tower t);
 }

@@ -1,5 +1,6 @@
 package btd.towers.towers;
 import btd.boards.Cell;
+import btd.exceptions.NotEnoughCreditsException;
 import btd.towers.projectiles.LinearProjectile;
 import btd.towers.projectiles.Projectile;
 import btd.towers.upgrades.AttackSpeedUpgrade;
@@ -10,6 +11,7 @@ import btd.utils.Balloon;
 import btd.utils.Player;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;
@@ -39,7 +41,7 @@ public class DamageTowerTest {
     private TestDamage test;
 
     @BeforeEach
-    public void before(){
+    public void before() throws NoSuchElementException, NotEnoughCreditsException{
         test = new TestDamage(new Cell(0, 0), 2.0 * 100, 1,new LinearProjectile("aaa", 5),250);
         test.upgrade(u1, player1);
         test.upgrade(u2, player1);

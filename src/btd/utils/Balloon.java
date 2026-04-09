@@ -25,6 +25,8 @@ public class Balloon {
     private double slowValue;
     // the countdown of the balloon when it's slowed or frozen
     private int countdown;
+    // the amount of credits gained by popping a balloon
+    public static final int CREDITSPOPPED = 40;
 
     /**
      * Build a balloon of a given health, speed, path and index
@@ -230,7 +232,7 @@ public class Balloon {
      * Display the Balloon when popped
      */
     public void displayPopped() {
-        System.out.printf("%s popped%n", this);
+        System.out.printf("%s popped (+%d)%n", this, Balloon.CREDITSPOPPED);
     }
 
     /**
