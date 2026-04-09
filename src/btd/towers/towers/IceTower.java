@@ -24,6 +24,6 @@ public class IceTower extends SlowTower {
 
     @Override
     public String getSymbol(){
-        return "  ❄️";
+        return " ❄️ ";
     }
 }

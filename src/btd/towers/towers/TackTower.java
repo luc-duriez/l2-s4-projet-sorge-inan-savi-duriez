@@ -38,6 +38,6 @@ public class TackTower extends DamageTower {
 
     @Override
     public String getSymbol(){
-        return "  ⚙️";
+        return " ⚙️ ";
     }
 }
