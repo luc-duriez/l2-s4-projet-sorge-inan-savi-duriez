@@ -38,6 +38,7 @@ public abstract class Board {
             }
         }
         Board.sizeBoard = (sizex + sizey) * Cell.SIZE;
+        System.out.print("Generating Board...");
     }
 
     /**
