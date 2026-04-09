@@ -11,7 +11,6 @@ import btd.towers.towers.*;
 
 /** A classic board with random path generation */
 public class ClassicBoard extends Board {
-
     /**
      * Creates a classic board
      * @param sizex width
@@ -25,7 +24,6 @@ public class ClassicBoard extends Board {
             int[] maxTry = {sizex*sizey};
             cells = this.randomCell(new ArrayList<>());
             Path = this.createPath(cells[0], cells[1], new ArrayList<>(), new HashSet<>(), maxTry);
-
         }
         this.path.add(Path);
         for (List<Cell> tempPath : this.getPath()) {
@@ -44,8 +42,7 @@ public class ClassicBoard extends Board {
         if (maxTry[0] <= 0) return null;
         list.add(curr);
         visited.add(curr);
-        if (curr.equals(finale))
-            return list;
+        if (curr.equals(finale)) return list;
         List<Cell> neighbor = this.getNeighbours(curr);
         Collections.shuffle(neighbor);
         for (Cell next : neighbor) {
