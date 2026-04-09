@@ -1,6 +1,8 @@
 package btd.boards;
 
 import java.util.ArrayList;
+import java.util.Set;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 
@@ -20,13 +22,13 @@ public class LinearBoard extends Board {
         if (numberPath >= (sizex + sizey) / 2) {
             throw new IllegalArgumentException("Le nombre de chemin est trop élevé.");
         }
-
         List<Cell> cellAlreadyUsed = new ArrayList<>();
         for (int i = 0; i < numberPath; i++) {
+            int[] a = {0};
             Cell[] cells = this.randomCell(cellAlreadyUsed);
             cellAlreadyUsed.add(cells[0]);
             cellAlreadyUsed.add(cells[1]);
-            this.path.add(this.createPath(cells[0], cells[1], new ArrayList<>()));
+            this.path.add(this.createPath(cells[0], cells[1], new ArrayList<>(), new HashSet<>(), a));
         }
         for (List<Cell> tempPath : this.path) {
             for (Cell cell : tempPath) {
@@ -36,7 +38,7 @@ public class LinearBoard extends Board {
     }
 
     @Override
-    public List<Cell> createPath(Cell curr, Cell finale, List<Cell> list) throws IllegalArgumentException {
+    public List<Cell> createPath(Cell curr, Cell finale, List<Cell> list, Set<Cell> visited, int[] maxtry) throws IllegalArgumentException {
         if (curr.getX() != finale.getX() && curr.getY() != finale.getY()) {
             throw new IllegalArgumentException("Cells must be in the same row or column");
         }

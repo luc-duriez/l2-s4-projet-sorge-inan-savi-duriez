@@ -1,5 +1,6 @@
 package btd.boards;
 import java.util.List;
+import java.util.Set;
 import java.util.ArrayList;
 import btd.towers.towers.*;
 
@@ -101,7 +102,7 @@ public abstract class Board {
      * @param list the path
      * @return the list of Cell that represent the path. Cell[]
      */
-    public abstract List<Cell> createPath(Cell curr, Cell finale, List<Cell> list);
+    public abstract List<Cell> createPath(Cell curr, Cell finale, List<Cell> list, Set<Cell> visited, int[] maxTry);
  
     /**
      * Adds a tower to the board

@@ -2,8 +2,10 @@ package btd.boards;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import btd.towers.towers.*;
 
@@ -17,9 +19,15 @@ public class ClassicBoard extends Board {
      */
     public ClassicBoard(int sizex, int sizey) {
         super(sizex, sizey);
-        Cell[] cells = this.randomCell(new ArrayList<>());
-        this.path.add(this.createPath(cells[0], cells[1], new ArrayList<>()));
-        cells[0].setState(StateCell.PATH);
+        List<Cell> Path = null;
+        Cell[] cells;
+        while (Path == null){
+            int[] maxTry = {sizex*sizey};
+            cells = this.randomCell(new ArrayList<>());
+            Path = this.createPath(cells[0], cells[1], new ArrayList<>(), new HashSet<>(), maxTry);
+
+        }
+        this.path.add(Path);
         for (List<Cell> tempPath : this.getPath()) {
             for (Cell cell : tempPath) {
                 cell.switchIsOccupied();
@@ -31,20 +39,24 @@ public class ClassicBoard extends Board {
     }
 
     @Override
-    public List<Cell> createPath(Cell curr, Cell finale, List<Cell> list) {
+    public List<Cell> createPath(Cell curr, Cell finale, List<Cell> list, Set<Cell> visited, int[] maxTry) {
+        maxTry[0]--;
+        if (maxTry[0] <= 0) return null;
         list.add(curr);
+        visited.add(curr);
         if (curr.equals(finale))
             return list;
         List<Cell> neighbor = this.getNeighbours(curr);
         Collections.shuffle(neighbor);
         for (Cell next : neighbor) {
-            if (!(list.contains(next)) && (super.countPathNeighbors(next, list) == 1)) {
-                List<Cell> result = createPath(next, finale, list);
+            if (!(visited.contains(next)) && (super.countPathNeighbors(next, list) == 1)) {
+                List<Cell> result = createPath(next, finale, list, visited, maxTry);
                 if (result != null)
                     return result;
             }
         }
-        list.remove(curr);
+        visited.remove(curr);   
+        list.remove(list.size()-1);
         return null;
     }
     
