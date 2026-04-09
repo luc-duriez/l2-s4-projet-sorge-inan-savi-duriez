@@ -3,6 +3,8 @@ package btd.boards;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;
 
+import btd.towers.towers.IceTower;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +14,7 @@ public class LinearBoardTest {
 
     @BeforeEach
     public void before() {
-        board = new LinearBoard(10, 10,2);
+        board = new LinearBoard(5, 5,2);
     }
 
     @Test
@@ -38,5 +40,14 @@ public class LinearBoardTest {
         assertNotEquals(result[0], result[1]);
         assertFalse(usedCells.contains(result[0]));
         assertFalse(usedCells.contains(result[1]));
+    }
+
+    @Test
+    public void testRemoveTower(){
+        IceTower t = new IceTower(board.getCell(0, 0));
+        board.addTower(t);
+        assertEquals(board.getTowers().size(), 1);
+        board.removeTower(t);
+        assertTrue(board.getTowers().isEmpty());
     }
 }

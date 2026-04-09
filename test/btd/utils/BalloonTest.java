@@ -45,7 +45,7 @@ public class BalloonTest {
     }
 
     @Test
-    public void isDead() {
+    public void isDeadTest() {
         assertFalse(b.isDead());
         b.decreaseHealth(3);
         assertEquals(0, b.getHealth());
