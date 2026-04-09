@@ -23,7 +23,9 @@ public class ClassicBoard extends Board {
         for (List<Cell> tempPath : this.getPath()) {
             for (Cell cell : tempPath) {
                 cell.switchIsOccupied();
-                cell.setState(StateCell.PATH);
+                if(!this.path.get(0).contains(cell)){
+                    cell.setState(StateCell.PATH);
+                }
             }
         }
     }
