@@ -94,6 +94,6 @@ public class BombTower extends DamageTower {
 
     @Override
     public String getSymbol(){
-        return "💥";
+        return " 💣";
     }
 }
