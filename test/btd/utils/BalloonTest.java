@@ -15,11 +15,11 @@ public class BalloonTest {
     @BeforeEach
     public void before() {
         l = new ArrayList<>();
-        Cell c1 = new Cell(2, 5);
-        Cell c2 = new Cell(1, 2);
+        Cell c1 = new Cell(0, 0);
+        Cell c2 = new Cell(0, 1);
         l.add(c1);
         l.add(c2);
-        b = new Balloon(3, 2, l, 1);
+        b = new Balloon(3, 1000, l, 1);
 
     }
 
@@ -80,4 +80,10 @@ public class BalloonTest {
         assertNotEquals(0.6 * b.getSpeed(), b.getDistanceTravelled()); // le ballon recommence à bouger après 3 tours
     }
 
+    @Test
+    public void hasFinishedTest() {
+        assertFalse(b.hasFinished());
+        b.move();
+        assertTrue(b.hasFinished());
+    }
 }
