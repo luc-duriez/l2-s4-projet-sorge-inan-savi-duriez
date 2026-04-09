@@ -111,26 +111,8 @@ public class Game {
         }
         board.addTower(t);
         board.getCell(t.getCell().getX(), t.getCell().getY()).setState(StateCell.TOWER);
-<<<<<<< HEAD
-        switch(t.getClass().getName()){
-            case "btd.towers.towers.BombTower":
-                board.getCell(t.getCell().getX(), t.getCell().getY()).getState().setSymbol(" 💣");
-                break;
-            case "btd.towers.towers.SuperTower":
-                board.getCell(t.getCell().getX(), t.getCell().getY()).getState().setSymbol("\u001B[38;5;88m" + "  🅢" + "\u001B[0m");
-                break;
-            case "btd.towers.towers.IceTower":
-                board.getCell(t.getCell().getX(), t.getCell().getY()).getState().setSymbol("  ❄️");
-                break;
-            default:
-                board.getCell(t.getCell().getX(), t.getCell().getY()).getState().setSymbol(" ♜");
-                break;
-        }
         player.changeCredits(-t.getTotalValue());
-=======
-        player.addCredits(-t.getTotalValue());
         System.out.printf("%s has been bought\n\n", t);
->>>>>>> e1987b3ccdd8f7fa8df3aa06bd8a267e8f54df5c
     }
 
     /**
@@ -169,7 +151,7 @@ public class Game {
                 if (b.getHealth() <= 0) {
                     activeBalloons.remove(b);
                     b.displayPopped();
-                    player.addCredits(Balloon.CREDITSPOPPED);
+                    player.changeCredits(Balloon.CREDITSPOPPED);
                 }
             }
         }
