@@ -17,14 +17,12 @@ public class DamageTowerTest {
     private DamageTower tower;
     private Player player;
     private Upgrade u1;
-    private Upgrade u2;
 
     @BeforeEach
     public void before() {
         player = new Player();
         tower = new DartTower(new Cell(0, 0));
         u1 = tower.getRemainingUpgrade().get(0);
-        u2 = tower.getRemainingUpgrade().get(1);
     }
 
     @Test
