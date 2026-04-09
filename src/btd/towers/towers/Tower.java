@@ -168,5 +168,11 @@ public abstract class Tower{
      */
     public abstract void displayShoot(Balloon b);
 
+    /**
+     * Return the symbol of this Tower
+     * @return a String representing this Tower
+     */
+    protected abstract String getSymbol();
+
     
 }
