@@ -2,22 +2,26 @@ package btd.boards;
 
 public enum StateCell {
     EMPTY("   "),
-    PATH_START(" ○ "),
-    PATH_END(" ➔ "),
-    PATH(" ─ "),
-    TOWER("  ♜"); // symbole par défaut
+    PATH(""),
 
-    private String symbol;
+    // --- PIÈCES DU CHEMIN CONTINU ---
+    PATH_H("───"),         // Ligne horizontale
+    PATH_V(" │ "),         // Ligne verticale
+    
+    // --- VIRAGES ---
+    PATH_CORNER_LD("─┐ "), // (Left -> Down)
+    PATH_CORNER_TR(" └─"), // (Top -> Right)
+    PATH_CORNER_LU("─┘ "), // (Top -> Left)
+    PATH_CORNER_BR(" ┌─"), // (Left -> Down)
+    
+    TOWER("  T");
 
-    StateCell(String symbol) {
+    private final String symbol;
+
+    private StateCell(String symbol) {
         this.symbol = symbol;
     }
 
-    public void setSymbol(String symbol) { // setter dynamique
-        this.symbol = symbol;
-    }
-
-    @Override
     public String toString() {
         return this.symbol;
     }
