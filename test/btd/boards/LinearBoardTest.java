@@ -50,4 +50,11 @@ public class LinearBoardTest {
         board.removeTower(t);
         assertTrue(board.getTowers().isEmpty());
     }
+
+    @Test
+    public void isPlaceableTest(){
+        for (int i =0; i<5; i++)
+            for (int j=0; j<5; j++)
+                assertTrue(board.isPlaceable(i, j));
+    }
 }
