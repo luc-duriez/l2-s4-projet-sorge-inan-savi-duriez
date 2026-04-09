@@ -10,7 +10,6 @@ import btd.towers.upgrades.Upgrade;
 import btd.utils.Balloon;
 import btd.utils.Game;
 import btd.utils.Player;
-import btd.exceptions.NotEnoughCreditsException;
 
 /** Abstract tower that deals damage */
 public abstract class DamageTower extends Tower {

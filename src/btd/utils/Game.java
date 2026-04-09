@@ -10,7 +10,6 @@ import btd.exceptions.NotEnoughCreditsException;
 import btd.boards.*;
 import btd.towers.towers.*;
 import btd.towers.upgrades.Upgrade;
-import btd.utils.Sound;
 
 /**
  * Manages the game logic including rounds, balloons and towers.
@@ -595,12 +594,11 @@ public class Game {
      * @param existingTowers the list of towers already existing in the game
      * @return List<String> the list of labels for the choice, in order to be used in the main function
      */
-    private List<String> displayChoice(List<String> list){
+    private void displayChoice(List<String> list){
         player.displayCredits();
         System.out.println("\nWhich action ?");
         for (int i=0; i < list.size();i++){
             System.out.printf("\t%d - %s%n",i , list.get(i));
         }
-        return list;
     }
 }

@@ -60,7 +60,7 @@ public class ClassicBoard extends Board {
     @Override
     public void addTower(Tower t) {
 
-        towers.add(t);
+        super.addTower(t);
         this.getCell(t.getCell().getX(), t.getCell().getY()).switchIsOccupied();
     }
 

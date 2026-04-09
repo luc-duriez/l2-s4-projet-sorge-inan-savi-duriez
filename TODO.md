@@ -8,7 +8,5 @@
 - LinearBoard tester. (placer une tower sur le chemin).
 
 
-
-Ajouter dans l'UML:
-    board.removeTower(Tower) et override aussi dans Classic et Linear a ajouter stp sami 
+-> Demander si il faut garder linearBoard.
     
