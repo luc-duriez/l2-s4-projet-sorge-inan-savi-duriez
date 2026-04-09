@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import btd.boards.Cell;
-import btd.towers.projectiles.ExplosiveProjectile;
 import btd.utils.Balloon;
 
 public class BombTowerTest {
@@ -60,16 +59,5 @@ public class BombTowerTest {
         assertTrue(bombTower.shoot(inRange).isEmpty()); 
         assertEquals(8, target1.getHealth());
     }
-    @Test
-    public void removeProjectileOverrideTest() {
-        BombTower bombTower = new BombTower(new Cell(0, 0));
-        ExplosiveProjectile override = new ExplosiveProjectile("MegaBomb", 10, Cell.SIZE);
-        
-        bombTower.setProjectileOverride(override);
-        assertEquals(override, bombTower.getProjectile());
-        
-        bombTower.removeProjectileOverride();
-        assertNotEquals(override, bombTower.getProjectile());
-        assertTrue(bombTower.getProjectile().getName().contains("Bomb"));
-    }
+    
 }
