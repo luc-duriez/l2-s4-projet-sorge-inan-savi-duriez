@@ -195,19 +195,6 @@ public class Balloon {
     }
 
     /**
-     * Returns true if the object is equal to this Balloon
-     * @param o The object to compare this Balloon with
-     * @return true if the object is equal to this Balloon
-     */
-    public boolean equals(Object o) {
-        if (!(o instanceof Balloon)) {
-            return false;
-        }
-        Balloon b = (Balloon) o;
-        return (this.health == b.getHealth()) && (this.speed == b.getSpeed()) && (this.distanceTravelled == b.getDistanceTravelled()) && (this.path.equals(b.getPath())) && (this.currentCell.equals(b.getCurrentCell())) && (this.getIndex() == b.getIndex());
-    }
-
-    /**
      * Return a String representation of this Balloon with numbering
      */
     public String toString() {
