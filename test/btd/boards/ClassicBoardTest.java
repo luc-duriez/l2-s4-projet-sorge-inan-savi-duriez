@@ -33,9 +33,9 @@ public class ClassicBoardTest {
 
     @Test
     public void isPlaceableTest(){
-        for (int i =0; i<5; i++)
-            for (int j=0; j<5; j++){
-                if (board.getCell(i, j).getState() == StateCell.PATH)
+        for (int i =0; i<8; i++)
+            for (int j=0; j<8; j++){
+                if (board.getCell(i, j).isOccupied())
                     assertFalse(board.isPlaceable(i, j));
                 else
                     assertTrue(board.isPlaceable(i, j));
