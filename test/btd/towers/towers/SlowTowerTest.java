@@ -44,4 +44,16 @@ public class SlowTowerTest {
         assertTrue(touched.isEmpty());
         assertNotEquals(0.5, b.getSlowValue());
     }
+    @Test
+    public void shootTest() {
+        List<Balloon> targets = new ArrayList<>();
+        Balloon target = new Balloon(10, 1.0, List.of(slowTower.getCell()), 0);
+        targets.add(target);
+
+        List<Balloon> touched = slowTower.shoot(targets);
+        
+        assertFalse(touched.isEmpty());
+        assertTrue(target.getSlowValue() < 1.0);
+        assertEquals(target, touched.get(0));
+    }
 }
