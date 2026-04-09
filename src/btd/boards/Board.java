@@ -182,7 +182,17 @@ public abstract class Board {
             }
             for (int k = 0; k < this.board[0].length; k++) {
                 StateCell state = this.board[j][k].getState();
-                System.out.print("" + state + "  |");
+                if (state == StateCell.TOWER) {
+                    Tower currentTower = getTowerAt(j, k);
+                    if (currentTower != null) {
+                        System.out.print("" + currentTower.getSymbol() + "  |");
+                    } else {
+                        System.out.print("" + state + "  |");
+                    }
+                } 
+                else {
+                    System.out.print("" + state + "  |");
+                }
             }
             System.out.println();
 
