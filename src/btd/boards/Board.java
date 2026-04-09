@@ -206,7 +206,7 @@ public abstract class Board {
     public void displayBoard() {
         System.out.println();
         
-        String topLine = "   ┌";
+        String topLine = "  ┌";
         String midLine = "   ├";
         String botLine = "   └";
         
@@ -225,7 +225,7 @@ public abstract class Board {
             }
         }
 
-        System.out.print("     ");
+        System.out.print("   y");
         for (int i = 0; i < this.board[0].length; i++) {
             if (i < 10) {
                 System.out.print("  " + i + "   ");
@@ -233,9 +233,8 @@ public abstract class Board {
                 System.out.print(" " + i + "   ");
             }
         }
-        System.out.println("\n  x");
         
-        System.out.println(topLine);
+        System.out.println("\nx" + topLine);
 
         int size = this.path.get(0).size();
         
@@ -251,24 +250,24 @@ public abstract class Board {
                 if (state == StateCell.TOWER) {
                     Tower currentTower = getTowerAt(j, k);
                     if (currentTower != null) {
-                        System.out.print("" + currentTower.getSymbol() + "  |");
+                        System.out.print("" + currentTower.getSymbol() + "  │");
                     } else {
-                        System.out.print("" + state + "  |");
+                        System.out.print("" + state + "  │");
                     }
                 } 
                 else {
                     if(this.board[j][k] == this.path.get(0).get(0)){
-                        System.out.print("START|");
+                        System.out.print("START│");
                     }
                     else if(this.board[j][k] == this.path.get(0).get(size-1)){
-                        System.out.print(" END |");                    
+                        System.out.print(" END │");                    
                     }
                     else if(this.path.get(0).contains(this.board[j][k])){
                         int idx = this.path.get(0).indexOf(this.board[j][k]);
-                        System.out.print(" " + this.whichSymbol(idx) + " |");
+                        System.out.print(" " + this.whichSymbol(idx) + " │");
                     }
                     else{
-                        System.out.print("     |");
+                        System.out.print("     │");
                     }
                 }
 
