@@ -1,5 +1,6 @@
 package btd.boards;
 
+import java.util.Objects;
 import java.util.Stack;
 
 /**
@@ -104,5 +105,7 @@ public class Cell {
         return "(" + this.x + ", " + this.y + ")";
     }
 
- 
+    public int hashCode() {
+        return Objects.hash(x, y);
+    }
 }
