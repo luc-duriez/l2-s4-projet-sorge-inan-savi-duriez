@@ -157,29 +157,45 @@ public abstract class Board {
     
     public void displayBoard() {
         System.out.println();
-        String strLineSeparator = "  +";
+        
+        String topLine = "   ┌";
+        String midLine = "   ├";
+        String botLine = "   └";
+        
         for (int c = 0; c < this.board[0].length; c++) {
-            strLineSeparator += "-----+";
+            topLine += "─────";
+            midLine += "─────";
+            botLine += "─────";
+            if (c < this.board[0].length - 1) {
+                topLine += "┬";
+                midLine += "┼";
+                botLine += "┴";
+            } else {
+                topLine += "┐";
+                midLine += "┤";
+                botLine += "┘";
+            }
         }
 
-        System.out.print("   y"); // Numero en haut
+        System.out.print("     ");
         for (int i = 0; i < this.board[0].length; i++) {
             if (i < 10) {
                 System.out.print("  " + i + "   ");
             } else {
-                System.out.print("  " + i + "  ");
+                System.out.print(" " + i + "   ");
             }
         }
-        System.out.println();
-        System.out.print("x");
-        System.out.println(strLineSeparator);
+        System.out.println("\n  x");
         
-        for (int j = 0; j < this.board.length; j++) { // Toutes les lignes
+        System.out.println(topLine);
+        
+        for (int j = 0; j < this.board.length; j++) { 
             if (j < 10) {
-                System.out.print(j + "  |");
+                System.out.print(j + "  │");
             } else {
-                System.out.print(j + " |");
+                System.out.print(j + " │");
             }
+            
             for (int k = 0; k < this.board[0].length; k++) {
                 StateCell state = this.board[j][k].getState();
                 if (state == StateCell.TOWER) {
@@ -193,10 +209,15 @@ public abstract class Board {
                 else {
                     System.out.print("" + state + "  |");
                 }
+
             }
             System.out.println();
 
-            System.out.printf(" %s%n",strLineSeparator);
+            if (j < this.board.length - 1) {
+                System.out.println(midLine);
+            } else {
+                System.out.println(botLine);
+            }
         }
     }
 
