@@ -286,7 +286,7 @@ public abstract class Board {
     /**
      * Return the tower located at (x, y), or null if none exists.
      */
-    public Tower getTowerAt(int x, int y) {
+    private Tower getTowerAt(int x, int y) {
         for (Tower t : this.towers) {
             if (t.getCell().getX() == x && t.getCell().getY() == y) {
                 return t;
