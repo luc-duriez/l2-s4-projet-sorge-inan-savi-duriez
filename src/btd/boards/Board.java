@@ -151,6 +151,54 @@ public abstract class Board {
         }
         return count;
     }
+
+    private StateCell whichSymbol(int i){
+        if(this.path.get(0).get(i-1).getX() < this.path.get(0).get(i).getX()){
+            if(this.path.get(0).get(i+1).getX() > this.path.get(0).get(i).getX()){
+                return StateCell.PATH_V;
+            }
+            else if(this.path.get(0).get(i+1).getY() > this.path.get(0).get(i).getY()){
+                return StateCell.PATH_CORNER_TR;
+            }
+            else{
+                return StateCell.PATH_CORNER_LU;
+            }
+        }
+        else if(this.path.get(0).get(i-1).getX() > this.path.get(0).get(i).getX()){
+            if(this.path.get(0).get(i+1).getX() < this.path.get(0).get(i).getX()){
+                return StateCell.PATH_V;
+            }
+            else if(this.path.get(0).get(i+1).getY() > this.path.get(0).get(i).getY()){
+                return StateCell.PATH_CORNER_BR;
+            }
+            else{
+                return StateCell.PATH_CORNER_LD;
+            }
+        }
+        else if(this.path.get(0).get(i-1).getY() < this.path.get(0).get(i).getY()){
+            if(this.path.get(0).get(i+1).getY() > this.path.get(0).get(i).getY()){
+                return StateCell.PATH_H;
+            }
+            else if(this.path.get(0).get(i+1).getX() < this.path.get(0).get(i).getX()){
+                return StateCell.PATH_CORNER_LU;
+            }
+            else{
+                return StateCell.PATH_CORNER_LD;
+            }
+        }
+        else{
+            if(this.path.get(0).get(i+1).getY() < this.path.get(0).get(i).getY()){
+                return StateCell.PATH_H;
+            }
+            else if(this.path.get(0).get(i+1).getX() < this.path.get(0).get(i).getX()){
+                return StateCell.PATH_CORNER_TR;
+            }
+            else{
+                return StateCell.PATH_CORNER_BR;
+            }
+        }
+    }
+
     /**
      * Show the board
      */
@@ -188,6 +236,8 @@ public abstract class Board {
         System.out.println("\n  x");
         
         System.out.println(topLine);
+
+        int size = this.path.get(0).size();
         
         for (int j = 0; j < this.board.length; j++) { 
             if (j < 10) {
@@ -207,7 +257,19 @@ public abstract class Board {
                     }
                 } 
                 else {
-                    System.out.print("" + state + "  |");
+                    if(this.board[j][k] == this.path.get(0).get(0)){
+                        System.out.print("START|");
+                    }
+                    else if(this.board[j][k] == this.path.get(0).get(size-1)){
+                        System.out.print(" END |");                    
+                    }
+                    else if(this.path.get(0).contains(this.board[j][k])){
+                        int idx = this.path.get(0).indexOf(this.board[j][k]);
+                        System.out.print(" " + this.whichSymbol(idx) + " |");
+                    }
+                    else{
+                        System.out.print("     |");
+                    }
                 }
 
             }
