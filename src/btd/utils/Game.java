@@ -294,7 +294,7 @@ public class Game {
         int essai = 5;
         int x=-1,y=-1;
         boolean choice = false;
-        
+        board.displayBoard();
         while (!choice && 0 < essai) {
             try {
                 x = getInput("x ?");
