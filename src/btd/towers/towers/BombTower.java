@@ -91,4 +91,9 @@ public class BombTower extends DamageTower {
         }
         return touchedBalloons;
     }
+
+    @Override
+    public String getSymbol(){
+        return "💥";
+    }
 }
