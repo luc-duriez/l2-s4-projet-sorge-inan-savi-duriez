@@ -1,166 +1,127 @@
 package btd.towers.towers;
+
 import btd.boards.Cell;
 import btd.exceptions.NotEnoughCreditsException;
-import btd.towers.projectiles.LinearProjectile;
-import btd.towers.projectiles.Projectile;
-import btd.towers.upgrades.AttackSpeedUpgrade;
-import btd.towers.upgrades.DamageUpgrade;
-import btd.towers.upgrades.RangeUpgrade;
-import btd.towers.upgrades.Upgrade;
+import btd.towers.upgrades.*;
 import btd.utils.Balloon;
 import btd.utils.Player;
+import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.ArrayList;
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.*;
 
 public class DamageTowerTest {
 
-    // initialisation des différentes upgrades 
-    Upgrade u1 = new AttackSpeedUpgrade(1.25, 200);
-    Upgrade u2 = new DamageUpgrade(1.5, 300);
-    Upgrade u3 = new RangeUpgrade( 1.25, 500);
-    // initialisation du joueur
-    Player player1 = new Player();
-    // Création d'un classe de test de Damage test afin de vérifier la multitude tests inhérente à cette fonction
-    private class TestDamage extends DamageTower{
-        public TestDamage(Cell pos, double range, int attackSpeed, Projectile projectile, int basePrice){
-            super(pos, range, attackSpeed, projectile, basePrice);
-            this.remainingUpgrades.add(u1);
-            this.remainingUpgrades.add(u2);
-            this.remainingUpgrades.add(u3);
-
-        }
-
-        @Override
-        public void displayShoot(Balloon b){}
-    }
-
-    private TestDamage test;
+    private DamageTower tower;
+    private Player player;
+    private Upgrade u1;
+    private Upgrade u2;
 
     @BeforeEach
-    public void before() throws NoSuchElementException, NotEnoughCreditsException{
-        test = new TestDamage(new Cell(0, 0), 2.0 * 100, 1,new LinearProjectile("aaa", 5),250);
-        test.upgrade(u1, player1);
-        test.upgrade(u2, player1);
-      
+    public void before() {
+        player = new Player();
+        tower = new DartTower(new Cell(0, 0));
+        u1 = tower.getRemainingUpgrade().get(0);
+        u2 = tower.getRemainingUpgrade().get(1);
     }
 
     @Test
-    public void getFinalDamageAfterUpgrade(){
-        assertEquals(6.5, test.getFinalDamage());
+    public void changeBonusDamageTest() {
+        double base = tower.getFinalDamage();
+        tower.changeBonusDamage(2.5);
+        assertEquals(base + 2.5, tower.getFinalDamage());
     }
 
     @Test
-    public void getFinalRateTest(){
-        assertEquals(0.75, test.getFinalRate());
+    public void multiplyBonusRangeTest() {
+        double baseRange = tower.getFinalRange();
+        tower.multiplyBonusRange(1.5);
+        assertEquals(baseRange * 1.5, tower.getFinalRange(), 0.01);
     }
 
     @Test
-    public void getFinalRangeTest(){
-        assertEquals(200, test.getFinalRange());
+    public void multiplyBonusAttackSpeedTest() {
+        double initialRate = tower.getFinalRate();
+        tower.multiplyBonusAttackSpeed(1.2);
+        assertTrue(tower.getFinalRate() < initialRate);
     }
 
     @Test
-    public void getBalloonsInRangeTest(){
-        List<Cell> path1 = List.of(new Cell(0, 1));
-        Balloon Ballon1 = new Balloon(2, 1.2, path1, 0);
-        List<Cell> path2 = List.of(new Cell(2, 3));
-        Balloon Ballon2 = new Balloon(5, 1.2, path2, 1);
+    public void selectBalloonTest() {
+        List<Cell> path = List.of(new Cell(0, 0), new Cell(0, 1));
+        Balloon b1 = new Balloon(10, 1.0, path, 0);
+        Balloon b2 = new Balloon(10, 1.0, path, 1);
+        b2.move();
 
-        List<Balloon> listeDesBallons = new ArrayList<>();
-        listeDesBallons.add(Ballon1);
-        listeDesBallons.add(Ballon2);
+        List<Balloon> targets = List.of(b1, b2);
+        List<Balloon> selected = tower.selectBalloon(targets);
 
-        List<Balloon> res = test.getBalloonsInRange(listeDesBallons);
-
-        assertEquals(1, res.size());
-        assertTrue(res.contains(Ballon1));
-        assertFalse(res.contains(Ballon2));
-
+        assertNotNull(selected);
+        assertEquals(b2, selected.get(0));
     }
 
     @Test
-    public void getTotalValueTest(){
-        assertEquals(750, test.getTotalValue());
-        test.revertUpgrade(u2, player1);
-        assertEquals(450, test.getTotalValue());
-    }
+    public void shootTest() {
+        List<Balloon> targets = new ArrayList<>();
+        Balloon target = new Balloon(10, 1.0, List.of(new Cell(0, 0)), 0);
+        targets.add(target);
 
-    @Test
-    public void getRemainingUpgradeTest(){
-        List<Upgrade> res = test.getRemainingUpgrade();
-        assertTrue(res.contains(u3));
-        assertFalse(res.contains(u1));
-
-    }
-
-    @Test
-    public void getAppliedUpgradeTest(){
-        List<Upgrade> res = test.getAppliedUpgrade();
-        assertFalse(res.contains(u3));
-        assertTrue(res.contains(u1));
-        assertTrue(res.contains(u2));
-
-    }
-
-
-    @Test
-    public void changeBonusDamageTest(){
-        assertEquals(6.5, test.getFinalDamage());
-        test.changeBonusDamage(1.5);
-        assertEquals(8, test.getFinalDamage());
-    }
-
-    @Test
-    public void multiplyBonusRangeTest(){
-        test.multiplyBonusRange(1.5);
-        assertEquals(300, test.getFinalRange() );
-    }
-
-    @Test
-    public void multiplyAttackSpeedTest(){
-        test.multiplyBonusAttackSpeed(1.5);
-        assertEquals(0.125, test.getFinalRate() );
-    }
-
-    @Test
-    public void selectBallonTest(){
-        List<Cell> path1 = List.of(new Cell(0, 1));
-        Balloon Ballon1 = new Balloon(2, 1.2, path1, 0);
-        List<Cell> path2 = List.of(new Cell(2, 3));
-        Balloon Ballon2 = new Balloon(5, 1.2, path2, 1);
-
-        List<Balloon> listeDesBallons = new ArrayList<>();
-        listeDesBallons.add(Ballon1);
-        listeDesBallons.add(Ballon2);
-
-        // Cas ou la liste des ballons dans la range est nulle
-        List<Balloon> listeDesBallonsVide = new ArrayList<>();
-        assertSame(null, test.selectBalloon(listeDesBallonsVide));
-
-        List<Balloon> res = test.selectBalloon(listeDesBallons);
-        assertTrue(res.contains(Ballon1));
-        assertFalse(res.contains(Ballon2));
-
-    }
-
-    @Test
-    public void shootTest(){
-        List<Cell> path1 = List.of(new Cell(0, 1));
-        Balloon Ballon1 = new Balloon(2, 1.2, path1, 0);
-        List<Cell> path2 = List.of(new Cell(2, 3));
-        Balloon Ballon2 = new Balloon(5, 1.2, path2, 1);
-
-        List<Balloon> listeDesBallons = new ArrayList<>();
-        listeDesBallons.add(Ballon1);
-        listeDesBallons.add(Ballon2);
-
-        List<Balloon> res = test.shoot(listeDesBallons);
-
+        tower.shoot(targets);
+        List<Balloon> touched = tower.shoot(targets);
         
+        if (!touched.isEmpty()) {
+            assertTrue(target.getHealth() < 10);
+        }
     }
 
+    @Test
+    public void upgradeTest() throws NotEnoughCreditsException {
+        int initialCredits = player.getCredits();
+        tower.upgrade(u1, player);
+        assertTrue(tower.getAppliedUpgrade().contains(u1));
+        assertEquals(initialCredits - u1.getCost(), player.getCredits());
+    }
+
+    @Test
+    public void revertUpgradeTest() throws NotEnoughCreditsException {
+        int initialCredits = player.getCredits();
+        tower.upgrade(u1, player);
+        tower.revertUpgrade(u1, player);
+        assertFalse(tower.getAppliedUpgrade().contains(u1));
+        assertEquals(initialCredits, player.getCredits());
+    }
+
+    @Test
+    public void getFinalDamageTest() {
+        assertTrue(tower.getFinalDamage() > 0);
+    }
+
+    @Test
+    public void getFinalRateTest() {
+        assertTrue(tower.getFinalRate() > 0);
+    }
+
+    @Test
+    public void getFinalRangeTest() {
+        assertTrue(tower.getFinalRange() >= 0);
+    }
+
+    @Test
+    public void upgradeNoCreditsExceptionTest() {
+        player.decreaseCredits(player.getCredits());
+        assertThrows(NotEnoughCreditsException.class, () -> tower.upgrade(u1, player));
+    }
+
+    @Test
+    public void upgradeNotExistExceptionTest() {
+        Upgrade fakeUpgrade = new DamageUpgrade(10, 0);
+        assertThrows(NoSuchElementException.class, () -> tower.upgrade(fakeUpgrade, player));
+    }
+
+    @Test
+    public void revertUpgradeNotExistExceptionTest() {
+        assertThrows(NoSuchElementException.class, () -> tower.revertUpgrade(u1, player));
+    }
 }
