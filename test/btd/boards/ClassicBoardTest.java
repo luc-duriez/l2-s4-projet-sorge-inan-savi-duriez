@@ -30,4 +30,15 @@ public class ClassicBoardTest {
         board.removeTower(t);
         assertTrue(board.getTowers().isEmpty());
     }
+
+    @Test
+    public void isPlaceableTest(){
+        for (int i =0; i<5; i++)
+            for (int j=0; j<5; j++){
+                if (board.getCell(i, j).getState() == StateCell.PATH)
+                    assertFalse(board.isPlaceable(i, j));
+                else
+                    assertTrue(board.isPlaceable(i, j));
+            }
+    }
 }
