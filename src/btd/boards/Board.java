@@ -225,7 +225,7 @@ public abstract class Board {
             }
         }
 
-        System.out.print("   y");
+        System.out.print("x＼y");
         for (int i = 0; i < this.board[0].length; i++) {
             if (i < 10) {
                 System.out.print("  " + i + "   ");
@@ -234,7 +234,7 @@ public abstract class Board {
             }
         }
         
-        System.out.println("\nx" + topLine);
+        System.out.println("\n " + topLine);
 
         int size = this.path.get(0).size();
         
