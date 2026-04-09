@@ -21,4 +21,9 @@ public class DartTower extends DamageTower {
         remainingUpgrades.add(u2);
         remainingUpgrades.add(u3);
     }
+
+    @Override
+    public String getSymbol(){
+        return " 🐵";
+    }
 }

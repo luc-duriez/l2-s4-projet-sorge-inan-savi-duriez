@@ -21,4 +21,9 @@ public class IceTower extends SlowTower {
     public void displayShoot(Balloon b) {
         System.out.printf("\t%s frozen for %dms %n", b, this.countdown * Game.TICK);
     }
+
+    @Override
+    public String getSymbol(){
+        return "  ❄️";
+    }
 }

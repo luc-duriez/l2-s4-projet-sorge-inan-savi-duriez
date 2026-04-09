@@ -19,4 +19,9 @@ public class SniperTower extends DamageTower {
         remainingUpgrades.add(u1);
         remainingUpgrades.add(u2);
     }
+
+    @Override
+    public String getSymbol(){
+        return " 🏹";
+    }
 }

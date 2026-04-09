@@ -35,4 +35,9 @@ public class TackTower extends DamageTower {
         return touchedBalloons;
 
     }
+
+    @Override
+    public String getSymbol(){
+        return "  ⚙️";
+    }
 }
