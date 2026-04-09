@@ -172,7 +172,7 @@ public abstract class Tower{
      * Return the symbol of this Tower
      * @return a String representing this Tower
      */
-    protected abstract String getSymbol();
+    public abstract String getSymbol();
 
     
 }
