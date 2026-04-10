@@ -21,6 +21,7 @@ public class MainClassic {
 
 package btd.utils;
 
+import java.util.NoSuchElementException;
 import java.util.Random;
 
 import btd.boards.*;
@@ -44,7 +45,7 @@ public class MainClassic {
         } while (!board.isPlaceable(x, y));
         return board.getCell(x, y);
     }
-     public static void main(String[] args) {
+     public static void main(String[] args) throws NoSuchElementException, NotEnoughCreditsException {
         if (args.length != 3) {
             System.out.println(
             "Le programme nécessite 3 arguments: <x> <y> <b>\n\t<x> Largeur du plateau\n\t<y> Hauteur du plateau\n\t<b> Nombre de balloons");
@@ -58,24 +59,19 @@ public class MainClassic {
                 for (int i = 0; i < 2; i++) {
                     DamageTower tower= new BombTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1])));
                     game.buyTower(tower);
-                    tower.upgrade(tower.getRemainingUpgrade().get(0), game.getPlayer());
                     tower = new DartTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1])));
                     game.buyTower(tower);
-                    tower.upgrade(tower.getRemainingUpgrade().get(0), game.getPlayer());                    
-                    game.buyTower(new IceTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1]))));
-                    tower.upgrade(tower.getRemainingUpgrade().get(0), game.getPlayer());     
-                    game.buyTower(new SlowTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1]))));
-                    tower.upgrade(tower.getRemainingUpgrade().get(0), game.getPlayer());
                     tower = new SniperTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1])));
                     game.buyTower(tower);
-                    tower.upgrade(tower.getRemainingUpgrade().get(0), game.getPlayer());                   
                     tower = new SuperTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1])));
                     game.buyTower(tower);
-                    tower.upgrade(tower.getRemainingUpgrade().get(0), game.getPlayer());                    
                     tower = new TackTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1])));
                     game.buyTower(tower);
-                    tower.upgrade(tower.getRemainingUpgrade().get(0), game.getPlayer());            
-                }              
+                }
+                game.buyTower(new IceTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1]))));
+                game.buyTower(new SlowTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1]))));
+                game.buyTower(new IceTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1]))));
+                game.buyTower(new SlowTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1]))));              
              } catch (RuntimeException e) {
                 System.out.println(e.getMessage());
              }
@@ -84,13 +80,16 @@ public class MainClassic {
              }
             
             board.displayBoard();
-            for(int i = 1; i < 6; i++){
+            for(int i = 0; i < 5; i++){
                 if(game.getPlayer().getLives() <= 0){
                     return;
                 }
-                System.out.printf("%n%n=== Starting Round %d", i);
+                board.getTowers().get(i).upgrade(board.getTowers().get(i).getRemainingUpgrade().get(0), game.getPlayer());
+
+                System.out.printf("%n%n=== Starting Round %d", i+1);
                 game.playRound(Integer.parseInt(args[2]) * i);
             }
+        
             for (int i = 0; i < board.getTowers().size(); i++) {
                 if(game.getPlayer().getLives() <= 0){
                     return;
@@ -110,11 +109,13 @@ public class MainClassic {
                     System.out.println("\n");
                 }
             }
-            for(int i = 6; i < 11; i++){
+            for(int i = 5; i < 10; i++){
                 if(game.getPlayer().getLives() <= 0){
                     return;
                 }
-                System.out.printf("%n%n=== Starting Round %d", i);
+                //board.getTowers().get(i-5).revertUpgrade(board.getTowers().get(i-5).getAppliedUpgrade().get(0), game.getPlayer());
+                
+                System.out.printf("%n%n=== Starting Round %d", i+1);
                 game.playRound(Integer.parseInt(args[2]) * i);
             }
         }   
