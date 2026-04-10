@@ -154,12 +154,9 @@ public abstract class Board {
         return count;
     }
 
-    private StateCell whichSymbol(int i, int path, int compteur){
+    private StateCell whichSymbol(int i, int path){
         if(this.path.get(path).get(i-1).getX() < this.path.get(path).get(i).getX()){
             if(this.path.get(path).get(i+1).getX() > this.path.get(path).get(i).getX()){
-                if(compteur > 1){
-                    return StateCell.PATH_PLUS;
-                }
                 return StateCell.PATH_V;
             }
             else if(this.path.get(path).get(i+1).getY() > this.path.get(path).get(i).getY()){
@@ -171,9 +168,6 @@ public abstract class Board {
         }
         else if(this.path.get(path).get(i-1).getX() > this.path.get(path).get(i).getX()){
             if(this.path.get(path).get(i+1).getX() < this.path.get(path).get(i).getX()){
-                if(compteur > 1){
-                    return StateCell.PATH_PLUS;
-                }
                 return StateCell.PATH_V;
             }
             else if(this.path.get(path).get(i+1).getY() > this.path.get(path).get(i).getY()){
@@ -185,9 +179,6 @@ public abstract class Board {
         }
         else if(this.path.get(path).get(i-1).getY() < this.path.get(path).get(i).getY()){
             if(this.path.get(path).get(i+1).getY() > this.path.get(path).get(i).getY()){
-                if(compteur > 1){
-                    return StateCell.PATH_PLUS;
-                }
                 return StateCell.PATH_H;
             }
             else if(this.path.get(path).get(i+1).getX() < this.path.get(path).get(i).getX()){
@@ -199,9 +190,6 @@ public abstract class Board {
         }
         else{
             if(this.path.get(path).get(i+1).getY() < this.path.get(path).get(i).getY()){
-                if(compteur > 1){
-                    return StateCell.PATH_PLUS;
-                }
                 return StateCell.PATH_H;
             }
             else if(this.path.get(path).get(i+1).getX() < this.path.get(path).get(i).getX()){
@@ -285,14 +273,8 @@ public abstract class Board {
                             break;                    
                         } 
                         else if (currentPath.contains(this.board[j][k])) {
-                            int compteur = 0;
-                            for (int t = 0; t < this.path.size(); t++) {
-                                if (this.path.get(t).contains(this.board[j][k])){
-                                    compteur++;
-                                }
-                            }
                             int idx = currentPath.indexOf(this.board[j][k]);
-                            System.out.print(" " + this.whichSymbol(idx, pIndex, compteur) + " │");
+                            System.out.print(" " + this.whichSymbol(idx, pIndex) + " │");
                             cellTreated = true;
                             break;
                         }
