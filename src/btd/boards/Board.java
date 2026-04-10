@@ -246,7 +246,7 @@ public abstract class Board {
             }
             
             for (int k = 0; k < this.board[0].length; k++) {
-                StateCell state = this.board[j][k].getState();
+                StateCell state = getCell(j,k)  .getState();
                 if (state == StateCell.TOWER) {
                     Tower currentTower = getTowerAt(j, k);
                     if (currentTower != null) {
@@ -262,18 +262,18 @@ public abstract class Board {
                         List<Cell> currentPath = this.path.get(pIndex);
                         int currentSize = currentPath.size();
                         
-                        if (this.board[j][k] == currentPath.get(0)) {
+                        if (getCell(j,k) == currentPath.get(0)) {
                             System.out.print("START│");
                             cellTreated = true;
                             break;
                         } 
-                        else if (this.board[j][k] == currentPath.get(currentSize - 1)) {
+                        else if (getCell(j,k) == currentPath.get(currentSize - 1)) {
                             System.out.print(" END │");
                             cellTreated = true;
                             break;                    
                         } 
-                        else if (currentPath.contains(this.board[j][k])) {
-                            int idx = currentPath.indexOf(this.board[j][k]);
+                        else if (currentPath.contains(getCell(j,k))) {
+                            int idx = currentPath.indexOf(getCell(j,k));
                             System.out.print(" " + this.whichSymbol(idx, pIndex) + " │");
                             cellTreated = true;
                             break;
