@@ -20,8 +20,9 @@ classes:
 	$(JC) -d $(CLASSES_DIR) $(SOURCES)
 
 jar: classes
-	jar cfe Livrable/Livrable5/livrable5a.jar btd.utils.MainClassic -C $(CLASSES_DIR) .
-	jar cfe Livrable/Livrable5/livrable5b.jar btd.utils.MainLinear -C $(CLASSES_DIR) .
+# 	jar cfe Livrable/Livrable5/livrable5a.jar btd.utils.MainClassic -C $(CLASSES_DIR) .
+# 	jar cfe Livrable/Livrable5/livrable5b.jar btd.utils.MainLinear -C $(CLASSES_DIR) .
+	jar cfe Livrable/Livrable5/livrable5.jar btd.utils.Main -C $(CLASSES_DIR) .
 
 tests: classes
 	$(JC) -classpath junit-console.jar:$(CLASSES_DIR) $(TEST_SOURCES) -d $(CLASSES_DIR)
