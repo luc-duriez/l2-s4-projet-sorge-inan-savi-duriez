@@ -532,7 +532,7 @@ public class Game {
             if (newBalloon != null) {
                 newBalloon.displaySpawn();
             }
-            this.displayActiveBalloons();
+            // this.displayActiveBalloons();
 
             System.out.println("---- towers shots");
             towerShoot();
