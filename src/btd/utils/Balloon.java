@@ -219,7 +219,7 @@ public class Balloon {
      * Display the Balloon when popped
      */
     public void displayPopped() {
-        System.out.printf("%s popped (+%d)%n", this, Balloon.CREDITSPOPPED);
+        System.out.printf("%s popped (+%d Credits)%n", this, Balloon.CREDITSPOPPED);
     }
 
     /**
