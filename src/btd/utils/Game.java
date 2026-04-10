@@ -78,7 +78,7 @@ public class Game {
      * @return The integer value entered by the player.
      * @throws NoSuchElementException If the input is not a valid integer.
      */
-    private int getInput(String msg) throws NoSuchElementException{
+    public int getInput(String msg) throws NoSuchElementException{
         System.out.print(msg);
         String var = SCANNER.nextLine();
         try{
