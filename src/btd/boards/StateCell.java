@@ -13,7 +13,7 @@ public enum StateCell {
     PATH_CORNER_TR(" └─"), // (Top -> Right)
     PATH_CORNER_LU("─┘ "), // (Top -> Up)
     PATH_CORNER_BR(" ┌─"), // (Bottom -> Right)
-    
+
     TOWER("  T");
 
     private final String symbol;
