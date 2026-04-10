@@ -154,34 +154,43 @@ public abstract class Board {
         return count;
     }
 
-    private StateCell whichSymbol(int i){
-        if(this.path.get(0).get(i-1).getX() < this.path.get(0).get(i).getX()){
-            if(this.path.get(0).get(i+1).getX() > this.path.get(0).get(i).getX()){
+    private StateCell whichSymbol(int i, int path, int compteur){
+        if(this.path.get(path).get(i-1).getX() < this.path.get(path).get(i).getX()){
+            if(this.path.get(path).get(i+1).getX() > this.path.get(path).get(i).getX()){
+                if(compteur > 1){
+                    return StateCell.PATH_PLUS;
+                }
                 return StateCell.PATH_V;
             }
-            else if(this.path.get(0).get(i+1).getY() > this.path.get(0).get(i).getY()){
+            else if(this.path.get(path).get(i+1).getY() > this.path.get(path).get(i).getY()){
                 return StateCell.PATH_CORNER_TR;
             }
             else{
                 return StateCell.PATH_CORNER_LU;
             }
         }
-        else if(this.path.get(0).get(i-1).getX() > this.path.get(0).get(i).getX()){
-            if(this.path.get(0).get(i+1).getX() < this.path.get(0).get(i).getX()){
+        else if(this.path.get(path).get(i-1).getX() > this.path.get(path).get(i).getX()){
+            if(this.path.get(path).get(i+1).getX() < this.path.get(path).get(i).getX()){
+                if(compteur > 1){
+                    return StateCell.PATH_PLUS;
+                }
                 return StateCell.PATH_V;
             }
-            else if(this.path.get(0).get(i+1).getY() > this.path.get(0).get(i).getY()){
+            else if(this.path.get(path).get(i+1).getY() > this.path.get(path).get(i).getY()){
                 return StateCell.PATH_CORNER_BR;
             }
             else{
                 return StateCell.PATH_CORNER_LD;
             }
         }
-        else if(this.path.get(0).get(i-1).getY() < this.path.get(0).get(i).getY()){
-            if(this.path.get(0).get(i+1).getY() > this.path.get(0).get(i).getY()){
+        else if(this.path.get(path).get(i-1).getY() < this.path.get(path).get(i).getY()){
+            if(this.path.get(path).get(i+1).getY() > this.path.get(path).get(i).getY()){
+                if(compteur > 1){
+                    return StateCell.PATH_PLUS;
+                }
                 return StateCell.PATH_H;
             }
-            else if(this.path.get(0).get(i+1).getX() < this.path.get(0).get(i).getX()){
+            else if(this.path.get(path).get(i+1).getX() < this.path.get(path).get(i).getX()){
                 return StateCell.PATH_CORNER_LU;
             }
             else{
@@ -189,10 +198,13 @@ public abstract class Board {
             }
         }
         else{
-            if(this.path.get(0).get(i+1).getY() < this.path.get(0).get(i).getY()){
+            if(this.path.get(path).get(i+1).getY() < this.path.get(path).get(i).getY()){
+                if(compteur > 1){
+                    return StateCell.PATH_PLUS;
+                }
                 return StateCell.PATH_H;
             }
-            else if(this.path.get(0).get(i+1).getX() < this.path.get(0).get(i).getX()){
+            else if(this.path.get(path).get(i+1).getX() < this.path.get(path).get(i).getX()){
                 return StateCell.PATH_CORNER_TR;
             }
             else{
@@ -237,8 +249,6 @@ public abstract class Board {
         }
         
         System.out.println("\n" + topLine);
-
-        int size = this.path.get(0).size();
         
         for (int j = 0; j < this.board.length; j++) { 
             if (j < 10) {
@@ -258,17 +268,37 @@ public abstract class Board {
                     }
                 } 
                 else {
-                    if(this.board[j][k] == this.path.get(0).get(0)){
-                        System.out.print("START│");
+                    boolean cellTreated = false;
+                    
+                    for (int pIndex = 0; pIndex < this.path.size(); pIndex++) {
+                        List<Cell> currentPath = this.path.get(pIndex);
+                        int currentSize = currentPath.size();
+                        
+                        if (this.board[j][k] == currentPath.get(0)) {
+                            System.out.print("START│");
+                            cellTreated = true;
+                            break;
+                        } 
+                        else if (this.board[j][k] == currentPath.get(currentSize - 1)) {
+                            System.out.print(" END │");
+                            cellTreated = true;
+                            break;                    
+                        } 
+                        else if (currentPath.contains(this.board[j][k])) {
+                            int compteur = 0;
+                            for (int t = 0; t < this.path.size(); t++) {
+                                if (this.path.get(t).contains(this.board[j][k])){
+                                    compteur++;
+                                }
+                            }
+                            int idx = currentPath.indexOf(this.board[j][k]);
+                            System.out.print(" " + this.whichSymbol(idx, pIndex, compteur) + " │");
+                            cellTreated = true;
+                            break;
+                        }
                     }
-                    else if(this.board[j][k] == this.path.get(0).get(size-1)){
-                        System.out.print(" END │");                    
-                    }
-                    else if(this.path.get(0).contains(this.board[j][k])){
-                        int idx = this.path.get(0).indexOf(this.board[j][k]);
-                        System.out.print(" " + this.whichSymbol(idx) + " │");
-                    }
-                    else{
+                    
+                    if (!cellTreated) {
                         System.out.print("     │");
                     }
                 }
