@@ -200,7 +200,17 @@ Nous avons rencontré quelques difficultés comme l'amélioration de damageTower
 
 ### Atteinte des objectifs
 
+Pour ce cinquième livrable, nous avons implémenté la gestion des actions du joueur. Le joueur peut désormais interagir avec le jeu par la console entre chaque round. On lui propose plusieurs choix : acheter et placer de nouvelles tours, améliorer des tours existantes, ou encore revendre ses tours et upgrades.
+ 
+Le joueur gagne des crédits à chaque fois qu'un ballon est détruit. À l'inverse, l'achat de tours ou d'upgrades consomme ces crédits. Nous avons créé une exception NotEnoughCreditsException qui empêche le joueur de réaliser une action s'il ne possède pas les crédits nécessaires.
+
+Enfin, nous avons ajouté une musique de fond et amélioré l'affichage dans la console en ajoutant des émojis pour différencier les différentes tours.
+
+Néanmoins, il nous a été demandé de modifié le Main afin de jouer 10 round avec la créations de chaque tour en deux exemplaires au début du jeu, l'achat d'une tour chaque round pour les 5 premiers rounds et l'upgrade d'une tour chaque round pour les rounds de 6 à 10. Nous avons donc modifié notre Main afin de suivre ces contraintes.
+
 ### Difficultés restant à résoudre
+
+Nous n'avons aucune difficultés restantes à résoudre.
 
 ## Livrable 6
 
