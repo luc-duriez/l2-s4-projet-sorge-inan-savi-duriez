@@ -186,7 +186,7 @@ public abstract class DamageTower extends Tower {
     }
 
     private void displayUpgrade(Upgrade u,Player p){
-        System.out.printf("%s%n%s has been bought (money: %d -> %d)%n", u.displayAppliedUpgrade(this), displayUpgrade(u),p.getCredits()+u.getCost(),p.getCredits());
+        System.out.printf("%s%n%s has been bought (money: %d -> %d)%n\n", u.displayAppliedUpgrade(this), displayUpgrade(u),p.getCredits()+u.getCost(),p.getCredits());
     }
 
     private String displayUpgrade(Upgrade u) {
