@@ -1,103 +1,54 @@
-/* package btd.utils;
-
-import btd.boards.*;
-
-/** Main classic mode 
-public class MainClassic {
-
-    public static void main(String[] args) {
-        if (args.length != 2) {
-            System.out.println(
-                    "Le programme nécessite 2 arguments: <x> <y> <b>\n\t<x> Largeur du plateau\n\t<y> Hauteur du plateau");
-        } else {
-            System.out.println();
-            Board board = new ClassicBoard(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
-            Game game = new Game(board);
-            game.play();
-        }
-    }
-} */
-
-
 package btd.utils;
 
 import java.util.NoSuchElementException;
-import java.util.Random;
 
 import btd.boards.*;
-import btd.exceptions.NotEnoughCreditsException;
-import btd.towers.towers.*;
 
 /** Main classic mode */
 public class Main {
 
-    private static Cell findUnusedCell(Board board, int w, int h) throws RuntimeException {
-        int x, y;
-        Random r = new Random();
-        int a = 100;
-        do {
-            if (a == 0) {
-                throw new RuntimeException("Board cannot accommodate more towers");
-            }
-            x = r.nextInt(w);
-            y = r.nextInt(h);
-            a--;
-        } while (!board.isPlaceable(x, y));
-        return board.getCell(x, y);
-    }
-     public static void main(String[] args) throws NoSuchElementException, NotEnoughCreditsException {
-        if (args.length != 3) {
+    public static void main(String[] args) {
+        if (args.length != 2) {
             System.out.println(
-            "Le programme nécessite 3 arguments: <x> <y> <b>\n\t<x> Largeur du plateau\n\t<y> Hauteur du plateau\n\t<b> Nombre de balloons");
-         } else {
-            System.out.println();
-            Board board = new ClassicBoard(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
-            Game game = new Game(board);
-            game.getPlayer().changeCredits(10000);
-            game.getPlayer().decreaseLife(-10000);
+                    "Le programme nécessite 2 arguments: <x> <y>\n\t<x> Largeur du plateau\n\t<y> Hauteur du plateau");
+        }else {
+            int width, height;
             try {
-                for (int i = 0; i < 2; i++) {
-                    DamageTower tower= new BombTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1])));
-                    game.buyTower(tower);
-                    tower = new DartTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1])));
-                    game.buyTower(tower);
-                    tower = new SniperTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1])));
-                    game.buyTower(tower);
-                    tower = new SuperTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1])));
-                    game.buyTower(tower);
-                    tower = new TackTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1])));
-                    game.buyTower(tower);
-                }
-                game.buyTower(new IceTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1]))));
-                game.buyTower(new SlowTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1]))));
-                game.buyTower(new IceTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1]))));
-                game.buyTower(new SlowTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1]))));              
-             } catch (RuntimeException e) {
-                System.out.println(e.getMessage());
-             }
-             catch(NotEnoughCreditsException e){
-                System.out.println(e.getMessage());
-             }
-            
-            board.displayBoard();
-            for(int i = 0; i < 5; i++){
-                if(game.getPlayer().getLives() <= 0){
-                    return;
-                }
-                board.getTowers().get(i).upgrade(board.getTowers().get(i).getRemainingUpgrade().get(0), game.getPlayer());
-
-                System.out.printf("%n%n=== Starting Round %d", i+1);
-                game.playRound(Integer.parseInt(args[2]));
+                width = Integer.parseInt(args[0]);
+                height = Integer.parseInt(args[1]);
+            } catch (NumberFormatException e) {
+                System.out.println("\nInvalid Arguments : Board's dimension must be integer !\n");
+                return;
             }
-            for(int i = 5; i < 10; i++){
-                if(game.getPlayer().getLives() <= 0){
-                    return;
+            Game game = new Game(null);
+            Board board = null;
+            boolean choice = false;
+            while (!choice){
+                try{
+                    System.out.println("Choose your Board :");
+                    System.out.println("\t0 - ClassicBoard");
+                    System.out.println("\t1 - LinearBoard");
+                    int input = game.getInput("\t\tchoice ?\n");
+                    if (input == 0) {
+                        board = new ClassicBoard(width, height);
+                        choice=true;
+                    }else if (input == 1) {
+                        int nbPaths = game.getInput("Number of path : ");
+                        board = new LinearBoard(width, height, nbPaths);
+                        choice = true;
+                    }else{
+                        throw new NoSuchFieldError("Warning: Not in the list of actions\n");
+                    }
+                }catch(NoSuchElementException e){
+                    System.out.println(e.getMessage());
+                }catch(IllegalArgumentException e){
+                    System.out.println(e.getMessage());
+                }catch(NoSuchFieldError e){
+                    System.out.println(e.getMessage());
                 }
-                board.getTowers().get(i-5).revertUpgrade(board.getTowers().get(i-5).getAppliedUpgrade().get(0), game.getPlayer());
-                
-                System.out.printf("%n%n=== Starting Round %d", i+1);
-                game.playRound(Integer.parseInt(args[2]));
             }
-        }   
+            game = new Game(board);
+            game.play();
+        }
     }
 }
