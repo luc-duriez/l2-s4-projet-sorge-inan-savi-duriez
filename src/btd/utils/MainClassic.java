@@ -58,29 +58,22 @@ public class MainClassic {
                 for (int i = 0; i < 2; i++) {
                     DamageTower tower= new BombTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1])));
                     game.buyTower(tower);
-                    System.out.println("\nBombTower added");
                     tower.upgrade(tower.getRemainingUpgrade().get(0), game.getPlayer());
                     tower = new DartTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1])));
                     game.buyTower(tower);
-                    System.out.println("\nDartTower added");
                     tower.upgrade(tower.getRemainingUpgrade().get(0), game.getPlayer());                    
                     game.buyTower(new IceTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1]))));
-                    System.out.println("\nIceTower added");
                     tower.upgrade(tower.getRemainingUpgrade().get(0), game.getPlayer());     
                     game.buyTower(new SlowTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1]))));
                     tower.upgrade(tower.getRemainingUpgrade().get(0), game.getPlayer());
-                    System.out.println("\nSlowTower added");
                     tower = new SniperTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1])));
                     game.buyTower(tower);
-                    System.out.println("\nSniperTower added");
                     tower.upgrade(tower.getRemainingUpgrade().get(0), game.getPlayer());                   
                     tower = new SuperTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1])));
                     game.buyTower(tower);
-                    System.out.println("\nSuperTower added");
                     tower.upgrade(tower.getRemainingUpgrade().get(0), game.getPlayer());                    
                     tower = new TackTower(findUnusedCell(board, Integer.parseInt(args[0]), Integer.parseInt(args[1])));
                     game.buyTower(tower);
-                    System.out.println("\nTackTower added");
                     tower.upgrade(tower.getRemainingUpgrade().get(0), game.getPlayer());            
                 }              
              } catch (RuntimeException e) {
