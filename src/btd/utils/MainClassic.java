@@ -89,31 +89,11 @@ public class MainClassic {
                 System.out.printf("%n%n=== Starting Round %d", i+1);
                 game.playRound(Integer.parseInt(args[2]) * i);
             }
-        
-            for (int i = 0; i < board.getTowers().size(); i++) {
-                if(game.getPlayer().getLives() <= 0){
-                    return;
-                }
-                // Copie de la référence de liste de Tower de board
-                Tower currentTower = board.getTowers().get(i);
-               
-                if (currentTower instanceof DamageTower) {
-                    DamageTower dmgTower = (DamageTower) currentTower;
-                    try{
-                        System.out.println("\nThe upgrade " + dmgTower.getAppliedUpgrade().get(0) + " has been reverted from the " + dmgTower.toString());
-                        dmgTower.revertUpgrade(dmgTower.getAppliedUpgrade().get(0), game.getPlayer());
-                    }
-                    catch(IndexOutOfBoundsException e){
-                        System.out.println("The next upgrade can't be reverted");
-                    }
-                    System.out.println("\n");
-                }
-            }
             for(int i = 5; i < 10; i++){
                 if(game.getPlayer().getLives() <= 0){
                     return;
                 }
-                //board.getTowers().get(i-5).revertUpgrade(board.getTowers().get(i-5).getAppliedUpgrade().get(0), game.getPlayer());
+                board.getTowers().get(i-5).revertUpgrade(board.getTowers().get(i-5).getAppliedUpgrade().get(0), game.getPlayer());
                 
                 System.out.printf("%n%n=== Starting Round %d", i+1);
                 game.playRound(Integer.parseInt(args[2]) * i);
