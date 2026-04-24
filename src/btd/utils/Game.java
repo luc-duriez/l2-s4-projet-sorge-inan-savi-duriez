@@ -34,17 +34,24 @@ public class Game {
 
     /** The scanner for input */
     private final Scanner SCANNER;
+
+    /** The bolean for knowing if it's interactive or not */
+    private final boolean interactive;
+    /** F<or automatic choices */
+    private final Random random = new Random();
+
     /**
      * Build a Game with a given board
      * @param board this game's board
      */
-    public Game(Board board) {
+    public Game(Board board, boolean interactive) {
         this.player = new Player();
         this.board = board;
         this.round = 1;
         this.waitingBalloons = new ArrayList<Balloon>();
         this.activeBalloons = new ArrayList<Balloon>();
         this.SCANNER = new Scanner(System.in);
+        this.interactive = interactive;
     }
 
     /**
