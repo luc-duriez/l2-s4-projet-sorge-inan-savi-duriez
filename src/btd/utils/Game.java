@@ -35,7 +35,7 @@ public class Game {
     /** The scanner for input */
     private final Scanner SCANNER;
 
-    /** The bolean for knowing if it's interactive or not */
+    /** The bolean for knowing if the game is interactive or not */
     private final boolean interactive;
     /** F<or automatic choices */
     private final Random random = new Random();
@@ -193,9 +193,19 @@ public class Game {
                 list.add("buy upgrade Tower"); // a afficher seulement si une tour placé et a au moins une upgrade ou si tt upgrade sont pas deja mise
             if (showSellUpgrade)
                 list.add("sell upgrade Tower"); // a afficher seulement si une tour placé a au moins une upgrade d'appliqué
-            displayChoice(list);
+
+            // Vérifie si c'est une parti interactive ou non
+            int input;
+            if (this.interactive) {
+                displayChoice(list);
+                input = getInput("\t\tchoice ?\n");
+            } else {
+                // L'ordinateur choisit une action au hasard
+                input = this.random.nextInt(list.size());
+                System.out.println("Randomly choosing : " + list.get(input));
+            }
+
             try {
-                int input = getInput("\t\tchoice ?\n");
                 if (input >= 0 && input < list.size()) {
                     System.out.println("Executing action : " + list.get(input));
 
@@ -261,8 +271,13 @@ public class Game {
         boolean choice = false;
         while (!choice){
             try{
-                displayChoice(list);
-                int input = getInput("\t\tchoice ?\n");
+                int input;
+                if (this.interactive) {
+                    displayChoice(list); 
+                    input = getInput("\t\tchoice ?\n");
+                } else {
+                    input = this.random.nextInt(list.size()); // Choisis un iput au hasard dans la liste
+                }
                 if (input ==0){
                     choice=true;
                 }
