@@ -86,7 +86,7 @@ make jarClassic jarLinear
 #### Execution
 
 ```bash
-java -jar Livrable/Livrable2a.jar  # Pour un Classicboard
+w# Pour un Classicboard
 
 java -jar Livrable/Livrable2b.jar  # Pour un LinearBoard
 ```
