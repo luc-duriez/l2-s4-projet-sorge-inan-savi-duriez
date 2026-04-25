@@ -20,7 +20,7 @@ public class Main {
                 System.out.println("\nInvalid Arguments : Board's dimension must be integer !\n");
                 return;
             }
-            Game game = new Game(null);
+            Game game = new Game(null, true);
             Board board = null;
             boolean choice = false;
             while (!choice){
@@ -47,7 +47,7 @@ public class Main {
                     System.out.println(e.getMessage());
                 }
             }
-            game = new Game(board);
+            game = new Game(board, true);
             game.play();
         }
     }
