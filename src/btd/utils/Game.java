@@ -508,7 +508,7 @@ public class Game {
                 } else {
                     input = this.random.nextInt(list.size());
                 }
-                
+
                 if (input ==0){
                     choice=true;
                 }
@@ -540,7 +540,13 @@ public class Game {
         boolean choice = false;
         while (!choice){
             try{
-                int input = getInput("\t\tchoice ?\n");
+                int input;
+                if (this.interactive) {
+                    displayChoice(choices);
+                    input = getInput("\t\tchoice ?\n");
+                } else {
+                    input = this.random.nextInt(choices.size());
+                }
                 if (input ==0){
                     choice=true;
                 }
