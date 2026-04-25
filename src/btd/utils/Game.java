@@ -631,7 +631,7 @@ public class Game {
             board.displayBoard();
             System.out.println("\n===== Step 1 : player plays");
             playerChoice();
-            playRound(3);
+            playRound(15);
             this.round++;
         }
         sound.stopSound();
