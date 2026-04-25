@@ -1,5 +1,6 @@
 JC = javac
 
+JAR_DIR = jar
 SRC_DIR = src
 TEST_DIR = test
 CLASSES_DIR = classes
@@ -20,8 +21,18 @@ classes:
 	$(JC) -d $(CLASSES_DIR) $(SOURCES)
 
 jar: classes
-	jar cfe Livrable/Livrable6/livrable6.jar btd.utils.Main -C $(CLASSES_DIR) .
-
+	mkdir -p $(JAR_DIR)
+	# JAR 1 : Plateau A - Interactif
+	jar cfe $(JAR_DIR)/towerdefense-a-interactive.jar btd.utils.MainClassicInteractive -C $(CLASSES_DIR) .
+	
+	# JAR 2 : Plateau B - Interactif
+	jar cfe $(JAR_DIR)/towerdefense-b-interactive.jar btd.utils.MainLinearInteractive -C $(CLASSES_DIR) .
+	
+	# JAR 3 : Plateau A - Aléatoire
+	jar cfe $(JAR_DIR)/towerdefense-a-random.jar btd.utils.MainClassicRandom -C $(CLASSES_DIR) .
+	
+	# JAR 4 : Plateau B - Aléatoire
+	jar cfe $(JAR_DIR)/towerdefense-b-random.jar btd.utils.MainLinearRandom -C $(CLASSES_DIR) .
 tests: classes
 	$(JC) -classpath junit-console.jar:$(CLASSES_DIR) $(TEST_SOURCES) -d $(CLASSES_DIR)
 
