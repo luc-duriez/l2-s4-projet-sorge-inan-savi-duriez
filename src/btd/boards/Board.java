@@ -42,6 +42,14 @@ public abstract class Board {
     }
 
     /**
+     * Retourne la largeur du plateau 
+     * @return int
+     */
+    public int getWidth() {
+        return this.board.length; 
+    }
+
+    /**
      * Return the Cell at the given position of this Board's grid
      * X and Y must be valid.
      * 
