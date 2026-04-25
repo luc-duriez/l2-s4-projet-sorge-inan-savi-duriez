@@ -43,6 +43,7 @@ public class Game {
     /**
      * Build a Game with a given board
      * @param board this game's board
+     * @param interactive wheter the game is interactive or not
      */
     public Game(Board board, boolean interactive) {
         this.player = new Player();
@@ -66,6 +67,7 @@ public class Game {
         this.waitingBalloons = new ArrayList<Balloon>();
         this.activeBalloons = new ArrayList<Balloon>();
         this.SCANNER = new Scanner(System.in);
+        this.interactive = true;
     }
 
     /**
