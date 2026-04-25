@@ -50,6 +50,14 @@ public abstract class Board {
     }
 
     /**
+     * Retourne la hauteur du plateau 
+     * @return int
+     */
+    public int getHeight() {
+        return this.board[0].length;
+    }
+
+    /**
      * Return the Cell at the given position of this Board's grid
      * X and Y must be valid.
      * 
