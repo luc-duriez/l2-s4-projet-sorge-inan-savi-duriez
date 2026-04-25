@@ -4,7 +4,7 @@ public class MainLinearInteractive {
 
     public static void main (String[] args){
         if (args.length < 3) {
-            System.out.println("Le programme nécessite 3 arguments: <x> <y> <z> <b>\n\t<x> Largeur du plateau\n\t<y> Hauteur du plateau\n\t<z> Nombre de chemins ");
+            System.out.println("Le programme nécessite 3 arguments: <x> <y> <z> <b>\n\t<x> Largeur du plateau\n\t<y> Hauteur du plateau\n\t<z> Nombre de chemins");
             return;
         }
         int width = Integer.parseInt(args[0]);
