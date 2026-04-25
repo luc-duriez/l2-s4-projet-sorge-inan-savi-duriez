@@ -313,6 +313,20 @@ public class Game {
      * @return
      */
     private List<Integer> managePlacement() {
+
+        if (!this.interactive) {
+            int x, y;
+            int attempts = 0;
+            // On cherche une case libre au hasard au maximum 100 essais pour éviter les cas où la liste peut être vide 
+            do {
+                x = this.random.nextInt(board.getWidth());
+                y = this.random.nextInt(board.getHeight());
+                attempts++;
+            } while (!board.isPlaceable(x, y) && attempts < 100);
+            
+            return (attempts < 100) ? List.of(x, y) : null;
+        }
+
         int essai = 5;
         int x=-1,y=-1;
         boolean choice = false;
