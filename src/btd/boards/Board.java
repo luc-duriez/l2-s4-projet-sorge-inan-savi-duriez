@@ -42,7 +42,7 @@ public abstract class Board {
     }
 
     /**
-     * Retourne la largeur du plateau 
+     * Return the width of this Board
      * @return int
      */
     public int getWidth() {
@@ -50,7 +50,7 @@ public abstract class Board {
     }
 
     /**
-     * Retourne la hauteur du plateau 
+     * Return the height of this Board
      * @return int
      */
     public int getHeight() {
