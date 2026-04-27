@@ -12,7 +12,7 @@ TEST_SOURCES = $(shell find $(TEST_DIR) -name "*.java")
 
 all: classes
 
-docs: classes
+doc: classes
 	mkdir -p docs
 	javadoc -sourcepath src -subpackages btd -d docs -Xdoclint:none -quiet 
 
