@@ -623,9 +623,6 @@ public class Game {
      * Play a game of Bloons Tower Defense.
      */
     public void play(){
-        Sound sound = new Sound();
-        sound.playBackgroundSound("src/btd/BeepBox-Song-Kamal.wav");
-        
         while (!player.isDead()){
             System.out.println("\n\n=== Starting Round " + this.round + " ===");
             board.displayBoard();
@@ -634,7 +631,6 @@ public class Game {
             playRound(15);
             this.round++;
         }
-        sound.stopSound();
         System.out.println("\n=== Game Finished ===");
         player.displayStats();
     }
