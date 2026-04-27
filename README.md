@@ -216,7 +216,12 @@ Nous n'avons aucune difficultés restantes à résoudre.
 
 ### Atteinte des objectifs
 
+Le projet est terminé dans son intégralité.
+Kamal a ajouté une musique au jeu (jar "-music")
+
 ### Difficultés restant à résoudre
+
+/
 
 # Journal de bord
 
@@ -383,6 +388,16 @@ Essayé de faire une interface graphique pour le chemin avec javafx mais abandon
 
 ### Ce qui a été réalisé
 
+Pas de cours, mais nous avons continué et terminé le projet.
+Nous avons améliorer l'affichage des chemins sur les boards.
+Une optimisation de createPath pour le classicBoard a été effectuée pour pouvoir créer des boards de taille supérieur.
+
 ### Difficultés rencontrées
 
+affichage des nouveaux chemins (LinearBoard) -> gestion des "virages"
+Mise en place des listes chooser.
+
+
 ### Objectifs pour finaliser le projet et répartition du travail par membre
+
+/
